@@ -1,0 +1,22 @@
+<h1>Listing sections</h1>
+
+<table>
+  <tr>
+    <th>Retro</th>
+    <th>Name</th>
+  </tr>
+
+<% for section in @sections %>
+  <tr>
+    <td><%=h @retro.name %></td>
+    <td><%=h section.name %></td>
+    <td><%= link_to 'Show', [@retro, section] %></td>
+    <td><%= link_to 'Edit', [:edit, @retro, section] %></td>
+    <td><%= link_to 'Destroy', [@retro, section], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New section', new_retro_section_path(@retro) %>

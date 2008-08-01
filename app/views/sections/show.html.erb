@@ -1,0 +1,8 @@
+<p>
+  <b>Name:</b>
+  <%=h @section.name %>
+</p>
+
+<%= link_to 'Points', section_points_path(@section) %> |
+<%= link_to 'Edit', [:edit, @retro, @section] %> |
+<%= link_to 'Back', retro_sections_path(@retro) %>

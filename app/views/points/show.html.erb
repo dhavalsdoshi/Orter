@@ -1,0 +1,13 @@
+<p>
+  <b>Section:</b>
+  <%=h @section.name %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%=h @point.message %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, @section, @point] %> |
+<%= link_to 'Back', section_points_path(@section) %>

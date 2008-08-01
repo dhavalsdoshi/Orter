@@ -1,0 +1,17 @@
+<h1>Editing point</h1>
+
+<%= error_messages_for :point %>
+
+<% form_for([@section, @point]) do |f| %>
+  <p>
+    <b>Message</b><br />
+    <%= f.text_area :message %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', [@section, @point] %> |
+<%= link_to 'Back', section_points_path(@section) %>

@@ -1,0 +1,17 @@
+<h1>Editing section</h1>
+
+<%= error_messages_for :section %>
+
+<% form_for([@retro, @section]) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', [@retro, @section] %> |
+<%= link_to 'Back', retro_sections_path(@retro) %>

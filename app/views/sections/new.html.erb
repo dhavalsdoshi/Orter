@@ -1,0 +1,16 @@
+<h1>New section</h1>
+
+<%= error_messages_for :section %>
+
+<% form_for([@retro, @section]) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', retro_sections_path(@retro) %>
