@@ -14,10 +14,25 @@ class RetrosController < ApplicationController
   # GET /retros/1.xml
   def show
     @retro = Retro.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @retro }
+    end
+  end
+  
+    # render(:text => "<pre>" + email.encoded + "</pre>") 
+  
+  def temp_render retro
+    retro.instance_eval do
+      def event_date
+        Time.new
+      end
+      def organizer
+        "organizer@thoughtworks.com"
+      end
+      def participants
+        ["anayak@thoughtworks.com"]
+      end
     end
   end
 
@@ -25,7 +40,6 @@ class RetrosController < ApplicationController
   # GET /retros/new.xml
   def new
     @retro = Retro.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @retro }
@@ -40,7 +54,9 @@ class RetrosController < ApplicationController
   # POST /retros
   # POST /retros.xml
   def create
-    @retro = Retro.new(params[:retro])
+    @retro = Retro.new({:name =>params[:retro][:name], :description =>params[:retro][:description]})
+    email = RetrospectiveMailer.create_new_retro(@retro, params[:retro][:participants], params[:retro][:event_date]) 
+    RetrospectiveMailer.deliver(email)
 
     respond_to do |format|
       if @retro.save

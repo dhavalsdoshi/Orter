@@ -23,6 +23,9 @@ class PointsController < ApplicationController
     end
   end
 
+  def point_url(point)
+    return point.to_s
+  end
   def new
     @point = @section.points.build
 

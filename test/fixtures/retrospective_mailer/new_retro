@@ -1,0 +1,3 @@
+RetrospectiveMailer#new_retro
+
+Find me in app/views/retrospective_mailer/new_retro.erb

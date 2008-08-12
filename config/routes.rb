@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sections, :has_many => :points
   map.resources :retros, :has_many => :sections
   map.root :controller => "retros"
-
+  map.connect 'deeplinks/:id', :controller =>'deeplinks', :action => 'index'
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
