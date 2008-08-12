@@ -57,7 +57,9 @@ class RetrosController < ApplicationController
     @retro = Retro.new({:name =>params[:retro][:name], :description =>params[:retro][:description]})
     email = RetrospectiveMailer.create_new_retro(@retro, params[:retro][:participants], params[:retro][:event_date]) 
     RetrospectiveMailer.deliver(email)
-
+    ["continue doing", "stop doing", "more of", "less of", "more often"].each do |section_name|
+      @retro.sections << Section.new({:name =>section_name})
+    end
     respond_to do |format|
       if @retro.save
         flash[:notice] = 'Retro was successfully created.'
