@@ -17,10 +17,9 @@
 development:
   adapter: mysql
   encoding: utf8
-  database: retro_development
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  database: retro
+  username: retro
+  password: retro
 
 # Warning: The database defined as 'test' will be erased and
 # re-generated from your development database when you run 'rake'.
@@ -28,15 +27,13 @@ development:
 test:
   adapter: mysql
   encoding: utf8
-  database: retro_test
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  database: retro
+  username: retro
+  password: retro
 
 production:
   adapter: mysql
   encoding: utf8
-  database: retro_production
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  database: retro
+  username: retro
+  password: retro
