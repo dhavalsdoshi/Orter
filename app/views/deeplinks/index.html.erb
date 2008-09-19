@@ -16,9 +16,11 @@ body { margin: 0px; overflow:hidden }
 			<param name="movie" value="/flash.swf" />
 			<param name="quality" value="high" />
 			<param name="bgcolor" value="#869ca7" />
-      <param name="allowScriptAccess" value="sameDomain" />
+      		<param name="allowScriptAccess" value="sameDomain" />
+			<param name='flashVars' value='retrospectiveId=<%=@retrospective_id%>'>
 			<embed src="/flash.swf?retrospectiveId=<%=@retrospective_id%>" quality="high" bgcolor="#869ca7"
 				width="100%" height="100%" name="StarFishRetro" align="middle"
+				flashVars="retrospectiveId=<%=@retrospective_id%>"
 				play="true"
 				loop="false"
 				quality="high"

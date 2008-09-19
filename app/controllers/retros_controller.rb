@@ -55,13 +55,13 @@ class RetrosController < ApplicationController
   # POST /retros.xml
   def create
     @retro = Retro.new({:name =>params[:retro][:name], :description =>params[:retro][:description]})
-    email = RetrospectiveMailer.create_new_retro(@retro, params[:retro][:participants], params[:retro][:event_date]) 
-    RetrospectiveMailer.deliver(email)
     ["continue doing", "stop doing", "more of", "less of", "more often"].each do |section_name|
       @retro.sections << Section.new({:name =>section_name})
     end
     respond_to do |format|
       if @retro.save
+        email = RetrospectiveMailer.create_new_retro(@retro, params[:retro][:participants], params[:retro][:event_date]) 
+        RetrospectiveMailer.deliver(email)
         flash[:notice] = 'Retro was successfully created.'
         format.html { redirect_to(@retro) }
         format.xml  { render :xml => @retro, :status => :created, :location => @retro }

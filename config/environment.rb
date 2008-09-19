@@ -58,7 +58,7 @@ Rails::Initializer.run do |config|
   # config.active_record.default_timezone = :utc
   
   config.action_mailer.delivery_method = :smtp
-  
+  CONTEXT_PATH = 'http://localhost:3000'
   config.action_mailer.smtp_settings = { 
   :address => "mother.thoughtworks.com", 
   :port => 25, 
