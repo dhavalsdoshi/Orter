@@ -10,7 +10,7 @@ class PointsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @points }
+      format.xml  { render :xml => @points.to_xml(:include => :votes)}
     end
   end
 
