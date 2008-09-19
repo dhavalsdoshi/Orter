@@ -1,6 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :votes
-
+  
   map.resources :points, :has_many => :votes
   map.resources :sections, :has_many => :points
   map.resources :retros, :has_many => :sections

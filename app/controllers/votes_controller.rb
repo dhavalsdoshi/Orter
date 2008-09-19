@@ -1,8 +1,13 @@
 class VotesController < ApplicationController
-  # GET /votes
-  # GET /votes.xml
+  
+  before_filter :load_point
+
+  def load_point
+    @point = Point.find(params[:point_id])
+  end
+  
   def index
-    @votes = Vote.find(:all)
+    @votes = @point.votes.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,10 +15,8 @@ class VotesController < ApplicationController
     end
   end
 
-  # GET /votes/1
-  # GET /votes/1.xml
   def show
-    @vote = Vote.find(params[:id])
+    @vote = @point.vote.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,10 +24,12 @@ class VotesController < ApplicationController
     end
   end
 
-  # GET /votes/new
-  # GET /votes/new.xml
+  def vote_url(vote)
+    return vote.to_s
+  end
+  
   def new
-    @vote = Vote.new
+    @vote = @point.votes.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,15 +37,12 @@ class VotesController < ApplicationController
     end
   end
 
-  # GET /votes/1/edit
   def edit
-    @vote = Vote.find(params[:id])
+    @vote = @point.votes.find(params[:id])
   end
 
-  # POST /votes
-  # POST /votes.xml
   def create
-    @vote = Vote.new(params[:vote])
+    @vote = @point.votes.build(params[:vote])
 
     respond_to do |format|
       if @vote.save
@@ -54,10 +56,8 @@ class VotesController < ApplicationController
     end
   end
 
-  # PUT /votes/1
-  # PUT /votes/1.xml
   def update
-    @vote = Vote.find(params[:id])
+    @vote = @point.votes.find(params[:id])
 
     respond_to do |format|
       if @vote.update_attributes(params[:vote])
@@ -71,10 +71,8 @@ class VotesController < ApplicationController
     end
   end
 
-  # DELETE /votes/1
-  # DELETE /votes/1.xml
   def destroy
-    @vote = Vote.find(params[:id])
+    @vote = @point.vote.find(params[:id])
     @vote.destroy
 
     respond_to do |format|

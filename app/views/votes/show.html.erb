@@ -1,3 +1,13 @@
 
-<%= link_to 'Edit', edit_vote_path(@vote) %> |
-<%= link_to 'Back', votes_path %>
+<p>
+  <b>Point:</b>
+  <%=h @point.message %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%=h @point.message %>
+</p>
+
+<%= link_to 'Edit', [:edit, @point, @vote]%> |
+<%= link_to 'Back', point_votes_path(@point) %>
