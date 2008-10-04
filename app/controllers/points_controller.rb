@@ -1,5 +1,5 @@
 class PointsController < ApplicationController
-  before_filter :load_section
+  before_filter :load_section, :except => [:update]
 
   def load_section
     @section = Section.find(params[:section_id])
@@ -26,6 +26,7 @@ class PointsController < ApplicationController
   def point_url(point)
     return point.to_s
   end
+  
   def new
     @point = @section.points.build
 
@@ -55,8 +56,10 @@ class PointsController < ApplicationController
   end
 
   def update
-    @point = @section.points.find(params[:id])
-
+    @point = Point.find(params[:id])
+    @section = @point.section
+    p "########################## #{params.inspect}"
+    p "########################## #{params[:point].inspect}"
     respond_to do |format|
       if @point.update_attributes(params[:point])
         flash[:notice] = 'Point was successfully updated.'
