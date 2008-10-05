@@ -1,16 +1,17 @@
 class RetrospectiveMailer < ActionMailer::Base
   
 
-  def new_retro(retro, participant,event_date)
+  def new_retro(retro, participants, participant,event_date)
     subject    "Retrospective scheduled on #{event_date}"
-    recipients participant
+    recipients participant.email
     from       "noreply-orteR@thoughtworks.com"
     sent_on    Time.now
     
     body      :event_date => event_date, 
               :retro_name => retro.name, 
               :retro_description =>retro.description, 
-              :retro_link => "#{CONTEXT_PATH}/deeplinks?id=#{retro.id}&user=#{participant}"
+              :participants =>participants,
+              :retro_link => "#{CONTEXT_PATH}/deeplinks?id=#{retro.id}&participant_code=#{participant.id}"
   end
 
 end

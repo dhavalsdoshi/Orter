@@ -60,11 +60,13 @@ class RetrosController < ApplicationController
     end
     respond_to do |format|
       if @retro.save
-        participants = params[:retro][:participants].split(',')
-        participants.each{|participant|
-          email = RetrospectiveMailer.create_new_retro(@retro, participant, params[:retro][:event_date])
+        participants = create_participants(params[:retro][:participants].split(","))
+        
+        participants.each do |participant|
+          email = RetrospectiveMailer.create_new_retro(@retro, participants, participant, params[:retro][:event_date]) 
           RetrospectiveMailer.deliver(email)
-        }
+        end
+        
         flash[:notice] = 'Retro was successfully created.'
         format.html { redirect_to(@retro) }
         format.xml  { render :xml => @retro, :status => :created, :location => @retro }
@@ -74,7 +76,7 @@ class RetrosController < ApplicationController
       end
     end
   end
-
+  
   # PUT /retros/1
   # PUT /retros/1.xml
   def update
@@ -103,4 +105,16 @@ class RetrosController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+  
+  def create_participants(email_ids)
+    participants = []
+    email_ids.each do |email_id|
+      next if email_id.nil? || email_id.strip.empty? 
+      participants << Participant.create({:email => email_id.strip, :retro => @retro})
+    end
+    participants
+  end
+  
 end
