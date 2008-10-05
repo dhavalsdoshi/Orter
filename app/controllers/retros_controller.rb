@@ -60,8 +60,11 @@ class RetrosController < ApplicationController
     end
     respond_to do |format|
       if @retro.save
-        email = RetrospectiveMailer.create_new_retro(@retro, params[:retro][:participants], params[:retro][:event_date]) 
-        RetrospectiveMailer.deliver(email)
+        participants = params[:retro][:participants].split(',')
+        participants.each{|participant|
+          email = RetrospectiveMailer.create_new_retro(@retro, participant, params[:retro][:event_date])
+          RetrospectiveMailer.deliver(email)
+        }
         flash[:notice] = 'Retro was successfully created.'
         format.html { redirect_to(@retro) }
         format.xml  { render :xml => @retro, :status => :created, :location => @retro }
