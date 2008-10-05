@@ -1,5 +1,7 @@
 class DeeplinksController < ApplicationController
   def index
-    @retrospective_id = params[:id]
+    parameters = RetroDeepLink.decode(params[:id])
+    @retrospective_id = parameters[:retro_id]
+    @participant_code = parameters[:participant_code]
   end
 end

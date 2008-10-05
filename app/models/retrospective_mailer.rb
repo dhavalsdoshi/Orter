@@ -11,7 +11,7 @@ class RetrospectiveMailer < ActionMailer::Base
               :retro_name => retro.name, 
               :retro_description =>retro.description, 
               :participants =>participants,
-              :retro_link => "#{CONTEXT_PATH}/deeplinks?id=#{retro.id}&participant_code=#{participant.id}"
+              :retro_link => "#{CONTEXT_PATH}/deeplinks/#{RetroDeepLink.encode(:retro_id => retro.id, :participant_code=>participant.id)}"
   end
 
 end
