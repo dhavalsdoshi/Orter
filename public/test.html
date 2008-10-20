@@ -1,12 +1,32 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html>
-	<head>
-		<title>Title</title>
-	</head>
-	<body>
-		<form action="http://localhost:3000/retros.xml" method="post">
-			<input type="submit" value="submit1"/>
-			<input type="text" value="asd" name="name"/>
-		</form>
-	</body>
+<html >
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>StarFish Retro</title>
+
+<style>
+body { margin: 0px; overflow:hidden }
+</style>
+</head>
+
+<body scroll="no">
+  	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+			id="SpiderChart" width="100%" height="100%"
+			codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+			<param name="movie" value="create_retrospective.swf" />
+			<param name="quality" value="high" />
+			<param name="bgcolor" value="#869ca7" />
+			<param name="allowScriptAccess" value="sameDomain" />
+			<embed src="create_retrospective.swf" quality="high" bgcolor="#869ca7"
+				width="100%" height="100%" name="StarFishRetro" align="middle"
+				play="true"
+				loop="false"
+				quality="high"
+				allowScriptAccess="any"
+				type="application/x-shockwave-flash"
+				pluginspage="http://www.adobe.com/go/getflashplayer">
+			</embed>
+	</object>
+</body>
 </html>
