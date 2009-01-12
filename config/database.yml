@@ -17,9 +17,9 @@
 development:
       adapter: mysql
       encoding: utf8
-      database: retro_development
-      username: root
-      password:
+      database: retro
+      username: retro
+      password: retro
       socket: /tmp/mysql.sock
 
     # Warning: The database defined as 'test' will be erased and
