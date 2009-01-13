@@ -55,7 +55,8 @@ class RetrosController < ApplicationController
   # POST /retros.xml
   def create
     @retro = Retro.new({:name =>params[:retro][:name], :description =>params[:retro][:description]})
-    ["What Went Well","What Didn't Go Well","Action Points"].each do |section_name|
+
+    params[:retro][:sections][:section].each do |section_name|
       @retro.sections << Section.new({:name =>section_name})
     end
     respond_to do |format|
