@@ -19,22 +19,8 @@ class RetrosController < ApplicationController
       format.xml  { render :xml => @retro }
     end
   end
-  
+
     # render(:text => "<pre>" + email.encoded + "</pre>") 
-  
-  def temp_render retro
-    retro.instance_eval do
-      def event_date
-        Time.new
-      end
-      def organizer
-        "organizer@thoughtworks.com"
-      end
-      def participants
-        ["anayak@thoughtworks.com"]
-      end
-    end
-  end
 
   # GET /retros/new
   # GET /retros/new.xml
@@ -62,12 +48,12 @@ class RetrosController < ApplicationController
     respond_to do |format|
       if @retro.save
         participants = create_participants(params[:retro][:participants].split(","))
-        
+
         participants.each do |participant|
-          email = RetrospectiveMailer.create_new_retro(@retro, participants, participant, params[:retro][:event_date]) 
+          email = RetrospectiveMailer.create_new_retro(@retro, participants, participant, params[:retro][:event_date])
           RetrospectiveMailer.deliver(email)
         end
-        
+
         flash[:notice] = 'Retro was successfully created.'
         format.html { redirect_to(@retro) }
         format.xml  { render :xml => @retro, :status => :created, :location => @retro }
@@ -77,7 +63,7 @@ class RetrosController < ApplicationController
       end
     end
   end
-  
+
   # PUT /retros/1
   # PUT /retros/1.xml
   def update
@@ -106,16 +92,22 @@ class RetrosController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  private
-  
+
+  def listings
+      @retro = Retro.find(params[:id])
+      respond_to do |format|
+        format.xml  {  render :xml => @retro.to_complete_xml}
+      end
+  end
+
   def create_participants(email_ids)
     participants = []
     email_ids.each do |email_id|
-      next if email_id.nil? || email_id.strip.empty? 
+      next if email_id.nil? || email_id.strip.empty?
       participants << Participant.create({:email => email_id.strip, :retro => @retro})
     end
     participants
   end
-  
+
+
 end

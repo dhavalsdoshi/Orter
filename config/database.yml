@@ -28,15 +28,15 @@ development:
 test:
       adapter: mysql
       encoding: utf8
-      database: retro_test
-      username: root
-      password:
+      database: retro
+      username: retro
+      password: retro
       socket: /tmp/mysql.sock
 
 production:
       adapter: mysql
       encoding: utf8
-      database: retro_production
-      username: root
-      password:
+      database: retro
+      username: retro
+      password: retro
       socket: /tmp/mysql.sock
