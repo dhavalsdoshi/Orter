@@ -3,7 +3,6 @@ class RetrosController < ApplicationController
   def show
     @retro = Retro.find(params[:id])
     respond_to do |format|
-      format.html # show.html.erb
       format.xml  { render :xml => @retro }
     end
   end
@@ -17,10 +16,8 @@ class RetrosController < ApplicationController
     respond_to do |format|
       if @retro.save
         flash[:notice] = 'Retro was successfully created.'
-        format.html { redirect_to(@retro) }
         format.xml  { render :xml => @retro, :status => :created, :location => @retro }
       else
-        format.html { render :action => "new" }
         format.xml  { render :xml => @retro.errors, :status => :unprocessable_entity }
       end
     end

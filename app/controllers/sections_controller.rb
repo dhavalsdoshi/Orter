@@ -10,7 +10,6 @@ class SectionsController < ApplicationController
     @sections = @retro.sections.find(:all)
 
     respond_to do |format|
-      format.html # index.html.erb
       format.xml  { render :xml => @sections }
     end
   end
@@ -19,7 +18,6 @@ class SectionsController < ApplicationController
     @section = @retro.sections.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
       format.xml  { render :xml => @section }
     end
   end
@@ -30,10 +28,8 @@ class SectionsController < ApplicationController
     respond_to do |format|
       if @section.save
         flash[:notice] = 'Section was successfully created.'
-        format.html { redirect_to([@retro, @section]) }
         format.xml  { render :xml => @section, :status => :created, :location => @section }
       else
-        format.html { render :action => "new" }
         format.xml  { render :xml => @section.errors, :status => :unprocessable_entity }
       end
     end
