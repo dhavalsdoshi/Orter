@@ -23,4 +23,10 @@ class RetrosController < ApplicationController
     end
   end
 
+  def export
+    @retro = Retro.find(params[:id])
+    respond_to do|format|
+      format.pdf {render :layout =>false}
+    end
+  end
 end
