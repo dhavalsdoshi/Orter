@@ -5,7 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :retros, :has_many => :sections
 
   map.root :controller => "retros"
-  map.connect 'deeplinks/:id', :controller =>'deeplinks', :action => 'index'
+  map.connect 'retrospective/for/:name', :controller =>'deeplinks', :action => 'index'
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -39,4 +40,5 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+  
 end
