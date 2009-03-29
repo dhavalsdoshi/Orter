@@ -56,6 +56,13 @@ Rails::Initializer.run do |config|
 
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
+  class Logger
+    def format_message(severity, timestamp, progname, msg)
+      "#{timestamp} #{severity.to_s} #{msg.gsub(/\s/,' ')}\n"
+    end
+  end
+
+
   LOGGER = Logger.new "#{RAILS_ROOT}/log/retro.log"
   config.gem "prawn"
   

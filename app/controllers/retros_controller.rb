@@ -16,6 +16,7 @@ class RetrosController < ApplicationController
     respond_to do |format|
       if @retro.save
         flash[:notice] = 'Retro was successfully created.'
+        LOGGER.info("retro created for: {#{@retro.name}}")
         format.xml  { render :xml => @retro, :status => :created, :location => @retro }
       else
         format.xml  { render :xml => @retro.errors, :status => :unprocessable_entity }

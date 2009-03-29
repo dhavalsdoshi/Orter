@@ -23,6 +23,7 @@ class PointsController < ApplicationController
     respond_to do |format|
       if @point.save
         flash[:notice] = 'Point was successfully created.'
+        LOGGER.info("POINT: {#{@point.message}} created in SECTION: {#{@section.name}}")
         format.xml  { render :xml => @point, :status => :created, :location => @point }
       else
         format.xml  { render :xml => @point.errors, :status => :unprocessable_entity }
@@ -32,6 +33,8 @@ class PointsController < ApplicationController
   def destroy
      @point = @section.points.find(params[:id])
      @point.destroy
+
+     LOGGER.info("POINT: {#{@point.message}} deleted from SECTION: {#{@section.name}}")
 
      respond_to do |format|
        format.xml  { head :ok }
