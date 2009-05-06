@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => "retros"
   map.connect 'retrospective/for/:name', :controller =>'deeplinks', :action => 'index'
+  map.connect 'sections/:section_id/:controller/delete/:id.:format', :action => 'destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
