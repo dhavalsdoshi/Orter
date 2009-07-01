@@ -63,7 +63,7 @@ Rails::Initializer.run do |config|
   end
 
 
-  LOGGER = Logger.new "#{RAILS_ROOT}/log/retro.log"
+  LOGGER = Logger.new("#{RAILS_ROOT}/log/retro.log",100, 50 * 1024 * 1024)
   config.gem "prawn"
   
   config.action_mailer.delivery_method = :smtp
