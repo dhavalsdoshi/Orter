@@ -9,7 +9,7 @@ class PointsController < ApplicationController
     @points = @section.points.find(:all)
 
     respond_to do |format|
-      format.xml  { render :xml => @points.to_xml()}
+      format.xml  { render :xml =>  @points.to_xml(:include => :votes)}
     end
   end
 

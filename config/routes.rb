@@ -1,12 +1,17 @@
 ActionController::Routing::Routes.draw do |map|
   
-  map.resources :points
+  map.resources :votes
+
+  map.resources :points, :has_many => :votes
   map.resources :sections, :has_many => :points
   map.resources :retros, :has_many => :sections
 
   map.root :controller => "retros"
   map.connect 'retrospective/for/:name', :controller =>'deeplinks', :action => 'index'
   map.connect 'sections/:section_id/:controller/delete/:id.:format', :action => 'destroy'
+  
+  map.connect 'admin/show_deleted/:retro_id', :controller =>'admin', :action => 'deleted_points'
+  map.connect 'admin/restore_deleted/:point_id', :controller =>'admin', :action => 'restore_deleted'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
