@@ -15,6 +15,7 @@ class RetrosController < ApplicationController
     end
     respond_to do |format|
       if @retro.save
+		session['created_retro_id'] = @retro.id
         flash[:notice] = 'Retro was successfully created.'
         LOGGER.info("retro created for: {#{@retro.name}}")
         format.xml  { render :xml => @retro, :status => :created, :location => @retro }
@@ -24,10 +25,21 @@ class RetrosController < ApplicationController
     end
   end
 
+  #because IE sucks
+  def last_created_retro_id
+	@retro_id = session['created_retro_id'] || ''
+	@retro = Retro.find @retro_id
+	respond_to do |format|
+      format.xml  { render :xml => @retro }
+    end
+  end
+  
   def export
     @retro = Retro.find(params[:id])
     respond_to do|format|
       format.pdf {render :layout =>false}
     end
   end
+  
+  
 end

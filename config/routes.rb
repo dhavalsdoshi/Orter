@@ -7,7 +7,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :retros, :has_many => :sections
 
   map.root :controller => "retros"
-  map.connect 'retrospective/for/:name', :controller =>'deeplinks', :action => 'index'
+  map.connect 'retrospective/for/:name', :controller =>'deeplinks', :action => 'index_old'
+  map.connect 'retrospective/for/:name/:id', :controller =>'deeplinks', :action => 'index'
+  map.connect 'retrospective/last/created', :controller =>'retros', :action => 'last_created_retro_id'
   map.connect 'sections/:section_id/:controller/delete/:id.:format', :action => 'destroy'
   
   map.connect 'admin/show_deleted/:retro_id', :controller =>'admin', :action => 'deleted_points'
