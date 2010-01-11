@@ -1,0 +1,248 @@
+<html>
+<head>
+	<META name="keywords" lang="en-us" content="Collaborate, distributed, share, discuss, ideas, brainstorm, easy, sticky, wall, board, whiteboard, meeting, retro, online, continuous " />
+	<META name="keywords" lang="en" content="Collaborate, distributed, share, discuss, ideas, brainstorm, easy, sticky, wall, board, whiteboard, meeting, retro, online, continuous " />
+	<title>
+	IdeaBoardz - Online Continuous Distributed Retrospective
+	</title>
+	<style type="text/css">
+	h1,h2,h3,h4{
+		text-align: center;
+	}
+	h4{
+		font-size:1.1em;
+	}
+	div.col_left {
+		float:left;
+		margin-bottom:10px;
+		margin-left:10px;
+		width:49%;
+		height: 240px;
+	}
+	div.col_right {
+		float:left;
+		margin-bottom:10px;
+		width:49%;
+		height: 240px;
+	}
+	.main_wrap {
+		margin:0 auto;
+		padding:0 5px;
+		width:990px;
+	}
+	.whiteboard{
+		background:transparent url(images/whiteboard.jpg) no-repeat;
+		float:left;
+	}
+	.sticky{
+		background:transparent url(images/ouryellow.png) no-repeat;
+		float:left;
+		padding: 15px 5px 0 6px;
+		width:116px;
+		height:110px
+	}
+	.otherSticky{
+		background:transparent url(images/ouryellow.png) no-repeat;
+		float:left;
+		padding: 15px 5px 0 6px;
+		width:116px;
+		height:110px
+	}
+	body {
+		background:#AAA185 none repeat scroll 0 0;
+		font-family:'Lucida Casual', 'Comic Sans MS';
+	}
+	#demotip {
+		display:none;
+		background:transparent url(images/black_arrow.png);
+		font-size:12px;
+		height:70px;
+		width:160px;
+		padding:25px;
+		color:#fff;	
+	}
+
+	/* get rid of those system borders being generated for A tags */
+a:active {
+  outline:none;
+}
+
+:focus {
+  -moz-outline-style:none;
+}
+#products img {
+	margin:0 20px 10px 0;	
+	cursor:pointer;	
+}
+
+.description {
+	background-color:#edecbc;
+	border:1px solid #999;	
+	width:450px;
+	min-height:140px;
+	display:none;
+	margin-top:17px;
+	-moz-border-radius:4px;
+	padding:0 20px;
+}
+
+.description .arrow {
+	width:34px;
+	height:34px;
+	background:transparent repeat scroll 0 -68px;
+	margin-top:-28px;
+	margin-left:36px;
+	font-size:1px;
+	position:relative;
+}
+
+#commercial .arrow {
+	margin-left:210px;	
+}
+
+#multidomain .arrow {
+	margin-left:385px;	
+}
+
+	</style>
+	<!-- Full version of jQuery Tools + jQuery 1.3.2 --> 
+	<script src="http://cdn.jquerytools.org/1.1.2/full/jquery.tools.min.js"></script> 
+	<script>
+	//$(function() {
+	//	$("div.sticky").tooltip("div.description")
+	//});
+	 $(document).ready(function() { 
+ 
+    // initialize tooltip 
+    $("div.sticky").tooltip({ 
+     
+        // use single tooltip element for all tips 
+        tip: 'div.description',  
+         
+        // tweak the position 
+        offset: [10, 2], 
+         
+        // use "slide" effect 
+        effect: 'slide' 
+         
+    // add dynamic plugin  
+    }).dynamic( { 
+     
+        // customized configuration on bottom edge 
+        bottom: { 
+         
+            // slide downwards 
+            direction: 'down', 
+             
+            // bounce back when closed 
+            bounce: true 
+        } 
+    }); 
+     
+});
+	
+	</script>
+
+</head>
+<body>
+	<div id="demotip">&nbsp;</div>
+	<div class="main_wrap" style="margin-top:50px">
+		<div class="whiteboard">
+			<div>
+				<img src="images/logo.png" style="padding:10px 100px 5px 10px"></img><h2 style="display:inline">Online Continuous Distributed Retrospective</h2>
+			</div>
+			<div class="col_left">
+				<h4>What to do now?</h4>
+				<div class="otherSticky"><a href="/create.html">Create your own IdeaBoard</a></div>
+				<div class="sticky"><a href="/retrospective/for/test">Test Drive</a></div>
+				<div class="description">
+					<div>
+						<ul>
+							<li>Play Ground</li>
+							<li>Sample Retros</li>
+						</ul>
+					</div>
+				</div>
+				<div class="sticky">Getting started</div>
+				<div class="description">
+					<div>
+					<h4>Steps</h4>
+						<ul>
+							<li>Create a new IdeaBoard</li>
+							<li>Choose your IdeaBoard layout</li>
+							<li>Start adding points</li>
+							<li>Meet up</li>
+							<li>Discuss and add more ideas and action items</li>
+							<li>Get a PDF report of your meeting</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col_right">
+				<h4>When to Use?</h4>
+				<div class="sticky"><span>Retrospective</span></div>
+				<div class="description"><div>Choose from retrospective formats like Speed Boat, Star Fish</div></div>
+				<div class="sticky"><span>Brainstorming</span></div>
+				<div class="description"><div>Setup Idea Boardz for brainstorming sessions like Six Thinking Hats</div></div>
+				<div class="sticky"><span>I have my own style</span></div>
+				<div class="description"><div>You can even create your own custom IdeaBoardz to suit the meeting format you like.</div></div>
+			</div>
+			<div class="col_left">
+				<h4>Why to Use?</h4>
+				<div class="sticky"><span>Continuous</span></div>
+				<div class="description">
+					<div>
+						<h4>Add ideas at any time, even weeks before you actually meet</h4>
+						<ul>
+							<li>Any time something happens on your team which triggers a new idea, capture it rightwaway. Take the load off your mind, no need to worry about remembering that point for the next meeting. IdeaBoardz will ensure that it is captured and presented back to everyone</li>
+							<li>When you allow people to add ideas at all times, they can add it close to the actual triggering events. This generally means that they would have clearer details about their points then</li>
+							<li>Since the ideas are already captured. Your meetings would be faster and more efficient</li>
+						</ul>
+					</div>
+				</div>
+				<div class="sticky"><span>Distributed</span></div>
+				<div class="description">
+					<div>
+						<h4>Who says it is difficult to brainstorm with your colleagues who are across the ocean?</h4>
+						<ul>
+							<li>So many teams have compained that it is very difficult to do a retrospective or any other type of brainstorming meeting with a distributed team</li>
+							<li>IdeaBoardz promises to make it easier by giving both your teams a unified shared whiteboard where anyone can add their ideas and discuss them</li>
+							<li>No need to use video conferencing or desktop sharing software. Just plain old phone call will do</li>
+						</ul>
+					</div>
+				</div>
+				<div class="sticky"><span>Online and Archived</span></div>
+				<div class="description">
+					<div>
+						<h4>Do you love to be a scribe in your meeting ? No one does. Idea Boardz will scribe without cribbing.</h4>
+						<ul>
+							<li>Dont waste paper, each participant can use their your own computer to jot down their ideas</li>
+							<li>IdeaBoardz will give you a nice PDF report of your entire meeting</li>
+							<li>You can go back to your previous months' meetings anytime and see what you discussed</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col_right">
+				<h4>Who are we?</h4>
+				<div class="sticky"><span>Contributors</span></div>
+				<div class="description">
+					<div>
+						<h4>Contributors</h4>
+						<ul>
+							<li>Anay</li>
+							<li>Anand</li>
+							<li>Chirag</li>
+							<li>Dhaval</li>
+						</ul>
+					</div>
+				</div>
+				<div class="sticky"><a href="/retrospective/for/feedback">Feedback</a></div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+
+
