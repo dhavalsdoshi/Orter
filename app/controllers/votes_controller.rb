@@ -39,6 +39,7 @@ class VotesController < ApplicationController
 
   # POST /votes
   # POST /votes.xml
+  # POST /votes.json
   def create
     @vote = Vote.new(params[:vote])
 
@@ -47,9 +48,11 @@ class VotesController < ApplicationController
         flash[:notice] = 'Vote was successfully created.'
         format.html { redirect_to(@vote) }
         format.xml  { render :xml => @vote, :status => :created, :location => @vote }
+        format.json  { render :xml => @vote.to_json, :status => :created, :location => @vote.to_json }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @vote.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @vote.errors.to_json, :status => :unprocessable_entity }
       end
     end
   end
@@ -64,6 +67,7 @@ class VotesController < ApplicationController
         flash[:notice] = 'Vote was successfully updated.'
         format.html { redirect_to(@vote) }
         format.xml  { head :ok }
+        format.json  { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @vote.errors, :status => :unprocessable_entity }

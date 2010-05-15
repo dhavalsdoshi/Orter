@@ -1,0 +1,129 @@
+h2 {
+   font-size: 1.5em;
+   font-weight: bold;
+}
+
+h1,h2,h3,h4{
+	text-align: center;
+}
+
+h4{
+	font-size:1.1em;
+}
+
+body {
+	background:#AAA185 none repeat scroll 0 0;
+	font-family: Comic Sans MS,cursive;
+}
+
+.hide{
+    display:none;
+}
+
+.main_wrap {
+	margin:0 auto;
+    padding: 50px 5px 0;
+    width:990px;
+    overflow: auto;
+}
+
+.logo{
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+
+.pdfExport{
+    display: block;
+    background:transparent url(../images/pdf_export.png) no-repeat;
+    height:55px;
+    width: 35px;
+}
+
+.ideaBoardTitle{
+    margin: 15px;
+}
+
+.whiteboard{
+	background:transparent url(../images/whiteboard.jpg) no-repeat;
+	float:left;
+}
+
+.section {
+	float:left;
+	margin-bottom:10px;
+	margin-left:10px;
+	width:48%;
+	height: 240px;
+}
+
+.sticky{
+	background:transparent url(../images/ouryellow.png) no-repeat;
+	float:left;
+	width:116px;
+	height:110px
+}
+
+.otherSticky{
+	background:transparent url(../images/ouryellow.png) no-repeat;
+	float:left;
+	padding: 15px 5px 0 6px;
+	width:116px;
+	height:110px
+}
+
+.sectionTitle{
+    margin:auto;
+}
+.sectionTitleArea{
+    overflow:auto;
+    width:100%;
+}
+.addStickyButton{
+    background:transparent url(../images/add.png) no-repeat;
+    height:28px;
+    width: 57px;
+    float:right;
+}
+
+.removeStickyButton{
+    background:transparent url(../images/remove.png) no-repeat;
+    height:21px;
+    width: 20px;
+    display: block;
+    position: relative;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+}
+
+.voteStickyButton{
+    background:transparent url(../images/vote.png) no-repeat;
+    height:20px;
+    width: 20px;
+    display: block;
+    position: relative;
+    left: 0;
+    top: 25px;
+    visibility: hidden;
+}
+
+div.sticky:hover span.removeStickyButton{
+    visibility: visible;
+}
+
+div.sticky:hover span.voteStickyButton{
+    visibility: visible;
+}
+
+.stickyText{
+    display: inline;
+
+}
+
+.voteCount{
+    font-size: 11px;
+    position: relative;
+    top: 45px;
+    left: 0;
+}

@@ -1,0 +1,52 @@
+<html>
+<head>
+	<META name="keywords" lang="en-us" content="Collaborate, distributed, share, discuss, ideas, brainstorm, easy, sticky, wall, board, whiteboard, meeting, retro, online, continuous " />
+	<META name="keywords" lang="en" content="Collaborate, distributed, share, discuss, ideas, brainstorm, easy, sticky, wall, board, whiteboard, meeting, retro, online, continuous " />
+	<title>
+	IdeaBoardz - Online Continuous Distributed Retrospective
+	</title>
+	<link rel="stylesheet" type="text/css" href="css/reset-min.css" />
+	<link rel="stylesheet" type="text/css" href="css/orter.css" />
+	<link rel="stylesheet" type="text/css" href="css/cupertino/jquery-ui-1.8.1.custom.css" />
+
+</head>
+<body>
+	<div class="main_wrap">
+		<div class="whiteboard">
+			<div>
+				<img src="images/logo.png" alt="Ideaboardz" class="logo"/>
+                <h2 class="ideaBoardTitle" id="ideaboardTitle"></h2>
+                <a id="pdfExport" class="pdfExport" target="_blank"></a>
+			</div>
+            <div id="sections">
+            </div>
+            <div class="hide">
+                <div id="sectionTemplate">
+                    <div class="section">
+                        <div class="sectionTitleArea">
+                            <h4 class="sectionTitle"></h4>
+                            <button class="addStickyButton"></button>
+                        </div>
+                    </div>
+                </div>
+                <div id="stickyTemplate" class="col_right">
+                    <div class="sticky">
+                        <span class="removeStickyButton"></span>
+                        <span class="stickyText"></span>
+                        <span class="voteCount"></span>
+                        <span class="voteStickyButton"></span>
+                    </div>
+                </div>
+            </div>
+		</div>
+	</div>
+    <div id="dialog" title="Add new sticky">
+        <textarea id="stickyText" rows="4" cols="30"></textarea>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.1.custom.min.js"></script>
+    <script type="text/javascript" src="js/loadRetro.js"></script>
+</body>
+</html>
+
+
