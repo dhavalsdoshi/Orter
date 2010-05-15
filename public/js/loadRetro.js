@@ -52,9 +52,8 @@ var Ideaboardz = function(retrospectiveId){
                   url: '/sections/'+sectionId+'/points.json?point[message]='+encodeURIComponent(stickyText),
                   type: "POST",
                   success: function(result){
-                    addSticky(result);
-                    alert('Your sticky has been added');
-                    $('#dialog').dialog('close');
+                      $('#dialog').dialog('close');
+                      addSticky(result);
                   }
             });
         };
@@ -69,12 +68,14 @@ var Ideaboardz = function(retrospectiveId){
         var stickyTemplateHtml = $('#stickyTemplate').html();
         $(stickyTemplateHtml).appendTo('#section'+point.section_id);
         var addedPoint = $('#section'+point.section_id).find('div.sticky:last');
+        addedPoint.hide();
         addedPoint.find('.stickyText').html(point.message);
         addedPoint.attr('title',point.message);
         addedPoint.attr('id','point'+point.id);
         if(point.votes)
             addedPoint.find('.voteCount').html(point.votes.length);
         attachPointEvents(addedPoint);
+        addedPoint.show('slow');
     };
 
     var attachPointEvents=function(addedPoint){
@@ -90,7 +91,7 @@ var Ideaboardz = function(retrospectiveId){
                     addVote(pointId)
                 })
     };
-//http://localhost:3000/points/13/votes.xml
+
     var addVote =  function(pointId){
         $.ajax({
                   url: "/points/"+pointId+"/votes.json",
@@ -107,8 +108,9 @@ var Ideaboardz = function(retrospectiveId){
                   url: "/sections/"+sectionId+"/points/delete/"+pointId+".json",
                   type: "GET",
                   success: function(result){
-                    $('#point'+pointId).remove();
-                    alert('your point has been deleted');
+                    $('#point'+pointId).hide('slow', function(){
+                        $('#point'+pointId).remove();
+                    });
                   }
             });
     };
@@ -122,7 +124,8 @@ var Ideaboardz = function(retrospectiveId){
 };
 
 $(document).ready(function(){
-    var ideaBoardz = new Ideaboardz(2);
+    var retroId = $("meta[name=retroId]").attr("content"); 
+    var ideaBoardz = new Ideaboardz(retroId);
     ideaBoardz.init();
     $('#dialog').dialog(
         {

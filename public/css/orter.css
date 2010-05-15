@@ -118,6 +118,7 @@ div.sticky:hover span.voteStickyButton{
 
 .stickyText{
     display: inline;
+    font-size: 0.8em;
 
 }
 
