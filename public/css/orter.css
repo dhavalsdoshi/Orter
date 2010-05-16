@@ -75,15 +75,19 @@ body {
 .sectionTitle{
     margin:auto;
 }
+
 .sectionTitleArea{
     overflow:auto;
     width:100%;
 }
-.addStickyButton{
-    background:transparent url(../images/add.png) no-repeat;
-    height:28px;
-    width: 57px;
+
+.addStickyButton {
+    background:transparent url(../images/add.png) no-repeat scroll 0 0;
+    border:1px solid #CCCCCC;
+    cursor:pointer;
     float:right;
+    height:28px;
+    width:57px;
 }
 
 .removeStickyButton{

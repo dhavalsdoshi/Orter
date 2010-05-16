@@ -66,7 +66,7 @@ var Ideaboardz = function(retrospectiveId){
 
     var addSticky=function(point){
         var stickyTemplateHtml = $('#stickyTemplate').html();
-        $(stickyTemplateHtml).appendTo('#section'+point.section_id);
+        $(stickyTemplateHtml).appendTo('#section'+point.section_id+' .points');
         var addedPoint = $('#section'+point.section_id).find('div.sticky:last');
         addedPoint.hide();
         addedPoint.find('.stickyText').html(point.message);
@@ -83,7 +83,7 @@ var Ideaboardz = function(retrospectiveId){
                 function(){
                     var sectionId = $(this).parents('.section').attr('id').replace("section","");
                     var pointId = $(this).parents('.sticky').attr('id').replace("point","");
-                    removeSticky(sectionId,pointId)
+                    removeStickyCall(sectionId,pointId)
                 });
                 addedPoint.find('.voteStickyButton').click(
                 function(){
@@ -103,22 +103,54 @@ var Ideaboardz = function(retrospectiveId){
             });
     };
 
-    var removeSticky =  function(sectionId,pointId){
+    var removeStickyCall =  function(sectionId,pointId){
         $.ajax({
                   url: "/sections/"+sectionId+"/points/delete/"+pointId+".json",
                   type: "GET",
                   success: function(result){
-                    $('#point'+pointId).hide('slow', function(){
-                        $('#point'+pointId).remove();
-                    });
+                    removeSticky(pointId);         
                   }
             });
     };
 
+    var removeSticky = function(pointId){
+        $('#point'+pointId).hide('slow', function(){
+            $('#point'+pointId).remove();
+        });
+    };
+
     var displaySectionPoints=function(data){
+        pointIds = new Array();
         for(var pointIndex in data){
-            addSticky(data[pointIndex]);
+            var point = data[pointIndex];
+            if(!isAlreadyExisting(point)){
+                addSticky(point);
+            }
+            pointIds.push(point.id+"");
         }
+        removePointHtmlIfNotInData(pointIds,data[pointIndex].section_id);
+    };
+
+    var removePointHtmlIfNotInData= function(pointIds,sectionId){
+        $('#section'+sectionId+' .points').find('.sticky').each(function(){
+            console.log(pointIds);
+            var pointId = $(this).attr('id').replace('point','');
+            console.log(pointId);
+            if(jQuery.inArray(pointId, pointIds)==-1){
+                removeSticky(pointId);
+            }
+        });
+    };
+
+    var isAlreadyExisting =  function(point){
+        return $('#point'+point.id).length > 0;
+    };
+
+    this.refreshSections = function(){
+        $('.section:visible').each(function(){
+            var sectionId = $(this).attr('id').replace("section","");
+            getSectionPoints(sectionId);
+        })
     };
 
 };
@@ -135,4 +167,6 @@ $(document).ready(function(){
 			modal: true
         }
     );
+    setInterval(ideaBoardz.refreshSections, 20000);
+
 });
