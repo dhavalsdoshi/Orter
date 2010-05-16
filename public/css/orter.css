@@ -132,3 +132,7 @@ div.sticky:hover span.voteStickyButton{
     top: 45px;
     left: 0;
 }
+
+.updatedAt{
+    display: none;
+}
