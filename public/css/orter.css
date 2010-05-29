@@ -130,10 +130,8 @@ body {
     background:transparent url(../images/remove.png) no-repeat;
     height:21px;
     width: 20px;
-    display: block;
-    position: relative;
-    left: 0;
-    top: 0;
+    display: inline;
+    float: left;
     visibility: hidden;
 }
 
@@ -141,10 +139,8 @@ body {
     background:transparent url(../images/vote.png) no-repeat;
     height:20px;
     width: 20px;
-    display: block;
-    position: relative;
-    left: 0;
-    top: 25px;
+    display: inline;
+   float: left;
     visibility: hidden;
 }
 
@@ -157,14 +153,14 @@ div.sticky:hover span.voteStickyButton{
 }
 
 .stickyText{
-    font-size: 0.9em;
+    font-size: 0.75em;
 }
 
 .voteCount{
     font-size: 11px;
-    position: relative;
-    top: 45px;
-    left: 0;
+    display: inline;
+    float: right;
+    padding-left: 5px;
 }
 
 .updatedAt{
