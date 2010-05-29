@@ -14,7 +14,7 @@
 <body>
 	<div class="main_wrap">
 		<div class="whiteboard">
-			<div>
+			<div class="header">
 				<img src="/images/logo.png" alt="Ideaboardz" class="logo"/>
                 <h2 class="ideaBoardTitle" id="ideaboardTitle"></h2>
                 <a id="pdfExport" class="pdfExport" target="_blank"></a>
@@ -27,8 +27,8 @@
                         <div class="sectionTitleArea">
                             <h4 class="sectionTitle"></h4>
                             <button class="addStickyButton"></button>
-                            <div class="points">
-                            </div>
+                        </div>
+                        <div class="points">
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,6 @@
                         <span class="stickyText"></span>
                         <span class="voteCount"></span>
                         <span class="voteStickyButton"></span>
-                        <span class="updatedAt"></span>
                     </div>
                 </div>
             </div>
@@ -50,5 +49,10 @@
     <script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="/js/jquery-ui-1.8.1.custom.min.js"></script>
     <script type="text/javascript" src="/js/loadRetro.js"></script>
+    <script type="text/javascript" src="/js/cufon-yui.js"></script>
+    <script type="text/javascript" src="/js/avant_400.font.js"></script>
+    <script type="text/javascript"> Cufon.replace('.stickyText');</script>
+    <script type="text/javascript"> Cufon.replace('.sectionTitle');</script>
+    <script type="text/javascript"> Cufon.replace('.ideaBoardTitle');</script>
 </body>
 </html>

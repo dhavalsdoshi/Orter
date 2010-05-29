@@ -1,5 +1,5 @@
 h2 {
-   font-size: 1.5em;
+   font-size: 1.8em;
    font-weight: bold;
 }
 
@@ -8,7 +8,7 @@ h1,h2,h3,h4{
 }
 
 h4{
-	font-size:1.1em;
+	font-size:1.2em;
 }
 
 body {
@@ -27,14 +27,22 @@ body {
     overflow: auto;
 }
 
+.header{
+    overflow: auto;
+    width: 100%;
+}
+
 .logo{
-    position: relative;
-    top: 5px;
-    left: 5px;
+    margin: 15px;
+    display: inline;
+    float:left;
+    width:10%;
 }
 
 .pdfExport{
-    display: block;
+    margin: 15px;
+    display: inline;
+    float: left;
     background:transparent url(../images/pdf_export.png) no-repeat;
     height:55px;
     width: 35px;
@@ -42,6 +50,9 @@ body {
 
 .ideaBoardTitle{
     margin: 15px;
+    display: inline;
+    float: left;
+    width: 70%;
 }
 
 .whiteboard{
@@ -58,10 +69,31 @@ body {
 }
 
 .sticky{
-	background:transparent url(../images/ouryellow.png) no-repeat;
+	background-color: #ffff88;
+    border : 1px solid #ffff66;
+    margin-left: 5px;
+    margin-top: 5px;
 	float:left;
-	width:116px;
-	height:110px
+	width:180px;
+	height:60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-border-radius: 4px 4px 15px 4px;
+    -moz-border-radius: 4px 4px 15px 4px;
+    -webkit-box-shadow: 2px 2px 0px 0px #888;
+    -moz-box-shadow: 2px 2px 0px 0px #888;
+}
+
+.bluesticky{
+	background-color: #ccffff;
+}
+
+.purplesticky{
+	background-color: #bb00cc;
+}
+
+.greensticky{
+	background-color: #88dd00;
 }
 
 .otherSticky{
@@ -73,7 +105,9 @@ body {
 }
 
 .sectionTitle{
-    margin:auto;
+    display: inline;
+    width: 80%;
+    float: left;
 }
 
 .sectionTitleArea{
@@ -86,8 +120,10 @@ body {
     border:1px solid #CCCCCC;
     cursor:pointer;
     float:right;
-    height:28px;
-    width:57px;
+    height:38px;
+    width: 20%;
+    display: inline;
+    overflow: hidden;
 }
 
 .removeStickyButton{
@@ -121,9 +157,7 @@ div.sticky:hover span.voteStickyButton{
 }
 
 .stickyText{
-    display: inline;
-    font-size: 0.8em;
-
+    font-size: 0.9em;
 }
 
 .voteCount{

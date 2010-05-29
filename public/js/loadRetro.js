@@ -79,6 +79,7 @@ var Ideaboardz = function(retrospectiveId) {
             addedPoint.find('.voteCount').html(point.votes.length);
         attachPointEvents(addedPoint);
         addedPoint.show('slow');
+//        Cufon.refresh();
     };
 
     var attachPointEvents = function(addedPoint) {
@@ -142,18 +143,11 @@ var Ideaboardz = function(retrospectiveId) {
 
     var updateSticky =  function(point){
         $('#point'+point.id).find('.voteCount').html(point.votes.length);
-//        uncomment once edit sticky comes in
-//        if(point.updated_at+"" != $('#point'+point.id).find('.updatedAt').text()){
-//            $('#point'+point.id).find('.updatedAt').html(point.updated_at);
-//            $('#point'+point.id).find('.stickyText').html(point.message);
-//        }
     };
 
     var removePointHtmlIfNotInData = function(pointIds, sectionId) {
         $('#section' + sectionId + ' .points').find('.sticky').each(function() {
-            console.log(pointIds);
             var pointId = $(this).attr('id').replace('point', '');
-            console.log(pointId);
             if (jQuery.inArray(pointId, pointIds) == -1) {
                 removeSticky(pointId);
             }
@@ -177,13 +171,11 @@ $(document).ready(function() {
     var retroId = $("meta[name=retroId]").attr("content");
     var ideaBoardz = new Ideaboardz(retroId);
     ideaBoardz.init();
-    $('#dialog').dialog(
-    {
+    $('#dialog').dialog({
         autoOpen: false,
         height: 300,
         width: 350,
         modal: true
-    }
-            );
+    });
     setInterval(ideaBoardz.refreshSections, 20000);
 });
