@@ -76,24 +76,29 @@ var Ideaboardz = function(retrospectiveId) {
         addedPoint.find('.updatedAt').html(point.updated_at);
         addedPoint.attr('id', 'point' + point.id);
         if (point.votes)
-            addedPoint.find('.voteCount').html(point.votes.length);
-        attachPointEvents(addedPoint);
+            addedPoint.find('.voteCount').html(" +"+point.votes.length);
+        attachStickyEvents(addedPoint);
         addedPoint.show('slow');
 //        Cufon.refresh();
     };
 
-    var attachPointEvents = function(addedPoint) {
-        addedPoint.find('.removeStickyButton').click(
-                function() {
-                    var sectionId = $(this).parents('.section').attr('id').replace("section", "");
-                    var pointId = $(this).parents('.sticky').attr('id').replace("point", "");
-                    removeStickyCall(sectionId, pointId)
-                });
-        addedPoint.find('.voteStickyButton').click(
-                function() {
-                    var pointId = $(this).parents('.sticky').attr('id').replace("point", "");
-                    addVote(pointId)
-                })
+    var attachStickyEvents=function(addedPoint){
+        addedPoint.click(function()
+        {
+            var sectionId = $(this).parents('.section').attr('id').replace("section", "");
+            var pointId = $(this).attr('id').replace("point", "");
+            showLargeStickyDialog(addedPoint,sectionId,pointId);
+        })
+    };
+
+    var showLargeStickyDialog = function(addedPoint,sectionId,pointId){
+        $('#largeStickyDialog').find('.stickyText').html(addedPoint.find('.stickyText').html());
+        $('#largeStickyDialog').find('span.voteCount').html(addedPoint.find('.voteCount').html());
+        $('#largeStickyDialog').find('.removeStickyButton').unbind('click').click(
+                function() {removeStickyCall(sectionId, pointId); $('#largeStickyDialog').dialog('close'); });
+        $('#largeStickyDialog').find('.voteStickyButton').unbind('click').click(
+                function() {addVote(pointId)});                
+        $('#largeStickyDialog').dialog('open');
     };
 
     var addVote = function(pointId) {
@@ -103,9 +108,9 @@ var Ideaboardz = function(retrospectiveId) {
             data: {"vote": {"point_id": parseInt(pointId, 10) }},
             success: function(result) {
                 var newVoteCount = parseInt($('#point'+pointId).find('.voteCount').html(),10)+1;
-                $('#point'+pointId).find('.voteCount').html(newVoteCount);
-                $('#point'+pointId).find('.voteCount').hide('slow');
-                $('#point'+pointId).find('.voteCount').show('slow');
+                $('#point'+pointId+',#largeStickyDialog').find('span.voteCount').html(newVoteCount);
+                $('#point'+pointId+',#largeStickyDialog').find('span.voteCount').hide('slow');
+                $('#point'+pointId+',#largeStickyDialog').find('span.voteCount').show('slow');
             }
         });
     };
@@ -164,7 +169,6 @@ var Ideaboardz = function(retrospectiveId) {
             getSectionPoints(sectionId);
         })
     };
-
 };
 
 $(document).ready(function() {
@@ -172,6 +176,12 @@ $(document).ready(function() {
     var ideaBoardz = new Ideaboardz(retroId);
     ideaBoardz.init();
     $('#dialog').dialog({
+        autoOpen: false,
+        height: 300,
+        width: 550,
+        modal: true
+    });
+    $('#largeStickyDialog').dialog({
         autoOpen: false,
         height: 300,
         width: 350,
