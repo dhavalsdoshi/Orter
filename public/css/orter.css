@@ -12,8 +12,9 @@ h4{
 }
 
 body {
-	background:#AAA185 none repeat scroll 0 0;
+	background:#AAAAAA none repeat scroll 0 0;
 	font-family: Comic Sans MS,cursive;
+    padding: 30px;
 }
 
 .hide{
@@ -21,10 +22,19 @@ body {
 }
 
 .main_wrap {
-	margin:0 auto;
-    padding: 50px 5px 0;
-    width:990px;
+	margin: 0 auto;
+    width: 100%;
     overflow: auto;
+}
+
+.whiteboard{
+    background-color: white;
+    border: black solid 5px;
+	-webkit-box-shadow: 10px 10px 0px  #888;
+    -moz-box-shadow: 10px 10px 0px  #888;
+    overflow: auto;
+    width: 99%;
+    text-align: center;
 }
 
 .header{
@@ -33,39 +43,40 @@ body {
 }
 
 .logo{
-    margin: 15px;
+    margin: 15px 0;
     display: inline;
     float:left;
     width:10%;
 }
 
 .pdfExport{
-    margin: 15px;
+    margin: 15px 0;
     display: inline;
     float: left;
     background:transparent url(../images/pdf_export.png) no-repeat;
     height:55px;
-    width: 35px;
+    width: 5%;
 }
 
 .ideaBoardTitle{
     margin: 15px;
     display: inline;
     float: left;
-    width: 70%;
+    width: 80%;
 }
 
-.whiteboard{
-	background:transparent url(../images/whiteboard.jpg) no-repeat;
-	float:left;
+#sections{
+    overflow: auto;
 }
 
 .section {
 	float:left;
 	margin-bottom:10px;
-	margin-left:10px;
-	width:48%;
-	height: 240px;
+	min-height: 200px;
+}
+
+.points{
+    overflow: auto;
 }
 
 .sticky{
@@ -85,6 +96,20 @@ body {
     -webkit-box-shadow: 2px 2px 0px 0px #888;
     -moz-box-shadow: 2px 2px 0px 0px #888;
 }
+
+
+.full{
+    width: 99%;
+}
+
+.half{
+    width: 49%;
+}
+
+.oneThird{
+    width: 33%;
+}
+
 
 #largeStickyDialog{
     font-size: 0.75em;
