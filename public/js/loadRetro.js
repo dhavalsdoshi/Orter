@@ -43,34 +43,37 @@ var Ideaboardz = function(retrospectiveId) {
             getSectionPoints(section.id);
             addedSection.find('.addStickyButton').click(function() {
                 var sectionId = $(this).parents('.section').attr('id').replace("section", "");
-                showAddStickyDialog(sectionId);
+                showAddSticky(sectionId);
             });
         }
     };
 
-    var showAddStickyDialog = function(sectionId) {
-        $('#dialog').dialog("option", "buttons", getButtonsFor(sectionId));
-        $('#dialog').dialog('open');
+    var showAddSticky = function(sectionId) {
+        var addStickyForm = $('#section'+sectionId).find(".addStickyForm");
+        addStickyForm.show('slow');
+        addStickyForm.find('textarea').unbind('keypress').bind('keypress', function(e) {
+            if(e.keyCode == 13){
+                addStickyForm.hide('slow');
+                addStickyTo(sectionId);
+                return;
+            }
+            if(e.keyCode == 27){
+                addStickyForm.hide('slow');
+                return;
+            }
+        });
     };
 
-    var getButtonsFor = function(sectionId) {
-        var addStickyCall = function() {
-            var stickyText = $('#stickyText').val();
-            $('#stickyText').val("");
+    var addStickyTo = function(sectionId) {
+            var stickyText = $('#section'+sectionId).find('.stickyText').val();
+            $('.stickyText').val("");
             $.ajax({
                 url: '/sections/' + sectionId + '/points.json?point[message]=' + encodeURIComponent(stickyText),
                 type: "POST",
-                beforeSend: function(){
-                    $('#dialog').dialog('close');
-                },
                 success: function(result) {
                     addSticky(result);
                 }
             });
-        };
-        return { "Cancel": function() {
-            $(this).dialog("close");
-        } ,"Ok":addStickyCall};
     };
 
     var getSectionPoints = function(sectionid) {
@@ -183,7 +186,9 @@ var Ideaboardz = function(retrospectiveId) {
             }
             pointIds.push(point.id + "");
         }
-        removePointHtmlIfNotInData(pointIds, data[pointIndex].section_id);
+        if(data && data[pointIndex]){
+            removePointHtmlIfNotInData(pointIds, data[pointIndex].section_id);
+        }
     };
 
     var updateSticky =  function(point){
