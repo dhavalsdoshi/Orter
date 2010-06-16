@@ -51,6 +51,7 @@ var Ideaboardz = function(retrospectiveId) {
     var showAddSticky = function(sectionId) {
         var addStickyForm = $('#section'+sectionId).find(".addStickyForm");
         addStickyForm.show('slow');
+        addStickyForm.find('textarea').focus();
         addStickyForm.find('textarea').unbind('keypress').bind('keypress', function(e) {
             if(e.keyCode == 13){
                 addStickyForm.hide('slow');
