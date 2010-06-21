@@ -12,7 +12,7 @@ h4{
 }
 
 body {
-	background:#AAAAAA none repeat scroll 0 0;
+	background:white none repeat scroll 0 0;
 	font-family: Comic Sans MS,cursive;
     padding: 30px;
 }
@@ -23,16 +23,18 @@ body {
 
 .main_wrap {
 	margin: 0 auto;
-    width: 100%;
     overflow: auto;
-    padding:0.5%;
+    padding:1em;
 }
 
 .whiteboard{
     background-color: white;
-    border: black solid 5px;
-	-webkit-box-shadow: 10px 10px 0px  #888;
-    -moz-box-shadow: 10px 10px 0px  #888;
+    border: #696969 solid 10px;
+	-webkit-box-shadow: 3px 7px 3px #888;
+    -moz-box-shadow: 3px 7px 3px   #888;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+
     overflow: auto;
     width: 99%;
     text-align: center;
@@ -78,27 +80,41 @@ body {
 
 .points{
     overflow: auto;
-    padding:0.5%;
+    padding:0.25em;
+}
+
+.addStickyForm{
+    overflow:visible;
+}
+
+.addStickyForm>textarea{
+    -webkit-box-shadow: 5px 1px 3px #888;
+    -moz-box-shadow: 5px 1px 3px #888;
 }
 
 .sticky{
-    font-size: 0.75em;
+    -webkit-box-shadow: 3px 1px 3px #888;
+    -moz-box-shadow: 3px 1px 3px #888;
+}
+
+.sticky,.addStickyForm>textarea{
 	cursor: pointer;
     background-color: #ffff88;
     border : 1px solid #ffff66;
-    margin-left: 5px;
-    margin-top: 5px;
-	float:left;
-	width:180px;
-	height:60px;
-    overflow: hidden;
+    font-size: 1em;
     text-overflow: ellipsis;
     -webkit-border-radius: 4px 4px 15px 4px;
     -moz-border-radius: 4px 4px 15px 4px;
-    -webkit-box-shadow: 2px 2px 0px 0px #888;
-    -moz-box-shadow: 2px 2px 0px 0px #888;
-}
 
+
+    margin-left: 5px;
+    margin-top: 5px;
+	float:left;
+	width:47%;
+    max-width:15em;
+	height:100px;
+    overflow: hidden;
+}
 
 .full{
     width: 99%;
@@ -146,6 +162,7 @@ body {
 .sectionTitleArea{
     overflow:auto;
     width:100%;
+    padding:0 0 0.5em 0;
 }
 
 .addStickyButton {
