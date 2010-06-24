@@ -19,7 +19,7 @@ var Ideaboardz = function(retrospectiveId) {
     };
 
     var getSectionDetails = function() {
-        $.getJSON("/retros/" + retrospectiveId + "/sections.json", displaySectionDetails);
+        $.getJSON("/retros/" + retrospectiveId + "/sections.json", addSections);
     };
 
     var getClassNameFor = function(numberOfSections){
@@ -27,7 +27,7 @@ var Ideaboardz = function(retrospectiveId) {
         return numberOfSections==2||numberOfSections==4? 'half': 'onethird';
     };
 
-    var displaySectionDetails = function(data) {
+    var addSections = function(data) {
         var numberOfSections = data.length;
         var className = getClassNameFor(numberOfSections);
 
@@ -35,8 +35,11 @@ var Ideaboardz = function(retrospectiveId) {
         var section;
         for (var sectionIndex in data) {
             section = data[sectionIndex];
-            $(sectionTemplateHtml).appendTo('#sections');
-            var addedSection = $("#sections").find('div.section:last');
+            var sectionRowToAddTo = "#sectionsRow1";
+            if(sectionIndex>2||(numberOfSections ==4&&sectionIndex>1) )
+                sectionRowToAddTo = '#sectionsRow2';
+            $(sectionTemplateHtml).appendTo(sectionRowToAddTo);
+            var addedSection = $(sectionRowToAddTo).find('div.section:last');
             addedSection.attr('id', 'section' + section.id);
             addedSection.find('h4').html(section.name);
             addedSection.addClass(className);
@@ -60,13 +63,12 @@ var Ideaboardz = function(retrospectiveId) {
             }
             if(e.keyCode == 27){
                 addStickyForm.hide('slow');
-                return;
             }
         });
     };
 
     var addStickyTo = function(sectionId) {
-            var stickyText = $('#section'+sectionId).find('.stickyText').val();
+            var stickyText = $('#section'+sectionId).find('textarea').val();
             $('.stickyText').val("");
             $.ajax({
                 url: '/sections/' + sectionId + '/points.json?point[message]=' + encodeURIComponent(stickyText),
@@ -160,12 +162,10 @@ var Ideaboardz = function(retrospectiveId) {
     };
 
     var removeStickyCall = function(sectionId, pointId) {
+        removeSticky(pointId);
         $.ajax({
             url: "/sections/" + sectionId + "/points/delete/" + pointId + ".json",
-            type: "GET",
-            success: function(result) {
-                removeSticky(pointId);
-            }
+            type: "GET"
         });
     };
 
@@ -221,12 +221,6 @@ $(document).ready(function() {
     var retroId = $("meta[name=retroId]").attr("content");
     var ideaBoardz = new Ideaboardz(retroId);
     ideaBoardz.init();
-    $('#dialog').dialog({
-        autoOpen: false,
-        height: 300,
-        width: 550,
-        modal: true
-    });
     $('#largeStickyDialog').dialog({
         autoOpen: false,
         height: 300,

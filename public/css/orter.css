@@ -11,6 +11,10 @@ h4{
 	font-size:1.2em;
 }
 
+a:focus{
+    outline: none;
+}
+
 body {
 	background:white none repeat scroll 0 0;
 	font-family: Comic Sans MS,cursive;
@@ -34,7 +38,6 @@ body {
     -moz-box-shadow: 3px 7px 3px   #888;
     -webkit-border-radius: 15px 15px 15px 15px;
     -moz-border-radius: 15px 15px 15px 15px;
-
     overflow: auto;
     width: 99%;
     text-align: center;
@@ -59,6 +62,7 @@ body {
     background:transparent url(../images/pdf_export.png) no-repeat;
     height:55px;
     width: 5%;
+
 }
 
 .ideaBoardTitle{
@@ -68,7 +72,7 @@ body {
     width: 80%;
 }
 
-#sections{
+.sections{
     overflow: auto;
 }
 
@@ -87,7 +91,7 @@ body {
     overflow:visible;
 }
 
-.addStickyForm>textarea{
+.addStickyForm textarea{
     -webkit-box-shadow: 5px 1px 3px #888;
     -moz-box-shadow: 5px 1px 3px #888;
 }
@@ -97,7 +101,7 @@ body {
     -moz-box-shadow: 3px 1px 3px #888;
 }
 
-.sticky,.addStickyForm>textarea{
+.sticky,.addStickyForm textarea{
 	cursor: pointer;
     background-color: #ffff88;
     border : 1px solid #ffff66;
@@ -105,8 +109,6 @@ body {
     text-overflow: ellipsis;
     -webkit-border-radius: 4px 4px 15px 4px;
     -moz-border-radius: 4px 4px 15px 4px;
-
-
     margin-left: 5px;
     margin-top: 5px;
 	float:left;
@@ -205,7 +207,6 @@ body {
 .voteCount{
     clear: both;
     margin-top: 10px;
-
 }
 
 .updatedAt{
