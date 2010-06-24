@@ -16,9 +16,10 @@ a:focus{
 }
 
 body {
-	background:white none repeat scroll 0 0;
+	background: #cccccc none repeat scroll 0 0;
 	font-family: Comic Sans MS,cursive;
     padding: 30px;
+    min-height: 1000px;
 }
 
 .hide{
