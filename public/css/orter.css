@@ -169,12 +169,12 @@ body {
 }
 
 .addStickyButton {
-    background:transparent url(../images/add.png) no-repeat scroll 0 0;
-    border:1px solid #CCCCCC;
+    background:transparent url(../images/Add-32.png) no-repeat scroll 0 0;
+    border:none;
     cursor:pointer;
     float:right;
-    height:38px;
-    width: 20%;
+    height:32px;
+    width: 32px;
     display: inline;
     overflow: hidden;
 }
@@ -185,19 +185,23 @@ body {
 }
 
 .removeStickyButton{
-    background:transparent url(../images/remove.png) no-repeat;
+    background:transparent url(../images/Delete-20.png) no-repeat;
     padding-left: 20px;
     display: inline;
     float: left;
     cursor: pointer;
+    height:32px;
+    width:32px;
 }
 
 .voteStickyButton{
-    background:transparent url(../images/vote.png) no-repeat;
+    background:transparent url(../images/thumbs_up_20.png) no-repeat;
     padding-left: 20px;
     display: inline;
     float: left;
-    cursor: pointer
+    cursor: pointer;
+    height:32px;
+    width:32px;
 }
 
 .sticky .voteCount{
