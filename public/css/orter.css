@@ -102,7 +102,15 @@ body {
     -moz-box-shadow: 3px 1px 3px #888;
 }
 
+.ui-widget-content{
+    -webkit-box-shadow:2px 29px 17px #888888;
+    -moz-box-shadow:2px 29px 17px #888888;
+}
+
 .sticky,.addStickyForm textarea{
+    max-width:15em;
+}
+.sticky,.addStickyForm textarea,.ui-widget-content{
 	cursor: pointer;
     background-color: #ffff88;
     border : 1px solid #ffff66;
@@ -114,9 +122,18 @@ body {
     margin-top: 5px;
 	float:left;
 	width:47%;
-    max-width:15em;
 	height:100px;
     overflow: hidden;
+    position:relative;
+}
+
+.ui-widget-content .ui-widget-content{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.ui-widget-content{
+    min-width:10em;    
 }
 
 .full{
@@ -207,11 +224,16 @@ body {
 .sticky .voteCount{
     opacity: 0.5;
     filter: alpha(opacity = 50);
+    font-weight:normal;
 }
 
 .voteCount{
     clear: both;
     margin-top: 10px;
+    font-weight:bold;
+    position:absolute;
+    top:60%;
+    left:90%;
 }
 
 .updatedAt{
