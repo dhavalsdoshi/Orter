@@ -124,7 +124,7 @@ var Ideaboardz = function(retrospectiveId) {
 
     var showLargeStickyDialog = function(addedPoint,sectionId,pointId){
         $('#largeStickyDialog').find('.stickyText').html(addedPoint.find('.stickyText').html());
-        $('#largeStickyDialog').find('span.voteCount').html(addedPoint.find('.voteCount').html());
+        $('#largeStickyDialog').find('span.vote').html(addedPoint.find('.voteCount').html());
         $('#largeStickyDialog').find('.removeStickyButton').unbind('click').click(
                 function() {removeStickyCall(sectionId, pointId); $('#largeStickyDialog').dialog('close'); });
         $('#largeStickyDialog').find('.voteStickyButton').unbind('click').click(
