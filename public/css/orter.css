@@ -110,6 +110,7 @@ body {
 .sticky,.addStickyForm textarea{
     max-width:15em;
 }
+
 .sticky,.addStickyForm textarea,.ui-widget-content{
 	cursor: pointer;
     background-color: #ffff88;
@@ -125,6 +126,34 @@ body {
 	height:100px;
     overflow: hidden;
     position:relative;
+}
+
+
+.aqua .sticky,.aqua .addStickyForm textarea{
+	background-color: #ccffff;
+    border : 1px solid #ccffdd;
+}
+
+.blue .sticky,.blue .addStickyForm textarea{
+	background-color: #17B6FF;
+    border : 1px solid #17B6FF;
+}
+
+.orange .sticky,.orange .addStickyForm textarea{
+	background-color: #ffb058;
+    border : 1px solid #ffb069;
+}
+
+.purple .sticky,.purple .addStickyForm textarea{
+	background-color: #d07ddf;
+    border : 1px solid #d07def;
+
+}
+
+.green .sticky,.green .addStickyForm textarea{
+	background-color: #bcee6b;
+    border : 1px solid #bcee7c;
+
 }
 
 .ui-dialog{
@@ -157,30 +186,9 @@ body {
     font-size: 0.75em;
 }
 
-.bluesticky{
-	background-color: #ccffff;
-}
-
-.purplesticky{
-	background-color: #bb00cc;
-}
-
-.greensticky{
-	background-color: #88dd00;
-}
-
-.otherSticky{
-	background:transparent url(../images/ouryellow.png) no-repeat;
-	float:left;
-	padding: 15px 5px 0 6px;
-	width:116px;
-	height:110px
-}
 
 .sectionTitle{
     display: inline;
-    width: 80%;
-    float: left;
 }
 
 .sectionTitleArea{
@@ -201,28 +209,37 @@ body {
 }
 
 .stickyActions{
+    bottom: 20px;
     margin-top: 10px;
-    text-decoration: underline;
+    position: absolute;
 }
 
 .removeStickyButton{
     background:transparent url(../images/Delete-20.png) no-repeat;
     padding-left: 20px;
-    display: inline;
-    float: left;
+    padding-bottom: 10px;
     cursor: pointer;
     height:32px;
     width:32px;
+    text-decoration: underline;
+}
+
+.voteCountContainer{
+    margin-top: 10px;
+}
+
+#largeStickyDialog .stickyText{
+    font-size: 2em;
 }
 
 .voteStickyButton{
     background:transparent url(../images/vote.png) no-repeat;
     padding-left: 20px;
-    display: inline;
-    float: left;
+    padding-bottom: 10px;
     cursor: pointer;
     height:32px;
     width:32px;
+    text-decoration: underline;
 }
 
 .sticky .voteCount{
@@ -237,9 +254,5 @@ body {
     font-weight:bold;
     position:absolute;
     top:60%;
-    left:90%;
-}
-
-.updatedAt{
-    display: none;
+    left:5%;
 }

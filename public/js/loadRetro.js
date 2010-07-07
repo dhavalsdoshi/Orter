@@ -27,6 +27,13 @@ var Ideaboardz = function(retrospectiveId) {
         return numberOfSections==2||numberOfSections==4? 'half': 'onethird';
     };
 
+
+    var getStickyColor = function(sectionNumber){
+         var colors = ["yellow","orange", "green","blue","purple","aqua"];
+         var color = colors[sectionNumber%colors.length];
+        return color;
+    };
+
     var addSections = function(data) {
         var numberOfSections = data.length;
         var className = getClassNameFor(numberOfSections);
@@ -43,6 +50,7 @@ var Ideaboardz = function(retrospectiveId) {
             addedSection.attr('id', 'section' + section.id);
             addedSection.find('h4').html(section.name);
             addedSection.addClass(className);
+            addedSection.addClass(getStickyColor(sectionIndex));
             getSectionPoints(section.id);
             addedSection.find('.addStickyButton').click(function() {
                 var sectionId = $(this).parents('.section').attr('id').replace("section", "");
@@ -93,7 +101,7 @@ var Ideaboardz = function(retrospectiveId) {
         addedPoint.find('.updatedAt').html(point.updated_at);
         addedPoint.attr('id', 'point' + point.id);
         if (point.votes)
-            addedPoint.find('.voteCount').html(point.votes.length);
+            addedPoint.find('.voteCount').html("+"+point.votes.length);
         attachStickyEvents(addedPoint);
         addedPoint.show('slow');
 //        Cufon.refresh();
@@ -154,7 +162,7 @@ var Ideaboardz = function(retrospectiveId) {
             data: {"vote": {"point_id": parseInt(pointId, 10) }},
             success: function(result) {
                 var newVoteCount = parseInt($('#point'+pointId).find('.voteCount').html(),10)+1;
-                $('#point'+pointId+',#largeStickyDialog').find('.voteCount').html(newVoteCount);
+                $('#point'+pointId+',#largeStickyDialog').find('.voteCount').html("+"+newVoteCount);
                 $('#point'+pointId+',#largeStickyDialog').find('.voteCount').hide('slow');
                 $('#point'+pointId+',#largeStickyDialog').find('.voteCount').show('slow');
             }
@@ -193,7 +201,7 @@ var Ideaboardz = function(retrospectiveId) {
     };
 
     var updateSticky =  function(point){
-        $('#point'+point.id).find('.voteCount').html(point.votes.length);
+        $('#point'+point.id).find('.voteCount').html("+"+point.votes.length);
     };
 
     var removePointHtmlIfNotInData = function(pointIds, sectionId) {
