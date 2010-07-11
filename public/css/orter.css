@@ -182,9 +182,6 @@ body {
 }
 
 
-#largeStickyDialog{
-    font-size: 0.75em;
-}
 
 
 .sectionTitle{
@@ -213,7 +210,7 @@ body {
 
 .removeStickyButton{
     background:transparent url(../images/Delete-20.png) no-repeat;
-    padding-left: 20px;
+    padding-left: 23px;
     padding-bottom: 10px;
     cursor: pointer;
     height:32px;
@@ -225,13 +222,9 @@ body {
     margin-top: 10px;
 }
 
-#largeStickyDialog .stickyText{
-    font-size: 1.2em;
-}
-
 .voteStickyButton{
     background:transparent url(../images/vote.png) no-repeat;
-    padding-left: 20px;
+    padding-left: 23px;
     padding-bottom: 10px;
     cursor: pointer;
     height:32px;
@@ -243,6 +236,14 @@ body {
     opacity: 0.5;
     filter: alpha(opacity = 50);
     font-weight:normal;
+}
+
+#largeStickyDialog .stickyText{
+    font-size: 1.2em;
+}
+
+#largeStickyDialog{
+    font-size: 1em;
 }
 
 #largeStickyDialog .voteCount{
