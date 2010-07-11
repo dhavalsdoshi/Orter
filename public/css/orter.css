@@ -247,6 +247,7 @@ body {
 
 #largeStickyDialog .voteCount{
     position: relative;
+    top: 0;
 }
 
 .voteCount{
