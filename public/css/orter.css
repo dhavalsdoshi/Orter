@@ -211,7 +211,6 @@ body {
 .stickyActions{
     bottom: 20px;
     margin-top: 10px;
-    position: absolute;
 }
 
 .removeStickyButton{
