@@ -18,7 +18,9 @@ class PointsController < ApplicationController
   end
   
   def create
-    @point = @section.points.build(params[:point])
+    point = params[:point]
+    point[:message] = CGI.escapeHTML(point[:message])
+    @point = @section.points.build(point)
 
     respond_to do |format|
 		

@@ -112,7 +112,8 @@ body {
 }
 
 .sticky,.addStickyForm textarea,.ui-widget-content{
-	cursor: pointer;
+	word-wrap: break-word;
+    cursor: pointer;
     background-color: #ffff88;
     border : 1px solid #ffff66;
     font-size: 0.7em;
@@ -181,9 +182,6 @@ body {
     width: 33%;
 }
 
-
-
-
 .sectionTitle{
     display: inline;
 }
@@ -240,10 +238,12 @@ body {
 
 #largeStickyDialog .stickyText{
     font-size: 1.2em;
+    word-wrap: break-word;
 }
 
 #largeStickyDialog{
     font-size: 1em;
+    cursor: default;
 }
 
 #largeStickyDialog .voteCount{

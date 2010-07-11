@@ -10,10 +10,10 @@ class RetrosController < ApplicationController
   end
 
   def create
-    @retro = Retro.new({:name =>params[:retro][:name], :description =>params[:retro][:description]})
+    @retro = Retro.new({:name =>CGI.escapeHTML(params[:retro][:name]), :description =>CGI.escapeHTML(params[:retro][:description])})
 
     params[:retro][:sections][:section].each do |section_name|
-      @retro.sections << Section.new({:name =>section_name})
+      @retro.sections << Section.new({:name =>CGI.escapeHTML(section_name)})
     end
     respond_to do |format|
       if @retro.save
