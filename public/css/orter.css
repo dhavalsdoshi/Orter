@@ -115,7 +115,7 @@ body {
 	cursor: pointer;
     background-color: #ffff88;
     border : 1px solid #ffff66;
-    font-size: 1em;
+    font-size: 0.7em;
     text-overflow: ellipsis;
     -webkit-border-radius: 4px 4px 15px 4px;
     -moz-border-radius: 4px 4px 15px 4px;
@@ -123,7 +123,7 @@ body {
     margin-top: 5px;
 	float:left;
 	width:47%;
-	height:100px;
+	height:75px;
     overflow: hidden;
     position:relative;
 }
@@ -198,13 +198,11 @@ body {
 }
 
 .addStickyButton {
-    background:transparent url(../images/Add-32.png) no-repeat scroll 0 0;
-    border:none;
-    cursor:pointer;
-    float:right;
-    height:32px;
-    width: 32px;
-    display: inline;
+    background:transparent url(../images/Add-20.png) no-repeat scroll 0 0;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    width: 20px;
     overflow: hidden;
 }
 
