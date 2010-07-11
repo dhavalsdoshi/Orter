@@ -1,11 +1,10 @@
 class DeeplinksController < ApplicationController
   def index_old
-    @retrospective_id = Retro.find_by_name(params[:name]).id
-	render :action => :index
+    redirect_to :action => "index_old_html"
   end
   
   def index
-    @retrospective_id = Retro.find(params[:id]).id
+    redirect_to :action => "index_html"
   end
 
   def index_old_html

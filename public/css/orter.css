@@ -248,6 +248,10 @@ body {
     font-weight:normal;
 }
 
+#largeStickyDialog .voteCount{
+    position: relative;
+}
+
 .voteCount{
     clear: both;
     margin-top: 10px;

@@ -14,8 +14,8 @@ var Ideaboardz = function(retrospectiveId) {
         $('#pdfExport').attr('href', '/retros/export/' + retrospectiveId + '.pdf');
     };
 
-    var displayRetroDetails = function(data) {
-        $('#ideaboardTitle').html(data.description);
+    var displayRetroDetails = function(retro) {
+        $('#ideaboardTitle').html(retro.name);
     };
 
     var getSectionDetails = function() {
@@ -114,45 +114,16 @@ var Ideaboardz = function(retrospectiveId) {
             var pointId = $(this).attr('id').replace("point", "");
             showLargeStickyDialog(addedPoint,sectionId,pointId);
         });
-//        addedPoint.find('.removeStickyButton').click(
-//                function() {
-//                    var sectionId = $(this).parents('.section').attr('id').replace("section", "");
-//                    var pointId = $(this).parents('.sticky').attr('id').replace("point", "");
-//
-//                    removeStickyCall(sectionId, pointId);
-//
-//                });
-//        addedPoint.find('.voteStickyButton').click(
-//                function() {
-//                    var pointId = $(this).parents('.sticky').attr('id').replace("point", "");
-//                    addVote(pointId);
-//                });
-//        addedPoint.click(stickyExpose);
     };
 
     var showLargeStickyDialog = function(addedPoint,sectionId,pointId){
         $('#largeStickyDialog').find('.stickyText').html(addedPoint.find('.stickyText').html());
-        $('#largeStickyDialog').find('span.vote').html(addedPoint.find('.voteCount').html());
+        $('#largeStickyDialog').find('span.voteCount').html(addedPoint.find('.voteCount').html());
         $('#largeStickyDialog').find('.removeStickyButton').unbind('click').click(
                 function() {removeStickyCall(sectionId, pointId); $('#largeStickyDialog').dialog('close'); });
         $('#largeStickyDialog').find('.voteStickyButton').unbind('click').click(
                 function() {addVote(pointId)});
         $('#largeStickyDialog').dialog('open');
-    };
-
-    var stickyExpose = function(){
-        var sticky = $(this);
-        sticky.expose({
-        onBeforeLoad: function() {
-            sticky.unbind('click');
-            sticky.animate({width:300, height: 100});
-            sticky.find('.stickyActions').show();
-        },
-        onBeforeClose: function() {
-            sticky.find('.stickyActions').hide();
-            sticky.click(stickyExpose);
-            sticky.animate({width: 180, height:60});
-        }}).load();
     };
 
     var addVote = function(pointId) {
