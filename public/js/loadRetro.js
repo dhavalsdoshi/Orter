@@ -30,8 +30,7 @@ var Ideaboardz = function(retrospectiveId) {
 
     var getStickyColor = function(sectionNumber){
          var colors = ["yellow","orange", "green","blue","purple","aqua"];
-         var color = colors[sectionNumber%colors.length];
-        return color;
+         return colors[sectionNumber%colors.length];
     };
 
     var addSections = function(data) {

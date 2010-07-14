@@ -1,0 +1,38 @@
+.css0 {
+	background: url(../images/0.png) no-repeat scroll left top;
+}
+.css1 {
+	background: url(../images/1.png) no-repeat scroll left top;
+}
+.css2 {
+	background: url(../images/2.png) no-repeat scroll left top;
+}
+.css3 {
+	background: url(../images/3.png) no-repeat scroll left top;
+}
+.css4 {
+	background: url(../images/4.png) no-repeat scroll left top;
+}
+.css {
+	padding: 35px;
+	font-size: 1.1em;
+    font-weight: normal;
+}
+.css span {
+	margin: 4em;
+}
+.credits{
+    font-size: 0.9em;
+    float: right;
+}
+
+.credits p{
+    margin: 5px 0;
+    font-size: 0.8em;
+}
+h3{
+    text-align:center;
+}
+.mainWrap{
+    margin: 0 auto;
+}

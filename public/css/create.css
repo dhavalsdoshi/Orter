@@ -1,0 +1,13 @@
+div.createForm,p.flip
+{
+    margin:0px;
+    padding:5px;
+    text-align:center;
+    display: none;
+}
+
+div.createForm
+{
+    height:120px;
+    display:none;
+}
