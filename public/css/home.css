@@ -36,3 +36,65 @@ h3{
 .mainWrap{
     margin: 0 auto;
 }
+
+.whiteboard{
+    background-color: white;
+    border: #696969 solid 20px;
+
+    -moz-border-bottom-colors: #555 #666 #777 #888 #aaa #bbb #ccc #ddd;
+    -moz-border-top-colors: #555 #666 #777 #888 #888 #777 #666 #555;
+    -moz-border-left-colors: #555 #666 #777 #999 #999 #888 #777 #666;
+    -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
+    
+	-webkit-box-shadow: 3px 7px 3px #888;
+    -moz-box-shadow: 3px 7px 3px   #888;
+    
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    overflow: auto;
+    width: 95%;
+    text-align: center;
+    min-height:500px;
+}
+
+.leftNavSticky {
+    position:absolute;
+    padding:0.5em;
+    margin:1em 0;
+    color:white;
+
+    background:#3B813A;
+    border:1px solid #3B813A;
+
+    -webkit-box-shadow: -1px 2px 15px #888;
+    -moz-box-shadow: 6px -1px 23px #888888;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+
+    writing-mode: tb-rl;
+}
+.leftNavSticky a{
+    text-decoration:none;
+    color:white;
+    cursor:pointer;
+}
+
+.leftNavSticky.feedback{
+    top:100px;
+    left:-24px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+}
+.leftNavSticky.feedback:hover{
+    left:-22px;
+}
+
+.create{
+    position:absolute;
+    top:0px;
+    right:136px;
+}
+
+.bold{
+    font-weight:bold;
+}
