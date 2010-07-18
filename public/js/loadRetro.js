@@ -24,7 +24,7 @@ var Ideaboardz = function(retrospectiveId) {
 
     var getClassNameFor = function(numberOfSections){
         if(numberOfSections==1) return 'full';
-        return numberOfSections==2||numberOfSections==4? 'half': 'onethird';
+        return numberOfSections==2||numberOfSections==4? 'half': 'oneThird';
     };
 
 
