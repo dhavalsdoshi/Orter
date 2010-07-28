@@ -1,21 +1,7 @@
 var Ideaboardz = function(retrospectiveId) {
 
     this.init = function() {
-        getRetroDetails();
         getSectionDetails();
-    };
-
-    var getRetroDetails = function() {
-        $.getJSON("/retros/" + retrospectiveId + ".json", displayRetroDetails);
-        attachRetroEvents(retrospectiveId);
-    };
-
-    var attachRetroEvents = function(retrospectiveId) {
-        $('#pdfExport').attr('href', '/retros/export/' + retrospectiveId + '.pdf');
-    };
-
-    var displayRetroDetails = function(retro) {
-        $('#ideaboardTitle').html(retro.name);
     };
 
     var getSectionDetails = function() {
