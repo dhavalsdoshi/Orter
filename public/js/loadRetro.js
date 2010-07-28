@@ -89,7 +89,6 @@ var Ideaboardz = function(retrospectiveId) {
             addedPoint.find('.voteCount').html("+"+point.votes.length);
         attachStickyEvents(addedPoint);
         addedPoint.show('slow');
-//        Cufon.refresh();
     };
 
     var attachStickyEvents=function(addedPoint){
