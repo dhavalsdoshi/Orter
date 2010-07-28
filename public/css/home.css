@@ -30,11 +30,13 @@
     margin: 5px 0;
     font-size: 0.8em;
 }
-h3{
-    text-align:center;
-}
+
 .mainWrap{
     margin: 0 auto;
+}
+
+.header{
+    margin:0 0 2em 0;
 }
 
 .whiteboard{
@@ -53,40 +55,38 @@ h3{
     -moz-border-radius: 15px 15px 15px 15px;
     overflow: auto;
     width: 95%;
-    text-align: center;
     min-height:500px;
 }
 
-.leftNavSticky {
+.rightNavSticky {
     position:absolute;
     padding:0.5em;
-    margin:1em 0;
+    margin:0em 0;
     color:white;
 
     background:#3B813A;
     border:1px solid #3B813A;
 
-    -webkit-box-shadow: -1px 2px 15px #888;
-    -moz-box-shadow: 6px -1px 23px #888888;
     -webkit-border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
 
     writing-mode: tb-rl;
 }
-.leftNavSticky a{
+
+.rightNavSticky a{
     text-decoration:none;
     color:white;
     cursor:pointer;
 }
 
-.leftNavSticky.feedback{
-    top:100px;
-    left:-24px;
+.rightNavSticky.feedback{
+    top:150px;
+    right:-23px;
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
 }
-.leftNavSticky.feedback:hover{
-    left:-22px;
+.rightNavSticky.feedback:hover{
+    right:-22px;
 }
 
 .create{
@@ -95,6 +95,135 @@ h3{
     right:136px;
 }
 
+.logo{
+    height:45px;
+    width:auto;
+    margin:0.5em;
+}
+
+.screenCastContainer {
+    height:225px;
+    width:400px;
+    margin:10px;
+    display:block;
+    border: solid;
+    border-width: 15px;
+    -webkit-border-image:url(../images/border2.png) 30 30 30 30 round round;
+    -moz-border-image:url(../images/border2.png) 30 30 30 30 round round;
+}
+
+.screenCast{
+    width:400px;
+    height:225px;
+}
+
+.sideBar{
+    font-family: Scribbled, sans-serif;
+    font-size:1.5em;
+    padding:0 0 0 1em;;
+}
+
+.sideBar ul{
+    font-family:Scribbled,sans-serif;
+}
+
+.sectionTitle{
+    font-family:SketchBlock;
+    text-align:center;
+}
+
+.sectionContent{
+    font-family:Handwritten;
+    font-size:150%;
+}
+
+.what,.try{
+    font-size:100%
+}
+
+.how,.why{
+    font-size:80%;
+}
+
+.who{
+    font-size:65%;
+}
+
+.left{
+    float:left;
+}
+
+.right{
+    float:right;
+}
+
 .bold{
     font-weight:bold;
+}
+
+h1 {
+	/* 18px via YUI Fonts CSS foundation. */
+	font-size: 138.5%;
+}
+
+h2 {
+	/* 16px via YUI Fonts CSS foundation. */
+	font-size: 123.1%;
+}
+
+h3 {
+	/* 14px via YUI Fonts CSS foundation. */
+	font-size: 108%;
+}
+
+h1,h2,h3 {
+	/* Top & bottom margin based on font size. */
+	margin: 0.2em 0;
+}
+
+blockquote,ul,ol,dl {
+	/* Giving blockquotes and lists room to breath. */
+	margin: 1em;
+}
+
+ol,ul,dl {
+	/* Bringing lists on to the page with breathing room. */
+	margin-left: 2em;
+}
+
+ol li {
+	/* Giving OL's LIs generated numbers. */
+	list-style: decimal outside;
+}
+
+ul li {
+	/* Giving UL's LIs generated disc markers. */
+	list-style: disc outside;
+}
+
+dl dd {
+	/* Giving UL's LIs generated numbers. */
+	margin-left: 1em;
+}
+
+.half{
+    width:48%;
+}
+
+.oneFourth{
+    width:23%;
+}
+
+.threeForth{
+    width:73%
+}
+
+@font-face{
+    font-family:Handwritten;
+    src:url("../fonts/Handwritten_Crystal_v2.ttf");
+}
+
+@font-face{
+    font-family:SketchBlock;
+    src:url("../fonts/Sketch_Block.ttf");
 }
