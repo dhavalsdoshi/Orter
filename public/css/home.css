@@ -33,10 +33,15 @@
 
 .mainWrap{
     margin: 0 auto;
+    max-width:1440px;
 }
 
 .header{
     margin:0 0 2em 0;
+}
+
+.content{
+    overflow:auto;
 }
 
 .whiteboard{
@@ -47,7 +52,9 @@
     -moz-border-top-colors: #555 #666 #777 #888 #888 #777 #666 #555;
     -moz-border-left-colors: #555 #666 #777 #999 #999 #888 #777 #666;
     -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
-    
+
+    -webkit-border-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#696969), color-stop(0.5, white), to(#ccc)) 21 30 30 21 repeat repeat;
+
 	-webkit-box-shadow: 3px 7px 3px #888;
     -moz-box-shadow: 3px 7px 3px   #888;
     
@@ -55,7 +62,7 @@
     -moz-border-radius: 15px 15px 15px 15px;
     overflow: auto;
     width: 95%;
-    min-height:500px;
+    min-height:543px;
 }
 
 .rightNavSticky {
@@ -70,7 +77,7 @@
     -webkit-border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
 
-    writing-mode: tb-rl;
+    writing-mode: bt-rl;
 }
 
 .rightNavSticky a{
@@ -82,6 +89,8 @@
 .rightNavSticky.feedback{
     top:150px;
     right:-23px;
+    z-index:5;
+
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
 }
@@ -93,6 +102,7 @@
     position:absolute;
     top:0px;
     right:136px;
+    z-index:5;
 }
 
 .logo{
@@ -104,12 +114,12 @@
 .screenCastContainer {
     height:225px;
     width:400px;
-    margin:10px;
+    margin:0px auto;
     display:block;
-    border: solid;
-    border-width: 15px;
-    -webkit-border-image:url(../images/border2.png) 30 30 30 30 round round;
-    -moz-border-image:url(../images/border2.png) 30 30 30 30 round round;
+    /*border: solid;*/
+    /*border-width: 15px;*/
+    /*-webkit-border-image:url(../images/border2.png) 30 30 30 30 round round;*/
+    /*-moz-border-image:url(../images/border2.png) 30 30 30 30 round round;*/
 }
 
 .screenCast{
@@ -117,18 +127,22 @@
     height:225px;
 }
 
-.sideBar{
-    font-family: Scribbled, sans-serif;
-    font-size:1.5em;
-    padding:0 0 0 1em;;
+.leftBar{
+    text-align:center;
+    overflow:auto;
+    padding:0.5em;
 }
 
-.sideBar ul{
-    font-family:Scribbled,sans-serif;
+.sideNote{
+    position:absolute;
+    padding:0.2em;
+
+    -webkit-box-shadow: 1px 9px 23px #888888;;
+    -moz-box-shadow: 1px 9px 23px #888888;
 }
 
 .sectionTitle{
-    font-family:SketchBlock;
+    font-family:Edosz;
     text-align:center;
 }
 
@@ -137,16 +151,49 @@
     font-size:150%;
 }
 
-.what,.try{
-    font-size:100%
+.what{
+    top:91px;
+    z-index:2;
+    border-top: #000 solid 10px;
+    -moz-border-top-colors: #555 #666 #777 #888 #888 #777 #666 #555;
+}
+.try{
+    top:91px;
+    z-index:2;
+    -webkit-transform: rotate(-2deg);
+    -moz-transform: rotate(-2deg);
 }
 
-.how,.why{
-    font-size:80%;
+.why{
+    top:243px;
+
+    -webkit-transform: rotate(+1deg);
+    -moz-transform: rotate(+1deg);
 }
 
-.who{
-    font-size:65%;
+.faq {
+    top:410px;
+    -webkit-transform: rotate(-2deg);
+    -moz-transform: rotate(-2deg);
+}
+.help{
+    top:396px;
+
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+}
+.polaroid{
+    border:10px solid #ccc;
+    border-bottom:50px solid #ccc;
+    background:black;
+    color:white;
+
+    top:221px;
+}
+
+.footer{
+    margin:1em 0 0 0;
+    text-align:center;
 }
 
 .left{
@@ -163,17 +210,21 @@
 
 h1 {
 	/* 18px via YUI Fonts CSS foundation. */
-	font-size: 138.5%;
+	font-size: 150%;
 }
 
 h2 {
 	/* 16px via YUI Fonts CSS foundation. */
-	font-size: 123.1%;
+	font-size: 138.5%;
 }
 
 h3 {
 	/* 14px via YUI Fonts CSS foundation. */
-	font-size: 108%;
+	font-size: 123.1%;
+}
+
+h4{
+    font-size: 108%;
 }
 
 h1,h2,h3 {
@@ -206,8 +257,14 @@ dl dd {
 	margin-left: 1em;
 }
 
+
+
+/*to-do : following classes are duplicates, remove//merge*/
 .half{
     width:48%;
+}
+.oneThird{
+    width: 33%;
 }
 
 .oneFourth{
@@ -218,12 +275,34 @@ dl dd {
     width:73%
 }
 
+.yellow{
+    background-color: #ffff88;
+    border : 1px solid #ffff66;
+}
+.orange{
+	background-color: #ffb058;
+    border : 1px solid #ffb069;
+}
+
+.blue{
+	background-color: #17B6FF;
+    border : 1px solid #17B6FF;
+}
+
+.green{
+	background-color: #bcee6b;
+    border : 1px solid #bcee7c;
+
+}
+/**/
+
 @font-face{
     font-family:Handwritten;
     src:url("../fonts/Handwritten_Crystal_v2.ttf");
 }
 
 @font-face{
-    font-family:SketchBlock;
-    src:url("../fonts/Sketch_Block.ttf");
+    font-family:Edosz;
+    src:url("../fonts/edosz.ttf");
+    font-size:150%;
 }
