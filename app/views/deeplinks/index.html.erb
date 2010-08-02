@@ -19,28 +19,29 @@
     <div class="header">
       <a href="/" title="Ideaboardz"><img src="/images/logo.png" alt="Ideaboardz" class="logo"/></a>
 
-      <h2 class="ideaBoardTitle" id="ideaboardTitle"><%=@retrospective.name%></h2>
+      <h2 class="ideaBoardTitle" id="ideaboardTitle"><%= @retrospective.name %></h2>
       <!--googleoff: all-->
       <noscript>Please turn javascript on or move to a browser which supports it</noscript>
       <!--googleon: all-->
-      <a id="pdfExport" class="pdfExport" href="/retros/export/<%=@retrospective.id%>.pdf" title="Export as pdf" target="_blank"></a>
+      <a id="pdfExport" class="pdfExport" href="/retros/export/<%= @retrospective.id %>.pdf" title="Export as pdf" target="_blank"></a>
     </div>
+    <%
+         row_one_sections, row_two_sections = get_rows_for_sections(@retrospective.sections)
+    %>
     <div id="sectionsRow1" class="sections">
+      <%section_width = get_section_width(row_one_sections.size) %>
+      <%= render :partial => "section",
+            :collection => row_one_sections, :as => "section",
+            :locals => {:section_width => section_width} %>
+
     </div>
     <div id="sectionsRow2" class="sections">
+      <%section_width = get_section_width(row_two_sections.size) %>
+      <%= render :partial => "section",
+                  :collection => row_two_sections, :as => "section",
+                  :locals => {:section_width => section_width} %>
     </div>
     <div class="hide">
-      <div id="sectionTemplate">
-        <div class="section">
-          <div class="sectionTitleArea">
-            <h4 class="sectionTitle"></h4>
-            <button class="addStickyButton" title="Add Sticky"></button>
-          </div>
-          <div class="points">
-          </div>
-          <div class="addStickyForm hide"><textarea class="stickyText" rows="4" cols="30"></textarea></div>
-        </div>
-      </div>
       <div id="stickyTemplate" class="col_right">
         <div class="sticky">
           <div class="stickyText"></div>

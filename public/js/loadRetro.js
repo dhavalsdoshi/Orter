@@ -1,47 +1,18 @@
-var Ideaboardz = function(retrospectiveId) {
+var Ideaboardz = function() {
 
     this.init = function() {
-        getSectionDetails();
-    };
-
-    var getSectionDetails = function() {
-        $.getJSON("/retros/" + retrospectiveId + "/sections.json", addSections);
-    };
-
-    var getClassNameFor = function(numberOfSections){
-        if(numberOfSections==1) return 'full';
-        return numberOfSections==2||numberOfSections==4? 'half': 'oneThird';
-    };
-
-
-    var getStickyColor = function(sectionNumber){
-         var colors = ["yellow","orange", "green","blue","purple","aqua"];
-         return colors[sectionNumber%colors.length];
+        addSections();
     };
 
     var addSections = function(data) {
-        var numberOfSections = data.length;
-        var className = getClassNameFor(numberOfSections);
-
-        var sectionTemplateHtml = $('#sectionTemplate').html();
-        var section;
-        for (var sectionIndex in data) {
-            section = data[sectionIndex];
-            var sectionRowToAddTo = "#sectionsRow1";
-            if(sectionIndex>2||(numberOfSections ==4&&sectionIndex>1) )
-                sectionRowToAddTo = '#sectionsRow2';
-            $(sectionTemplateHtml).appendTo(sectionRowToAddTo);
-            var addedSection = $(sectionRowToAddTo).find('div.section:last');
-            addedSection.attr('id', 'section' + section.id);
-            addedSection.find('h4').html(section.name);
-            addedSection.addClass(className);
-            addedSection.addClass(getStickyColor(sectionIndex));
-            getSectionPoints(section.id);
-            addedSection.find('.addStickyButton').click(function() {
-                var sectionId = $(this).parents('.section').attr('id').replace("section", "");
+        $('.section').each(function(){
+            var section = $(this);
+            var sectionId = section.attr('id').replace('section','');
+            getSectionPoints(sectionId);
+            $(this).find('.addStickyButton').click(function() {
                 showAddSticky(sectionId);
             });
-        }
+        })
     };
 
     var showAddSticky = function(sectionId) {
@@ -181,8 +152,7 @@ var Ideaboardz = function(retrospectiveId) {
 };
 
 $(document).ready(function() {
-    var retroId = $("meta[name=retroId]").attr("content");
-    var ideaBoardz = new Ideaboardz(retroId);
+    var ideaBoardz = new Ideaboardz();
     ideaBoardz.init();
     $('#largeStickyDialog').dialog({
         autoOpen: false,
