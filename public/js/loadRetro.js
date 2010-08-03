@@ -17,9 +17,17 @@ var Ideaboardz = function() {
 
     var showAddSticky = function(sectionId) {
         var addStickyForm = $('#section'+sectionId).find(".addStickyForm");
+        var textInputArea = addStickyForm.find('textarea');
         addStickyForm.show('slow');
-        addStickyForm.find('textarea').focus();
-        addStickyForm.find('textarea').unbind('keypress').bind('keypress', function(e) {
+
+        textInputArea.focus();
+        textInputArea.blur(function() {
+            addStickyForm.hide('slow');
+            if(textInputArea.val().trim().length>0){
+                addStickyTo(sectionId);
+            }
+        });
+        textInputArea.keypress(function(e) {
             if(e.keyCode == 13){
                 addStickyForm.hide('slow');
                 addStickyTo(sectionId);
