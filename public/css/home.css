@@ -53,8 +53,6 @@
     -moz-border-left-colors: #555 #666 #777 #999 #999 #888 #777 #666;
     -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
 
-    -webkit-border-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#696969), color-stop(0.5, white), to(#ccc)) 21 30 30 21 repeat repeat;
-
 	-webkit-box-shadow: 3px 7px 3px #888;
     -moz-box-shadow: 3px 7px 3px   #888;
     
@@ -62,47 +60,7 @@
     -moz-border-radius: 15px 15px 15px 15px;
     overflow: auto;
     width: 95%;
-    min-height:543px;
-}
-
-.rightNavSticky {
-    position:absolute;
-    padding:0.5em;
-    margin:0em 0;
-    color:white;
-
-    background:#3B813A;
-    border:1px solid #3B813A;
-
-    -webkit-border-radius: 5px 5px 5px 5px;
-    -moz-border-radius: 5px 5px 5px 5px;
-
-    writing-mode: bt-rl;
-}
-
-.rightNavSticky a{
-    text-decoration:none;
-    color:white;
-    cursor:pointer;
-}
-
-.rightNavSticky.feedback{
-    top:150px;
-    right:-23px;
-    z-index:5;
-
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-}
-.rightNavSticky.feedback:hover{
-    right:-22px;
-}
-
-.create{
-    position:absolute;
-    top:0px;
-    right:136px;
-    z-index:5;
+    min-height:643px;
 }
 
 .logo{
@@ -111,15 +69,15 @@
     margin:0.5em;
 }
 
+.logo.small{
+    height:30px;    
+}
+
 .screenCastContainer {
     height:225px;
     width:400px;
     margin:0px auto;
     display:block;
-    /*border: solid;*/
-    /*border-width: 15px;*/
-    /*-webkit-border-image:url(../images/border2.png) 30 30 30 30 round round;*/
-    /*-moz-border-image:url(../images/border2.png) 30 30 30 30 round round;*/
 }
 
 .screenCast{
@@ -164,23 +122,36 @@
     -moz-transform: rotate(-2deg);
 }
 
-.why{
-    top:243px;
+.create{
+    position:absolute;
+    top:210px;
+    right:176px;
+    z-index:0;
+}
 
-    -webkit-transform: rotate(+1deg);
-    -moz-transform: rotate(+1deg);
+.why{
+    top:343px;
+    width:25em;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
 }
 
 .faq {
-    top:410px;
+    top:515px;
     -webkit-transform: rotate(-2deg);
     -moz-transform: rotate(-2deg);
+    z-index:4;
 }
 .help{
-    top:396px;
+    top:510px;
 
     -webkit-transform: rotate(-3deg);
     -moz-transform: rotate(-3deg);
+    z-index:5;
+}
+.feedback{
+    top:591px;
+    z-index:0;
 }
 .polaroid{
     border:10px solid #ccc;
@@ -257,7 +228,22 @@ dl dd {
 	margin-left: 1em;
 }
 
+.page{
+    margin:0.5em auto;
+    padding:1em;
+    min-height:500px;
+    width:800px;
 
+    -moz-box-shadow:-5px 5px 20px #888888;
+    -webkit-box-shadow:-5px 5px 20px #888888;
+}
+
+.clip{
+    position:absolute;
+    margin:0 auto;
+    height:60px;
+    width:auto;
+}
 
 /*to-do : following classes are duplicates, remove//merge*/
 .half{
