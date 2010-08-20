@@ -1,10 +1,10 @@
 var Ideaboardz = function() {
 
     this.init = function() {
-        addSections();
+        fillSectionsAndAttachEvents();
     };
 
-    var addSections = function(data) {
+    var fillSectionsAndAttachEvents = function() {
         $('.section').each(function(){
             var section = $(this);
             var sectionId = section.attr('id').replace('section','');
@@ -12,43 +12,45 @@ var Ideaboardz = function() {
             $(this).find('.addStickyButton').click(function() {
                 showAddSticky(sectionId);
             });
-        })
+            var addStickyForm = $('#section'+sectionId).find(".addStickyForm");
+            var textInputArea = addStickyForm.find('textarea');
+            textInputArea.keypress(function(e) {
+                    if(e.keyCode == 13){
+                        addStickyForm.hide('slow');
+                        addStickyTo(sectionId);
+                        return;
+                    }
+                    if(e.keyCode == 27){
+                        addStickyForm.hide('slow');
+                    }
+                });
+            textInputArea.blur(function() {
+                addStickyForm.hide('slow');
+                addStickyTo(sectionId);
+            });
+
+        });
     };
 
     var showAddSticky = function(sectionId) {
         var addStickyForm = $('#section'+sectionId).find(".addStickyForm");
         var textInputArea = addStickyForm.find('textarea');
         addStickyForm.show('slow');
-
         textInputArea.focus();
-        textInputArea.blur(function() {
-            addStickyForm.hide('slow');
-            if(textInputArea.val().trim().length>0){
-                addStickyTo(sectionId);
-            }
-        });
-        textInputArea.keypress(function(e) {
-            if(e.keyCode == 13){
-                addStickyForm.hide('slow');
-                addStickyTo(sectionId);
-                return;
-            }
-            if(e.keyCode == 27){
-                addStickyForm.hide('slow');
-            }
-        });
     };
 
     var addStickyTo = function(sectionId) {
-            var stickyText = $('#section'+sectionId).find('textarea').val();
-            $('.stickyText').val("");
-            $.ajax({
-                url: '/sections/' + sectionId + '/points.json?point[message]=' + encodeURIComponent(stickyText),
-                type: "POST",
-                success: function(result) {
-                    addSticky(result);
-                }
-            });
+            var stickyText = $('#section'+sectionId).find('textarea').val().trim();
+            if(stickyText.length>0){
+                $('.stickyText').val("");
+                $.ajax({
+                    url: '/sections/' + sectionId + '/points.json?point[message]=' + encodeURIComponent(stickyText),
+                    type: "POST",
+                    success: function(result) {
+                        addSticky(result);
+                    }
+                });
+            }
     };
 
     var getSectionPoints = function(sectionid) {
