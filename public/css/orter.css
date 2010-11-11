@@ -56,21 +56,27 @@ body {
     width:10%;
 }
 
-.pdfExport{
+.pdfExport, .excelExport{
     margin: 15px 0;
     display: inline;
     float: left;
-    background:transparent url(../images/pdf_export.png) no-repeat;
     height:55px;
     width: 4%;
+}
 
+.pdfExport {
+    background:transparent url(../images/pdf_export.png) no-repeat;
+}
+
+.excelExport{
+    background:transparent url(../images/excel_export.png) no-repeat;
 }
 
 .ideaBoardTitle{
     margin: 15px;
     display: inline;
     float: left;
-    width: 80%;
+    width: 77%;
 }
 
 .sections{

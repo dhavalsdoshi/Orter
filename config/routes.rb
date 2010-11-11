@@ -15,7 +15,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect 'retrospective/last/created', :controller =>'retros', :action => 'last_created_retro_id'
   map.connect 'sections/:section_id/:controller/delete/:id.:format', :action => 'destroy'
-  
+
+  map.connect 'retros/export/:id/:name.:format', :controller => 'retros', :action => 'export'
+
   map.connect 'admin/show_deleted/:retro_id', :controller =>'admin', :action => 'deleted_points'
   map.connect 'admin/restore_deleted/:point_id', :controller =>'admin', :action => 'restore_deleted'
 

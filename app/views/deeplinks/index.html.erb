@@ -23,7 +23,8 @@
       <!--googleoff: all-->
       <noscript>Please turn javascript on or move to a browser which supports it</noscript>
       <!--googleon: all-->
-      <a id="pdfExport" class="pdfExport" href="/retros/export/<%= @retrospective.id %>.pdf" title="Export as pdf" target="_blank"></a>
+      <a id="excelExport" class="excelExport" href="/retros/export/<%= @retrospective.id %>/<%= @retrospective.name %>.xls" title="Export as excel" target="_blank"></a>
+      <a id="pdfExport" class="pdfExport" href="/retros/export/<%= @retrospective.id %>/<%= @retrospective.name %>.pdf" title="Export as pdf" target="_blank"></a>
 
       <!-- AddThis Button BEGIN -->
       <div class="addthis_toolbox addthis_default_style">
