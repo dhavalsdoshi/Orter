@@ -17,14 +17,24 @@ xml.Workbook({
         xml.NumberFormat
         xml.Protection
       end
+
+      xml.Style 'ss:ID'=>"s25" do
+        xml.Alignment 'ss:Horizontal'=>"Center", 'ss:Vertical'=>"Bottom"
+        xml.Font 'ss:FontName'=>"Verdana", 'ss:Bold'=>"1"
+      end
     end
     
   for section in @retro.sections
 
-    xml.Worksheet 'ss:Name' => section.name do
+    xml.Worksheet 'ss:Name' => section.name[0..29] do
       xml.Table 'ss:DefaultColumnWidth'=>'100','ss:DefaultRowHeight' => '15' do
 
-        # Header
+        xml.Row do
+          xml.Cell 'ss:StyleID'=>"s25", "ss:MergeAcross"=>"1" do
+            xml.Data section.name, 'ss:Type' => 'String'
+          end
+        end
+
         xml.Row do
           xml.Cell { xml.Data 'Point', 'ss:Type' => 'String' }
           xml.Cell { xml.Data 'Votes', 'ss:Type' => 'String' }
