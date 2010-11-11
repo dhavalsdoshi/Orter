@@ -24,6 +24,18 @@
       <noscript>Please turn javascript on or move to a browser which supports it</noscript>
       <!--googleon: all-->
       <a id="pdfExport" class="pdfExport" href="/retros/export/<%= @retrospective.id %>.pdf" title="Export as pdf" target="_blank"></a>
+
+      <!-- AddThis Button BEGIN -->
+      <div class="addthis_toolbox addthis_default_style">
+        <a href="http://www.addthis.com/bookmark.php?v=250&amp;username=orteretro" class="addthis_button_compact"></a>
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+      </div>
+      <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
+      <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=orteretro"></script>
+      <!-- AddThis Button END -->
+
     </div>
     <%
          row_one_sections, row_two_sections = get_rows_for_sections(@retrospective.sections)

@@ -62,7 +62,7 @@ body {
     float: left;
     background:transparent url(../images/pdf_export.png) no-repeat;
     height:55px;
-    width: 5%;
+    width: 4%;
 
 }
 
@@ -258,4 +258,12 @@ body {
     position:absolute;
     top:60%;
     left:5%;
+}
+
+.addthis_default_style {
+    width: 2%;
+    float: right;
+}
+.addthis_default_style a.at300m, .addthis_default_style a.at300b{
+    padding: 3px 2px
 }
