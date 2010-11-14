@@ -26,7 +26,7 @@ body {
     display:none;
 }
 
-.main_wrap {
+.mainWrap {
 	margin: 0 auto;
     overflow: auto;
     padding:1em;
@@ -34,26 +34,37 @@ body {
 
 .whiteboard{
     background-color: white;
-    border: #696969 solid 10px;
+    border: #696969 solid 20px;
+
+    -moz-border-bottom-colors: #555 #666 #777 #888 #aaa #bbb #ccc #ddd;
+    -moz-border-top-colors: #555 #666 #777 #888 #888 #777 #666 #555;
+    -moz-border-left-colors: #555 #666 #777 #999 #999 #888 #777 #666;
+    -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
+
 	-webkit-box-shadow: 3px 7px 3px #888;
     -moz-box-shadow: 3px 7px 3px   #888;
     -webkit-border-radius: 15px 15px 15px 15px;
     -moz-border-radius: 15px 15px 15px 15px;
     overflow: auto;
-    width: 99%;
+    width: 95%;
+    min-height:643px;
     text-align: center;
 }
 
 .header{
-    overflow: auto;
-    width: 100%;
+    overflow: hidden;
+    width: 99%;
+}
+
+.logo img{
+    height: 30px;
+    width: auto;
 }
 
 .logo{
-    margin: 15px 0;
-    display: inline;
     float:left;
-    width:10%;
+    margin:15px 0 15px 15px;
+    width: 10%;
 }
 
 .pdfExport, .excelExport{
@@ -76,7 +87,7 @@ body {
     margin: 15px;
     display: inline;
     float: left;
-    width: 77%;
+    width: 70%;
 }
 
 .sections{
