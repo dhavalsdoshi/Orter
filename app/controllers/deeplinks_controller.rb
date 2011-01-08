@@ -6,7 +6,7 @@ class DeeplinksController < ApplicationController
   end
 
   def index
-    @retrospective = Retro.find(params[:id], :include => :sections)
+    @retrospective = Retro.find_by_id_and_name(params[:id],params[:name], :include => :sections)
     render :action => :index
   end
 
