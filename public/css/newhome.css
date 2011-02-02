@@ -37,8 +37,21 @@ ul li {
 dl dd {
 	margin-left: 1em;
 }
+a{
+    color:#000;
+}
+a:hover{
+    text-decoration:underline;
+    color:blue;
+}
+a,a:hover{
+    z-index:10;
+}
 
 /*create base css which has above and is shared with orter.css*/
+.hide{
+    display:none;
+}
 
 .left{
     float:left;
@@ -79,6 +92,24 @@ dl dd {
     min-height:643px;
 }
 
+.spotLight{
+
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:150%;
+    background: -webkit-gradient(
+        radial, 50% 50%, 150, 50% 50%, 190, from(transparent), to(#000)
+    );
+    background: -moz-radial-gradient(
+        50% 50%, circle, transparent 150px, #000 190px
+    );
+    opacity:0.8;
+    z-index:10;
+    pointer-events:none;
+}
+
 .logo{
     margin:0.5em;
 }
@@ -107,6 +138,15 @@ dl dd {
 
     -webkit-box-shadow: 1px 9px 23px #888888;;
     -moz-box-shadow: 1px 9px 23px #888888;
+    -webkit-transition:all 1s ease-in-out;
+    -moz-transition:all 1s ease-in-out;
+}
+.sideNote:hover{
+    position:absolute;
+    padding:0.2em;
+
+    -webkit-box-shadow: 1px 15px 23px #666;;
+    -moz-box-shadow: 1px 15px 23px #666;
 }
 
 .sectionTitle{
@@ -128,23 +168,24 @@ dl dd {
 }
 .try{
     top:91px;
-    z-index:1;
-    -webkit-transform: rotate(-2deg);
-    -moz-transform: rotate(-2deg);
+    right:69px;
+    z-index:0;
+    -webkit-transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
 }
 
 .create{
-    position:absolute;
-    top:210px;
-    right:176px;
-    z-index:0;
+    top:115px;
+    right:320px;
+    z-index:1;
 }
 
 .why{
-    top:343px;
+    top:250px;
+    right:260px;
     width:25em;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(-1.5deg);
+    -moz-transform: rotate(-1.5deg);
 }
 
 .faq {
@@ -154,14 +195,17 @@ dl dd {
     z-index:4;
 }
 .help{
-    top:510px;
-
+    top:600px;
+    right:70px;
     -webkit-transform: rotate(-3deg);
     -moz-transform: rotate(-3deg);
     z-index:5;
 }
 .feedback{
-    top:591px;
+    top:246px;
+    right:200px;
+    -moz-transform:rotate(-10deg);
+    -webkit-transform:rotate(-10deg);
     z-index:0;
 }
 
@@ -183,6 +227,11 @@ dl dd {
 	background-color: #bcee6b;
     border : 1px solid #bcee7c;
 
+}
+
+.purple{
+    background-color: #d07ddf;
+    border : 1px solid #d07def;
 }
 /**/
 
