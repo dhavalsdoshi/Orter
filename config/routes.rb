@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sections, :has_many => :points
   map.resources :retros, :has_many => :sections
 
-  map.root :controller => "retros"
+  map.root :controller => :retros, :action => :new
   map.connect 'retrospective/for/:name', :controller =>'deeplinks', :action => 'index_old'
   map.connect 'retrospective/for/:name/:id', :controller =>'deeplinks', :action => 'index'
 
@@ -47,7 +47,6 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "retros"
 
   # See how all your routes lay out with "rake routes"
 

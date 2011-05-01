@@ -81,9 +81,13 @@ a,a:hover{
     -moz-border-left-colors: #555 #666 #777 #999 #999 #888 #777 #666;
     -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
 
+    box-shadow: 3px 7px 3px   #888;
 	-webkit-box-shadow: 3px 7px 3px #888;
     -moz-box-shadow: 3px 7px 3px   #888;
+    -o-box-shadow: 3px 7px 3px   #888;
 
+    border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
     -webkit-border-radius: 15px 15px 15px 15px;
     -moz-border-radius: 15px 15px 15px 15px;
     overflow: auto;
@@ -136,10 +140,15 @@ a,a:hover{
     position:absolute;
     padding:0.2em;
 
-    -webkit-box-shadow: 1px 9px 23px #888888;;
+    box-shadow: 1px 9px 23px #888888;
+    -o-box-shadow: 1px 9px 23px #888888;
+    -webkit-box-shadow: 1px 9px 23px #888888;
     -moz-box-shadow: 1px 9px 23px #888888;
+
     -webkit-transition:all 1s ease-in-out;
     -moz-transition:all 1s ease-in-out;
+    -o-transition:all 1s ease-in-out;
+    transition:all 1s ease-in-out;
 }
 .sideNote:hover{
     position:absolute;
@@ -147,6 +156,8 @@ a,a:hover{
 
     -webkit-box-shadow: 1px 15px 23px #666;;
     -moz-box-shadow: 1px 15px 23px #666;
+    -o-box-shadow: 1px 15px 23px #666;
+    box-shadow: 1px 15px 23px #666;
 }
 
 .sectionTitle{
@@ -172,12 +183,15 @@ a,a:hover{
     z-index:0;
     -webkit-transform: rotate(3deg);
     -moz-transform: rotate(3deg);
+    -o-transform: rotate(3deg);
+    transform: rotate(3deg);
 }
 
 .create{
     top:115px;
     right:320px;
     z-index:1;
+    width: 350px;
 }
 
 .why{
@@ -186,12 +200,16 @@ a,a:hover{
     width:25em;
     -webkit-transform: rotate(-1.5deg);
     -moz-transform: rotate(-1.5deg);
+    -o-transform: rotate(-1.5deg);
+    transform: rotate(-1.5deg);
 }
 
 .faq {
     top:515px;
     -webkit-transform: rotate(-2deg);
     -moz-transform: rotate(-2deg);
+    -o-transform: rotate(-2deg);
+    transform: rotate(-2deg);
     z-index:4;
 }
 .help{
@@ -199,6 +217,8 @@ a,a:hover{
     right:70px;
     -webkit-transform: rotate(-3deg);
     -moz-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    transform: rotate(-3deg);
     z-index:5;
 }
 .feedback{
@@ -206,6 +226,8 @@ a,a:hover{
     right:200px;
     -moz-transform:rotate(-10deg);
     -webkit-transform:rotate(-10deg);
+    -o-transform:rotate(-10deg);
+    transform:rotate(-10deg);
     z-index:0;
 }
 
@@ -245,3 +267,42 @@ a,a:hover{
     src:url("../fonts/edosz.ttf");
     font-size:150%;
 }
+
+.formContainer form{
+    padding:10px;
+}
+.formContainer input[type=text],
+.formContainer select,
+.formContainer label{
+    display:block;
+
+}
+.formContainer input[type=text],select{
+    margin:0 0 10px 0;
+}
+.formContainer input[type=text]{
+    background:transparent;
+    border:none;
+    border-bottom:1px dashed #555;
+    padding:5px 10px;
+    border-radius:5px;
+    -webkit-transition:all 0.25s ease-in;
+    -moz-transition:all 0.25s ease-in;
+    -o-transition:all 0.25s ease-in;
+    transition:all 0.25s ease-in;
+}
+.formContainer input[type=text]:hover,
+.formContainer input[type=text]:focus{
+    background-color: #ffffcc;
+    -webkit-transition:all 0.25s ease-in;
+    -moz-transition:all 0.25s ease-in;
+    transition:all 0.25s ease-in;
+    -o-transition:all 0.25s ease-in;
+    outline:none;
+}
+
+.formContainer label{
+    font-family:"Trebuchet MS",sans-serif;
+    font-size:0.7em;
+}
+

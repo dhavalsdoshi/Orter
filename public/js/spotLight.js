@@ -27,4 +27,4 @@ function moveSpot(e) {
 
 window.onload = function() {
     window.onmousemove = moveSpot;
-}
+};
