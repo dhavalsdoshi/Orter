@@ -25,18 +25,6 @@
       <!--googleon: all-->
       <a id="excelExport" class="excelExport" href="/retros/export/<%= @retrospective.id %>/<%= @retrospective.name %>.xls" title="Export as excel" target="_blank"></a>
       <a id="pdfExport" class="pdfExport" href="/retros/export/<%= @retrospective.id %>/<%= @retrospective.name %>.pdf" title="Export as pdf" target="_blank"></a>
-
-      <!-- AddThis Button BEGIN -->
-      <div class="addthis_toolbox addthis_default_style">
-        <a href="http://www.addthis.com/bookmark.php?v=250&amp;username=orteretro" class="addthis_button_compact"></a>
-        <a class="addthis_button_facebook"></a>
-        <a class="addthis_button_twitter"></a>
-        <a class="addthis_button_email"></a>
-      </div>
-      <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
-      <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=orteretro"></script>
-      <!-- AddThis Button END -->
-
     </div>
     <%
          row_one_sections, row_two_sections = get_rows_for_sections(@retrospective.sections)

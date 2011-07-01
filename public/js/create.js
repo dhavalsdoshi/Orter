@@ -1,16 +1,24 @@
 $(document).ready(function() {
+    $('.formContainer form').validator(
+        {
+            inputEvent: "blur",
+            errorInputEvent:"blur"
+        }
+    );
 
     $(".formContainer").hide();
     $(".flip").click(function(e) {
         $(".formContainer").show("slow");
         $(".formContainer").parents(".sideNote").expose({
             onBeforeClose:
-                function() {
-                    $(".formContainer").hide("slow");
-                }});
+                    function() {
+                        $(".formContainer").hide("slow");
+                        $(".error").hide("slow");
+                    }});
         e.preventDefault();
 
     });
+
     var changeNumberOfSections = function(e) {
         var numberOfSections = parseInt($(e.currentTarget).val(), 10);
         $('#sectionWrapper').find('input').removeAttr("disabled");
@@ -20,4 +28,5 @@ $(document).ready(function() {
     };
 
     $("#NumberOfSections").change(changeNumberOfSections).change();
+
 });

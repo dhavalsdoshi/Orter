@@ -306,3 +306,29 @@ a,a:hover{
     font-size:0.7em;
 }
 
+.formContainer input[type=text].invalid{
+    border-bottom: 1px dashed #FFaa22;
+}
+
+.error{
+    z-index: 9999;
+    /* supply height to ensure consistent positioning for every browser */
+	background-color: #ff9933;
+	border:1px solid #ff6600;
+	color:#000;
+	padding:3px 10px;
+	margin-left:-2px;
+
+
+	/* CSS3 spicing for mozilla and webkit */
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius-bottomleft:0;
+	-moz-border-radius-topleft:0;
+	-webkit-border-bottom-left-radius:0;
+	-webkit-border-top-left-radius:0;
+
+	-moz-box-shadow:0 0 6px #ddd;
+	-webkit-box-shadow:0 0 6px #ddd;
+}
+
