@@ -129,8 +129,6 @@ body {
 }
 
 .sticky,.addStickyForm textarea,.ui-widget-content{
-	word-wrap: break-word;
-    cursor: pointer;
     background-color: #ffff88;
     border : 1px solid #ffff66;
     font-size: 0.7em;
@@ -139,39 +137,42 @@ body {
     -moz-border-radius: 4px 4px 15px 4px;
     margin-left: 5px;
     margin-top: 5px;
-	float:left;
-	width:47%;
-	height:75px;
+}
+
+.sticky,.addStickyForm textarea{
+    word-wrap: break-word;
+    cursor: pointer;
+    float:left;
+    width:47%;
+    height:75px;
     overflow: hidden;
     position:relative;
 }
 
-
-.aqua .sticky,.aqua .addStickyForm textarea{
+.aqua .sticky,.aqua .addStickyForm textarea, .aqua.ui-widget-content{
 	background-color: #ccffff;
     border : 1px solid #ccffdd;
 }
 
-.blue .sticky,.blue .addStickyForm textarea{
+.blue .sticky,.blue .addStickyForm textarea, .blue.ui-widget-content{
 	background-color: #17B6FF;
     border : 1px solid #17B6FF;
 }
 
-.orange .sticky,.orange .addStickyForm textarea{
+.orange .sticky,.orange .addStickyForm textarea, .orange.ui-widget-content{
 	background-color: #ffb058;
     border : 1px solid #ffb069;
 }
 
-.purple .sticky,.purple .addStickyForm textarea{
+.purple .sticky,.purple .addStickyForm textarea, .purple.ui-widget-content{
 	background-color: #d07ddf;
     border : 1px solid #d07def;
 
 }
 
-.green .sticky,.green .addStickyForm textarea{
+.green .sticky,.green .addStickyForm textarea, .green.ui-widget-content{
 	background-color: #bcee6b;
     border : 1px solid #bcee7c;
-
 }
 
 .ui-dialog{
@@ -275,12 +276,4 @@ body {
     position:absolute;
     top:60%;
     left:5%;
-}
-
-.addthis_default_style {
-    width: 2%;
-    float: right;
-}
-.addthis_default_style a.at300m, .addthis_default_style a.at300b{
-    padding: 3px 2px
 }

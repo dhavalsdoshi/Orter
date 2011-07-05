@@ -82,12 +82,18 @@ var Ideaboardz = function() {
     };
 
     var showLargeStickyDialog = function(addedPoint,sectionId,pointId){
+        var colorOfSticky = addedPoint.parents('.section').attr('class').split(/\s+/).pop();
+        var uiDialog = $('#largeStickyDialog').parent('.ui-widget-content');
+        uiDialog.removeClass(uiDialog.attr('class').split(/\s+/).pop())
+                .addClass(colorOfSticky);
+
         $('#largeStickyDialog').find('.stickyText').html(addedPoint.find('.stickyText').html());
         $('#largeStickyDialog').find('span.voteCount').html(addedPoint.find('.voteCount').html());
         $('#largeStickyDialog').find('.removeStickyButton').unbind('click').click(
                 function() {removeStickyCall(sectionId, pointId); $('#largeStickyDialog').dialog('close'); });
         $('#largeStickyDialog').find('.voteStickyButton').unbind('click').click(
                 function() {addVote(pointId)});
+
         $('#largeStickyDialog').dialog('open');
     };
 
@@ -99,8 +105,8 @@ var Ideaboardz = function() {
             success: function(result) {
                 var newVoteCount = parseInt($('#point'+pointId).find('.voteCount').html(),10)+1;
                 $('#point'+pointId+',#largeStickyDialog').find('.voteCount').html("+"+newVoteCount);
-                $('#point'+pointId+',#largeStickyDialog').find('.voteCount').hide('slow');
-                $('#point'+pointId+',#largeStickyDialog').find('.voteCount').show('slow');
+                $('#largeStickyDialog').find('.voteCount').css('text-decoration','blink');
+                setTimeout("$('#largeStickyDialog').find('.voteCount').css('text-decoration','none');", 3000);
             }
         });
     };
