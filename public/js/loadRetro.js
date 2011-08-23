@@ -1,7 +1,15 @@
+$.extend($.expr[':'], {
+  'containsi': function(elem, i, match, array)
+  {
+    return (elem.textContent || elem.innerText || '').toLowerCase()
+    .indexOf((match[3] || "").toLowerCase()) >= 0;
+  }
+});
+
 var filterStickies = function(){
   var text = $('#search').val();
-  $('div.sticky:contains("'+ text +'")').show();
-  $('div.sticky:not(:contains("'+ text +'"))').hide();
+  $('div.sticky:containsi("'+ text +'")').show();
+  $('div.sticky:not(:containsi("'+ text +'"))').hide();
 };
 var filterSection= function(){
   if($('#retro_section_id').length >0){
@@ -47,6 +55,10 @@ var Ideaboardz = function() {
                 addStickyForm.hide('slow');
                 addStickyTo(sectionId);
             });
+
+//            section.sortable({
+//                revert: true
+//            });
 
         });
     };
@@ -98,6 +110,35 @@ var Ideaboardz = function() {
             var pointId = $(this).attr('id').replace("point", "");
             showLargeStickyDialog(addedPoint,sectionId,pointId);
         });
+//
+//        addedPoint.draggable({
+//
+//            start: function(event, ui) {
+//                ui.helper.bind("click",
+//                        function(event) {
+//                            event.preventDefault();
+//                        });
+//            },
+//            stop: function(event, ui) {
+//                setTimeout(function() {
+//                    ui.helper.unbind("click");
+//                }, 3000);
+//            },
+//          connectToSortable: '#section8',
+//			    helper: "clone",
+//		    	revert: "invalid"
+//
+//        }
+//                );
+
+//        addedPoint.resizable({
+//          maxHeight: 250,
+//          maxWidth: 350,
+//          minHeight: 75,
+//          minWidth: 168,
+//          animate: true
+//        });
+
     };
 
     var showLargeStickyDialog = function(addedPoint,sectionId,pointId){
