@@ -1,3 +1,22 @@
+var filterStickies = function(){
+  var text = $('#search').val();
+  $('div.sticky:contains("'+ text +'")').show();
+  $('div.sticky:not(:contains("'+ text +'"))').hide();
+};
+var filterSection= function(){
+  if($('#retro_section_id').length >0){
+    var filterSectionId = $('#retro_section_id').val();
+    if(filterSectionId){
+      $('.section').removeClass('full').hide();
+      $("#section"+filterSectionId).addClass("full").show();
+    }
+    else{
+      $('.section').removeClass('full').show();
+    }
+  }
+};
+
+
 var Ideaboardz = function() {
 
     this.init = function() {
@@ -15,15 +34,15 @@ var Ideaboardz = function() {
             var addStickyForm = $('#section'+sectionId).find(".addStickyForm");
             var textInputArea = addStickyForm.find('textarea');
             textInputArea.keypress(function(e) {
-                    if(e.keyCode == 13){
-                        addStickyForm.hide('slow');
-                        addStickyTo(sectionId);
-                        return;
-                    }
-                    if(e.keyCode == 27){
-                        addStickyForm.hide('slow');
-                    }
-                });
+                if(e.keyCode == 13){
+                    addStickyForm.hide('slow');
+                    addStickyTo(sectionId);
+                    return;
+                }
+                if(e.keyCode == 27){
+                    addStickyForm.hide('slow');
+                }
+            });
             textInputArea.blur(function() {
                 addStickyForm.hide('slow');
                 addStickyTo(sectionId);
@@ -140,6 +159,7 @@ var Ideaboardz = function() {
         if(data && data[pointIndex]){
             removePointHtmlIfNotInData(pointIds, data[pointIndex].section_id);
         }
+        filterStickies();
     };
 
     var updateSticky =  function(point){
@@ -160,10 +180,11 @@ var Ideaboardz = function() {
     };
 
     this.refreshSections = function() {
-        $('.section:visible').each(function() {
-            var sectionId = $(this).attr('id').replace("section", "");
-            getSectionPoints(sectionId);
-        })
+      $('.section:visible').each(function() {
+        var sectionId = $(this).attr('id').replace("section", "");
+        getSectionPoints(sectionId);
+      });
+
     };
 };
 
@@ -176,5 +197,7 @@ $(document).ready(function() {
         width: 350,
         modal: true
     });
-    setInterval(ideaBoardz.refreshSections, 20000);
+    setInterval(ideaBoardz.refreshSections, 10000);
+    $('#search').keyup(filterStickies);
+    $('#retro_section_id').change(filterSection).change();
 });

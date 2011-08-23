@@ -15,17 +15,30 @@
 </head>
 <body>
 <div class="mainWrap">
-  <div class="whiteboard">
-    <div class="header">
+  <div class="topbar">
+    <div class="logoContainer">
       <a href="/" title="Ideaboardz" class="logo"><img src="/images/ideaboardz.png" alt="Ideaboardz"/></a>
+    </div>
+    <div class="filter">
+      <input type="text" placeholder="start typing to filter stickies" id="search"/>
+      <% if(@retrospective.sections.length > 1) %>
+        <%= label_tag("retro[section_id]","View Section")%>
+        <%= select("retro","section_id", @retrospective.sections.collect {|s| [ s.name, s.id ] }, {:include_blank => 'All Sections'}) %>
+      <% end %>
+    </div>
+    <div class="export">
+      <a id="excelExport" class="excelExport" href="/retros/export/<%= @retrospective.id %>/<%= @retrospective.name %>.xls" title="Export as excel" target="_blank"></a>
+      <a id="pdfExport" class="pdfExport" href="/retros/export/<%= @retrospective.id %>/<%= @retrospective.name %>.pdf" title="Export as pdf" target="_blank"></a>
+    </div>
+  </div>
+  <div class="whiteboard">
+
 
       <h2 class="ideaBoardTitle" id="ideaboardTitle"><%= @retrospective.name %></h2>
       <!--googleoff: all-->
       <noscript>Please turn javascript on or move to a browser which supports it</noscript>
       <!--googleon: all-->
-      <a id="excelExport" class="excelExport" href="/retros/export/<%= @retrospective.id %>/<%= @retrospective.name %>.xls" title="Export as excel" target="_blank"></a>
-      <a id="pdfExport" class="pdfExport" href="/retros/export/<%= @retrospective.id %>/<%= @retrospective.name %>.pdf" title="Export as pdf" target="_blank"></a>
-    </div>
+
     <%
          row_one_sections, row_two_sections = get_rows_for_sections(@retrospective.sections)
     %>

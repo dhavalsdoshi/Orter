@@ -51,28 +51,54 @@ body {
     text-align: center;
 }
 
-.header{
+.topbar,.header{
     overflow: hidden;
     width: 99%;
 }
 
+.filter{
+  float: left;
+  width: 55%;
+  min-width: 250px;
+}
+
+#search{
+  width: 40%;
+  float: left;
+  margin: 20px 0 20px 10px;
+}
+
+.filter label, .filter select{
+  margin: 20px 0 0 10px
+}
+
+.logoContainer{
+  float:left;
+  width: 24%;
+  min-width: 250px;
+}
+
 .logo img{
-    height: 30px;
-    width: auto;
+  height: 45px;
+  width: 245px;
 }
 
 .logo{
-    float:left;
     margin:15px 0 15px 15px;
-    width: 10%;
+}
+
+.export{
+  float: right;
+  width: 15%;
+  min-width: 130px;
 }
 
 .pdfExport, .excelExport{
-    margin: 15px 0;
+    margin: 0 10px 15px 10px;
     display: inline;
-    float: left;
+    float: right;
     height:55px;
-    width: 4%;
+    width: 45px;
 }
 
 .pdfExport {
@@ -85,9 +111,7 @@ body {
 
 .ideaBoardTitle{
     margin: 15px;
-    display: inline;
-    float: left;
-    width: 70%;
+    text-align: center;
 }
 
 .sections{
@@ -191,6 +215,9 @@ body {
 .full{
     width: 99%;
 }
+.section.full{
+    width: 99%;
+}
 
 .half{
     width: 49%;
@@ -209,6 +236,7 @@ body {
     width:100%;
     padding:0 0 0.5em 0;
 }
+
 
 .addStickyButton {
     background:transparent url(../images/Add-20.png) no-repeat scroll 0 0;
