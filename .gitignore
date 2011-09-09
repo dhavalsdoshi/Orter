@@ -1,0 +1,10 @@
+log/*
+*#
+.#*
+TAGS
+.idea
+*.log
+.bundle/*
+tmp
+.rvmrc
+*~
