@@ -58,7 +58,7 @@ Rails::Initializer.run do |config|
   # config.active_record.default_timezone = :utc
   class Logger
     def format_message(severity, timestamp, progname, msg)
-      "#{timestamp} #{severity.to_s} #{msg.gsub(/\s/,' ')}\n"
+      "#{timestamp} #{severity.to_s} #{msg.to_s.gsub(/\s/,' ')}\n"
     end
   end
 
