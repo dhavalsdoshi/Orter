@@ -19,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect 'retros/export/:id/:name.:format', :controller => 'retros', :action => 'export'
 
-  map.connect 'admin/show_deleted/:retro_name/:retro_id/', :controller =>'admin', :action => 'deleted_points'
+  map.connect 'admin/show_deleted/:retro_name/:retro_id/devilthegr8', :controller =>'admin', :action => 'deleted_points'
   map.connect 'admin/restore_deleted/:point_id', :controller =>'admin', :action => 'restore_deleted'
 
   # The priority is based upon order of creation: first created -> highest priority.
