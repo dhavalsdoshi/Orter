@@ -9,10 +9,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 6) do
+
+  create_table "deleted_points", :force => true do |t|
+    t.integer  "section_id"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  create_table "participants", :force => true do |t|
+    t.integer  "retro_id"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "points", :force => true do |t|
-    t.integer  "section_id", :limit => 11
+    t.integer  "section_id"
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -26,16 +41,17 @@ ActiveRecord::Schema.define(:version => 4) do
   end
 
   create_table "sections", :force => true do |t|
-    t.integer  "retro_id",   :limit => 11
+    t.integer  "retro_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "votes", :force => true do |t|
-    t.integer  "point_id",   :limit => 11
+    t.integer  "point_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "participant_id"
   end
 
 end
