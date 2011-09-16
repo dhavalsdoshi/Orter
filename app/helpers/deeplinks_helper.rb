@@ -6,15 +6,13 @@ module DeeplinksHelper
 
   def get_sticky_color(section_number)
     colors = ["yellow","orange", "green","blue","purple","aqua"]
-    return colors[section_number%colors.length]
+    colors[section_number%colors.length]
   end
 
   def get_rows_for_sections(sections)
-    if sections.size <= 3
-      return sections, []
-    else
-      return sections.slice(0..((sections.size/2.0).ceil)-1),sections.slice((sections.size/2.0).ceil, sections.size-1) 
-    end
+    return sections, [] if sections.size <= 3
+
+    return sections.slice(0..((sections.size/2.0).ceil)-1), sections.slice((sections.size/2.0).ceil, sections.size-1)
   end
 
 end
