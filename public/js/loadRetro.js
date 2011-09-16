@@ -75,7 +75,7 @@ var Ideaboardz = function() {
             if(stickyText.length>0){
                 $('.stickyText').val("");
                 $.ajax({
-                    url: '/sections/' + sectionId + '/points.json?point[message]=' + encodeURIComponent(stickyText),
+                    url: '/points.json?point[section_id]='+ sectionId +'&point[message]=' + encodeURIComponent(stickyText),
                     type: "POST",
                     success: function(result) {
                         addSticky(result);
