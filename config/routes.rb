@@ -14,6 +14,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'retrospective/for/:name', :controller =>'deeplinks', :action => 'index_old'
   map.connect 'retrospective/for/:name/:id', :controller =>'deeplinks', :action => 'index'
 
+  map.connect 'retros/:retro_id/points.:format', :controller =>'points', :action => 'index_for_retro'
+
   map.connect 'sections/:section_id/:controller/delete/:id.:format', :action => 'destroy'
 
   map.connect 'retros/export/:id/:name.:format', :controller => 'retros', :action => 'export'

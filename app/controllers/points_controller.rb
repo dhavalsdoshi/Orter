@@ -9,6 +9,15 @@ class PointsController < ApplicationController
     end
   end
 
+  def index_for_retro
+    retro = Retro.find(params[:retro_id])
+    points = retro.all_points
+    respond_to do |format|
+      format.xml { render :xml => points.to_xml(:include => :votes) }
+      format.json { render :json => points.to_json(:include => :votes) }
+    end
+  end
+
   def create
     point_params = params[:point]
     point_params[:message] = CGI.escapeHTML(point_params[:message])
