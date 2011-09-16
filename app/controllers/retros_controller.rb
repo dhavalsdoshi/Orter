@@ -6,9 +6,8 @@ class RetrosController < ApplicationController
   def show
     @retro = Retro.find(params[:id])
     respond_to do |format|
-      format.xml  { render :xml => @retro }
-      p @retro
-	  format.json  { render :json => @retro.to_json }
+      format.xml { render :xml => @retro }
+      format.json { render :json => @retro.to_json }
     end
   end
 
@@ -30,16 +29,6 @@ class RetrosController < ApplicationController
     end
   end
 
-  #because IE sucks
-  def last_created_retro_id
-	@retro_id = session['created_retro_id'] || ''
-	@retro = Retro.find @retro_id
-	respond_to do |format|
-      format.xml  { render :xml => @retro }
-	  format.json  { render :json => @retro.to_json }
-    end
-  end
-  
   def export
     @retro = Retro.find(params[:id])
     headers["Content-Disposition"] = "attachment; filename=\"#{@retro.name}.#{params[:format]}\""
