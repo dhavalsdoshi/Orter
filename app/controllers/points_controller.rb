@@ -1,14 +1,5 @@
 class PointsController < ApplicationController
 
-  def index
-    section = Section.find(params[:section_id])
-    points = section.points
-    respond_to do |format|
-      format.xml { render :xml => points.to_xml(:include => :votes) }
-      format.json { render :json => points.to_json(:include => :votes) }
-    end
-  end
-
   def index_for_retro
     retro = Retro.find(params[:retro_id])
     points = retro.all_points
@@ -38,11 +29,8 @@ class PointsController < ApplicationController
   end
 
   def destroy
-     point = Point.find(params[:id])
-     point.destroy
-
+     point = Point.destroy(params[:id])
      LOGGER.info("POINT: {#{point.message}} deleted from SECTION: {#{point.section.name}}")
-
      respond_to do |format|
        format.xml  { head :ok }
        format.json  { head :ok }

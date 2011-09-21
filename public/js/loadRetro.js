@@ -11,6 +11,7 @@ var filterStickies = function(){
   $('div.sticky:containsi("'+ text +'")').show();
   $('div.sticky:not(:containsi("'+ text +'"))').hide();
 };
+
 var filterSection= function(){
   if($('#retro_section_id').length >0){
     var filterSectionId = $('#retro_section_id').val();
@@ -24,18 +25,24 @@ var filterSection= function(){
   }
 };
 
-
 var Ideaboardz = function() {
-
+    var that = this;
     this.init = function() {
         fillSectionsAndAttachEvents();
+        that.refreshSections();
     };
 
     var fillSectionsAndAttachEvents = function() {
+        var showAddSticky = function(sectionId) {
+          var addStickyForm = $('#section'+sectionId).find(".addStickyForm");
+          var textInputArea = addStickyForm.find('textarea');
+          addStickyForm.show('slow');
+          textInputArea.focus();
+        };
+
         $('.section').each(function(){
             var section = $(this);
             var sectionId = section.attr('id').replace('section','');
-            getSectionPoints(sectionId);
             $(this).find('.addStickyButton').click(function() {
                 showAddSticky(sectionId);
             });
@@ -56,19 +63,10 @@ var Ideaboardz = function() {
                 addStickyTo(sectionId);
             });
 
-//            section.sortable({
-//                revert: true
-//            });
-
         });
     };
 
-    var showAddSticky = function(sectionId) {
-        var addStickyForm = $('#section'+sectionId).find(".addStickyForm");
-        var textInputArea = addStickyForm.find('textarea');
-        addStickyForm.show('slow');
-        textInputArea.focus();
-    };
+
 
     var addStickyTo = function(sectionId) {
             var stickyText = $('#section'+sectionId).find('textarea').val().trim();
@@ -82,10 +80,6 @@ var Ideaboardz = function() {
                     }
                 });
             }
-    };
-
-    var getSectionPoints = function(sectionid) {
-        $.getJSON("/sections/" + sectionid + "/points.json", displaySectionPoints);
     };
 
     var addSticky = function(point) {
@@ -110,35 +104,6 @@ var Ideaboardz = function() {
             var pointId = $(this).attr('id').replace("point", "");
             showLargeStickyDialog(addedPoint,sectionId,pointId);
         });
-//
-//        addedPoint.draggable({
-//
-//            start: function(event, ui) {
-//                ui.helper.bind("click",
-//                        function(event) {
-//                            event.preventDefault();
-//                        });
-//            },
-//            stop: function(event, ui) {
-//                setTimeout(function() {
-//                    ui.helper.unbind("click");
-//                }, 3000);
-//            },
-//          connectToSortable: '#section8',
-//			    helper: "clone",
-//		    	revert: "invalid"
-//
-//        }
-//                );
-
-//        addedPoint.resizable({
-//          maxHeight: 250,
-//          maxWidth: 350,
-//          minHeight: 75,
-//          minWidth: 168,
-//          animate: true
-//        });
-
     };
 
     var showLargeStickyDialog = function(addedPoint,sectionId,pointId){
@@ -186,8 +151,8 @@ var Ideaboardz = function() {
     };
 
     var displaySectionPoints = function(data) {
-        pointIds = new Array();
-        for (var pointIndex in data) {
+        var allPointIds = [];
+        for(var pointIndex in data) {
             var point = data[pointIndex];
             if (!isAlreadyExisting(point.id)) {
                 addSticky(point);
@@ -195,10 +160,10 @@ var Ideaboardz = function() {
             else {
                 updateSticky(point);
             }
-            pointIds.push(point.id + "");
+            allPointIds.push(point.id + "");
         }
         if(data && data[pointIndex]){
-            removePointHtmlIfNotInData(pointIds, data[pointIndex].section_id);
+            removePointHtmlIfNotInData(allPointIds);
         }
         filterStickies();
     };
@@ -207,10 +172,10 @@ var Ideaboardz = function() {
         $('#point'+point.id).find('.voteCount').html("+"+point.votes.length);
     };
 
-    var removePointHtmlIfNotInData = function(pointIds, sectionId) {
-        $('#section' + sectionId + ' .points').find('.sticky').each(function() {
+    var removePointHtmlIfNotInData = function(allPointIdsFromServer) {
+        $('.points').find('.sticky').each(function() {
             var pointId = $(this).attr('id').replace('point', '');
-            if (jQuery.inArray(pointId, pointIds) == -1) {
+            if (jQuery.inArray(pointId, allPointIdsFromServer) == -1) {
                 removeSticky(pointId);
             }
         });
@@ -221,11 +186,8 @@ var Ideaboardz = function() {
     };
 
     this.refreshSections = function() {
-      $('.section:visible').each(function() {
-        var sectionId = $(this).attr('id').replace("section", "");
-        getSectionPoints(sectionId);
-      });
-
+      var retroId = $('meta[name="retroId"]').attr('content');
+      $.getJSON("/retros/" + retroId + "/points.json", displaySectionPoints);
     };
 };
 
