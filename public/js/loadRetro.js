@@ -86,13 +86,12 @@ var Ideaboardz = function() {
         var stickyTemplateHtml = $('#stickyTemplate').html();
         $(stickyTemplateHtml).appendTo('#section' + point.section_id + ' .points');
         var addedPoint = $('#section' + point.section_id).find('div.sticky:last');
-        addedPoint.hide();
-        addedPoint.find('.stickyText').html(point.message);
-        addedPoint.attr('title', point.message);
-        addedPoint.find('.updatedAt').html(point.updated_at);
-        addedPoint.attr('id', 'point' + point.id);
+        addedPoint.hide().attr('title', point.message)
+          .attr('id', 'point' + point.id)
+          .attr('data-id',point.id)
+          .find('.stickyText').html(point.message);
         if (point.votes)
-            addedPoint.find('.voteCount').html("+"+point.votes.length);
+            addedPoint.find('.voteCount .count').html(point.votes.length);
         attachStickyEvents(addedPoint);
         addedPoint.show('slow');
     };
@@ -101,7 +100,7 @@ var Ideaboardz = function() {
         addedPoint.click(function()
         {
             var sectionId = $(this).parents('.section').attr('id').replace("section", "");
-            var pointId = $(this).attr('id').replace("point", "");
+            var pointId = $(this).attr('data-id');
             showLargeStickyDialog(addedPoint,sectionId,pointId);
         });
     };
@@ -113,7 +112,7 @@ var Ideaboardz = function() {
                 .addClass(colorOfSticky);
 
         $('#largeStickyDialog').find('.stickyText').html(addedPoint.find('.stickyText').html());
-        $('#largeStickyDialog').find('span.voteCount').html(addedPoint.find('.voteCount').html());
+        $('#largeStickyDialog').find('span.voteCount .count').html(addedPoint.find('.voteCount .count').html());
         $('#largeStickyDialog').find('.removeStickyButton').unbind('click').click(
                 function() {removeStickyCall(sectionId, pointId); $('#largeStickyDialog').dialog('close'); });
         $('#largeStickyDialog').find('.voteStickyButton').unbind('click').click(
@@ -128,10 +127,8 @@ var Ideaboardz = function() {
             type: "POST",
             data: {"vote": {"point_id": parseInt(pointId, 10) }},
             success: function(result) {
-                var newVoteCount = parseInt($('#point'+pointId).find('.voteCount').html(),10)+1;
-                $('#point'+pointId+',#largeStickyDialog').find('.voteCount').html("+"+newVoteCount);
-                $('#largeStickyDialog').find('.voteCount').css('text-decoration','blink');
-                setTimeout("$('#largeStickyDialog').find('.voteCount').css('text-decoration','none');", 3000);
+                var newVoteCount = parseInt($('#point'+pointId).find('.voteCount .count').html(),10)+1;
+                $('#point'+pointId+',#largeStickyDialog').find('.voteCount .count').html(newVoteCount);
             }
         });
     };
@@ -169,12 +166,12 @@ var Ideaboardz = function() {
     };
 
     var updateSticky =  function(point){
-        $('#point'+point.id).find('.voteCount').html("+"+point.votes.length);
+        $('#point'+point.id).find('.voteCount .count').html(point.votes.length);
     };
 
     var removePointHtmlIfNotInData = function(allPointIdsFromServer) {
         $('.points').find('.sticky').each(function() {
-            var pointId = $(this).attr('id').replace('point', '');
+            var pointId = $(this).attr('data-id');
             if (jQuery.inArray(pointId, allPointIdsFromServer) == -1) {
                 removeSticky(pointId);
             }
@@ -201,6 +198,19 @@ $(document).ready(function() {
         modal: true
     });
     setInterval(ideaBoardz.refreshSections, 10000);
+    var sortStickies= function(){
+      if($(this).val() == "votes"){
+        $('.section').each(function(){
+          $($(this).find('.sticky')).tsort('.voteCount .count',{order:"desc"});
+        });
+      }
+      else{
+        $('.section').each(function(){
+           $($(this).find('.sticky')).tsort({attr:"data-id", order:"asc"});
+        });
+      }
+    };
+    $('#sortBy').change(sortStickies).change();
     $('#search').keyup(filterStickies);
     $('#retro_section_id').change(filterSection).change();
 });

@@ -19,16 +19,21 @@
     <div class="logoContainer">
       <a href="/" title="Ideaboardz" class="logo"><img src="/images/ideaboardz.png" alt="Ideaboardz"/></a>
     </div>
-    <div class="filter">
-      <input type="text" placeholder="start typing to filter stickies" id="search"/>
+
+    <div class="export">
+      <a id="excelExport" class="excelExport" href="/retros/export/<%= @retrospective.id %>/<%= @retrospective.name %>.xls" title="Export as excel" target="_blank"></a>
+      <a id="pdfExport" class="pdfExport" href="/retros/export/<%= @retrospective.id %>/<%= @retrospective.name %>.pdf" title="Export as pdf" target="_blank"></a>
+    </div>
+  </div>
+  <div class="filter">
+    <input type="text" placeholder="start typing to filter stickies" id="search"/>
+    <div class="sort">
       <% if(@retrospective.sections.length > 1) %>
         <%= label_tag("retro[section_id]","View Section")%>
         <%= select("retro","section_id", @retrospective.sections.collect {|s| [ s.name, s.id ] }, {:include_blank => 'All Sections'}) %>
       <% end %>
-    </div>
-    <div class="export">
-      <a id="excelExport" class="excelExport" href="/retros/export/<%= @retrospective.id %>/<%= @retrospective.name %>.xls" title="Export as excel" target="_blank"></a>
-      <a id="pdfExport" class="pdfExport" href="/retros/export/<%= @retrospective.id %>/<%= @retrospective.name %>.pdf" title="Export as pdf" target="_blank"></a>
+      <%= label_tag(:sortBy,"Sort By")%>
+      <%= select_tag(:sortBy,options_from_collection_for_select(['created_time', 'votes'],:to_s,:to_s),:id=>"sortBy")%>
     </div>
   </div>
   <div class="whiteboard">
@@ -59,11 +64,7 @@
       <div id="stickyTemplate" class="col_right">
         <div class="sticky">
           <div class="stickyText"></div>
-          <div class="stickyActions hide  ">
-            <span class="voteStickyButton"></span>
-            <span class="removeStickyButton"></span>
-          </div>
-          <div class="voteCount"></div>
+          <div class="voteCount">+<span class="count">0</span></div>
         </div>
       </div>
     </div>
@@ -75,7 +76,7 @@
     <div class="stickyActions">
       <span class="voteStickyButton">Vote</span>
       <span class="removeStickyButton">Remove</span>
-      <div class="voteCountContainer">Number of votes: <span class="voteCount"></span></div>
+      <div class="voteCountContainer">Number of votes: <span class="voteCount">+<span class="count"></span></span></div>
     </div>
   </div>
 </div>
@@ -83,6 +84,7 @@
 <script type="text/javascript" src="/js/jquery-ui-1.8.2.custom.min.js"></script>
 <script src='http://www.google-analytics.com/ga.js' type='text/javascript'></script>
 <script src='/js/analytics.js' type='text/javascript'></script>
+<script type="text/javascript" src="/js/jquery.tinysort.js"></script>
 <script type="text/javascript" src="/js/loadRetro.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@ a:focus{
 body {
 	background: #cccccc none repeat scroll 0 0;
 	font-family: Comic Sans MS,cursive;
-    padding: 30px;
+    padding: 10px 30px;
     min-height: 1000px;
 }
 
@@ -58,24 +58,29 @@ body {
 
 .filter{
   float: left;
-  width: 55%;
+  width: 99%;
   min-width: 250px;
 }
 
 #search{
-  width: 40%;
+  width: 30%;
   float: left;
-  margin: 20px 0 20px 10px;
+  margin: 0px 0 20px 10px;
 }
 
 .filter label, .filter select{
-  margin: 20px 0 0 10px
+  margin: 0px 0 0 10px
 }
 
 .logoContainer{
   float:left;
   width: 24%;
   min-width: 250px;
+}
+
+.filter .sort{
+  float: right;
+  padding-right: 20px;
 }
 
 .logo img{
