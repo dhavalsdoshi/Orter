@@ -66,7 +66,6 @@ Rails::Initializer.run do |config|
   LOGGER = Logger.new("#{RAILS_ROOT}/log/retro.log",100, 50 * 1024 * 1024)
 
   config.action_mailer.delivery_method = :smtp
-  CONTEXT_PATH = 'http://localhost:3000'
   config.action_mailer.smtp_settings = {
   :address => "localhost",
   :port => 25,
