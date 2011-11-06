@@ -50,7 +50,7 @@
             </ul>
             <div class="formContainer">
 
-             <% form_tag ({:controller => :retros},{:method => "post",:novalidate => ""})  do %>
+             <% form_tag({:controller => :retros},{:method => "post",:novalidate => ""}) do %>
                   <%= label_tag(:name, "Name *") %>
                   <%= text_field_tag(:name, "",:required => "required","data-message"=>"please fill in a name") %>
                   <%= label_tag(:description, "Description *") %>
@@ -88,9 +88,9 @@
         <div class="help purple sideNote">
           <div class="sectionContent">
             <p>Best viewed on <br/>
-              <a href="http://www.google.com/chrome" target="_new" title="download chrome">chrome</a>,
-              <a href="http://www.mozilla.com/en-US/" target="_new" title="download firefox">firefox</a> or
-              <a href="http://www.apple.com/safari/download/" target="_new" title="download safari">safari</a></p>
+              <a href="http://www.google.com/chrome" target="_blank" title="download chrome">chrome</a>,
+              <a href="http://www.mozilla.com/en-US/" target="_blank" title="download firefox">firefox</a> or
+              <a href="http://www.apple.com/safari/download/" target="_blank" title="download safari">safari</a></p>
           </div>
         </div>
 
