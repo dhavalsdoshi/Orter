@@ -286,6 +286,18 @@ body {
     opacity: 0.5;
     filter: alpha(opacity = 50);
     font-weight:normal;
+    clear: both;
+    margin-top: 10px;
+    font-weight:bold;
+    position:absolute;
+    top:60%;
+    left:5%;
+}
+
+.sticky:hover .voteCount{
+  font-weight: bold;
+  opacity: 1;
+  filter: alpha(opacity = 100);
 }
 
 #largeStickyDialog .stickyText{
@@ -301,13 +313,4 @@ body {
 #largeStickyDialog .voteCount{
     position: relative;
     top: 0;
-}
-
-.voteCount{
-    clear: both;
-    margin-top: 10px;
-    font-weight:bold;
-    position:absolute;
-    top:60%;
-    left:5%;
 }
