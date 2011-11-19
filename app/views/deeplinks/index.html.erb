@@ -33,7 +33,7 @@
         <%= select("retro","section_id", @retrospective.sections.collect {|s| [ s.name, s.id ] }, {:include_blank => 'All Sections'}) %>
       <% end %>
       <%= label_tag(:sortBy,"Sort By")%>
-      <%= select_tag(:sortBy,options_from_collection_for_select(['created_time', 'votes'],:to_s,:to_s),:id=>"sortBy")%>
+      <%= select_tag(:sortBy,options_from_collection_for_select(['created time', 'votes'],:to_s,:to_s),:id=>"sortBy")%>
     </div>
   </div>
   <div class="whiteboard">
