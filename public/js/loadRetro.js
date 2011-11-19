@@ -25,6 +25,10 @@ var filterSection= function(){
   }
 };
 
+
+//TODO: extract all urls
+//TODO: move generic methods to common place
+
 var Ideaboardz = function() {
     var that = this;
     this.init = function() {
