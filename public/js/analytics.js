@@ -1,10 +1,5 @@
-$(document).ready(function() {
-    try{
-    var pageTracker = _gat._getTracker("UA-12571339-1");
-    pageTracker._setAllowLinker(true);
-    pageTracker._trackPageview();
-    }
-    catch(e){
-        
-    }
-});
+var $a = {
+  trackEvent : function(resource, action, data){
+    _gaq.push(['_trackEvent', resource, action, data]);
+  }
+};

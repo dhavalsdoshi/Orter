@@ -76,6 +76,7 @@ var Ideaboardz = function() {
             var stickyText = $('#section'+sectionId).find('textarea').val().trim();
             if(stickyText.length>0){
                 $('.stickyText').val("");
+                $a.trackEvent('point', 'create', stickyText);
                 $.ajax({
                     url: '/points.json?point[section_id]='+ sectionId +'&point[message]=' + encodeURIComponent(stickyText),
                     type: "POST",
@@ -138,6 +139,7 @@ var Ideaboardz = function() {
     };
 
     var removeStickyCall = function(sectionId, pointId) {
+        $a.trackEvent('point', 'delete', $('#point' + pointId + " .stickyText").text());
         removeSticky(pointId);
         $.ajax({
             url: "/sections/" + sectionId + "/points/delete/" + pointId + ".json",
@@ -217,4 +219,7 @@ $(document).ready(function() {
     $('#sortBy').change(sortStickies).change();
     $('#search').keyup(filterStickies);
     $('#retro_section_id').change(filterSection).change();
+    $("#pdfExport,#excelExport").click(
+      function(){$a.trackEvent('board', $(this).attr('id'),window.location.pathname.replace('/for/','') );
+    });
 });

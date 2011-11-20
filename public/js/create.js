@@ -28,5 +28,5 @@ $(document).ready(function() {
     };
 
     $("#NumberOfSections").change(changeNumberOfSections).change();
-
+    $(".formContainer form").submit(function(){$a.trackEvent('board', 'create', $('#name').val());});
 });
