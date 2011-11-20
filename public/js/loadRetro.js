@@ -110,7 +110,7 @@ var Ideaboardz = function() {
     };
 
     var showLargeStickyDialog = function(addedPoint,sectionId,pointId){
-        var colorOfSticky = addedPoint.parents('.section').attr('class').split(/\s+/).pop();
+        var colorOfSticky = addedPoint.parents('.section').attr('data-color');
         var uiDialog = $('#largeStickyDialog').parent('.ui-widget-content');
         uiDialog.removeClass(uiDialog.attr('class').split(/\s+/).pop())
                 .addClass(colorOfSticky);

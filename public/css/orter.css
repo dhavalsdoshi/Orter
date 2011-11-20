@@ -26,6 +26,18 @@ body {
     display:none;
 }
 
+.half{
+    width: 49%;
+}
+
+.oneThird{
+    width: 33%;
+}
+
+.full{/* keep ot after all the half and one thirds*/
+    width: 99%;
+}
+
 .mainWrap {
 	margin: 0 auto;
     overflow: auto;
@@ -217,24 +229,11 @@ body {
     min-width:10em;    
 }
 
-.full{
-    width: 99%;
-}
-.section.full{
-    width: 99%;
-}
-
-.half{
-    width: 49%;
-}
-
-.oneThird{
-    width: 33%;
-}
 
 .sectionTitle{
     display: inline;
 }
+
 
 .sectionTitleArea{
     overflow:auto;
