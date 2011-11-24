@@ -17,10 +17,8 @@ class PointsController < ApplicationController
         flash[:notice] = 'Point was successfully created.'
         LOGGER.info("POINT: {#{point.message}} created in SECTION: {#{point.section.name}}")
 
-        format.xml { render :xml => point, :status => :created, :location => point }
         format.json { render :json => point.to_json, :status => :created, :location => point.to_json }
       else
-        format.xml { render :xml => point.errors, :status => :unprocessable_entity }
         format.json { render :json => point.errors.to_json, :status => :unprocessable_entity }
       end
     end
@@ -30,7 +28,6 @@ class PointsController < ApplicationController
      point = Point.destroy(params[:id])
      LOGGER.info("POINT: {#{point.message}} deleted from SECTION: {#{point.section.name}}")
      respond_to do |format|
-       format.xml  { head :ok }
        format.json  { head :ok }
      end
    end

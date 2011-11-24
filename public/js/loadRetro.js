@@ -171,7 +171,7 @@ var Ideaboardz = function() {
     };
 
     var updateSticky =  function(point){
-        $('#point'+point.id).find('.voteCount .count').html(point.votes.length);
+        $('#point'+point.id).find('.voteCount .count').html(point.votes_count);
     };
 
     var removePointHtmlIfNotInData = function(allPointIdsFromServer) {

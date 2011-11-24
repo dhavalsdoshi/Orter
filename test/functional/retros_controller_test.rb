@@ -7,8 +7,4 @@ class RetrosControllerTest < ActionController::TestCase
     end
   end
 
-  def test_should_show_retro
-    get :show, :id => retros(:one).id
-    assert_response :success
-  end
 end

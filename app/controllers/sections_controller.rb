@@ -10,8 +10,7 @@ class SectionsController < ApplicationController
     @sections = @retro.sections.find(:all)
 
     respond_to do |format|
-      format.xml  { render :xml => @sections }
-	  format.json  { render :json => @sections.to_json }
+  	  format.json  { render :json => @sections.to_json }
     end
   end
 
@@ -19,8 +18,7 @@ class SectionsController < ApplicationController
     @section = @retro.sections.find(params[:id])
 
     respond_to do |format|
-      format.xml  { render :xml => @section }
-	  format.json  { render :json => @section.to_json }
+	    format.json  { render :json => @section.to_json }
     end
   end
 
@@ -30,11 +28,9 @@ class SectionsController < ApplicationController
     respond_to do |format|
       if @section.save
         flash[:notice] = 'Section was successfully created.'
-        format.xml  { render :xml => @section, :status => :created, :location => @section }
-		format.json  { render :json => @section.to_json, :status => :created, :location => @section.to_json }
+    		format.json  { render :json => @section.to_json, :status => :created, :location => @section.to_json }
       else
-        format.xml  { render :xml => @section.errors, :status => :unprocessable_entity }
-		format.json  { render :json => @section.to_json, :status => :unprocessable_entity, :location => @section.to_json }
+		    format.json  { render :json => @section.to_json, :status => :unprocessable_entity, :location => @section.to_json }
       end
     end
   end

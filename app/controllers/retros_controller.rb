@@ -3,14 +3,6 @@ class RetrosController < ApplicationController
   def new
   end
 
-  def show
-    @retro = Retro.find(params[:id])
-    respond_to do |format|
-      format.xml { render :xml => @retro }
-      format.json { render :json => @retro.to_json }
-    end
-  end
-
   def create
     @retro = Retro.new({:name =>CGI.escapeHTML(params[:name]), :description =>CGI.escapeHTML(params[:description])})
 
