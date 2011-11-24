@@ -95,8 +95,7 @@ var Ideaboardz = function() {
           .attr('id', 'point' + point.id)
           .attr('data-id',point.id)
           .find('.stickyText').html(point.message);
-        if (point.votes)
-            addedPoint.find('.voteCount .count').html(point.votes.length);
+            addedPoint.find('.voteCount .count').html(point.votes_count);
         attachStickyEvents(addedPoint);
         addedPoint.show('slow');
     };

@@ -1,11 +1,9 @@
 class PointsController < ApplicationController
 
   def index_for_retro
-    retro = Retro.find(params[:retro_id])
-    points = retro.all_points
+    points = Retro.find(params[:retro_id]).points
     respond_to do |format|
-      format.xml { render :xml => points.to_xml(:include => :votes) }
-      format.json { render :json => points.to_json(:include => :votes) }
+      format.json { render :json => points.to_json(:methods => :votes_count) }
     end
   end
 
