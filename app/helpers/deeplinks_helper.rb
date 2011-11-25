@@ -11,8 +11,8 @@ module DeeplinksHelper
 
   def get_rows_for_sections(sections)
     return sections, [] if sections.size <= 3
-
-    return sections.slice(0..((sections.size/2.0).ceil)-1), sections.slice((sections.size/2.0).ceil, sections.size-1)
+    return sections.slice(0..1), sections.slice(2..3) if sections.size == 4
+    return sections.slice(0..2), sections.slice(3, sections.size-1)
   end
 
 end
