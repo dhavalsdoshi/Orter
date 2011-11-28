@@ -10,7 +10,7 @@ $(document).ready(function() {
     $(".flip").click(function(e) {
         $(".formContainer").show("slow");
         $(".formContainer").parents(".sideNote").expose({
-            onBeforeClose:
+            onClose:
                     function() {
                         $(".formContainer").hide("slow");
                         $(".error").hide("slow");
