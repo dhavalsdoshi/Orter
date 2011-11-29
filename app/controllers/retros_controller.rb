@@ -21,6 +21,16 @@ class RetrosController < ApplicationController
     end
   end
 
+  def show
+    @retrospective = Retro.find_by_id_and_name(params[:id],params[:name], :include => :sections)
+    render :action => :show
+  end
+
+  def show_old
+    @retrospective = Retro.find_by_name(params[:name], :include => :sections)
+    render :action => :show
+  end
+
   def export
     @retro = Retro.find(params[:id])
     headers["Content-Disposition"] = "attachment; filename=\"#{@retro.name}.#{params[:format]}\""

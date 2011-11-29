@@ -3,8 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => :retros, :action => :new
   map.connect 'retros/:retro_id/points.:format', :controller =>'points', :action => 'index_for_retro'
 
-  map.connect 'for/:name', :controller =>'deeplinks', :action => 'index_old'
-  map.connect 'for/:name/:id', :controller =>'deeplinks', :action => 'index'
+  map.connect 'for/:name', :controller =>'retros', :action => 'show_old'
+  map.connect 'for/:name/:id', :controller =>'retros', :action => 'show'
 
   map.connect 'sections/:section_id/points/delete/:id.:format', :controller =>'points', :action => 'destroy'
 
