@@ -174,9 +174,15 @@ a,a:hover{
     z-index:2;
     margin: 1em;
     width: 40%;
-    border-top: #000 solid 10px;
-    -moz-border-top-colors: #555 #666 #777 #888 #888 #777 #666 #555;
+    padding: 0.2em;
+    position: absolute;
 }
+.what img{
+  width: 100%;
+  max-width: 600px;
+
+}
+
 .try{
     top:91px;
     right:69px;

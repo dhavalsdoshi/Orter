@@ -24,7 +24,7 @@
 
     <div class="content">
       <div class="leftBar half left">
-        <div class="what sideNote">
+        <div class="what">
           <h2 class="sectionTitle">How does it look</h2>
 
           <div>
@@ -50,7 +50,7 @@
               <li><a href="#" class="flip">Create</a> my own IdeaBoard</li>
               <li>Share the url</li>
             </ul>
-            <div class="formContainer">
+            <div class="formContainer" style="display:none">
 
              <% form_tag({:controller => :retros},{:method => "post",:novalidate => ""}) do %>
                   <%= label_tag(:name, "Name *") %>
