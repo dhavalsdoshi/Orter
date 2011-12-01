@@ -24,6 +24,16 @@ class PointsController < ApplicationController
     end
   end
 
+  def tag
+    point_ids = params[:point_ids].split(",")
+    points = Point.find(:all, :conditions => {:id => point_ids} )
+    points.each { |p|
+      p.tag_list = params[:tag]
+      p.save
+    }
+    head :created
+  end
+
   def destroy
      point = Point.destroy(params[:id])
      LOGGER.info("POINT: {#{point.message}} deleted from SECTION: {#{point.section.name}}")
