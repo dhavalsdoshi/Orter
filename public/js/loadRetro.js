@@ -1,31 +1,3 @@
-$.extend($.expr[':'], {
-  'containsi': function(elem, i, match, array)
-  {
-    return (elem.textContent || elem.innerText || '').toLowerCase()
-    .indexOf((match[3] || "").toLowerCase()) >= 0;
-  }
-});
-
-var filterStickies = function(){
-  var text = $('#search').val();
-  $('div.sticky:containsi("'+ text +'")').show();
-  $('div.sticky:not(:containsi("'+ text +'"))').hide();
-};
-
-var filterSection= function(){
-  if($('#retro_section_id').length >0){
-    var filterSectionId = $('#retro_section_id').val();
-    if(filterSectionId){
-      $('.section').removeClass('full').hide();
-      $("#section"+filterSectionId).addClass("full").show();
-    }
-    else{
-      $('.section').removeClass('full').show();
-    }
-  }
-};
-
-
 //TODO: extract all urls
 //TODO: move generic methods to common place
 
@@ -167,11 +139,12 @@ var Ideaboardz = function() {
         if(data && data[pointIndex]){
             removePointHtmlIfNotInData(allPointIds);
         }
-        filterStickies();
+        $U.filterStickies();
     };
 
     var updateSticky =  function(point){
         $('#point'+point.id).find('.voteCount .count').html(point.votes_count);
+        $('#point'+point.id).find('stickyText').html(point.message);
     };
 
     var removePointHtmlIfNotInData = function(allPointIdsFromServer) {
@@ -203,21 +176,9 @@ $(document).ready(function() {
         modal: true
     });
     setInterval(ideaBoardz.refreshSections, 10000);
-    var sortStickies= function(){
-      if($(this).val() == "votes"){
-        $('.section').each(function(){
-          $($(this).find('.sticky')).tsort('.voteCount .count',{order:"desc"});
-        });
-      }
-      else{
-        $('.section').each(function(){
-           $($(this).find('.sticky')).tsort({attr:"data-id", order:"asc"});
-        });
-      }
-    };
-    $('#sortBy').change(sortStickies).change();
-    $('#search').keyup(filterStickies);
-    $('#retro_section_id').change(filterSection).change();
+    $('#sortBy').change($U.sortStickies).change();
+    $('#search').keyup($U.filterStickies);
+    $('#retro_section_id').change($U.filterSection).change();
     $("#pdfExport,#excelExport").click(
       function(){$a.trackEvent('board', $(this).attr('id'),window.location.pathname.replace('/for/','') );
     });
