@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'for/:name', :controller =>'retros', :action => 'show_old'
   map.connect 'for/:name/:id', :controller =>'retros', :action => 'show'
 
-  map.connect 'sections/:section_id/points/delete/:id.:format', :controller =>'points', :action => 'destroy'
+  map.connect 'points/delete/:id.:format', :controller =>'points', :action => 'destroy'
 
   map.connect 'retros/export/:id/:name.:format', :controller => 'retros', :action => 'export'
 

@@ -6,7 +6,7 @@ $.extend($.expr[':'], {
   }
 });
 
-$U = {};
+var $U = {};
 $U.filterStickies = function(){
   var text = $('#search').val();
   $('div.sticky:containsi("'+ text +'")').show();
@@ -27,14 +27,16 @@ $U.filterSection= function(){
 };
 
 $U.sortStickies= function(){
-  if ($(this).val() == "votes") {
+  if($('#sortBy').val() == "votes") {
     $('.section').each(function() {
-      $($(this).find('.sticky')).tsort('.voteCount .count', {order:"desc"});
+      $(this).find('.sticky').tsort('.voteCount .count', {order:"desc"});
     });
   }
   else {
     $('.section').each(function() {
-      $($(this).find('.sticky')).tsort({attr:"data-id", order:"asc"});
+      $(this).find('.sticky').tsort({attr:"data-id", order:"asc"});
     });
   }
 };
+
+//var $urls = {};
