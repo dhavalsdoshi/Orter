@@ -77,11 +77,11 @@ body {
 #search{
   width: 30%;
   float: left;
-  margin: 0px 0 20px 10px;
+  margin: 0 0 20px 10px;
 }
 
 .filter label, .filter select{
-  margin: 0px 0 0 10px
+  margin: 0 0 0 10px
 }
 
 .logoContainer{
@@ -267,7 +267,11 @@ body {
 }
 
 .voteCountContainer{
-    margin-top: 20px;
+    padding: 20px;
+}
+
+.voteCountContainer.ajaxLoader{
+    background:transparent url(../images/ajax-loader.gif) no-repeat left;
 }
 
 .voteStickyButton{
@@ -284,7 +288,6 @@ body {
 .sticky .voteCount{
     opacity: 0.5;
     filter: alpha(opacity = 50);
-    font-weight:normal;
     clear: both;
     margin-top: 10px;
     font-weight:bold;

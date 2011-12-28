@@ -50,15 +50,18 @@ Sticky.prototype.updateDom = function(){
 Sticky.prototype.upVote = function(){
   this.votes += 1;
   var thisSticky = this;
+  $('#largeStickyDialog').find('.voteCountContainer').addClass("ajaxLoader");
+
   $.ajax({
     url: "/points/" + thisSticky.id + "/votes.json",
     type: "POST",
     data: {"vote": {"point_id": thisSticky.id }},
     success: function(result) {
       $('#largeStickyDialog').find('.count').html(thisSticky.votes);
+      $('#largeStickyDialog').find('.voteCountContainer').removeClass("ajaxLoader");
       thisSticky.updateDom();
     },
-    failure: function(result) {
+    error: function(result) {
       alert('something went wrong. Please refresh the page');
     }
   });
