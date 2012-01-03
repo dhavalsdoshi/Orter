@@ -270,9 +270,9 @@ body {
     padding: 20px;
 }
 
-.voteCountContainer.ajaxLoader{
-    background:transparent url(../images/ajax-loader.gif) no-repeat left;
-}
+/*.voteCountContainer.ajaxLoader{*/
+    /*background:transparent url(../images/spinner.gif) no-repeat left;*/
+/*}*/
 
 .voteStickyButton{
     background:transparent url(../images/vote.png) no-repeat;
