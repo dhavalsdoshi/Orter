@@ -17,7 +17,7 @@ class PointsController < ApplicationController
         flash[:notice] = 'Point was successfully created.'
         LOGGER.info("POINT: {#{point.message}} created in SECTION: {#{point.section.name}}")
 
-        format.json { render :json => point.to_json, :status => :created, :location => point.to_json }
+        format.json { render :json => point.to_json(:methods => :votes_count), :status => :created, :location => point.to_json }
       else
         format.json { render :json => point.errors.to_json, :status => :unprocessable_entity }
       end
@@ -32,6 +32,15 @@ class PointsController < ApplicationController
       p.save
     }
     head :created
+  end
+
+  def update
+    point = Point.find(params[:id])
+    if point.update_attributes(params[:point])
+      format.json { head :ok }
+    else
+      format.json { render :json => point.errors.to_json, :status => :unprocessable_entity }
+    end
   end
 
   def destroy
