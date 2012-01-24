@@ -20,6 +20,9 @@ Sticky.prototype.attachTo = function(sectionId){
         thisSticky.remove();
         $('#largeStickyDialog').dialog('close');
       });
+    $("#largeStickyDialog textarea").blur(function(){
+      thisSticky.edit($(this).val());
+    });
     $('#largeStickyDialog').find('.voteStickyButton').unbind('click').click(function(){thisSticky.upVote();});
     $('#largeStickyDialog').dialog('open');
   };
@@ -87,4 +90,17 @@ Sticky.prototype.update = function(text,votes){
   this.text = text;
   this.votes = votes;
   this.updateDom();
+};
+
+Sticky.prototype.edit = function(value) {
+    this.update(value);
+     $.ajax({
+        url: '/points/' + this.id,
+        type: 'PUT',
+        data: {
+            'point' :{
+                'message': value
+            }
+        }
+    });
 };

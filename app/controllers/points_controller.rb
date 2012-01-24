@@ -27,9 +27,9 @@ class PointsController < ApplicationController
   def update
     point = Point.find(params[:id])
     if point.update_attributes(params[:point])
-      format.json { head :ok }
+      head :ok
     else
-      format.json { render :json => point.errors.to_json, :status => :unprocessable_entity }
+      render :json => point.errors.to_json, :status => :unprocessable_entity
     end
   end
 
