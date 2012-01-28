@@ -1,5 +1,5 @@
 var Sticky = function(text, votes, id){
-  this.text = text;
+  this.text = $.trim(text);
   this.votes = votes;
   this.id = id;
 };
@@ -21,7 +21,7 @@ Sticky.prototype.attachTo = function(sectionId){
         $('#largeStickyDialog').dialog('close');
       });
     $("#largeStickyDialog textarea").unbind('blur').blur(function(){
-      thisSticky.edit($(this).val());
+      thisSticky.edit($.trim($(this).val()));
     });
     $('#largeStickyDialog').find('.voteStickyButton').unbind('click').click(function(){thisSticky.upVote();});
     $('#largeStickyDialog').dialog('open');
@@ -87,7 +87,7 @@ Sticky.prototype.remove = function(){
 };
 
 Sticky.prototype.update = function(text,votes){
-  this.text = text;
+  this.text = $.trim(text);
   this.votes = votes;
   this.updateDom();
 };
@@ -99,7 +99,7 @@ Sticky.prototype.edit = function(value) {
         type: 'PUT',
         data: {
             'point' :{
-                'message': value
+                'message': this.text
             }
         }
     });
