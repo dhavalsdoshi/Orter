@@ -216,6 +216,36 @@ body {
     border : 1px solid #bcee7c;
 }
 
+#largeStickyDialog textarea{
+  background: transparent;
+  border: none;
+  overflow: hidden;
+}
+
+.yellow #largeStickyDialog textarea:focus, .yellow #largeStickyDialog textarea:hover{
+  background-color: #ffffbb;
+}
+
+.aqua #largeStickyDialog textarea:focus, .aqua #largeStickyDialog textarea:hover{
+	background-color: #b8f9f9;
+}
+
+.blue #largeStickyDialog textarea:focus, .blue #largeStickyDialog textarea:hover{
+	background-color: #28c3ff;
+}
+
+.orange #largeStickyDialog textarea:focus, .orange #largeStickyDialog textarea:hover{
+	background-color: #ffbc73;
+}
+
+.purple #largeStickyDialog textarea:focus, .purple #largeStickyDialog textarea:hover{
+	background-color: #d18bde;
+}
+
+.green #largeStickyDialog textarea:focus, .green #largeStickyDialog textarea:hover{
+	background-color: #c6f47b;
+}
+
 .ui-dialog{
     cursor:default;
 }

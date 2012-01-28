@@ -13,14 +13,14 @@ Sticky.prototype.attachTo = function(sectionId){
     uiDialog.removeClass(uiDialog.attr('class').split(/\s+/).pop())
       .addClass(colorOfSticky);
 
-    $('#largeStickyDialog').find('.stickyText').html(addedPoint.find('.stickyText').html());
+    $('#largeStickyDialog').find('.stickyText').val(addedPoint.find('.stickyText').text());
     $('#largeStickyDialog').find('span.voteCount .count').html(addedPoint.find('.voteCount .count').html());
     $('#largeStickyDialog').find('.removeStickyButton').unbind('click').click(
       function() {
         thisSticky.remove();
         $('#largeStickyDialog').dialog('close');
       });
-    $("#largeStickyDialog textarea").blur(function(){
+    $("#largeStickyDialog textarea").unbind('blur').blur(function(){
       thisSticky.edit($(this).val());
     });
     $('#largeStickyDialog').find('.voteStickyButton').unbind('click').click(function(){thisSticky.upVote();});
