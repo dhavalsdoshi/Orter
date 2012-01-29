@@ -286,6 +286,11 @@ a,a:hover{
 .formContainer input[type=text],select{
     margin:0 0 10px 0;
 }
+
+.formContainer select{
+  margin-top: 5px;
+}
+
 .formContainer input[type=text]{
     background:transparent;
     border:none;
