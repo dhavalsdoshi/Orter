@@ -1,348 +1,290 @@
 h2 {
-   font-size: 1.8em;
-   font-weight: bold;
+  font-size: 1.8em;
+  font-weight: bold;
 }
-
-h1,h2,h3,h4{
-	text-align: center;
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
 }
-
-h4{
-	font-size:1.2em;
+h4 {
+  font-size: 1.2em;
 }
-
-a:focus{
-    outline: none;
+a:focus {
+  outline: none;
 }
-
 body {
-	background: #cccccc none repeat scroll 0 0;
-	font-family: Comic Sans MS,cursive;
-    padding: 10px 30px;
-    min-height: 1000px;
+  background: #cccccc none repeat scroll 0 0;
+  font-family: Comic Sans MS,cursive;
+  padding: 10px 30px;
+  min-height: 1000px;
 }
-
-.hide{
-    display:none;
+.hide {
+  display: none;
 }
-
-.half{
-    width: 49%;
+.half {
+  width: 49%;
 }
-
-.oneThird{
-    width: 33%;
+.oneThird {
+  width: 33%;
 }
+.full {
+  /* keep ot after all the half and one thirds*/
 
-.full{/* keep ot after all the half and one thirds*/
-    width: 99%;
+  width: 99%;
 }
-
 .mainWrap {
-	margin: 0 auto;
-    overflow: auto;
-    padding:1em;
+  margin: 0 auto;
+  overflow: auto;
+  padding: 1em;
 }
-
-.whiteboard{
-    background-color: white;
-    border: #696969 solid 20px;
-
-    -moz-border-bottom-colors: #555 #666 #777 #888 #aaa #bbb #ccc #ddd;
-    -moz-border-top-colors: #555 #666 #777 #888 #888 #777 #666 #555;
-    -moz-border-left-colors: #555 #666 #777 #999 #999 #888 #777 #666;
-    -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
-
-	-webkit-box-shadow: 3px 7px 3px #888;
-    -moz-box-shadow: 3px 7px 3px   #888;
-    -webkit-border-radius: 15px 15px 15px 15px;
-    -moz-border-radius: 15px 15px 15px 15px;
-    overflow: auto;
-    width: 95%;
-    min-height:643px;
-    text-align: center;
+.whiteboard {
+  background-color: white;
+  border: #696969 solid 20px;
+  -moz-border-bottom-colors: #555 #666 #777 #888 #aaa #bbb #ccc #ddd;
+  -moz-border-top-colors: #555 #666 #777 #888 #888 #777 #666 #555;
+  -moz-border-left-colors: #555 #666 #777 #999 #999 #888 #777 #666;
+  -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
+  -webkit-box-shadow: 3px 7px 3px #888;
+  -moz-box-shadow: 3px 7px 3px   #888;
+  -webkit-border-radius: 15px 15px 15px 15px;
+  -moz-border-radius: 15px 15px 15px 15px;
+  overflow: auto;
+  width: 95%;
+  min-height: 643px;
+  text-align: center;
 }
-
-.topbar,.header{
-    overflow: hidden;
-    width: 99%;
+.topbar, .header {
+  overflow: hidden;
+  width: 99%;
 }
-
-.filter{
+.filter {
   float: left;
   width: 99%;
   min-width: 250px;
 }
-
-#search{
+#search {
   width: 30%;
   float: left;
   margin: 0 0 20px 10px;
 }
-
-.filter label, .filter select{
-  margin: 0 0 0 10px
+.filter label, .filter select {
+  margin: 0 0 0 10px;
 }
-
-.logoContainer{
-  float:left;
+.logoContainer {
+  float: left;
   width: 24%;
   min-width: 250px;
 }
-
-.filter .sort{
+.filter .sort {
   float: right;
   padding-right: 20px;
 }
-
-.logo img{
+.logo img {
   height: 45px;
   width: 245px;
 }
-
-.logo{
-    margin:15px 0 15px 15px;
+.logo {
+  margin: 15px 0 15px 15px;
 }
-
-.export{
+.export {
   float: right;
   width: 15%;
   min-width: 130px;
 }
-
-.pdfExport, .excelExport{
-    margin: 0 10px 15px 10px;
-    display: inline;
-    float: right;
-    height:55px;
-    width: 45px;
+.pdfExport, .excelExport {
+  margin: 0 10px 15px 10px;
+  display: inline;
+  float: right;
+  height: 55px;
+  width: 45px;
 }
-
 .pdfExport {
-    background:transparent url(../images/pdf_export.png) no-repeat;
+  background: transparent url(../images/pdf_export.png) no-repeat;
 }
-
-.excelExport{
-    background:transparent url(../images/excel_export.png) no-repeat;
+.excelExport {
+  background: transparent url(../images/excel_export.png) no-repeat;
 }
-
-.ideaBoardTitle{
-    margin: 15px;
-    text-align: center;
+.ideaBoardTitle {
+  margin: 15px;
+  text-align: center;
 }
-
-.sections{
-    overflow: auto;
+.sections {
+  overflow: auto;
 }
-
 .section {
-	float:left;
-	margin-bottom:10px;
-	min-height: 200px;
+  float: left;
+  margin-bottom: 10px;
+  min-height: 200px;
 }
-
-.points{
-    overflow: auto;
-    padding:0.25em;
+.points {
+  overflow: auto;
+  padding: 0.25em;
 }
-
-.addStickyForm{
-    overflow:visible;
+.addStickyForm {
+  overflow: visible;
 }
-
-.addStickyForm textarea{
-    -webkit-box-shadow: 5px 1px 3px #888;
-    -moz-box-shadow: 5px 1px 3px #888;
+.addStickyForm textarea {
+  -webkit-box-shadow: 5px 1px 3px #888;
+  -moz-box-shadow: 5px 1px 3px #888;
 }
-
-.sticky{
-    -webkit-box-shadow: 3px 1px 3px #888;
-    -moz-box-shadow: 3px 1px 3px #888;
+.sticky {
+  -webkit-box-shadow: 3px 1px 3px #888;
+  -moz-box-shadow: 3px 1px 3px #888;
 }
-
-.ui-widget-content{
-    -webkit-box-shadow:2px 29px 17px #888888;
-    -moz-box-shadow:2px 29px 17px #888888;
+.ui-widget-content {
+  -webkit-box-shadow: 2px 29px 17px #888888;
+  -moz-box-shadow: 2px 29px 17px #888888;
 }
-
-.sticky,.addStickyForm textarea{
-    max-width:15em;
+.sticky, .addStickyForm textarea {
+  max-width: 15em;
 }
-
-.sticky,.addStickyForm textarea,.ui-widget-content{
-    background-color: #ffff88;
-    border : 1px solid #ffff66;
-    font-size: 0.7em;
-    text-overflow: ellipsis;
-    -webkit-border-radius: 4px 4px 15px 4px;
-    -moz-border-radius: 4px 4px 15px 4px;
-    margin-left: 5px;
-    margin-top: 5px;
+.sticky, .addStickyForm textarea, .ui-widget-content {
+  background-color: #ffff88;
+  border: 1px solid #ffff66;
+  font-size: 0.7em;
+  text-overflow: ellipsis;
+  -webkit-border-radius: 4px 4px 15px 4px;
+  -moz-border-radius: 4px 4px 15px 4px;
+  margin-left: 5px;
+  margin-top: 5px;
 }
-
-.sticky,.addStickyForm textarea{
-    word-wrap: break-word;
-    cursor: pointer;
-    float:left;
-    width:47%;
-    height:75px;
-    overflow: hidden;
-    position:relative;
+.sticky, .addStickyForm textarea {
+  word-wrap: break-word;
+  cursor: pointer;
+  float: left;
+  width: 47%;
+  height: 75px;
+  overflow: hidden;
+  position: relative;
 }
-
-.aqua .sticky,.aqua .addStickyForm textarea, .aqua.ui-widget-content{
-	background-color: #ccffff;
-    border : 1px solid #ccffdd;
+.aqua .sticky, .aqua .addStickyForm textarea, .aqua.ui-widget-content {
+  background-color: #ccffff;
+  border: 1px solid #ccffdd;
 }
-
-.blue .sticky,.blue .addStickyForm textarea, .blue.ui-widget-content{
-	background-color: #17B6FF;
-    border : 1px solid #17B6FF;
+.blue .sticky, .blue .addStickyForm textarea, .blue.ui-widget-content {
+  background-color: #17B6FF;
+  border: 1px solid #17B6FF;
 }
-
-.orange .sticky,.orange .addStickyForm textarea, .orange.ui-widget-content{
-	background-color: #ffb058;
-    border : 1px solid #ffb069;
+.orange .sticky, .orange .addStickyForm textarea, .orange.ui-widget-content {
+  background-color: #ffb058;
+  border: 1px solid #ffb069;
 }
-
-.purple .sticky,.purple .addStickyForm textarea, .purple.ui-widget-content{
-	background-color: #d07ddf;
-    border : 1px solid #d07def;
-
+.purple .sticky, .purple .addStickyForm textarea, .purple.ui-widget-content {
+  background-color: #d07ddf;
+  border: 1px solid #d07def;
 }
-
-.green .sticky,.green .addStickyForm textarea, .green.ui-widget-content{
-	background-color: #bcee6b;
-    border : 1px solid #bcee7c;
+.green .sticky, .green .addStickyForm textarea, .green.ui-widget-content {
+  background-color: #bcee6b;
+  border: 1px solid #bcee7c;
 }
-
-#largeStickyDialog textarea{
+#largeStickyDialog textarea {
   background: transparent;
   border: none;
   overflow: hidden;
 }
-
-.yellow #largeStickyDialog textarea:focus, .yellow #largeStickyDialog textarea:hover{
+.yellow #largeStickyDialog textarea:focus, .yellow #largeStickyDialog textarea:hover {
   background-color: #ffffbb;
 }
-
-.aqua #largeStickyDialog textarea:focus, .aqua #largeStickyDialog textarea:hover{
-	background-color: #b8f9f9;
+.aqua #largeStickyDialog textarea:focus, .aqua #largeStickyDialog textarea:hover {
+  background-color: #b8f9f9;
 }
-
-.blue #largeStickyDialog textarea:focus, .blue #largeStickyDialog textarea:hover{
-	background-color: #28c3ff;
+.blue #largeStickyDialog textarea:focus, .blue #largeStickyDialog textarea:hover {
+  background-color: #28c3ff;
 }
-
-.orange #largeStickyDialog textarea:focus, .orange #largeStickyDialog textarea:hover{
-	background-color: #ffbc73;
+.orange #largeStickyDialog textarea:focus, .orange #largeStickyDialog textarea:hover {
+  background-color: #ffbc73;
 }
-
-.purple #largeStickyDialog textarea:focus, .purple #largeStickyDialog textarea:hover{
-	background-color: #d18bde;
+.purple #largeStickyDialog textarea:focus, .purple #largeStickyDialog textarea:hover {
+  background-color: #d18bde;
 }
-
-.green #largeStickyDialog textarea:focus, .green #largeStickyDialog textarea:hover{
-	background-color: #c6f47b;
+.green #largeStickyDialog textarea:focus, .green #largeStickyDialog textarea:hover {
+  background-color: #c6f47b;
 }
-
-.ui-dialog{
-    cursor:default;
+.ui-dialog {
+  cursor: default;
 }
-
-.ui-widget-content .ui-widget-content{
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
+.ui-widget-content .ui-widget-content {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
 }
-
-.ui-widget-content{
-    min-width:10em;    
+.ui-widget-content {
+  min-width: 10em;
 }
-
-
-.sectionTitle{
-    display: inline;
+.sectionTitle {
+  display: inline;
 }
-
-
-.sectionTitleArea{
-    overflow:auto;
-    width:100%;
-    padding:0 0 0.5em 0;
+.sectionTitleArea {
+  overflow: auto;
+  width: 100%;
+  padding: 0 0 0.5em 0;
 }
-
-
 .addStickyButton {
-    background:transparent url(../images/Add-20.png) no-repeat scroll 0 0;
-    border: none;
-    cursor: pointer;
-    height: 30px;
-    width: 20px;
-    overflow: hidden;
+  background: transparent url(../images/Add-20.png) no-repeat scroll 0 0;
+  border: none;
+  cursor: pointer;
+  height: 30px;
+  width: 20px;
+  overflow: hidden;
 }
-
-.stickyActions{
-    bottom: 20px;
-    margin-top: 20px;
+.stickyActions {
+  bottom: 20px;
+  margin-top: 20px;
 }
+.removeStickyButton {
+  background: transparent url(../images/Delete-20.png) no-repeat;
+  padding-left: 23px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  height: 32px;
+  /*TODO: is this required?*/
 
-.removeStickyButton{
-    background:transparent url(../images/Delete-20.png) no-repeat;
-    padding-left: 23px;
-    padding-bottom: 10px;
-    cursor: pointer;
-    height:32px; /*TODO: is this required?*/
-    width:32px;
-    text-decoration: underline;
+  width: 32px;
+  text-decoration: underline;
 }
-
-.voteCountContainer{
-    padding: 20px;
+.voteCountContainer {
+  padding: 20px;
 }
-
 /*.voteCountContainer.ajaxLoader{*/
-    /*background:transparent url(../images/spinner.gif) no-repeat left;*/
+/*background:transparent url(../images/spinner.gif) no-repeat left;*/
 /*}*/
-
-.voteStickyButton{
-    background:transparent url(../images/vote.png) no-repeat;
-    padding-left: 23px;
-    padding-bottom: 10px;
-    cursor: pointer;
-    height:32px;
-    width:32px;
-    margin-right: 30px;
-    text-decoration: underline;
+.voteStickyButton {
+  background: transparent url(../images/vote.png) no-repeat;
+  padding-left: 23px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  margin-right: 30px;
+  text-decoration: underline;
 }
+.sticky .voteCount {
+  opacity: 0.5;
+  /*filter: alpha(opacity = 50);*/
 
-.sticky .voteCount{
-    opacity: 0.5;
-    filter: alpha(opacity = 50);
-    clear: both;
-    margin-top: 10px;
-    font-weight:bold;
-    position:absolute;
-    top:60%;
-    left:5%;
+  clear: both;
+  margin-top: 10px;
+  font-weight: bold;
+  position: absolute;
+  top: 60%;
+  left: 5%;
 }
-
-.sticky:hover .voteCount{
+.sticky:hover .voteCount {
   font-weight: bold;
   opacity: 1;
-  filter: alpha(opacity = 100);
-}
+  /*filter: alpha(opacity = 100);*/
 
-#largeStickyDialog .stickyText{
-    font-size: 1.2em;
-    word-wrap: break-word;
 }
-
-#largeStickyDialog{
-    font-size: 1em;
-    cursor: default;
+#largeStickyDialog .stickyText {
+  font-size: 1.2em;
+  word-wrap: break-word;
 }
-
-#largeStickyDialog .voteCount{
-    position: relative;
-    top: 0;
+#largeStickyDialog {
+  font-size: 1em;
+  cursor: default;
+}
+#largeStickyDialog .voteCount {
+  position: relative;
+  top: 0;
 }
