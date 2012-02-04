@@ -1,31 +1,4 @@
-h2 {
-   font-size: 1.8em;
-   font-weight: bold;
-}
-
-h1,h2,h3,h4{
-	text-align: center;
-}
-
-h4{
-	font-size:1.2em;
-}
-
-a:focus{
-    outline: none;
-}
-
-body {
-	background: #cccccc none repeat scroll 0 0;
-	font-family: Comic Sans MS,cursive;
-    padding: 10px 30px;
-    min-height: 1000px;
-}
-
-.hide{
-    display:none;
-}
-
+@import "base.less";
 .half{
     width: 49%;
 }
@@ -174,8 +147,7 @@ body {
     border : 1px solid #ffff66;
     font-size: 0.7em;
     text-overflow: ellipsis;
-    -webkit-border-radius: 4px 4px 15px 4px;
-    -moz-border-radius: 4px 4px 15px 4px;
+    .round-corner(4px, 4px, 15px, 4px);
     margin-left: 5px;
     margin-top: 5px;
 }
@@ -192,28 +164,27 @@ body {
 
 .aqua .sticky,.aqua .addStickyForm textarea, .aqua.ui-widget-content{
 	background-color: #ccffff;
-    border : 1px solid #ccffdd;
+  border : 1px solid #ccffdd;
 }
 
 .blue .sticky,.blue .addStickyForm textarea, .blue.ui-widget-content{
 	background-color: #17B6FF;
-    border : 1px solid #17B6FF;
+  border : 1px solid #17B6FF;
 }
 
 .orange .sticky,.orange .addStickyForm textarea, .orange.ui-widget-content{
 	background-color: #ffb058;
-    border : 1px solid #ffb069;
+  border : 1px solid #ffb069;
 }
 
 .purple .sticky,.purple .addStickyForm textarea, .purple.ui-widget-content{
 	background-color: #d07ddf;
-    border : 1px solid #d07def;
-
+  border : 1px solid #d07def;
 }
 
 .green .sticky,.green .addStickyForm textarea, .green.ui-widget-content{
 	background-color: #bcee6b;
-    border : 1px solid #bcee7c;
+  border : 1px solid #bcee7c;
 }
 
 #largeStickyDialog textarea{
@@ -247,30 +218,26 @@ body {
 }
 
 .ui-dialog{
-    cursor:default;
+  cursor:default;
 }
 
 .ui-widget-content .ui-widget-content{
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
+  .shadow(none);
 }
 
 .ui-widget-content{
     min-width:10em;    
 }
 
-
 .sectionTitle{
     display: inline;
 }
-
 
 .sectionTitleArea{
     overflow:auto;
     width:100%;
     padding:0 0 0.5em 0;
 }
-
 
 .addStickyButton {
     background:transparent url(../images/Add-20.png) no-repeat scroll 0 0;
