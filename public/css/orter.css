@@ -14,12 +14,15 @@ h4 {
 h1,
 h2,
 h3,
-h4 {
+h4,
+.sectionTitle {
   margin: 0.2em 0;
+  font-family: 'Handlee', helvetica, cursive;
+  font-weight: bold;
 }
 body {
   background: #cccccc none repeat scroll 0 0;
-  font-family: Comic Sans MS,cursive;
+  font-family: 'Delius', helvetica, cursive;
   min-height: 1000px;
 }
 blockquote,
@@ -177,7 +180,7 @@ a:hover {
 .sticky, .addStickyForm textarea, .ui-widget-content {
   background-color: #ffff88;
   border: 1px solid #ffff66;
-  font-size: 0.7em;
+  font-size: 0.75em;
   text-overflow: ellipsis;
   border-radius: 4px 4px 15px 4px;
   -moz-border-radius: 4px 4px 15px 4px;
@@ -190,7 +193,7 @@ a:hover {
   cursor: pointer;
   float: left;
   width: 47%;
-  height: 75px;
+  height: 100px;
   overflow: hidden;
   position: relative;
 }
@@ -308,7 +311,7 @@ a:hover {
   margin-top: 10px;
   font-weight: bold;
   position: absolute;
-  top: 60%;
+  bottom: 5%;
   left: 5%;
 }
 .sticky:hover .voteCount {
