@@ -16,6 +16,8 @@ $(document).ready(function() {
   });
 
   var boardTemplates = {
+    "Pros and Cons": ["Pros", "Cons"],
+    "Todos":["Todos"],
     "Six thinking hats": ["Blue - Process", "White - Facts", "Red - feelings",
       "Green - Creativity", "Yellow - Benefits", "Black - Cautions"],
     "Star Fish Retrospective": ["Keep Doing", "Start Doing", "Stop Doing", "Less of", "More of", "Action Items"],
