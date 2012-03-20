@@ -1,7 +1,7 @@
 class ErrorController < ApplicationController
 
   def index
-    render :file => "#{RAILS_ROOT}/public/error.html"
+    render :file => "#{Rails.root}/public/error.html"
   end
 
 end

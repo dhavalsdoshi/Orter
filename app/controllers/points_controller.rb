@@ -15,7 +15,7 @@ class PointsController < ApplicationController
     respond_to do |format|
       if point.save
         flash[:notice] = 'Point was successfully created.'
-        LOGGER.info("POINT: {#{point.message}} created in SECTION: {#{point.section.name}}")
+        #LOGGER.info("POINT: {#{point.message}} created in SECTION: {#{point.section.name}}")
 
         format.json { render :json => point.to_json(:methods => :votes_count), :status => :created, :location => point.to_json }
       else
@@ -35,7 +35,7 @@ class PointsController < ApplicationController
 
   def destroy
      point = Point.destroy(params[:id])
-     LOGGER.info("POINT: {#{point.message}} deleted from SECTION: {#{point.section.name}}")
+     #LOGGER.info("POINT: {#{point.message}} deleted from SECTION: {#{point.section.name}}")
      respond_to do |format|
        format.json  { head :ok }
      end

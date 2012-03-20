@@ -52,7 +52,7 @@
             </ul>
             <div class="formContainer" style="display:none">
 
-             <% form_tag({:controller => :retros},{:method => "post",:novalidate => ""}) do %>
+             <%= form_tag({:controller => :retros},{:method => "post",:novalidate => ""}) do %>
                   <%= label_tag(:name, "Name *") %>
                   <%= text_field_tag(:name, "",:required => "required","data-message"=>"please fill in a name") %>
                   <%= label_tag(:description, "Description *") %>
