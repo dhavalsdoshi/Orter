@@ -1,0 +1,70 @@
+@import "util.less";
+
+h1 {
+	font-size: 150%;
+}
+
+h2 {
+	font-size: 138.5%;
+}
+ 
+h3 {
+	font-size: 123.1%;
+}
+
+h4{
+  font-size: 108%;
+}
+
+h1,h2,h3,h4,.sectionTitle {
+	margin: 0.2em 0;
+	font-family: 'Handlee', helvetica, cursive;
+	font-weight: bold;
+}
+
+body {
+	background: #cccccc none repeat scroll 0 0;
+	font-family: 'Delius', helvetica, cursive;
+  min-height: 1000px;
+}
+
+blockquote,ul,ol,dl {
+	margin: 1em;
+}
+
+ol,ul,dl {
+	margin-left: 2em;
+}
+
+ol li {
+	list-style: decimal outside;
+}
+
+ul li {
+	list-style: disc outside;
+}
+
+/******************************************************/
+
+a{
+  color:#000;
+  z-index:10;
+  &:focus{
+    outline: none;
+	}
+	&:hover{
+    text-decoration:underline;
+    color:blue;
+    z-index:10;
+	}
+}
+
+/************************************************/
+.hide{
+    display:none;
+}
+
+.left{
+    float:left;
+}
+

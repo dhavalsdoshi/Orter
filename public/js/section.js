@@ -134,7 +134,7 @@ $(document).ready(function() {
     ideaBoardz.init();
     $('#largeStickyDialog').dialog({
         autoOpen: false,
-        height: 300,
+        height: 230,
         width: 350,
         modal: true
     });

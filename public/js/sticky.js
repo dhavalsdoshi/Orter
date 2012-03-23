@@ -1,5 +1,5 @@
 var Sticky = function(text, votes, id){
-  this.text = text;
+  this.text = $.trim(text);
   this.votes = votes;
   this.id = id;
 };
@@ -13,13 +13,16 @@ Sticky.prototype.attachTo = function(sectionId){
     uiDialog.removeClass(uiDialog.attr('class').split(/\s+/).pop())
       .addClass(colorOfSticky);
 
-    $('#largeStickyDialog').find('.stickyText').html(addedPoint.find('.stickyText').html());
-    $('#largeStickyDialog').find('span.voteCount .count').html(addedPoint.find('.voteCount .count').html());
+    $('#largeStickyDialog').find('.stickyText').val(addedPoint.find('.stickyText').text());
+    $('#largeStickyDialog').find('.voteCountContainer .count').html(addedPoint.find('.voteCount .count').html());
     $('#largeStickyDialog').find('.removeStickyButton').unbind('click').click(
       function() {
         thisSticky.remove();
         $('#largeStickyDialog').dialog('close');
       });
+    $("#largeStickyDialog textarea").unbind('blur').blur(function(){
+      thisSticky.edit($.trim($(this).val()));
+    });
     $('#largeStickyDialog').find('.voteStickyButton').unbind('click').click(function(){thisSticky.upVote();});
     $('#largeStickyDialog').dialog('open');
   };
@@ -84,7 +87,20 @@ Sticky.prototype.remove = function(){
 };
 
 Sticky.prototype.update = function(text,votes){
-  this.text = text;
+  this.text = $.trim(text);
   this.votes = votes;
   this.updateDom();
+};
+
+Sticky.prototype.edit = function(value) {
+    this.update(value);
+     $.ajax({
+        url: '/points/' + this.id,
+        type: 'PUT',
+        data: {
+            'point' :{
+                'message': this.text
+            }
+        }
+    });
 };

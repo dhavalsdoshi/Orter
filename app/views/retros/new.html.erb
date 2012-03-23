@@ -57,8 +57,8 @@
                   <%= text_field_tag(:name, "",:required => "required","data-message"=>"please fill in a name") %>
                   <%= label_tag(:description, "Description *") %>
                   <%= text_field_tag(:description,"", :required => "required","data-message"=>"please fill in a description") %>
-                  <%= label_tag(:numberOfSections, "Number of sections") %>
-                  <%= select_tag(:numberOfSections,options_from_collection_for_select([1,2,3,4,5,6],:to_s,:to_s),:id=>"NumberOfSections")%>
+                  <%= label_tag(:numberOfSections, "Format") %>
+                  <%= select_tag(:numberOfSections,options_for_select([1,2,3,4,5,6].map{ |v| [pluralize(v," Section"), v] },{}),:id=>"NumberOfSections")%>
                   <%= label_tag(:sectioname0, "Section Title *") %>
                   <div id="sectionWrapper">
                       <%= text_field_tag(:sectionname0,"",:required => "required","data-message"=>"please fill in a section name") %>
@@ -104,10 +104,10 @@
   </div>
 
 </div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type='text/javascript'></script>
-<!--<script src="/js/jquery1.7.min.js" type='text/javascript'></script>-->
-<script src='/js/jquery.tools.min.js' type='text/javascript'></script>
-<script src='/js/analytics.js' type='text/javascript'></script>
-<script src='/js/create.js' type='text/javascript'></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<!--<script  type="text/javascript" src="/js/jquery1.7.min.js"></script>-->
+<script type="text/javascript" src="/js/jquery.tools.min.js"></script>
+<script type="text/javascript" src="/js/analytics.js"></script>
+<script type="text/javascript" src="/js/create.js"></script>
 </body>
 </html>

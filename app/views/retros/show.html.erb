@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <link rel="shortcut icon" href="/favicon.ico"/>
+  <link href='http://fonts.googleapis.com/css?family=Delius|Handlee' rel='stylesheet' type='text/css'>
   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   <meta name="keywords" lang="en-us" content="collaborate, distributed, share, discuss, ideas, brainstorm, sticky, wall, board, whiteboard, meeting, retro, online, continuous, thoughtworks, application"/>
   <meta name="keywords" lang="en" content="collaborate, distributed, share, discuss, ideas, brainstorm, sticky, wall, board, whiteboard, meeting, retro, online, continuous, thoughtworks, application"/>
@@ -41,7 +42,7 @@
   <div class="whiteboard">
 
 
-      <h2 class="ideaBoardTitle" id="ideaboardTitle"><%= @retrospective.name %></h2>
+      <h2 class="ideaBoardTitle" title="<%=@retrospective.description %>" id="ideaboardTitle"><%= @retrospective.name %></h2>
       <!--googleoff: all-->
       <noscript>Please turn javascript on or move to a browser which supports it</noscript>
       <!--googleon: all-->
@@ -74,20 +75,22 @@
 </div>
 <div id="largeStickyDialog">
   <div class="stickyLarge">
-    <div class="stickyText"></div>
+    <!--<div class="tag"><label for="tagNameText">Tag: </label><input name="tagname" id="tagNameText" type="text" maxlength="25" title="click to edit" value="blahsasas"/></div>-->
+    <div><label for="stickyText">Edit:</label></div>
+    <textarea id="stickyText" class="stickyText" rows="4" cols="35" title="click to edit" maxlength="140"></textarea>
     <div class="stickyActions">
-      <span class="voteStickyButton">Vote</span>
-      <span class="removeStickyButton">Remove</span>
-      <div class="voteCountContainer">Number of votes: <span class="voteCount">+<span class="count"></span></span></div>
+      <a class="voteStickyButton" title="Click to vote up the sticky">Vote up</a>
+      <span class="voteCountContainer"> : +<span class="count"></span></span>
+      <a class="removeStickyButton" title="Click to delete sticky">Delete</a>
     </div>
   </div>
 </div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type='text/javascript'></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" ></script>
 <!--<script type="text/javascript" src="/js/jquery1.7.min.js"></script>-->
 <script type="text/javascript" src="/js/jquery-ui-1.8.2.custom.min.js"></script>
-<script src='/js/analytics.js' type='text/javascript'></script>
 <script type="text/javascript" src="/js/jquery.tinysort.js"></script>
 <script type="text/javascript" src="/js/underscore-min.js"></script>
+<script type="text/javascript" src="/js/analytics.js"></script>
 <script type="text/javascript" src="/js/util.js"></script>
 <script type="text/javascript" src="/js/sticky.js"></script>
 <script type="text/javascript" src="/js/section.js"></script>
