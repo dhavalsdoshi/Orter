@@ -35,10 +35,10 @@ class RetrosController < ApplicationController
     @retro = Retro.find(params[:id])
     headers["Content-Disposition"] = "attachment; filename=\"#{@retro.name}.#{params[:format]}\""
     respond_to do|format|
-      format.pdf {render :layout =>false} if params[:format] == 'pdf'
-      format.xls {render :layout =>false} if params[:format] == 'xls'
+      format.pdf {render :layout =>false}
+      format.xls {render :layout =>false}
     end
   end
-  
-  
+
+
 end
