@@ -14,7 +14,7 @@ Sticky.prototype.attachTo = function(sectionId){
       .addClass(colorOfSticky);
 
     $('#largeStickyDialog').find('.stickyText').val(addedPoint.find('.stickyText').text());
-    $('#largeStickyDialog').find('span.voteCount .count').html(addedPoint.find('.voteCount .count').html());
+    $('#largeStickyDialog').find('.voteCountContainer .count').html(addedPoint.find('.voteCount .count').html());
     $('#largeStickyDialog').find('.removeStickyButton').unbind('click').click(
       function() {
         thisSticky.remove();

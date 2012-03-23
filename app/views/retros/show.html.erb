@@ -75,11 +75,13 @@
 </div>
 <div id="largeStickyDialog">
   <div class="stickyLarge">
-    <textarea class="stickyText" rows="4" cols="35" title="click to edit"></textarea>
+    <!--<div class="tag"><label for="tagNameText">Tag: </label><input name="tagname" id="tagNameText" type="text" maxlength="25" title="click to edit" value="blahsasas"/></div>-->
+    <div><label for="stickyText">Edit:</label></div>
+    <textarea id="stickyText" class="stickyText" rows="4" cols="35" title="click to edit" maxlength="140"></textarea>
     <div class="stickyActions">
-      <span class="voteStickyButton">Vote</span>
-      <span class="removeStickyButton">Remove</span>
-      <div class="voteCountContainer">Number of votes: <span class="voteCount">+<span class="count"></span></span></div>
+      <a class="voteStickyButton" title="Click to vote up the sticky">Vote up</a>
+      <span class="voteCountContainer"> : +<span class="count"></span></span>
+      <a class="removeStickyButton" title="Click to delete sticky">Delete</a>
     </div>
   </div>
 </div>
