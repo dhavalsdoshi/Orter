@@ -17,9 +17,9 @@ class PointsController < ApplicationController
         flash[:notice] = 'Point was successfully created.'
         #LOGGER.info("POINT: {#{point.message}} created in SECTION: {#{point.section.name}}")
 
-        format.json { render :json => point.to_json(:methods => :votes_count), :status => :created, :location => point.to_json }
+        format.json { render :json => point, :status => :created, :location => point}
       else
-        format.json { render :json => point.errors.to_json, :status => :unprocessable_entity }
+        format.json { render :json => point.errors, :status => :unprocessable_entity }
       end
     end
   end

@@ -7,7 +7,12 @@ Section.prototype.addSticky = function(stickyText){
   var thisSection = this;
   $a.trackEvent('point', 'create', stickyText);
   $.ajax({
-    url: '/points.json?point[section_id]=' + thisSection.id + '&point[message]=' + encodeURIComponent(stickyText),
+    url: '/points.json',
+    data:
+    {
+      "point[section_id]": thisSection.id,
+      "point[message]": encodeURIComponent(stickyText)
+    },
     type: "POST",
     success: function(result) {
       thisSection.attachSticky(result);
