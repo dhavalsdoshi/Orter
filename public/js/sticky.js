@@ -17,8 +17,10 @@ Sticky.prototype.attachTo = function(sectionId){
     $('#largeStickyDialog').find('.voteCountContainer .count').html(addedPoint.find('.voteCount .count').html());
     $('#largeStickyDialog').find('.removeStickyButton').unbind('click').click(
       function() {
-        thisSticky.remove();
-        $('#largeStickyDialog').dialog('close');
+        if(confirm("Do you want to delete this sticky?")){
+          thisSticky.remove();
+          $('#largeStickyDialog').dialog('close');
+        }
       });
     $("#largeStickyDialog textarea").unbind('blur').blur(function(){
       thisSticky.edit($.trim($(this).val()));
