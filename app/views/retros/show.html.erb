@@ -36,17 +36,14 @@
         <%= select("retro","section_id", @retrospective.sections.collect {|s| [ s.name, s.id ] }, {:include_blank => 'All Sections'}) %>
       <% end %>
       <%= label_tag(:sortBy,"Sort By")%>
-      <%= select_tag(:sortBy,options_from_collection_for_select(['created time', 'votes'],:to_s,:to_s),:id=>"sortBy")%>
+      <%= select_tag(:sortBy,options_from_collection_for_select(['created time', 'votes', 'tags'],:to_s,:to_s),:id=>"sortBy")%>
     </div>
   </div>
   <div class="whiteboard">
-
-
       <h2 class="ideaBoardTitle" title="<%=@retrospective.description %>" id="ideaboardTitle"><%= @retrospective.name %></h2>
       <!--googleoff: all-->
       <noscript>Please turn javascript on or move to a browser which supports it</noscript>
       <!--googleon: all-->
-
     <%
          row_one_sections, row_two_sections = get_rows_for_sections(@retrospective.sections)
     %>
@@ -67,7 +64,7 @@
       <div id="stickyTemplate" class="col_right">
         <div class="sticky">
           <div class="stickyText"></div>
-          <div class="voteCount">+<span class="count">0</span></div>
+          <div class="stickyFooter"><span class="voteCount">+<span class="count">0</span></span><span class="tag"></span></div>
         </div>
       </div>
     </div>
@@ -75,12 +72,19 @@
 </div>
 <div id="largeStickyDialog">
   <div class="stickyLarge">
-    <!--<div class="tag"><label for="tagNameText">Tag: </label><input name="tagname" id="tagNameText" type="text" maxlength="25" title="click to edit" value="blahsasas"/></div>-->
-    <div><label for="stickyText">Edit:</label></div>
-    <textarea id="stickyText" class="stickyText" rows="4" cols="35" title="click to edit" maxlength="140"></textarea>
+    <div class="stickyTextContainer">
+      <label for="stickyText">Edit:</label>
+      <span style="display: none" class="stickyUpdated"></span>
+      <textarea id="stickyText" class="stickyText formElement" rows="4" cols="35" title="click to edit" maxlength="140"></textarea>
+    </div>
+    <div class="tag">
+      <input name="tagname" id="tagNameText" class="formElement" type="text" maxlength="25" title="click to edit" value="" placeholder="Label"/>
+      <span style="display: none" class="tagUpdated"></span>
+    </div>
     <div class="stickyActions">
-      <a class="voteStickyButton" title="Click to vote up the sticky">Vote up</a>
-      <span class="voteCountContainer"> : +<span class="count"></span></span>
+      <a class="voteStickyButton" title="Click to vote up the sticky"></a>
+      <span class="voteCountContainer"> +<span class="count"></span></span>
+      <span style="display: none" class="voteUpdated"></span>
       <a class="removeStickyButton" title="Click to delete sticky">Delete</a>
     </div>
   </div>

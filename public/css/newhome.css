@@ -22,7 +22,6 @@ h4,
 }
 body {
   background: #cccccc none repeat scroll 0 0;
-  font-family: 'Delius', helvetica, cursive;
   min-height: 1000px;
 }
 blockquote,
@@ -146,12 +145,12 @@ a:hover {
   box-shadow: 1px;
 }
 .sectionTitle {
-  font-family: Edosz;
+  font-family: 'Delius', helvetica, cursive;
   text-align: center;
 }
 .sectionContent {
-  font-family: Handwritten;
-  font-size: 150%;
+  font-family: 'Delius', helvetica, cursive;
+  font-size: 130%;
 }
 .what {
   z-index: 2;
@@ -235,15 +234,6 @@ a:hover {
   border: 1px solid #d07def;
 }
 /**/
-@font-face {
-  font-family: Handwritten;
-  src: url("../fonts/Handwritten_Crystal_v2.ttf");
-}
-@font-face {
-  font-family: Edosz;
-  src: url("../fonts/edosz.ttf");
-  font-size: 150%;
-}
 .formContainer form {
   padding: 10px;
 }
@@ -252,6 +242,7 @@ a:hover {
 }
 .formContainer input[type=text], select {
   margin: 0 0 10px 0;
+  width: 80%;
 }
 .formContainer select {
   margin-top: 5px;

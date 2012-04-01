@@ -16,7 +16,7 @@ Section.prototype.addSticky = function(stickyText){
 };
 
 Section.prototype.attachSticky = function(point) {
-  var sticky = new Sticky(point.message, point.votes_count, point.id);
+  var sticky = new Sticky(point.message, point.votes_count, point.id, point.tag_list);
   sticky.attachTo(point.section_id);
   this.stickies.push(sticky);
 };
@@ -134,7 +134,7 @@ $(document).ready(function() {
     ideaBoardz.init();
     $('#largeStickyDialog').dialog({
         autoOpen: false,
-        height: 230,
+        height: 350,
         width: 350,
         modal: true
     });

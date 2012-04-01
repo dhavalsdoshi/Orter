@@ -87,8 +87,8 @@
 /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
 }
 
-.inset-shadow(@inset:inset,@offset:0px,@spread:0px,@blur:0px,@color:#fff){
-	@values:@inset @offset @spread @blur @color;
+.inset-shadow(@offset:0px,@spread:0px,@blur:0px,@color:#fff){
+	@values:inset @offset @spread @blur @color;
 
 	-moz-box-shadow:@values;
 	-webkit-box-shadow:@values;

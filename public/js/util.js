@@ -32,6 +32,11 @@ $U.sortStickies= function(){
       $(this).find('.sticky').tsort('.voteCount .count', {order:"desc"});
     });
   }
+  else if($('#sortBy').val() == "tags") {
+    $('.section').each(function() {
+      $(this).find('.sticky').tsort('.tag', {order:"asc"});
+    });
+  }
   else {
     $('.section').each(function() {
       $(this).find('.sticky').tsort({attr:"data-id", order:"asc"});

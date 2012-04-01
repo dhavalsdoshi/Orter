@@ -7,6 +7,10 @@
 @stickyColor5:#ffc690;
 @stickyColor6:#dcffe0;
 
+.whiteboard{
+  font-family: 'Delius', helvetica, cursive;
+}
+
 .half{
     width: 49%;
 }
@@ -196,35 +200,101 @@
 }
 
 #largeStickyDialog textarea, #largeStickyDialog input{
-  background: transparent;
+  background-color: transparent;
   border: none;
   overflow: hidden;
 }
 
 
-
-.yellow #largeStickyDialog textarea:focus, .yellow #largeStickyDialog textarea:hover, .yellow #largeStickyDialog input:hover{
-  background-color: lighten(@stickyColor1, 10%);
+.yellow #largeStickyDialog{
+  input,textarea{
+    &:focus,&:hover{
+      background-color: lighten(@stickyColor1, 10%);
+    }
+  }
+}
+.aqua #largeStickyDialog{
+  input,textarea{
+    &:focus,&:hover{
+      background-color: darken(@stickyColor2, 5%);
+    }
+  }
+}
+.blue #largeStickyDialog{
+  input,textarea{
+    &:focus,&:hover{
+      background-color: darken(@stickyColor3, 5%);
+    }
+  }
+}
+.orange #largeStickyDialog{
+  input,textarea{
+    &:focus,&:hover{
+      background-color: darken(@stickyColor4, 5%);
+    }
+  }
+}
+.purple #largeStickyDialog{
+  input,textarea{
+    &:focus,&:hover{
+      background-color: darken(@stickyColor5, 5%);
+    }
+  }
+}
+.green #largeStickyDialog{
+  input,textarea{
+    &:focus,&:hover{
+      background-color: darken(@stickyColor6, 5%);
+    }
+  }
 }
 
-.aqua #largeStickyDialog textarea:focus, .aqua #largeStickyDialog textarea:hover, .aqua #largeStickyDialog input:hover{
-  background-color: darken(@stickyColor2, 5%);
+
+#largeStickyDialog{
+  font-size: 1em;
+  cursor: default;
+  font-family: 'Delius', helvetica, cursive;
+  label,.formElement{
+    font-size: 16px;
+  }
+  label {
+    cursor: pointer;
+  }
+  textarea {
+    word-wrap: break-word;
+    width: 99%;
+  }
+  .formElement{
+    font-size: 16px;
+    padding: 5px;
+    font-family: 'Delius', 'Comic Sans MS', helvetica, cursive;
+    outline: none;
+    .inset-shadow(0,1px,5px,#777);
+    .transition(all,300ms,ease);
+    &:hover,&:focus{
+      .transition(all,300ms,ease);
+      .inset-shadow(0,1px,8px,#555);
+    }
+  }
+  .voteCount {
+    position: relative;
+    top: 0;
+  }
+  .stickyTextContainer{
+    margin-bottom: 20px;
+  }
+
+  .tagUpdated{
+    display: inline-block;
+  }
 }
 
-.blue #largeStickyDialog textarea:focus, .blue #largeStickyDialog textarea:hover, .blue #largeStickyDialog input:hover{
-  background-color: darken(@stickyColor3, 5%);
-}
-
-.orange #largeStickyDialog textarea:focus, .orange #largeStickyDialog textarea:hover, .orange #largeStickyDialog input:hover{
-  background-color: darken(@stickyColor4, 5%);
-}
-
-.purple #largeStickyDialog textarea:focus, .purple #largeStickyDialog textarea:hover, .purple #largeStickyDialog input:hover{
-  background-color: darken(@stickyColor5, 5%);
-}
-
-.green #largeStickyDialog textarea:focus, .green #largeStickyDialog textarea:hover, .green #largeStickyDialog input:hover{
-  background-color: darken(@stickyColor6, 5%);
+#largeStickyDialog #tagNameText{
+  display: inline-block;
+  background-image: url("/images/tag.png");
+  background-repeat: no-repeat;
+  background-position: 5px center;
+  padding: 5px 0 5px 25px;
 }
 
 .ui-dialog{
@@ -259,7 +329,7 @@
 }
 
 .stickyActions{
-    bottom: 20px;
+    overflow: hidden;
     margin-top: 20px;
 }
 
@@ -279,57 +349,38 @@
     text-decoration: underline;
 }
 
-/*.voteCountContainer.ajaxLoader{*/
-    /*background:transparent url(../images/spinner.gif) no-repeat left;*/
-/*}*/
-
-.voteStickyButton{
-    /*background:transparent url(../images/vote.png) no-repeat;*/
-    /*padding-left: 23px;*/
-    /*padding-bottom: 10px;*/
-    cursor: pointer;
-    height:32px;
-    width:32px;
-    text-decoration: underline;
+.voteCountContainer{
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 7px 0 7px 5px;
 }
 
-.sticky .voteCount{
-    opacity: 0.5;
-    /*filter: alpha(opacity = 50);*/
+.voteStickyButton{
+  background:transparent url(../images/vote.png) no-repeat left center;
+  padding: 15px;
+  cursor: pointer;
+}
+.voteCountContainer, .voteStickyButton{
+  display: block;
+  float: left;
+}
+
+.sticky .stickyFooter{
     clear: both;
     margin-top: 10px;
-    font-weight:bold;
     position:absolute;
     bottom:5%;
     left:5%;
 }
 
-.sticky:hover .voteCount{
+.sticky .stickyFooter .voteCount {
+  opacity: 0.5;
+  /*filter: alpha(opacity = 50);*/
+  font-weight: bold;
+}
+
+.sticky:hover .stickyFooter .voteCount{
   font-weight: bold;
   opacity: 1;
   /*filter: alpha(opacity = 100);*/
-}
-
-#largeStickyDialog label{
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-#largeStickyDialog .stickyText{
-    font-size: 1.2em;
-    word-wrap: break-word;
-    width: 99%;
-    font-family: 'Delius', 'Comic Sans MS',helvetica, cursive;
-}
-
-#largeStickyDialog{
-    font-size: 1em;
-    cursor: default;
-    font-family: 'Delius', helvetica, cursive;
-}
-
-#largeStickyDialog .voteCount{
-    position: relative;
-    top: 0;
 }

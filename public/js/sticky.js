@@ -1,27 +1,34 @@
-var Sticky = function(text, votes, id){
+var Sticky = function(text, votes, id, tagList){
   this.text = $.trim(text);
   this.votes = votes;
   this.id = id;
+  if(tagList && tagList.length>0){
+    this.tag = tagList[0];
+  }
 };
 
 Sticky.prototype.attachTo = function(sectionId){
   var thisSticky= this;
 
-  var showLargeStickyDialog = function(addedPoint) {
+  var showLargeStickyDialog = function(addedPoint, sticky) {
     var colorOfSticky = addedPoint.parents('.section').attr('data-color');
     var uiDialog = $('#largeStickyDialog').parent('.ui-widget-content');
     uiDialog.removeClass(uiDialog.attr('class').split(/\s+/).pop())
       .addClass(colorOfSticky);
-
-    $('#largeStickyDialog').find('.stickyText').val(addedPoint.find('.stickyText').text());
-    $('#largeStickyDialog').find('.voteCountContainer .count').html(addedPoint.find('.voteCount .count').html());
-    $('#largeStickyDialog').find('.removeStickyButton').unbind('click').click(
+    //TODO: this should use the sticky object data
+    $('#largeStickyDialog .stickyText').val(sticky.text);
+    $('#largeStickyDialog .voteCountContainer .count').html(sticky.votes);
+    $('#tagNameText').val(sticky.tag);
+    $('#largeStickyDialog .removeStickyButton').unbind('click').click(
       function() {
         thisSticky.remove();
         $('#largeStickyDialog').dialog('close');
       });
     $("#largeStickyDialog textarea").unbind('blur').blur(function(){
       thisSticky.edit($.trim($(this).val()));
+    });
+    $("#largeStickyDialog #tagNameText").unbind('blur').blur(function(){
+      thisSticky.addTag($.trim($(this).val()));
     });
     $('#largeStickyDialog').find('.voteStickyButton').unbind('click').click(function(){thisSticky.upVote();});
     $('#largeStickyDialog').dialog('open');
@@ -34,10 +41,11 @@ Sticky.prototype.attachTo = function(sectionId){
     .attr('id', 'point' + this.id)
     .attr('data-id', this.id)
     .find('.stickyText').html(this.text);
+  addedPoint.find('.tag').html(this.tag);
   addedPoint.find('.voteCount .count').html(this.votes);
   addedPoint.click(function() {
-      showLargeStickyDialog(addedPoint);
-  });
+      showLargeStickyDialog(addedPoint,thisSticky);
+    });
   addedPoint.show('slow');
 };
 
@@ -48,20 +56,44 @@ Sticky.prototype.getDom = function(){
 Sticky.prototype.updateDom = function(){
   this.getDom().find(".stickyText").html(this.text);
   this.getDom().find(".count").html(this.votes);
+  this.getDom().find(".tag").html(this.tag);
+};
+
+
+//var allTags = [];
+Sticky.prototype.addTag = function(tag){
+//  allTags.push("someTag");
+  this.tag = tag;
+  var thisSticky = this;
+  $('#largeStickyDialog .tagUpdated').show('updating...');
+  $.ajax({
+    url: "/points/tag",
+    type: "POST",
+    data: {"point_ids": thisSticky.id, "tag": thisSticky.tag},
+    success: function(result) {
+      thisSticky.updateDom();
+      $('#largeStickyDialog .tagUpdated').text('done').show().delay(2000).fadeOut();
+    },
+    error: function(result) {
+      alert('something went wrong. Please refresh the page');
+    }
+  });
 };
 
 Sticky.prototype.upVote = function(){
   this.votes += 1;
   var thisSticky = this;
   $('#largeStickyDialog').find('.voteCountContainer').addClass("ajaxLoader");
+  $('#largeStickyDialog .voteUpdated').text('Updating..').show();
 
   $.ajax({
     url: "/points/" + thisSticky.id + "/votes.json",
     type: "POST",
     data: {"vote": {"point_id": thisSticky.id }},
     success: function(result) {
-      $('#largeStickyDialog').find('.count').html(thisSticky.votes);
-      $('#largeStickyDialog').find('.voteCountContainer').removeClass("ajaxLoader");
+      $('#largeStickyDialog .count').text(thisSticky.votes);
+      $('#largeStickyDialog .voteCountContainer').removeClass("ajaxLoader");
+      $('#largeStickyDialog .voteUpdated').text('Done').show().delay(2000).fadeOut();
       thisSticky.updateDom();
     },
     error: function(result) {
@@ -94,13 +126,17 @@ Sticky.prototype.update = function(text,votes){
 
 Sticky.prototype.edit = function(value) {
     this.update(value);
-     $.ajax({
-        url: '/points/' + this.id,
-        type: 'PUT',
-        data: {
-            'point' :{
-                'message': this.text
-            }
-        }
+    $('#largeStickyDialog .stickyUpdated').text('updating...').show();
+    $.ajax({
+      url: '/points/' + this.id,
+      type: 'PUT',
+      data: {
+          'point' :{
+              'message': this.text
+          }
+      },
+      success: function(result) {
+        $('#largeStickyDialog .stickyUpdated').text('done').show().delay(2000).fadeOut();
+      }
     });
 };
