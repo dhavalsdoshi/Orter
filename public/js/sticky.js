@@ -1,10 +1,8 @@
-var Sticky = function(text, votes, id, tagList){
+var Sticky = function(text, votes, id, tag){
   this.text = $.trim(text);
   this.votes = votes;
   this.id = id;
-  if(tagList && tagList.length>0){
-    this.tag = tagList[0];
-  }
+  this.tag = tag;
 };
 
 Sticky.prototype.attachTo = function(sectionId){

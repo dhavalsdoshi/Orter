@@ -16,7 +16,7 @@ Section.prototype.addSticky = function(stickyText){
 };
 
 Section.prototype.attachSticky = function(point) {
-  var sticky = new Sticky(point.message, point.votes_count, point.id, point.tag_list);
+  var sticky = new Sticky(point.message, point.votes_count, point.id, point.tag);
   sticky.attachTo(point.section_id);
   this.stickies.push(sticky);
 };

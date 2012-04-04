@@ -3,7 +3,7 @@ class PointsController < ApplicationController
   def index_for_retro
     points = Retro.find(params[:retro_id]).points
     respond_to do |format|
-      format.json { render :json => points.to_json(:methods => [:votes_count, :tag_list]) }
+      format.json { render :json => points.to_json(:methods => [:votes_count, :tag]) }
     end
   end
 

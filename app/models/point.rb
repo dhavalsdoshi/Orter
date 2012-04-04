@@ -8,4 +8,8 @@ class Point < ActiveRecord::Base
   def votes_count
     votes.count
   end
+
+  def tag
+    tag_list.first
+  end
 end
