@@ -111,7 +111,7 @@ var Ideaboardz = function() {
 
   var updateSticky = function(point) {
     var stickyToUpdate = _.find(allPointsOnBoard(), function(sticky){return sticky.id == point.id});
-    stickyToUpdate.update(point.message, point.votes_count);
+    stickyToUpdate.update(point.message, point.votes_count, point.tag);
   };
 
   var removePointHtmlIfNotInData = function(allPointIdsFromServer) {
