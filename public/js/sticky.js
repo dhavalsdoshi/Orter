@@ -90,7 +90,9 @@ Sticky.prototype.remove = function(){
 
 Sticky.prototype.update = function(text,votes){
   this.text = $.trim(text);
-  this.votes = votes;
+  if(votes){
+    this.votes = votes;
+  }
   this.updateDom();
 };
 
