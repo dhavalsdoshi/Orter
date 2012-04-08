@@ -118,8 +118,12 @@ Sticky.prototype.remove = function(){
 
 Sticky.prototype.update = function(text,votes,tag){
   this.text = $.trim(text);
-  this.votes = votes;
-  this.tag = tag;
+  if(votes){
+    this.votes = votes;
+  }
+  if(tag){
+    this.tag = tag;
+  }
   this.updateDom();
 };
 
