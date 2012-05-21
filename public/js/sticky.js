@@ -63,14 +63,15 @@ Sticky.prototype.addTag = function(tag){
 //  allTags.push("someTag");
   this.tag = tag;
   var thisSticky = this;
-  $('#largeStickyDialog .tagUpdated').show('updating...');
+  $('#largeStickyDialog .tagUpdated').text('Updating...').addClass('show');
   $.ajax({
     url: "/points/tag",
     type: "POST",
     data: {"point_ids": thisSticky.id, "tag": thisSticky.tag},
     success: function(result) {
       thisSticky.updateDom();
-      $('#largeStickyDialog .tagUpdated').text('done').show().delay(2000).fadeOut();
+      $('#largeStickyDialog .tagUpdated').text('Updated');
+      setTimeout(function(){$('#largeStickyDialog .tagUpdated').removeClass('show');}, 2000);
     },
     error: function(result) {
       alert('something went wrong. Please refresh the page');
@@ -81,8 +82,7 @@ Sticky.prototype.addTag = function(tag){
 Sticky.prototype.upVote = function(){
   this.votes += 1;
   var thisSticky = this;
-  $('#largeStickyDialog').find('.voteCountContainer').addClass("ajaxLoader");
-  $('#largeStickyDialog .voteUpdated').text('Updating..').show();
+  $('#largeStickyDialog .voteUpdated').text('Updating...').addClass('show');
 
   $.ajax({
     url: "/points/" + thisSticky.id + "/votes.json",
@@ -90,8 +90,8 @@ Sticky.prototype.upVote = function(){
     data: {"vote": {"point_id": thisSticky.id }},
     success: function(result) {
       $('#largeStickyDialog .count').text(thisSticky.votes);
-      $('#largeStickyDialog .voteCountContainer').removeClass("ajaxLoader");
-      $('#largeStickyDialog .voteUpdated').text('Done').show().delay(2000).fadeOut();
+      $('#largeStickyDialog .voteUpdated').text('Updated');
+      setTimeout(function(){$('#largeStickyDialog .voteUpdated').removeClass('show');}, 2000);
       thisSticky.updateDom();
     },
     error: function(result) {
@@ -118,18 +118,14 @@ Sticky.prototype.remove = function(){
 
 Sticky.prototype.update = function(text,votes,tag){
   this.text = $.trim(text);
-  if(votes){
-    this.votes = votes;
-  }
-  if(tag){
-    this.tag = tag;
-  }
+  this.votes = votes;
+  this.tag = tag;
   this.updateDom();
 };
 
 Sticky.prototype.edit = function(value) {
     this.update(value);
-    $('#largeStickyDialog .stickyUpdated').text('updating...').show();
+    $('#largeStickyDialog .stickyUpdated').text('Updating...').addClass('show');
     $.ajax({
       url: '/points/' + this.id,
       type: 'PUT',
@@ -139,7 +135,8 @@ Sticky.prototype.edit = function(value) {
           }
       },
       success: function(result) {
-        $('#largeStickyDialog .stickyUpdated').text('done').show().delay(2000).fadeOut();
+        $('#largeStickyDialog .stickyUpdated').text('Updated');
+        setTimeout(function(){$('#largeStickyDialog .stickyUpdated').removeClass('show');}, 2000);
       }
     });
 };

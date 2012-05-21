@@ -8,3 +8,4 @@ TAGS
 tmp
 *~
 config/database.yml
+*.DS_Store

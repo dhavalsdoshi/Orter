@@ -73,19 +73,22 @@
 <div id="largeStickyDialog">
   <div class="stickyLarge">
     <div class="stickyTextContainer">
-      <label for="stickyText">Edit:</label>
-      <span style="display: none" class="stickyUpdated"></span>
+      <label for="stickyText" class="icon icon-replace icon-edit">Edit:</label>
       <textarea id="stickyText" class="stickyText formElement" rows="4" cols="35" title="click to edit" maxlength="140"></textarea>
+      <span class="stickyUpdated"></span>
     </div>
     <div class="tag">
+      <label for="tagNameText" class="icon icon-replace icon-label">Label</label>
       <input name="tagname" id="tagNameText" class="formElement" type="text" maxlength="25" title="click to edit" value="" placeholder="Label"/>
-      <span style="display: none" class="tagUpdated"></span>
+      <span class="tagUpdated"></span>
     </div>
     <div class="stickyActions">
-      <a class="voteStickyButton" title="Click to vote up the sticky"></a>
-      <span class="voteCountContainer"> +<span class="count"></span></span>
-      <span style="display: none" class="voteUpdated"></span>
-      <a class="removeStickyButton" title="Click to delete sticky">Delete</a>
+      <div class="stickyVote">
+        <a class="voteStickyButton icon icon-replace icon-like" title="Vote Up"></a>
+        <span class="voteCountContainer"> +<span class="count"></span></span>
+        <span class="voteUpdated"></span>
+      </div>
+      <a class="removeStickyButton icon-replace" title="Delete sticky">Delete</a>
     </div>
   </div>
 </div>
