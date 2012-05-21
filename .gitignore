@@ -6,6 +6,5 @@ TAGS
 *.log
 .bundle/*
 tmp
-.rvmrc
 *~
 config/database.yml
