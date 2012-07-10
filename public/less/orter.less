@@ -7,6 +7,10 @@
 @stickyColor5:#ffc690;
 @stickyColor6:#dcffe0;
 
+body{
+  min-height: 1000px;
+}
+
 .half{
     width: 49%;
 }
@@ -34,10 +38,12 @@
     -moz-border-left-colors: #555 #666 #777 #999 #999 #888 #777 #666;
     -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
 
-	-webkit-box-shadow: 3px 7px 3px #888;
+	  -webkit-box-shadow: 3px 7px 3px #888;
     -moz-box-shadow: 3px 7px 3px   #888;
+    box-shadow: 3px 7px 3px   #888;
     -webkit-border-radius: 15px 15px 15px 15px;
     -moz-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
     overflow: auto;
     width: 95%;
     min-height:643px;
@@ -132,18 +138,21 @@
 }
 
 .addStickyForm textarea{
-    -webkit-box-shadow: 5px 1px 3px #888;
-    -moz-box-shadow: 5px 1px 3px #888;
+  box-shadow: 5px 1px 3px #888;
+  -webkit-box-shadow: 5px 1px 3px #888;
+  -moz-box-shadow: 5px 1px 3px #888;
 }
 
 .sticky{
-    -webkit-box-shadow: 3px 1px 3px #888;
-    -moz-box-shadow: 3px 1px 3px #888;
+  box-shadow: 3px 1px 3px #888;
+  -webkit-box-shadow: 3px 1px 3px #888;
+  -moz-box-shadow: 3px 1px 3px #888;
 }
 
 .ui-widget-content{
-    -webkit-box-shadow:2px 29px 17px #888888;
-    -moz-box-shadow:2px 29px 17px #888888;
+  box-shadow:2px 29px 17px #888888;
+  -webkit-box-shadow:2px 29px 17px #888888;
+  -moz-box-shadow:2px 29px 17px #888888;
 }
 
 .sticky,.addStickyForm textarea{

@@ -23,7 +23,6 @@ h4,
 body {
   background: #cccccc none repeat scroll 0 0;
   font-family: 'Delius', helvetica, cursive;
-  min-height: 1000px;
 }
 blockquote,
 ul,
@@ -31,7 +30,9 @@ ol,
 dl {
   margin: 1em;
 }
-ol, ul, dl {
+ol,
+ul,
+dl {
   margin-left: 2em;
 }
 ol li {
@@ -60,6 +61,9 @@ a:hover {
 .left {
   float: left;
 }
+body {
+  min-height: 1000px;
+}
 .half {
   width: 49%;
 }
@@ -85,14 +89,17 @@ a:hover {
   -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
   -webkit-box-shadow: 3px 7px 3px #888;
   -moz-box-shadow: 3px 7px 3px   #888;
+  box-shadow: 3px 7px 3px   #888;
   -webkit-border-radius: 15px 15px 15px 15px;
   -moz-border-radius: 15px 15px 15px 15px;
+  border-radius: 15px 15px 15px 15px;
   overflow: auto;
   width: 95%;
   min-height: 643px;
   text-align: center;
 }
-.topbar, .header {
+.topbar,
+.header {
   overflow: hidden;
   width: 99%;
 }
@@ -106,7 +113,8 @@ a:hover {
   float: left;
   margin: 0 0 20px 10px;
 }
-.filter label, .filter select {
+.filter label,
+.filter select {
   margin: 0 0 0 10px;
 }
 .logoContainer {
@@ -130,7 +138,8 @@ a:hover {
   width: 15%;
   min-width: 130px;
 }
-.pdfExport, .excelExport {
+.pdfExport,
+.excelExport {
   margin: 0 10px 15px 10px;
   display: inline;
   float: right;
@@ -163,21 +172,27 @@ a:hover {
   overflow: visible;
 }
 .addStickyForm textarea {
+  box-shadow: 5px 1px 3px #888;
   -webkit-box-shadow: 5px 1px 3px #888;
   -moz-box-shadow: 5px 1px 3px #888;
 }
 .sticky {
+  box-shadow: 3px 1px 3px #888;
   -webkit-box-shadow: 3px 1px 3px #888;
   -moz-box-shadow: 3px 1px 3px #888;
 }
 .ui-widget-content {
+  box-shadow: 2px 29px 17px #888888;
   -webkit-box-shadow: 2px 29px 17px #888888;
   -moz-box-shadow: 2px 29px 17px #888888;
 }
-.sticky, .addStickyForm textarea {
+.sticky,
+.addStickyForm textarea {
   max-width: 15em;
 }
-.sticky, .addStickyForm textarea, .ui-widget-content {
+.sticky,
+.addStickyForm textarea,
+.ui-widget-content {
   background-color: #ffff88;
   border: 1px solid #ffff88;
   font-size: 0.75em;
@@ -188,7 +203,8 @@ a:hover {
   margin-left: 5px;
   margin-top: 5px;
 }
-.sticky, .addStickyForm textarea {
+.sticky,
+.addStickyForm textarea {
   word-wrap: break-word;
   cursor: pointer;
   float: left;
@@ -197,7 +213,9 @@ a:hover {
   overflow: hidden;
   position: relative;
 }
-.aqua .sticky, .aqua .addStickyForm textarea, .aqua.ui-widget-content {
+.aqua .sticky,
+.aqua .addStickyForm textarea,
+.aqua.ui-widget-content {
   background-color: #ccffff;
   border: 1px solid #ccffff;
 }
@@ -208,39 +226,58 @@ a:hover {
   background-color: #c3ee8f;
   border: 1px solid #c3ee8f;
 }
-.orange .sticky, .orange .addStickyForm textarea, .orange.ui-widget-content {
+.orange .sticky,
+.orange .addStickyForm textarea,
+.orange.ui-widget-content {
   background-color: #eed3ff;
   border: 1px solid #eed3ff;
 }
-.purple .sticky, .purple .addStickyForm textarea, .purple.ui-widget-content {
+.purple .sticky,
+.purple .addStickyForm textarea,
+.purple.ui-widget-content {
   background-color: #ffc690;
   border: 1px solid #ffc690;
 }
-.green .sticky, .green .addStickyForm textarea, .green.ui-widget-content {
+.green .sticky,
+.green .addStickyForm textarea,
+.green.ui-widget-content {
   background-color: #dcffe0;
   border: 1px solid #dcffe0;
 }
-#largeStickyDialog textarea, #largeStickyDialog input {
+#largeStickyDialog textarea,
+#largeStickyDialog input {
   background: transparent;
   border: none;
   overflow: hidden;
 }
-.yellow #largeStickyDialog textarea:focus, .yellow #largeStickyDialog textarea:hover, .yellow #largeStickyDialog input:hover {
+.yellow #largeStickyDialog textarea:focus,
+.yellow #largeStickyDialog textarea:hover,
+.yellow #largeStickyDialog input:hover {
   background-color: #ffffbb;
 }
-.aqua #largeStickyDialog textarea:focus, .aqua #largeStickyDialog textarea:hover, .aqua #largeStickyDialog input:hover {
+.aqua #largeStickyDialog textarea:focus,
+.aqua #largeStickyDialog textarea:hover,
+.aqua #largeStickyDialog input:hover {
   background-color: #b3ffff;
 }
-.blue #largeStickyDialog textarea:focus, .blue #largeStickyDialog textarea:hover, .blue #largeStickyDialog input:hover {
+.blue #largeStickyDialog textarea:focus,
+.blue #largeStickyDialog textarea:hover,
+.blue #largeStickyDialog input:hover {
   background-color: #b7eb79;
 }
-.orange #largeStickyDialog textarea:focus, .orange #largeStickyDialog textarea:hover, .orange #largeStickyDialog input:hover {
+.orange #largeStickyDialog textarea:focus,
+.orange #largeStickyDialog textarea:hover,
+.orange #largeStickyDialog input:hover {
   background-color: #e4b9ff;
 }
-.purple #largeStickyDialog textarea:focus, .purple #largeStickyDialog textarea:hover, .purple #largeStickyDialog input:hover {
+.purple #largeStickyDialog textarea:focus,
+.purple #largeStickyDialog textarea:hover,
+.purple #largeStickyDialog input:hover {
   background-color: #ffb976;
 }
-.green #largeStickyDialog textarea:focus, .green #largeStickyDialog textarea:hover, .green #largeStickyDialog input:hover {
+.green #largeStickyDialog textarea:focus,
+.green #largeStickyDialog textarea:hover,
+.green #largeStickyDialog input:hover {
   background-color: #c3ffc9;
 }
 .ui-dialog {

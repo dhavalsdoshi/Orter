@@ -23,7 +23,6 @@ h4,
 body {
   background: #cccccc none repeat scroll 0 0;
   font-family: 'Delius', helvetica, cursive;
-  min-height: 1000px;
 }
 blockquote,
 ul,
@@ -31,7 +30,9 @@ ol,
 dl {
   margin: 1em;
 }
-ol, ul, dl {
+ol,
+ul,
+dl {
   margin-left: 2em;
 }
 ol li {
@@ -59,6 +60,9 @@ a:hover {
 }
 .left {
   float: left;
+}
+body {
+  min-height: 1000px;
 }
 .half {
   width: 48%;
@@ -88,9 +92,6 @@ a:hover {
   box-shadow: 3px 7px 3px #888888;
   /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
 
-  -moz-box-shadow: 3px;
-  -webkit-box-shadow: 3px;
-  box-shadow: 3px;
   border-radius: 15px 15px 15px 15px;
   -moz-border-radius: 15px 15px 15px 15px;
   -webkit-border-radius: 15px 15px 15px 15px;
@@ -125,9 +126,6 @@ a:hover {
   box-shadow: 1px 9px 23px #888888;
   /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
 
-  -moz-box-shadow: 1px;
-  -webkit-box-shadow: 1px;
-  box-shadow: 1px;
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
@@ -141,9 +139,6 @@ a:hover {
   box-shadow: 1px 15px 23px #666666;
   /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
 
-  -moz-box-shadow: 1px;
-  -webkit-box-shadow: 1px;
-  box-shadow: 1px;
 }
 .sectionTitle {
   font-family: Edosz;
@@ -165,7 +160,7 @@ a:hover {
   max-width: 600px;
 }
 .try {
-  top: 91px;
+  top: 111px;
   right: 69px;
   z-index: 0;
   -webkit-transform: rotate(3deg);
@@ -174,13 +169,13 @@ a:hover {
   transform: rotate(3deg);
 }
 .create {
-  top: 115px;
+  top: 135px;
   right: 320px;
   z-index: 1;
   width: 350px;
 }
 .why {
-  top: 250px;
+  top: 270px;
   right: 260px;
   width: 25em;
   -webkit-transform: rotate(-1.5deg);
@@ -189,15 +184,16 @@ a:hover {
   transform: rotate(-1.5deg);
 }
 .faq {
-  top: 515px;
-  -webkit-transform: rotate(-2deg);
-  -moz-transform: rotate(-2deg);
-  -o-transform: rotate(-2deg);
-  transform: rotate(-2deg);
+  top: 438px;
+  right: 600px;
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  -o-transform: rotate(-10deg);
+  transform: rotate(-10deg);
   z-index: 4;
 }
 .help {
-  top: 600px;
+  top: 620px;
   right: 70px;
   -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
@@ -206,7 +202,7 @@ a:hover {
   z-index: 5;
 }
 .feedback {
-  top: 246px;
+  top: 266px;
   right: 200px;
   -webkit-transform: rotate(-10deg);
   -moz-transform: rotate(-10deg);
@@ -247,10 +243,13 @@ a:hover {
 .formContainer form {
   padding: 10px;
 }
-.formContainer input[type=text], .formContainer select, .formContainer label {
+.formContainer input[type=text],
+.formContainer select,
+.formContainer label {
   display: block;
 }
-.formContainer input[type=text], select {
+.formContainer input[type=text],
+select {
   margin: 0 0 10px 0;
 }
 .formContainer select {
@@ -267,7 +266,8 @@ a:hover {
   -o-transition: all 0.25s ease-in;
   transition: all 0.25s ease-in;
 }
-.formContainer input[type=text]:hover, .formContainer input[type=text]:focus {
+.formContainer input[type=text]:hover,
+.formContainer input[type=text]:focus {
   background-color: #ffffcc;
   -webkit-transition: all 0.25s ease-in;
   -moz-transition: all 0.25s ease-in;
@@ -301,7 +301,9 @@ a:hover {
   box-shadow: 0 0 6px #dddddd;
   /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
 
-  -moz-box-shadow: 0;
-  -webkit-box-shadow: 0;
-  box-shadow: 0;
+}
+@media only screen and (max-width: 1000px) {
+  .leftBar {
+    display: none;
+  }
 }

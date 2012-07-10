@@ -23,7 +23,6 @@ h4,
 body {
   background: #cccccc none repeat scroll 0 0;
   font-family: 'Delius', helvetica, cursive;
-  min-height: 1000px;
 }
 blockquote,
 ul,
@@ -31,7 +30,9 @@ ol,
 dl {
   margin: 1em;
 }
-ol, ul, dl {
+ol,
+ul,
+dl {
   margin-left: 2em;
 }
 ol li {

@@ -1,4 +1,9 @@
 @import "base.less";
+
+body{
+  min-height: 1000px;
+}
+
 .half{
     width:48%;
 }
@@ -90,39 +95,41 @@
 }
 
 .try{
-  top:91px;
+  top:111px;
   right:69px;
   z-index:0;
   .rotate(3deg);
 }
 
 .create{
-    top:115px;
+    top:135px;
     right:320px;
     z-index:1;
     width: 350px;
 }
 
 .why{
-    top:250px;
+    top:270px;
     right:260px;
     width:25em;
     .rotate(-1.5deg);
 }
 
 .faq {
-    top:515px;
-    .rotate(-2deg);
+    top:438px;
+    right: 600px;
+    .rotate(-10deg);
     z-index:4;
 }
+
 .help{
-    top:600px;
+    top:620px;
     right:70px;
     .rotate(-3deg);
     z-index:5;
 }
 .feedback{
-    top:246px;
+    top:266px;
     right:200px;
     .rotate(-10deg);
     z-index:0;
@@ -222,3 +229,8 @@
 	
 }
 
+@media only screen and (max-width:1000px) {
+  .leftBar{
+    display: none;
+  }
+}

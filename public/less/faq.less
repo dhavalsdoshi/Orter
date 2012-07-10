@@ -1,0 +1,66 @@
+@import "base.less";
+
+a{
+  color: blue;
+}
+
+#mainWrap {
+	margin: 20px auto;
+  overflow: auto;
+  padding: 10px;
+  max-width: 1200px;
+}
+
+.logoContainer{
+  width: 90%;
+  margin: 0 auto 10px;
+  padding: 5px;
+}
+
+#whiteboard{
+  background-color: white;
+  border: #696969 solid 20px;
+
+  -moz-border-bottom-colors: #555 #666 #777 #888 #aaa #bbb #ccc #ddd;
+  -moz-border-top-colors: #555 #666 #777 #888 #888 #777 #666 #555;
+  -moz-border-left-colors: #555 #666 #777 #999 #999 #888 #777 #666;
+  -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
+
+  -webkit-box-shadow: 3px 7px 3px #888;
+  -moz-box-shadow: 3px 7px 3px   #888;
+  box-shadow: 3px 7px 3px   #888;
+  -webkit-border-radius: 15px 15px 15px 15px;
+  -moz-border-radius: 15px 15px 15px 15px;
+  border-radius: 15px 15px 15px 15px;
+  overflow: auto;
+  width: 90%;
+  margin: 0 auto;
+  padding: 5px;
+
+  h1{
+    padding: 20px 10px
+  }
+
+  .question{
+    font-weight: bold;
+    padding: 10px 10px 5px ;
+  }
+  .answer{
+    padding: 0 10px 15px;
+  }
+}
+
+
+@media only screen and (max-width:620px) {
+  #whiteboard{
+    border-width: 15px;
+  }
+}
+
+@media only screen and (max-width:320px) {
+  #whiteboard{
+    border-width: 10px;
+  }
+}
+
+
