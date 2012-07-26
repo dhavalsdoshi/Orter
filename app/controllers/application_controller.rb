@@ -14,5 +14,4 @@ class ApplicationController < ActionController::Base
     LOGGER.error e.backtrace.join("\n")
     render :file => "#{RAILS_ROOT}/public/error.html"
   end
-  
 end
