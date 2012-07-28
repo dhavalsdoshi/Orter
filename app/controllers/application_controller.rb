@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
     LOGGER.error e.backtrace.join("\n")
     render :file => "#{RAILS_ROOT}/public/error.html"
   end
+
+  def current_user
+    User.find session[:user_id] if session[:user_id]
+  end
 end

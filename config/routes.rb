@@ -4,11 +4,13 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'retros/:retro_id/points.:format', :controller =>'points', :action => 'index_for_retro'
 
   map.connect 'for/:name', :controller =>'retros', :action => 'show_old'
-  map.connect 'for/:name/:id', :controller =>'retros', :action => 'show'
+  map.retro_for 'for/:name/:id', :controller =>'retros', :action => 'show'
 
   map.connect 'points/delete/:id.:format', :controller =>'points', :action => 'destroy'
 
   map.connect 'retros/export/:id/:name.:format', :controller => 'retros', :action => 'export'
+
+  map.connect 'user/retros', :controller => 'users', :action => 'retros'
 
   map.connect 'admin/show_deleted/:retro_name/:retro_id/devilthegr8', :controller =>'admin', :action => 'deleted_points'
   map.connect 'admin/restore_deleted/:point_id', :controller =>'admin', :action => 'restore_deleted'

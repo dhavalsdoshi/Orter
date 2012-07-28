@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 8) do
 
   create_table "deleted_points", :force => true do |t|
     t.integer  "section_id"
@@ -38,6 +38,11 @@ ActiveRecord::Schema.define(:version => 7) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "retros_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "retro_id"
   end
 
   create_table "sections", :force => true do |t|

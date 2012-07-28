@@ -8,4 +8,5 @@ gem 'omniauth-google'
 
 group :development do
   gem "mongrel"
+  gem 'pry'
 end

@@ -12,6 +12,7 @@ class RetrosController < ApplicationController
     end
 
     if @retro.save
+      @retro.users = [current_user] if current_user
       session['created_retro_id'] = @retro.id
       flash[:notice] = 'Retro was successfully created.'
       LOGGER.info("retro created for: {#{@retro.name}} #{@retro.id.to_s}")

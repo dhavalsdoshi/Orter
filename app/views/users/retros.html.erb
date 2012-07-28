@@ -1,0 +1,7 @@
+<ul>
+  <% @retros.each do |retro| %>
+    <li>
+      <%= link_to retro.name, retro_for_path(:name => retro.name, :id => retro.id) %>
+    </li>
+  <% end %>
+</ul>
