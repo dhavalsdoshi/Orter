@@ -10,10 +10,9 @@ class RetrosController < ApplicationController
       section_name = ("sectionname"+section_number.to_s)
       @retro.sections << Section.new({:name =>CGI.escapeHTML(params[section_name])})
     end
+    @retro.users = [current_user] if current_user
 
     if @retro.save
-      @retro.users = [current_user] if current_user
-      session['created_retro_id'] = @retro.id
       flash[:notice] = 'Retro was successfully created.'
       LOGGER.info("retro created for: {#{@retro.name}} #{@retro.id.to_s}")
       redirect_to :controller => :retros, :action => :show, :id=>@retro.id.to_s,:name=> @retro.name

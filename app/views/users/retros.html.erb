@@ -5,3 +5,8 @@
     </li>
   <% end %>
 </ul>
+
+<% form_tag({:controller => :users, :action => :add_retro},{:method => "post",:novalidate => ""}) do %>
+    <%= text_field_tag(:url, "",:required => "required","data-message"=>"please fill in the url") %>
+    <%= submit_tag("Add") %>
+<% end %>
