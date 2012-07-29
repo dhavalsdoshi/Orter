@@ -1,0 +1,77 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Delius|Handlee", :rel => "stylesheet", :type => "text/css"}/
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "content-type"}/
+    %meta{:content => "collaborate, distributed, share, discuss, ideas, brainstorm, sticky, wall, board, whiteboard, meeting, retro, online, continuous, thoughtworks, application", :lang => "en-us", :name => "keywords"}/
+    %meta{:content => "collaborate, distributed, share, discuss, ideas, brainstorm, sticky, wall, board, whiteboard, meeting, retro, online, continuous, thoughtworks, application", :lang => "en", :name => "keywords"}/
+    %meta{:content => "Conduct collaborative brainstorming sessions with distributed teams", :name => "description"}/
+    %title
+      IdeaBoardz - Brainstorm, retrospect, collaborate
+    %meta{:content => @retrospective.id, :name => "retroId"}/
+    %link{:href => "/css/reset-min.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "/css/cupertino/jquery-ui-1.8.2.custom.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "/css/orter.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
+    = render :partial => "shared/analytics"
+  %body
+    .mainWrap
+      .topbar
+        .logoContainer
+          %a.logo{:href => "/", :title => "Ideaboardz"}
+            %img{:alt => "Ideaboardz", :src => "/images/ideaboardz.png"}/
+        .export
+          %a#excelExport.excelExport{:href => "/retros/export/#{@retrospective.id}/#{@retrospective.name}.xls", :target => "_blank", :title => "Export as excel"}
+          %a#pdfExport.pdfExport{:href => "/retros/export/#{@retrospective.id}/#{@retrospective.name}.pdf", :target => "_blank", :title => "Export as pdf"}
+      .filter
+        %input#search{:placeholder => "start typing to filter stickies", :type => "text"}/
+        .sort
+          - if(@retrospective.sections.length > 1)
+            = label_tag("retro[section_id]","View Section")
+            = select("retro","section_id", @retrospective.sections.collect {|s| [ s.name, s.id ] }, {:include_blank => 'All Sections'})
+          = label_tag(:sortBy,"Sort By")
+          = select_tag(:sortBy,options_from_collection_for_select(['created time', 'votes'],:to_s,:to_s),:id=>"sortBy")
+      .whiteboard
+        %h2#ideaboardTitle.ideaBoardTitle{:title => @retrospective.description}= @retrospective.name
+        / googleoff: all
+        %noscript Please turn javascript on or move to a browser which supports it
+        / googleon: all
+        - row_one_sections, row_two_sections = get_rows_for_sections(@retrospective.sections)
+        #sectionsRow1.sections
+          - section_width = get_section_width(row_one_sections.size)
+          = render :partial => "section",                      |
+            :collection => row_one_sections, :as => "section", |
+            :locals => {:section_width => section_width}       |
+        #sectionsRow2.sections
+          - section_width = get_section_width(row_two_sections.size)
+          = render :partial => "section",                      |
+            :collection => row_two_sections, :as => "section", |
+            :locals => {:section_width => section_width}       |
+        .hide
+          #stickyTemplate.col_right
+            .sticky
+              .stickyText
+              .voteCount
+                +
+                %span.count 0
+    #largeStickyDialog
+      .stickyLarge
+        / <div class="tag"><label for="tagNameText">Tag: </label><input name="tagname" id="tagNameText" type="text" maxlength="25" title="click to edit" value="blahsasas"/></div>
+        %div
+          %label{:for => "stickyText"} Edit:
+        %textarea#stickyText.stickyText{:cols => "35", :maxlength => "140", :rows => "4", :title => "click to edit"}
+        .stickyActions
+          %a.voteStickyButton{:title => "Click to vote up the sticky"} Vote up
+          %span.voteCountContainer
+            \: +
+            %span.count
+          %a.removeStickyButton{:title => "Click to delete sticky"} Delete
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js", :type => "text/javascript"}
+    / <script type="text/javascript" src="/js/jquery1.7.min.js"></script>
+    %script{:src => "/js/jquery-ui-1.8.2.custom.min.js", :type => "text/javascript"}
+    %script{:src => "/js/jquery.tinysort.js", :type => "text/javascript"}
+    %script{:src => "/js/underscore-min.js", :type => "text/javascript"}
+    %script{:src => "/js/analytics.js", :type => "text/javascript"}
+    %script{:src => "/js/util.js", :type => "text/javascript"}
+    %script{:src => "/js/sticky.js", :type => "text/javascript"}
+    %script{:src => "/js/section.js", :type => "text/javascript"}

@@ -17,6 +17,7 @@ GEM
     daemons (1.1.4)
     fastthread (1.0.7)
     gem_plugin (0.2.3)
+    haml (3.1.6)
     hashie (1.2.0)
     method_source (0.8)
     mongrel (1.1.5)
@@ -62,6 +63,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  haml
   mongrel
   mysql
   omniauth (~> 1.0.0)

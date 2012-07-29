@@ -5,6 +5,7 @@ gem "prawn", "0.12.0"
 
 gem 'omniauth', '~> 1.0.0'
 gem 'omniauth-google'
+gem 'haml'
 
 group :development do
   gem "mongrel"
