@@ -1,5 +1,5 @@
 /* menu */
-#menu {position:fixed; top:0; right:70px; }
+#menu {position:fixed; top:0; right:70px; font-size: 13px; }
 #menu { margin:0px; padding:0px; list-style:none; color:#fff; line-height:45px; display:inline-block; float:left; z-index:1000; }
 #menu li {list-style:none; }
 li.start-item img, li.last-item img {float: left; }
@@ -8,9 +8,9 @@ li.start-item img, li.last-item img {float: left; }
 #menu > li {background:#172322 none repeat scroll 0 0; cursor:pointer; float:left; position:relative;padding:0px 10px;}
 #menu > li a:hover {color:#B0D730;}
 #menu .start-item {background:transparent none repeat scroll 0% 0%; padding:0px; background-color:Transparent;}
-#menu .middle-item {min-width:130px;}
+#menu .middle-item {min-width:130px; text-align: center; border-right: 1px dotted; }
 /* sub-menus*/
-#menu ul { padding:0px; margin:0px; display:block; display:inline;}
+#menu ul { padding:0px; margin:0px; display:block; display:inline; text-align: left; }
 #menu li ul { position:absolute; left:-10px; top:0px; margin-top:45px; width:170px; line-height:16px; background-color:#172322; color:#0395CC; /* for IE */ display:none; }
 #menu li:hover ul { display:block;}
 #menu li ul li{ display:block; margin:5px 20px; padding: 5px 0px;  border-top: dotted 1px #606060; list-style-type:none; }
