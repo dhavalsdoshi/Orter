@@ -23,6 +23,7 @@ class RetrosController < ApplicationController
 
   def show
     @retrospective = Retro.find_by_id_and_name(params[:id], params[:name], :include => :sections)
+    @retrospective.users += current_user unless @retrospective.users.include?(current_user)
     render :action => :show
   end
 
