@@ -13,6 +13,7 @@
     %link{:href => "/css/reset-min.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "/css/cupertino/jquery-ui-1.8.2.custom.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "/css/orter.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "/css/menu.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
     = render :partial => "shared/analytics"
   %body
     .mainWrap
@@ -20,9 +21,7 @@
         .logoContainer
           %a.logo{:href => "/", :title => "Ideaboardz"}
             %img{:alt => "Ideaboardz", :src => "/images/ideaboardz.png"}/
-        .export
-          %a#excelExport.excelExport{:href => "/retros/export/#{@retrospective.id}/#{@retrospective.name}.xls", :target => "_blank", :title => "Export as excel"}
-          %a#pdfExport.pdfExport{:href => "/retros/export/#{@retrospective.id}/#{@retrospective.name}.pdf", :target => "_blank", :title => "Export as pdf"}
+        = render :partial => 'menu'
       .filter
         %input#search{:placeholder => "start typing to filter stickies", :type => "text"}/
         .sort

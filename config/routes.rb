@@ -19,7 +19,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :retros
 
   map.connect "/auth/:provider/callback", :controller => "session", :action => "create"
-  map.connect "/signout", :controller => "session", :action => "destroy"
+  map.signin "/signin", :controller => "session", :action => "new"
+  map.signout "/signout", :controller => "session", :action => "destroy"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

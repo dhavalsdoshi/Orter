@@ -1,0 +1,51 @@
+%div{:style => "margin-left:0px;"}
+  %ul#menu
+    %li.start-item
+      %img{:alt => "", :src => "/images/menu/menu_left.png"}
+
+    - if @user
+      %li.middle-item
+        Welcome
+        = @user.name.capitalize
+      %li.middle-item
+        %a{:href => "javascript: void(0)"} My Boardz
+        %ul#inner
+          %li
+            %img.corner_inset_left{:alt => "", :src => "/images/menu/corner_inset_left.png"}
+            %img.middle{:alt => "", :src => "/images/menu/dot.gif"}
+            %img.corner_inset_right{:alt => "", :src => "/images/menu/corner_inset_right.png"}
+
+          - @user.retros.each do |retro|
+            - if retro.name
+              %li
+                = link_to retro.name, retro_for_path(:name => retro.name, :id => retro.id)
+          %li
+            - form_tag({:controller => :users, :action => :add_retro},{:method => "post",:novalidate => ""}) do
+              = text_field_tag(:url, "",:required => "required","data-message"=>"please fill in the url", :size => 7)
+              = submit_tag("Add")
+          %li.last-item
+            %img.corner_left{:alt => "", :src => "/images/menu/corner_left.png"}/
+            %img.middle{:alt => "", :src => "/images/menu/dot.gif"}/
+            %img.corner_right{:alt => "", :src => "/images/menu/corner_right.png"}/
+
+    %li.middle-item
+      %a{:href => "javascript: void(0)"} Export
+      %ul#inner
+        %li
+          %img.corner_inset_left{:alt => "", :src => "/images/menu/corner_inset_left.png"}
+          %a{:href => "/retros/export/#{@retrospective.id}/#{@retrospective.name}.pdf", :target => "_blank", :title => "Export as pdf"} PDF
+          %img.corner_inset_right{:alt => "", :src => "/images/menu/corner_inset_right.png"}
+        %li
+          %a{:href => "/retros/export/#{@retrospective.id}/#{@retrospective.name}.xls", :target => "_blank", :title => "Export as excel"} Excel
+        %li.last-item
+          %img.corner_left{:alt => "", :src => "/images/menu/corner_left.png"}/
+          %img.middle{:alt => "", :src => "/images/menu/dot.gif"}/
+          %img.corner_right{:alt => "", :src => "/images/menu/corner_right.png"}/
+    - if @user
+      %li
+        %a{:href => signout_path} Logout
+    - else
+      %li
+        %a{:href => signin_path} Login
+    %li.last-item
+      %img{:alt => "", :src => "/images/menu/menu_right.png"}
