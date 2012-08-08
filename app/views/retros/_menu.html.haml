@@ -21,7 +21,7 @@
                 = link_to retro.name, retro_for_path(:name => retro.name, :id => retro.id)
           %li
             - form_tag({:controller => :users, :action => :add_retro},{:method => "post",:novalidate => ""}) do
-              = text_field_tag(:url, "",:required => "required","data-message"=>"please fill in the url", :size => 7)
+              = text_field_tag(:url, "",:required => "required","data-message"=>"please fill in the url", :size => 11)
               = submit_tag("Add")
           %li.last-item
             %img.corner_left{:alt => "", :src => "/images/menu/corner_left.png"}/
