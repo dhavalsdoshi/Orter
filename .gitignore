@@ -7,4 +7,5 @@ TAGS
 .bundle/*
 tmp
 *~
+**/.DS_Store
 config/database.yml
