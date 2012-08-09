@@ -17,11 +17,12 @@
     = render :partial => "shared/analytics"
   %body
     .mainWrap
+      = render :partial => 'menu'
+
       .topbar
         .logoContainer
           %a.logo{:href => "/", :title => "Ideaboardz"}
             %img{:alt => "Ideaboardz", :src => "/images/ideaboardz.png"}/
-        = render :partial => 'menu'
       .filter
         %input#search{:placeholder => "start typing to filter stickies", :type => "text"}/
         .sort
