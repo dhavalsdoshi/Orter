@@ -11,5 +11,5 @@ test:
 
 production:
   host: http://www.ideaboardz.com
-  id: 45486672807-b17ileo71ik8l350do0ih5oj4hvo5t31.apps.googleusercontent.com
-  secret: TZCcTA8LtfpjHzjqvTn-39XW
+  id: www.ideaboardz.com 
+  secret: DXwTlsydGBvrpQg2hUKmpYa4

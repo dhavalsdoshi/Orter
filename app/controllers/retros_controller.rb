@@ -23,13 +23,13 @@ class RetrosController < ApplicationController
 
   def show
     @retrospective = Retro.find_by_id_and_name(params[:id], params[:name], :include => :sections)
-    @retrospective.users ||= []
-    @retrospective.users << current_user unless current_user.nil? or @retrospective.users.include?(current_user)
+    add_current_user(@retrospective)
     render :action => :show
   end
 
   def show_old
     @retrospective = Retro.find_by_name(params[:name], :include => :sections)
+    add_current_user(@retrospective)
     render :action => :show
   end
 
@@ -40,6 +40,12 @@ class RetrosController < ApplicationController
       format.pdf { render :layout => false } if params[:format] == 'pdf'
       format.xls { render :layout => false } if params[:format] == 'xls'
     end
+  end
+
+  private
+  def add_current_user(retrospective)
+    retrospective.users ||= []
+    retrospective.users << current_user unless current_user.nil? or retrospective.users.include?(current_user)
   end
 
 
