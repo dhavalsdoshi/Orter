@@ -55,15 +55,15 @@ Sticky.prototype.updateDom = function(){
 Sticky.prototype.upVote = function(){
   this.votes += 1;
   var thisSticky = this;
-  $('#largeStickyDialog').find('.voteCountContainer').addClass("ajaxLoader");
-
+  $('#largeStickyDialog .voteUpdated').text('Updating...').addClass('show');
   $.ajax({
     url: "/points/" + thisSticky.id + "/votes.json",
     type: "POST",
     data: {"vote": {"point_id": thisSticky.id }},
     success: function(result) {
-      $('#largeStickyDialog').find('.count').html(thisSticky.votes);
-      $('#largeStickyDialog').find('.voteCountContainer').removeClass("ajaxLoader");
+      $('#largeStickyDialog .count').text(thisSticky.votes);
+      $('#largeStickyDialog .voteUpdated').text('Updated');
+      setTimeout(function(){$('#largeStickyDialog .voteUpdated').removeClass('show');}, 2000);
       thisSticky.updateDom();
     },
     error: function(result) {
@@ -98,13 +98,18 @@ Sticky.prototype.update = function(text,votes){
 
 Sticky.prototype.edit = function(value) {
     this.update(value);
-     $.ajax({
-        url: '/points/' + this.id,
-        type: 'PUT',
-        data: {
-            'point' :{
-                'message': this.text
-            }
-        }
+    $('#largeStickyDialog .stickyUpdated').text('Updating...').addClass('show');
+    $.ajax({
+      url: '/points/' + this.id,
+      type: 'PUT',
+      data: {
+          'point' :{
+              'message': this.text
+          }
+      },
+      success: function(result) {
+        $('#largeStickyDialog .stickyUpdated').text('Updated');
+        setTimeout(function(){$('#largeStickyDialog .stickyUpdated').removeClass('show');}, 2000);
+      }
     });
 };
