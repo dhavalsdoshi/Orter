@@ -56,10 +56,9 @@
                 %span.count 0
     #largeStickyDialog
       .stickyLarge
-        / <div class="tag"><label for="tagNameText">Tag: </label><input name="tagname" id="tagNameText" type="text" maxlength="25" title="click to edit" value="blahsasas"/></div>
         %div.stickyTextContainer
           %label.icon.icon-replace.icon-edit{:for => "stickyText"} Edit:
-          %textarea#stickyText.stickyText.formElement{:cols => "35", :maxlength => "140", :rows => "4", :title => "click to edit"}
+          %textarea#stickyText.stickyText.formElement{:cols => "35", :rows => "4", :title => "click to edit"}
           %span.stickyUpdated
         .stickyActions
           .stickyVote
