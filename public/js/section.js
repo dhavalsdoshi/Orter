@@ -145,6 +145,9 @@ $(document).ready(function() {
       function(){$a.trackEvent('board', $(this).attr('id'),window.location.pathname.replace('/for/','') );
     });
     $('.section').droppable({
+      accept: function(element){
+        return $(this).attr('id') != $(element).parents('.section').attr('id');
+      },
       hoverClass: "ui-state-highlight",
       drop: function( event, ui ) {
         sticky = new Sticky(ui.draggable);
