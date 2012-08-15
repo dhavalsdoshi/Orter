@@ -33,7 +33,6 @@ Section.prototype.setupEvents = function(){
     addStickyForm.show('slow');
     textInputArea.focus();
   };
-
   this.getDom().find('.addStickyButton').click(function() {
     showAddSticky();
   });
@@ -85,41 +84,47 @@ var Ideaboardz = function() {
   };
 
   var displaySectionPoints = function(data) {
-    var allPointIds = [];
+    var allPoints = [];
+    if(data) {
+      removePointHtmlIfNotInData(data);
+    }
     for (var pointIndex in data) {
       var point = data[pointIndex];
-      if(!isAlreadyExisting(point.id)) {
+      if(!isAlreadyExisting(point)) {
         var section = findSectionBy(point.section_id);
         section.attachSticky(point);
       }
       else {
         updateSticky(point);
       }
-      allPointIds.push(point.id);
+      allPoints.push(point);
     }
-    if(data && data[pointIndex]) {
-      removePointHtmlIfNotInData(allPointIds);
-    }
+
     $U.filterStickies();
     $U.sortStickies();
   };
 
   var allPointsOnBoard = function(){
-    return _.flatten(_.map(sections,function(section){return section.stickies}));
+    return _.map($('.points .sticky'), function(dom) {return new Sticky($(dom))});
   };
 
   var updateSticky = function(point) {
-    var stickyToUpdate = _.find(allPointsOnBoard(), function(sticky){return sticky.id == point.id});
+    var stickyToUpdate = _.find(allPointsOnBoard(), function(sticky){return sticky.id == point.id && sticky.sectionId() == point.section_id});
     stickyToUpdate.update(point.message, point.votes_count);
   };
 
-  var removePointHtmlIfNotInData = function(allPointIdsFromServer) {
-    var stickiesToBeDeleted = _.filter(allPointsOnBoard(),function(sticky){ return !_.include(allPointIdsFromServer, sticky.id)});
+  var removePointHtmlIfNotInData = function (allPointsFromServer) {
+    var stickiesToBeDeleted = _.filter(allPointsOnBoard(), function (sticky) {
+      var pointOnBoard = _.find(allPointsFromServer, function (pointFromServer) {
+        return sticky.id == pointFromServer.id && sticky.sectionId() == pointFromServer.section_id
+      });
+      return pointOnBoard === undefined;
+    });
     _.invoke(stickiesToBeDeleted, "removeFromDom");
   };
 
-  var isAlreadyExisting = function(pointId) {
-    return $('#point' + pointId).length > 0;
+  var isAlreadyExisting = function(point) {
+    return $('#section' + point.section_id + ' #point' + point.id).length > 0;
   };
 
   this.refreshSections = function() {
