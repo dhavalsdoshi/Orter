@@ -48,7 +48,7 @@ EditableSticky.prototype.upVote = function(){
     type: "POST",
     data: {"vote": {"point_id": thisSticky.sticky.id }},
     success: function(result) {
-      $('#largeStickyDialog .count', thisSticky.dialog).text(thisSticky.sticky.votes);
+      $('.count', thisSticky.dialog).text(thisSticky.sticky.votes);
       $('.voteUpdated', thisSticky.dialog).text('Updated');
       setTimeout(function(){$('.voteUpdated', thisSticky.dialog).removeClass('show');}, 2000);
       thisSticky.sticky.updateDom();
