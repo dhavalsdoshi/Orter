@@ -572,4 +572,9 @@ a:hover {
   content: "✎";
   transform: rotatey(180deg);
 }
+.sticky hr {
+  border: 0;
+  width: 70%;
+  border-bottom: 1px dotted grey;
+}
 /* Plus your other icon types here*/

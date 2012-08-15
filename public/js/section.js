@@ -1,5 +1,5 @@
-var Section = function(section_id){
-  this.id = section_id;
+var Section = function(section){
+  this.id = section.attr('id').replace('section', '');
   this.stickies = new Array();
 };
 
@@ -16,7 +16,7 @@ Section.prototype.addSticky = function(stickyText){
 };
 
 Section.prototype.attachSticky = function(point) {
-  var sticky = new Sticky(point.message, point.votes_count, point.id);
+  var sticky = Sticky.createFrom(point.message, point.votes_count, point.id);
   sticky.attachTo(point.section_id);
   this.stickies.push(sticky);
 };
@@ -75,8 +75,7 @@ var Ideaboardz = function() {
   var fillSectionsAndAttachEvents = function() {
     $('.section').each(function() {
       var section = $(this);
-      var sectionId = section.attr('id').replace('section', '');
-      var sectionObject = new Section(sectionId);
+      var sectionObject = new Section(section);
       sectionObject.setupEvents();
       sections.push(sectionObject);
     });
@@ -145,4 +144,12 @@ $(document).ready(function() {
     $("#pdfExport,#excelExport").click(
       function(){$a.trackEvent('board', $(this).attr('id'),window.location.pathname.replace('/for/','') );
     });
+    $('.section').droppable({
+      hoverClass: "ui-state-highlight",
+      drop: function( event, ui ) {
+        sticky = new Sticky(ui.draggable);
+        sticky.moveTo(new Section($(this)));
+      }
+    });
+
 });

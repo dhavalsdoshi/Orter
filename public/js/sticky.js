@@ -1,20 +1,42 @@
-var Sticky = function(text, votes, id){
-  this.text = $.trim(text);
-  this.votes = votes;
-  this.id = id;
+var Sticky = function(dom){
+  this.element = dom;
+  this.text = $.trim(dom.attr('data-content'));
+  this.votes = parseInt($.trim(dom.find('.voteCount .count').html()));
+  this.id = parseInt(dom.attr('data-id'));
+};
+
+Sticky.createFrom = function(text, votes, id) {
+  var stickyTemplateHtml = $('#stickyTemplate').html();
+  var addedPoint = $(stickyTemplateHtml);
+  addedPoint.hide()
+    .attr('title', text)
+    .attr('data-content', text)
+    .attr('id', 'point' + id)
+    .attr('data-id', id)
+    .find('.stickyText').html(text);
+  addedPoint.find('.voteCount .count').html(votes);
+  return new Sticky(addedPoint);
+};
+
+Sticky.prototype.displayText = function(){
+  return this.text.replace(/\n-{3,}\n/g,'<hr/>');
+};
+
+Sticky.prototype.titleText = function(){
+  return this.text.replace(/\n-{3,}\n/g,' | ');
 };
 
 Sticky.prototype.attachTo = function(sectionId){
   var thisSticky= this;
 
   var showLargeStickyDialog = function(addedPoint) {
-    var colorOfSticky = addedPoint.parents('.section').attr('data-color');
+    var colorOfSticky = addedPoint.element.parents('.section').attr('data-color');
     var uiDialog = $('#largeStickyDialog').parent('.ui-widget-content');
     uiDialog.removeClass(uiDialog.attr('class').split(/\s+/).pop())
       .addClass(colorOfSticky);
 
-    $('#largeStickyDialog').find('.stickyText').val(addedPoint.find('.stickyText').text());
-    $('#largeStickyDialog').find('.voteCountContainer .count').html(addedPoint.find('.voteCount .count').html());
+    $('#largeStickyDialog').find('.stickyText').val(addedPoint.text);
+    $('#largeStickyDialog').find('.voteCountContainer .count').html(addedPoint.votes);
     $('#largeStickyDialog').find('.removeStickyButton').unbind('click').click(
       function() {
         if(confirm("Do you want to delete this sticky?")){
@@ -23,33 +45,53 @@ Sticky.prototype.attachTo = function(sectionId){
         }
       });
     $("#largeStickyDialog textarea").unbind('blur').blur(function(){
-      thisSticky.edit($.trim($(this).val()));
+      thisSticky.edit_message($.trim($(this).val()));
     });
     $('#largeStickyDialog').find('.voteStickyButton').unbind('click').click(function(){thisSticky.upVote();});
     $('#largeStickyDialog').dialog('open');
   };
 
-  var stickyTemplateHtml = $('#stickyTemplate').html();
-  $(stickyTemplateHtml).appendTo('#section' + sectionId + ' .points');
-  var addedPoint = $('#section' + sectionId).find('div.sticky:last');
-  addedPoint.hide().attr('title', this.text)
-    .attr('id', 'point' + this.id)
-    .attr('data-id', this.id)
-    .find('.stickyText').html(this.text);
-  addedPoint.find('.voteCount .count').html(this.votes);
-  addedPoint.click(function() {
-      showLargeStickyDialog(addedPoint);
+  $('#section' + sectionId + ' .points').append(this.element);
+  this.element = $('#section' + sectionId + ' .points div.sticky:last');
+  this.element.draggable({revert: 'invalid', scroll: false, containment: '.whiteboard', appendTo: "body", helper: "clone"}).droppable({
+  			hoverClass: "ui-state-highlight",
+        greedy: true,
+  			drop: function( event, ui ) {
+          thisSticky.merge(new Sticky(ui.draggable));
+  			}
+  		}).click(function() {
+      showLargeStickyDialog(thisSticky);
   });
-  addedPoint.show('slow');
+  this.element.show();
+  this.updateDom();
 };
 
-Sticky.prototype.getDom = function(){
-  return $("#point" + this.id);
+Sticky.prototype.merge = function(otherSticky) {
+  var sticky = this;
+  this.text += "\n---------------\n" + otherSticky.text;
+  sticky.updateDom();
+  console.log(this.displayText());
+  console.log(this.text);
+  this.edit({'message': this.text}, function() {
+    otherSticky.remove();
+  });
 };
+
+Sticky.prototype.moveTo = function(section) {
+  var sticky = this;
+  this.edit({'section_id': section.id}, function() {
+    sticky.edit_section(section.id);
+    sticky.removeFromDom();
+    Sticky.createFrom(sticky.text, sticky.votes, sticky.id).attachTo(section.id);
+  });
+};
+
 
 Sticky.prototype.updateDom = function(){
-  this.getDom().find(".stickyText").html(this.text);
-  this.getDom().find(".count").html(this.votes);
+  this.element.find(".stickyText").html(this.displayText());
+  this.element.attr("data-content", this.text);
+  this.element.attr("title", this.titleText());
+  this.element.find(".count").html(this.votes);
 };
 
 Sticky.prototype.upVote = function(){
@@ -74,8 +116,8 @@ Sticky.prototype.upVote = function(){
 
 Sticky.prototype.removeFromDom = function(){
   var thisSticky = this;
-  this.getDom().hide('slow', function() {
-    thisSticky.getDom().remove();
+  this.element.hide('slow', function() {
+    thisSticky.element.remove();
   });
 };
 
@@ -96,20 +138,28 @@ Sticky.prototype.update = function(text,votes){
   this.updateDom();
 };
 
-Sticky.prototype.edit = function(value) {
-    this.update(value);
-    $('#largeStickyDialog .stickyUpdated').text('Updating...').addClass('show');
+Sticky.prototype.edit_message = function(value) {
+  this.update(value);
+  $('#largeStickyDialog .stickyUpdated').text('Updating...').addClass('show');
+  this.edit({'message': value}, function(result) {
+    $('#largeStickyDialog .stickyUpdated').text('Updated');
+    setTimeout(function(){$('#largeStickyDialog .stickyUpdated').removeClass('show');}, 2000);
+  });
+};
+
+Sticky.prototype.edit_section = function(section_id) {
+  this.edit({'section_id': section_id}, function() {});
+};
+
+Sticky.prototype.edit = function(value_hash, success) {
     $.ajax({
       url: '/points/' + this.id,
       type: 'PUT',
       data: {
-          'point' :{
-              'message': this.text
-          }
+          'point' : value_hash
       },
       success: function(result) {
-        $('#largeStickyDialog .stickyUpdated').text('Updated');
-        setTimeout(function(){$('#largeStickyDialog .stickyUpdated').removeClass('show');}, 2000);
+        success(result);
       }
     });
 };
