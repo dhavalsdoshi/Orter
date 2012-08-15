@@ -41,8 +41,8 @@ Sticky.prototype.attachTo = function(sectionId){
   			drop: function( event, ui ) {
           thisSticky.merge(new Sticky(ui.draggable));
   			}
-  		}).click(function() {
-      new EditableSticky(thisSticky).show();
+  		}).unbind('click').bind('click', function() {
+      new EditableSticky(new Sticky(thisSticky.element)).show();
   });
   this.element.show();
   this.updateDom();
