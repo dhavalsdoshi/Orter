@@ -1,0 +1,15 @@
+!!!
+%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "content-type"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}
+    %title
+      = yield :title
+    = stylesheet_link_tag 'faq'
+  %body
+    #mainWrap
+      .logoContainer
+        %a.logo{:href => "/", :title => "Ideaboardz"}
+          %img{:alt => "Ideaboardz", :src => "/images/ideaboardz.png"}/
+      #whiteboard
+        = yield

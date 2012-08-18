@@ -10,10 +10,10 @@
     %title
       IdeaBoardz - Brainstorm, retrospect, collaborate
     %meta{:content => @retrospective.id, :name => "retroId"}/
-    %link{:href => "/css/reset-min.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "/css/cupertino/jquery-ui-1.8.2.custom.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "/css/orter.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "/css/menu.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
+    = stylesheet_link_tag 'reset-min'
+    = stylesheet_link_tag 'cupertino/jquery-ui-1.8.2.custom'
+    = stylesheet_link_tag 'orter'
+    = stylesheet_link_tag 'menu'
     = render :partial => "shared/analytics"
   %body
     .mainWrap

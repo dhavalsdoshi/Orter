@@ -8,9 +8,9 @@
     %meta{:content => "Conduct collaborative brainstorming sessions with distributed teams", :name => "description"}/
     %title
       IdeaBoardz - Brainstorm, Retrospect, Collaborate
-    %link{:href => "css/reset-min.css", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "css/newhome.css", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "/css/menu.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
+    = stylesheet_link_tag 'reset-min'
+    = stylesheet_link_tag 'newhome'
+    = stylesheet_link_tag 'menu'
     = render :partial => "shared/analytics"
   %body
     .mainWrap
@@ -81,7 +81,7 @@
                 %a{:href => "/for/feedback", :title => "Feedback"} Feedback
             .faq.green.sideNote
               %h2.sectionTitle
-                %a{:href => "/faq.html", :title => "Frequently asked questions"} FAQ
+                %a{:href => "/page/faq", :title => "Frequently asked questions"} FAQ
             .count.blue.sideNote
               %h2.sectionTitle
                 %b
