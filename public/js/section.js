@@ -159,5 +159,9 @@ $(document).ready(function() {
         sticky.moveTo(new Section($(this)));
       }
     });
-
+    $('textarea').onkeyup(function(){
+      var maxlength= $(this).attr("maxlength") !== undefined ? parseInt($(this).attr("maxlength")) : 100000000;
+      if ($(this).value().length>maxlength)
+      $(this).value($(this).value().substring(0, maxlength -1));
+    });
 });

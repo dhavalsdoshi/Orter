@@ -258,7 +258,7 @@ a:hover {
 #largeStickyDialog input {
   background: transparent;
   border: none;
-  overflow: hidden;
+  overflow: auto;
 }
 .yellow #largeStickyDialog textarea:focus,
 .yellow #largeStickyDialog textarea:hover,
