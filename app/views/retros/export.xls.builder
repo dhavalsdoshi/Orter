@@ -43,7 +43,7 @@ xml.Workbook({
         # Rows
         for point in section.points.sort{|a,b| b.votes.length <=> a.votes.length}
           xml.Row do
-            xml.Cell { xml.Data point.message, 'ss:Type' => 'String' }
+            xml.Cell { xml.Data CGI.unescapeHTML(point.message), 'ss:Type' => 'String' }
             xml.Cell { xml.Data point.votes.length, 'ss:Type' => 'Number' }
           end
         end
