@@ -38,15 +38,9 @@
         / googleon: all
         - row_one_sections, row_two_sections = get_rows_for_sections(@retrospective.sections)
         #sectionsRow1.sections
-          - section_width = get_section_width(row_one_sections.size)
-          = render :partial => "section",                      |
-            :collection => row_one_sections, :as => "section", |
-            :locals => {:section_width => section_width}       |
+          = render :partial => "section", :collection => row_one_sections, :as => "section", :locals => {:section_width => get_section_width(row_one_sections.size)}
         #sectionsRow2.sections
-          - section_width = get_section_width(row_two_sections.size)
-          = render :partial => "section",                      |
-            :collection => row_two_sections, :as => "section", |
-            :locals => {:section_width => section_width}       |
+          = render :partial => "section", :collection => row_two_sections, :as => "section", :locals => {:section_width => get_section_width(row_two_sections.size)}
         .hide
           #stickyTemplate.col_right
             .sticky
