@@ -40,21 +40,11 @@ EditableSticky.prototype.edit_message = function(value) {
 
 
 EditableSticky.prototype.upVote = function(){
-  this.sticky.votes += 1;
   var thisSticky = this;
   this.dialog.find('.voteUpdated').text('Updating...').addClass('show');
-  $.ajax({
-    url: "/points/" + thisSticky.sticky.id + "/votes.json",
-    type: "POST",
-    data: {"vote": {"point_id": thisSticky.sticky.id }},
-    success: function(result) {
-      $('.count', thisSticky.dialog).text(thisSticky.sticky.votes);
-      $('.voteUpdated', thisSticky.dialog).text('Updated');
-      setTimeout(function(){$('.voteUpdated', thisSticky.dialog).removeClass('show');}, 2000);
-      thisSticky.sticky.updateDom();
-    },
-    error: function(result) {
-      alert('something went wrong. Please refresh the page');
-    }
+  this.sticky.edit_vote(this.sticky.votes + 1, function(result){
+    $('.count', thisSticky.dialog).text(thisSticky.sticky.votes);
+    $('.voteUpdated', thisSticky.dialog).text('Updated');
+    setTimeout(function(){$('.voteUpdated', thisSticky.dialog).removeClass('show');}, 2000);
   });
 };

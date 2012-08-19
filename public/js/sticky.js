@@ -49,12 +49,19 @@ Sticky.prototype.attachTo = function(sectionId){
 };
 
 Sticky.prototype.merge = function(otherSticky) {
+  if(!confirm("You are about to merge two stickies into one. Do you want to continue?")) {
+    return;
+  }
+
   var sticky = this;
   this.text += "\n---------------\n" + otherSticky.text;
   sticky.updateDom();
   this.edit({'message': this.text}, function() {
     otherSticky.remove();
   });
+  if (otherSticky.votes > 0) {
+    this.edit_vote(this.votes + otherSticky.votes, function(){})
+  }
 };
 
 Sticky.prototype.moveTo = function(section) {
@@ -113,4 +120,21 @@ Sticky.prototype.edit = function(value_hash, success) {
         success(result);
       }
     });
+};
+
+Sticky.prototype.edit_vote = function(count, success) {
+  var thisSticky = this;
+  thisSticky.votes = count;
+  $.ajax({
+    url: "/points/" + thisSticky.id + "/votes.json",
+    type: "POST",
+    data: {"vote": {"point_id": thisSticky.id }},
+    success: function(result) {
+      thisSticky.updateDom();
+      success(result)
+    },
+    error: function(result) {
+      alert('something went wrong. Please refresh the page');
+    }
+  });
 };
