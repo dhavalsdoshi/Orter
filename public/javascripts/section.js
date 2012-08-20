@@ -161,7 +161,7 @@ $(document).ready(function() {
     });
     $('textarea').keyup(function(){
       var maxlength= $(this).attr("maxlength") !== undefined ? parseInt($(this).attr("maxlength")) : 100000000;
-      if ($(this).value().length>maxlength)
+      if ($(this).val().length>maxlength)
       $(this).value($(this).value().substring(0, maxlength -1));
     });
 });
