@@ -223,6 +223,11 @@ a:hover {
   overflow: hidden;
   position: relative;
 }
+.sticky hr {
+  border: 0;
+  width: 70%;
+  border-bottom: 1px dotted grey;
+}
 .aqua .sticky,
 .aqua .addStickyForm textarea,
 .aqua.ui-widget-content {
@@ -390,7 +395,7 @@ a:hover {
   right: 3px;
 }
 #largeStickyDialog .voteUpdated {
-  top: 4.5em;
+  top: 0;
   left: 5px;
   border-radius: 4px;
   -moz-border-radius: 4px;
@@ -571,10 +576,5 @@ a:hover {
 .icon-edit:before {
   content: "✎";
   transform: rotatey(180deg);
-}
-.sticky hr {
-  border: 0;
-  width: 70%;
-  border-bottom: 1px dotted grey;
 }
 /* Plus your other icon types here*/
