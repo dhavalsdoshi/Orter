@@ -24,7 +24,10 @@ class RetrosController < ApplicationController
   def show
     @retrospective = Retro.find_by_id_and_name(params[:id], params[:name], :include => :sections)
     add_current_user(@retrospective)
-    render :action => :show
+    respond_to do |format|
+      format.html{render :action => :show}
+      format.json{render :json => @retrospective.to_json(:include => {:sections => {:only => [:name, :id]}}, :except => [:created_at, :updated_at]) }
+    end
   end
 
   def show_old
