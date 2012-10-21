@@ -1,0 +1,396 @@
+/* COMMON STYLES
+---------------------------------------------------- */
+
+body {
+    font-family:'Delius', helvetica, cursive;
+    font-size:105%;
+    padding: 0;
+    margin: 0;
+    background: #E2E2E2;
+}
+
+.mib_content {
+    margin-top:40px;
+    padding: 1em;
+    background: #E2E2E2;
+    text-align: center;
+}
+
+.mib_content h1#boardName{
+    font-family: 'Handlee', helvetica, cursive;
+    font-weight: bold;
+    font-size: 1.4em;
+    margin: 0 0 10px 0;
+    line-height: 1;
+}
+
+.mib_content h1#boardName a, .mib_content h1#boardName:hover{
+    color:#000;
+    text-decoration: underline;
+}
+
+.sticky {
+    border-radius: 5px 5px 20px 5px;
+    -moz-border-radius: 4px 4px 15px 4px;
+    -webkit-border-radius: 4px 4px 15px 4px;
+    padding-left: 15px;
+    margin: 10px;
+    text-align: left;
+}
+
+.small-sticky {
+    box-shadow: 1px 1px 3px #888;
+    -webkit-box-shadow: 1px 1px 3px #888;
+    -moz-box-shadow: 1px 1px 3px #888;
+    font-family: 'Delius', helvetica, cursive;
+}
+
+.alert-main {
+    margin-top:10px;
+}
+
+.alert-error{
+    background-color: pink;
+    color: red;
+}
+
+.index-board {
+    background-color: #ffffff;
+    border: #696969 solid 5px;
+    border-radius: 15px 15px 15px 15px;
+    color: #000000;
+    font-size: 110%;
+}
+
+.index-board ul {
+    margin-right:10px;
+    margin-left:20px;
+}
+
+.index-board p{
+    margin-right:10px;
+    text-align: center;
+}
+
+.index-board .sticky{
+    box-shadow: 1px 1px 3px #888;
+    -webkit-box-shadow: 1px 1px 3px #888;
+    -moz-box-shadow: 1px 1px 3px #888;
+    font-family: 'Delius', helvetica, cursive;
+}
+
+.index-board h3{
+    font-family: 'Handlee', helvetica, cursive;
+    line-height: 1.2;
+}
+
+/* PLACE HOLDER VIEW
+---------------------------------------------------- */
+
+.mib_content h2.loading {
+    background: url("/images/mobile/ajax-loader.gif") center left no-repeat;
+    padding-left: 40px;
+    font-size: 1.3em;
+    display: inline-block;
+}
+
+/* IDEAS VIEW STYLE
+---------------------------------------------------- */
+
+.sectionWrapper {
+    border: 5px solid dimGray;
+    border-radius: 10px;
+    background: white;
+}
+
+.sectionWrapper h2{
+    font-size: 1.3em;
+    margin:0;
+    display: inline-block;
+}
+
+#ideasList {
+    list-style-type: none;
+    margin: 0;
+}
+
+#ideasList li {
+    min-height:40px;
+    padding:10px;
+    position: relative;
+    margin:5;
+    margin-bottom: 15px;
+}
+
+#ideasList li .ideaText {
+    margin-right:5px;
+    margin-bottom: 10px;
+    display: block;
+    color: black;
+}
+
+#ideasList li .voteNumber {
+    position: absolute;
+    bottom: 1px;
+    left: 10px;
+    font-weight: bold;
+    color: black;
+}
+
+#ideasList a#emptyMessage, #ideasList a#emptyMessage:hover {
+    font-weight:bold;
+    font-size: 1.5em;
+    display:block;
+    text-align: center;
+    margin:0;
+    line-height: 2em;
+    color:#bd5400;
+    text-decoration: none;
+}
+
+
+/* CREATE IDEA STYLE
+---------------------------------------------------- */
+
+.mib_content select {
+    width: 100%;
+    color: black;
+    text-align: left;
+}
+
+.addStickyForm p {
+    margin: 0 0 .7em;
+}
+
+.sticky, .addStickyForm textarea {
+    background-color: #FF8;
+    border: 1px solid #FF8;
+}
+
+.sticky, .addStickyForm textarea {
+    word-wrap: break-word;
+    cursor: default;
+}
+
+.template_index .sticky {
+    cursor: default;
+}
+.template_index li{
+    line-height: 23px;
+    font-weight: normal;
+}
+.largeSticky {
+    min-height: 80px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 3px 1px 3px #888;
+    -webkit-box-shadow: 3px 1px 3px #888;
+    -moz-box-shadow: 3px 1px 3px #888;
+}
+
+.addStickyForm textarea {
+    text-align: left;
+    width: 95%;
+    min-height: 60px;
+    font-family: 'Delius', helvetica, cursive;
+    border-radius: 0;
+    color: #000000;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    font-size: 1.1em;
+}
+
+.content-pull-up{
+    margin-top: 0;
+    padding-top: 5px;
+}
+
+
+/* HEADER - FIXED TOP MENU
+---------------------------------------------------- */
+
+.mib_header {
+    border-bottom: 1px solid   #000000   /*{a-bar-border}*/;
+    background:   #CCC   /*{a-bar-background-color}*/;
+    color:    black    /*{a-bar-color}*/;
+    font-weight: bold;
+    text-shadow:    0    /*{a-bar-shadow-x}*/   0   /*{a-bar-shadow-y}*/   0   /*{a-bar-shadow-radius}*/   #000000   /*{a-bar-shadow-color}*/;
+    padding: 2px 20px;
+    box-shadow: 0px 2px 5px #888;
+    margin-bottom: 5px;
+}
+
+.mib_header #logo {
+    display: inline-block;
+    width: 100px;
+    height:18px;
+    background: url("/images/mobile/ideaBoardzLogo.png") no-repeat top left;
+    text-indent: -1000em;
+    margin: 10px 1px 10px 5px;
+
+}
+
+/* QUICK LINKS ICONS
+------------------------------------- */
+
+.mib_header .quick-links{
+    margin-right: 10px;
+}
+
+.mib_header .quick-links .btn{
+    margin: 3px;
+    padding: 7px;
+    width: 16px;
+    height: 18px;
+}
+
+.badge-small {
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    position: relative;
+    left: -4px;
+    top: -4px;
+}
+
+.icon-background{
+    position: relative;
+    bottom: 0px;
+}
+
+.icon-idea {
+    background: url("/images/mobile/ideaIcon.png") no-repeat center;
+    text-indent: -900em;
+}
+
+.btn-quicklinks {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #000000;
+    background-image: -moz-linear-gradient(top, #444, #000);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#000));
+    background-image: -webkit-linear-gradient(top, #444, #000);
+    background-image: -o-linear-gradient(top, #444, #000);
+    background-image: linear-gradient(to bottom, #444, #000);
+    background-repeat: repeat-x;
+    border-color: #522913 #291307 #000000;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.btn-quicklinks:hover,
+.btn-quicklinks:active,
+.btn-quicklinks.active,
+.btn-quicklinks.disabled,
+.btn-quicklinks[disabled] {
+    color: #ffffff;
+    background-color: #444;
+}
+.btn-quicklinks:active,
+.btn-quicklinks.active {
+    background-color: #7A513F;
+}
+
+.mib_header .quick-links .btn-selected{
+    background-color: #333;
+    background-image: -moz-linear-gradient(top, #000, #333);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#000), to(#333));
+    background-image: -webkit-linear-gradient(top, #000, #333);
+    background-image: -o-linear-gradient(top, #000, #333);
+    background-image: linear-gradient(to bottom, #000, #333);
+}
+
+/* SECTIONS VIEW
+---------------------------------------------------- */
+
+.mib_content .nav-tabs.nav-stacked > li > a, .mib_content .nav-tabs.nav-stacked > li > a:hover  {
+    font-weight: bold;
+    padding: 10px;
+    color: #2d1f08;
+    text-align: left;
+    background-image: -moz-linear-gradient(top, #fff, #ededed);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#ededed));
+    background-image: -webkit-linear-gradient(top, #fff, #ededed);
+    background-image: -o-linear-gradient(top, #fff, #ededed);
+    background-image: linear-gradient(to bottom, #fff, #ededed);
+}
+
+.mib_content .nav-tabs.nav-stacked {
+    box-shadow: 0px 0 3px #ccc;
+    -webkit-box-shadow: 0px 0px 3px #ccc;
+    -moz-box-shadow: 0px 0px 3px #ccc;
+}
+
+.mib_content .nav-tabs.nav-stacked > li .icon-chevron-right {
+    float: right;
+    margin-top: 12px;
+    margin-right: 10px;
+    opacity: .50;
+    font-family: 'Handlee', helvetica, cursive;
+}
+
+
+/* COMMENTS VIEW
+---------------------------------------------------- */
+
+#commentsList {
+    list-style-type:none;
+    padding:10px;
+    margin: 0;
+    text-align: left;
+}
+
+#commentsList > li {
+    border-top: 1px dotted #ccc;
+    padding:5px;
+    margin:0;
+
+}
+
+#commentsList > li:first-child{
+    border: none;
+}
+
+#commentsList > li > span.username {
+    font-weight:bold;
+}
+
+.postCommentForm {
+    text-align: left;
+}
+.postCommentForm #commentArea{
+    text-align: left;
+    font-size: 1.1em;
+    border-radius: 0;
+    color: #000000;
+    outline: none;
+    background: #fff;
+    box-shadow: 0px 0px 5px #ccc;
+    margin-bottom: 10px;
+    overflow: auto;
+}
+
+.form_action .comment_action {
+    margin-top: 1em;
+    width:100%;
+    text-align: center;
+}
+
+.comment_action #postBtn{
+    position: relative;
+    top:-5px;
+}
+
+#commentText {
+    width: 75%;
+}
+
+.orange{
+    background-color: #FFB058;
+}
+
+.green{
+    background-color: #BCEE6B;
+}

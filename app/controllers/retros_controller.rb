@@ -2,6 +2,9 @@ class RetrosController < ApplicationController
 
   def new
     @user = current_user
+    if mobile?
+      render 'mobile_new' and return
+    end
   end
 
   def create
@@ -24,6 +27,14 @@ class RetrosController < ApplicationController
   def show
     @retrospective = Retro.find_by_id_and_name(params[:id], params[:name], :include => :sections)
     add_current_user(@retrospective)
+    if mobile?
+      respond_to do |format|
+        format.html{render :mobile_show}
+        format.json{render :json => @retrospective.to_json(:include => {:sections => {:only => [:name, :id]}}, :except => [:created_at, :updated_at]) }
+      end
+      return
+    end
+
     respond_to do |format|
       format.html{render :action => :show}
       format.json{render :json => @retrospective.to_json(:include => {:sections => {:only => [:name, :id]}}, :except => [:created_at, :updated_at]) }
@@ -33,6 +44,9 @@ class RetrosController < ApplicationController
   def show_old
     @retrospective = Retro.find_by_name(params[:name], :include => :sections)
     add_current_user(@retrospective)
+    if mobile?
+      render :mobile_show and return
+    end
     render :action => :show
   end
 
@@ -50,6 +64,5 @@ class RetrosController < ApplicationController
     retrospective.users ||= []
     retrospective.users << current_user unless current_user.nil? or retrospective.users.include?(current_user)
   end
-
 
 end
