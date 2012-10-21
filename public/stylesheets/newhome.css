@@ -139,7 +139,6 @@ body {
   transition: all 1s ease-in-out;
 }
 .sideNote:hover {
-  position: absolute;
   padding: 0.2em;
   -moz-box-shadow: 1px 15px 23px #666666;
   -webkit-box-shadow: 1px 15px 23px #666666;
@@ -318,8 +317,22 @@ select {
   /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
 
 }
-@media only screen and (max-width: 1000px) {
+@media all and (max-width: 1000px) {
   .leftBar {
     display: none;
+  }
+}
+@media all and (max-width: 650px) and (min-width: 200px) {
+  .sideNote {
+    position: static;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .half {
+    width: 100%;
+  }
+  .create {
+    top: 0;
+    right: 0;
   }
 }

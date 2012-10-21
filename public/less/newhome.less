@@ -65,7 +65,6 @@ body{
     .shadow(1px,9px,23px,#888888);
     .transition(all, 1s, ease-in-out);
     &:hover{
-      position:absolute;
       padding:0.2em;
       .shadow(1px,15px,23px,#666666);
     }
@@ -234,8 +233,24 @@ body{
 	
 }
 
-@media only screen and (max-width:1000px) {
+@media all and (max-width:1000px) {
   .leftBar{
     display: none;
+  }
+}
+
+
+@media all and (max-width: 650px) and (min-width:200px) {
+  .sideNote {
+    position: static;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .half{
+    width: 100%;
+  }
+  .create{
+    top: 0;
+    right: 0;
   }
 }
