@@ -329,10 +329,16 @@ select {
     margin-bottom: 10px;
   }
   .half {
-    width: 100%;
+    width: 95%;
   }
   .create {
     top: 0;
     right: 0;
+  }
+  .rightBar {
+    padding-bottom: 25px;
+  }
+  .logo {
+    width: 90%;
   }
 }
