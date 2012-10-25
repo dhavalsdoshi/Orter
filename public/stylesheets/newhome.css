@@ -218,7 +218,7 @@ body {
 }
 .feedback {
   top: 266px;
-  right: 200px;
+  right: 150px;
   -webkit-transform: rotate(-10deg);
   -moz-transform: rotate(-10deg);
   -o-transform: rotate(-10deg);
@@ -340,5 +340,8 @@ select {
   }
   .logo {
     width: 90%;
+  }
+  .help {
+    display: none;
   }
 }

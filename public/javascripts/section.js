@@ -5,7 +5,7 @@ var Section = function(section){
 
 Section.prototype.addSticky = function(stickyText){
   var thisSection = this;
-  $a.trackEvent('point', 'create', stickyText);
+  $a.trackEvent('point', 'create', "section-"+thisSection.id);
   $.ajax({
     url: '/points.json?point[section_id]=' + thisSection.id + '&point[message]=' + encodeURIComponent(stickyText),
     type: "POST",
@@ -155,6 +155,7 @@ $(document).ready(function() {
       },
       hoverClass: "ui-state-highlight",
       drop: function( event, ui ) {
+        $a.trackEvent('point','changeSection',sticky.id);
         sticky = new Sticky(ui.draggable);
         sticky.moveTo(new Section($(this)));
       }

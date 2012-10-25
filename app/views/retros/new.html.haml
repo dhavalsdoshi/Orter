@@ -2,10 +2,14 @@
 %html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "content-type"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}
+    %meta{:content => "black", :name => "apple-mobile-web-app-status-bar-style"}
+    %meta{:content => "yes", :name => "apple-mobile-web-app-capable"}
+    %meta{:content => "text/html; charset=utf-8", :"http-equiv" => "content-type"}/
     %meta{:content => "collaborate, distributed, share, discuss, ideas, brainstorm, sticky, wall, board, whiteboard, meeting, retro, online, continuous, thoughtworks, application", :lang => "en-us", :name => "keywords"}/
     %meta{:content => "collaborate, distributed, share, discuss, ideas, brainstorm, sticky, wall, board, whiteboard, meeting, retro, online, continuous, thoughtworks, application", :lang => "en", :name => "keywords"}/
     %meta{:content => "Conduct collaborative brainstorming sessions with distributed teams", :name => "description"}/
+    %meta{:property => "og:image", :content => "/ideaboardzSquare.png"}/
     %title
       IdeaBoardz - Brainstorm, Retrospect, Collaborate
     = stylesheet_link_tag 'reset-min'
@@ -77,8 +81,13 @@
                   or
                   %a{:href => "http://www.apple.com/safari/download/", :target => "_blank", :title => "download safari"} safari
             .feedback.green.sideNote
-              %h2.sectionTitle
-                %a{:href => "/for/feedback", :title => "Feedback"} Feedback
+              %h2.sectionTitle Feedback
+              .sectionContent
+                %ul
+                  %li
+                    %a{:href => "http://twitter.com/home/?status=@ideaboardz", :title => "Feedback", :target => "_blank"} via Twitter
+                  %li
+                    %a{:href => "/for/feedback", :title => "Feedback"} via Board
             .faq.green.sideNote
               %h2.sectionTitle
                 %a{:href => "/page/faq", :title => "Frequently asked questions"} FAQ

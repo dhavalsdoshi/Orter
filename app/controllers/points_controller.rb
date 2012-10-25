@@ -24,6 +24,8 @@ class PointsController < ApplicationController
 
   def update
     point = Point.find(params[:id])
+    #point_params = params[:point]
+    #point_params[:message] = CGI.escapeHTML(point_params[:message])
     if point.update_attributes(params[:point])
       head :ok
     else

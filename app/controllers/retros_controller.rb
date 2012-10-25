@@ -2,9 +2,9 @@ class RetrosController < ApplicationController
 
   def new
     @user = current_user
-    if mobile?
-      render 'mobile_new' and return
-    end
+    #if mobile?
+    #  render 'mobile_new' and return
+    #end
   end
 
   def create

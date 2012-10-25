@@ -3,6 +3,12 @@ var EditableSticky = function(sticky) {
   this.dialog = $('#largeStickyDialog').dialog();
 };
 
+//function htmlDecode(input){
+//  var e = document.createElement('div');
+//  e.innerHTML = input;
+//  return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+//}
+
 EditableSticky.prototype.show = function () {
   var thisSticky = this;
   var colorOfSticky = this.sticky.element.parents('.section').attr('data-color');

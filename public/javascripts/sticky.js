@@ -39,6 +39,7 @@ Sticky.prototype.attachTo = function(sectionId){
   			hoverClass: "ui-state-highlight",
         greedy: true,
   			drop: function( event, ui ) {
+          $a.trackEvent('point','merge', thisSticky.id);
           thisSticky.merge(new Sticky(ui.draggable));
   			}
   		}).unbind('click').bind('click', function() {
@@ -90,7 +91,7 @@ Sticky.prototype.removeFromDom = function(){
 
 Sticky.prototype.remove = function(){
   this.removeFromDom();
-  $a.trackEvent('point', 'delete', $('#point' + this.id + " .stickyText").text());
+  $a.trackEvent('point', 'delete', this.id);
   $.ajax({
     url: "/points/delete/" + this.id + ".json",
     type: "GET"

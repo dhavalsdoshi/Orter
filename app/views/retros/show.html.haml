@@ -9,8 +9,7 @@
     %meta{:content => "Conduct collaborative brainstorming sessions with distributed teams", :name => "description"}/
     - if @retrospective.id > 2
       %meta{:name=>"robots", :content=>"noindex, nofollow"}/
-    %title
-      IdeaBoardz - Brainstorm, retrospect, collaborate
+    %title= "IdeaBoardz - #{@retrospective.name}"
     %meta{:content => @retrospective.id, :name => "retroId"}/
     = stylesheet_link_tag 'reset-min'
     = stylesheet_link_tag 'cupertino/jquery-ui-1.8.2.custom'
