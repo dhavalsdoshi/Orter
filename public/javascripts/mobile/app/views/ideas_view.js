@@ -102,7 +102,7 @@ $(document).ready(function () {
         },
 
         renderEmptySectionMessage:function(){
-            var emptyMessageHtml = "<li><a id='emptyMessage' href='#for/"+this.board.name+"/"+this.board.id+"/createIdea'>Got any ideas?</a></li>";
+            var emptyMessageHtml = "<li><a id='emptyMessage' href='#createIdea'>Got any ideas?</a></li>";
             $(this.container).find('#ideasList').html(emptyMessageHtml);
         },
 
