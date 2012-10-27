@@ -46,6 +46,8 @@
                 %i.icon-align-justify.icon-white
               %a#createIdeaBtn.btn.btn-small.btn-quicklinks{:href => "#createIdea"}
                 %i.icon-idea
+              %a#createIdeaBtn.btn.btn-small.btn-quicklinks{:href => export_path(:id => @retrospective.id, :name => @retrospective.name, :format => 'pdf'),:target => "_blank"}
+                %i.icon-download-alt.icon-white
   %body{ :"data-id" => "#{@retrospective.id}" , :"data-name"=> "#{@retrospective.name}"}
     #appWrapper
       #viewWrapper
