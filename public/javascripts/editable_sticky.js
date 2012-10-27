@@ -31,6 +31,9 @@ EditableSticky.prototype.show = function () {
   this.dialog.find('.voteStickyButton').unbind('click').click(function () {
     thisSticky.upVote();
   });
+  this.dialog.dialog('option','beforeClose',function(){
+    thisSticky.dialog.find("textarea").blur();
+  });
   this.dialog.dialog('open');
 };
 
