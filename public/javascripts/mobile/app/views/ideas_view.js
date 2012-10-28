@@ -27,18 +27,16 @@ $(document).ready(function () {
         },
 
         renderSectionError: function(){
-            var errorMsg = "<h4>No such section exists.</h4>The provided URL is invalid.<br/> Please check the URL again."
+            var errorMsg = "<h4>No such section exists.</h4>The provided URL is invalid.<br/> Please check the URL again.";
             $(this.el).find(this.container).html(
                 '<div id="alert-area" class="alert alert-error alert-main">'+ errorMsg +'</div>'
             );
         },
 
         renderBaseTemplate: function(){
-//            if (!this.board.commentCountHelper.started) this.board.commentCountHelper.start();
-
             var html = this.template({boardName:this.board.name, sectionName:this.getSectionName()});
             $(this.el).find(this.container).html(html);
-
+            $(this.container).find('.sectionWrapper').addClass(this.getSectionColor());
             $(this.container).find('#ideasList').append('<h2 class="loading">Retrieving Ideas</h2>');
             this.pollForIdeas();
         },
@@ -57,7 +55,7 @@ $(document).ready(function () {
             });
 
             var currentView = this;     //In setTimeout, 'this' always refers to the global object, so we have to pass the current context as a variable.
-            IdeaBoardz.Board.instance.timer = setTimeout(function(){currentView.pollForIdeas()}, 5000);
+            IdeaBoardz.Board.instance.timer = setTimeout(function(){currentView.pollForIdeas()}, 10000);
         },
 
         startListeningToGetIdeasEvents:function () {
@@ -77,6 +75,11 @@ $(document).ready(function () {
                     return sections[index].name;
                 }
             }
+        },
+
+        getSectionColor: function(){
+          var colors = ["yellow","orange", "green","purple","aqua","blue"];
+          return colors[this.sectionId%colors.length];
         },
 
         getIdeasListForThisSection: function(){
@@ -119,7 +122,7 @@ $(document).ready(function () {
 
         renderIdeasErrorNotice: function() {
             this.stopListeningToGetIdeasEvents();
-            var errorMsg = "<h4>Problem retrieving ideas.</h4> Please check your URL or section id."
+            var errorMsg = "<h4>Problem retrieving ideas.</h4> Please check your URL or section id.";
             $(this.currentView.el).find(this.currentView.container).html(
                 '<div id="alert-area" class="alert alert-error alert-main">'+ errorMsg +'</div>'
             );
