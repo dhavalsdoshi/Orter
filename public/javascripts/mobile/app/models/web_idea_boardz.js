@@ -4,6 +4,7 @@ IdeaBoardz.WebIdeaBoardz = function(domain) {
 
 function ajaxGetRequest(type, context, url, dataType, success, error) {
     $.ajax({
+        timeout: 9000,
         type:type,
         context:context,
         url:url,

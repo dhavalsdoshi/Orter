@@ -129,7 +129,12 @@ var Ideaboardz = function() {
 
   this.refreshSections = function() {
     var retroId = $('meta[name="retroId"]').attr('content');
-    $.getJSON("/retros/" + retroId + "/points.json", displaySectionPoints);
+    $.ajax({
+      url: "/retros/" + retroId + "/points.json",
+      dataType: 'json',
+      success: displaySectionPoints,
+      timeout: 9000
+    });
   };
 };
 
