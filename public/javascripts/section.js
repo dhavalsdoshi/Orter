@@ -160,8 +160,8 @@ $(document).ready(function() {
       },
       hoverClass: "ui-state-highlight",
       drop: function( event, ui ) {
+        var sticky = new Sticky(ui.draggable);
         $a.trackEvent('point','changeSection',sticky.id);
-        sticky = new Sticky(ui.draggable);
         sticky.moveTo(new Section($(this)));
       }
     });
