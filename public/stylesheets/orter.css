@@ -182,9 +182,11 @@ a:hover {
 .points {
   overflow: auto;
   padding: 0.25em;
+  width: 100%;
 }
 .addStickyForm {
   overflow: visible;
+  width: 100%;
 }
 .addStickyForm textarea {
   -moz-box-shadow: 5px 1px 3px #888888;
