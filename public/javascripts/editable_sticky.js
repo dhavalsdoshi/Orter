@@ -16,7 +16,7 @@ EditableSticky.prototype.show = function () {
   uiDialog.removeClass(uiDialog.attr('class').split(/\s+/).pop())
       .addClass(colorOfSticky);
 
-  this.dialog.find('.stickyText').val(this.sticky.text);
+  this.dialog.find('.stickyText').val(this.sticky.decodedText());
   this.dialog.find('.voteCountContainer .count').html(this.sticky.votes);
   this.dialog.find('.removeStickyButton').unbind('click').click(
       function () {

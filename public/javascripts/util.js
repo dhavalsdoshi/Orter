@@ -11,6 +11,12 @@ jQuery.extend( {
         if($.isHtmlEncoded(str))
             return str.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
         return str;
+    },
+
+    htmlEncode: function(str) {
+        if(!$.isHtmlEncoded(str))
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return str;
     }
 });
 
