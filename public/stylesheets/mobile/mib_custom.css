@@ -147,6 +147,11 @@ body {
   background-color: #FF8;
   border: 1px solid #FF8;
 }
+.sticky hr {
+  border: 0;
+  width: 90%;
+  border-bottom: 1px dotted grey;
+}
 .sticky,
 .addStickyForm textarea {
   word-wrap: break-word;

@@ -101,7 +101,7 @@ $(document).ready(function () {
             var stickyHtml = "";
             for (var index = 0; index < ideas.length; index++) {
                 var idea = ideas[index];
-                stickyHtml += this.ideaTemplate({ideaText:idea.message, vote_count:idea.votes_count});
+                stickyHtml += this.ideaTemplate({ideaText:idea.message.replace(/\n-{3,}\n/g,'<hr/>'), vote_count:idea.votes_count});
             }
             $(this.container).find('#ideasList').html(stickyHtml);
         },

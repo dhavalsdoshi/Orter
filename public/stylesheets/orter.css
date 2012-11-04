@@ -202,16 +202,17 @@ a:hover {
   /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
 
 }
+.sticky hr {
+  border: 0;
+  width: 70%;
+  border-bottom: 1px dotted grey;
+}
 .ui-widget-content {
   -moz-box-shadow: 2px 10px 29px #888888;
   -webkit-box-shadow: 2px 10px 29px #888888;
   box-shadow: 2px 10px 29px #888888;
   /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
 
-}
-.sticky,
-.addStickyForm textarea {
-  max-width: 15em;
 }
 .sticky,
 .addStickyForm textarea,
@@ -228,6 +229,7 @@ a:hover {
 }
 .sticky,
 .addStickyForm textarea {
+  max-width: 15em;
   word-wrap: break-word;
   cursor: pointer;
   float: left;
@@ -235,11 +237,6 @@ a:hover {
   height: 100px;
   overflow: hidden;
   position: relative;
-}
-.sticky hr {
-  border: 0;
-  width: 70%;
-  border-bottom: 1px dotted grey;
 }
 .aqua .sticky,
 .aqua .addStickyForm textarea,
