@@ -6,6 +6,7 @@ var Sticky = function(dom){
 };
 
 Sticky.createFrom = function(text, votes, id) {
+  var encodedText = $.isHtmlEncoded(text) ? text : $.htmlEncode(text)
   var stickyTemplateHtml = $('#stickyTemplate').html();
   var addedPoint = $(stickyTemplateHtml);
   addedPoint.hide()
@@ -13,7 +14,7 @@ Sticky.createFrom = function(text, votes, id) {
     .attr('data-content', text)
     .attr('id', 'point' + id)
     .attr('data-id', id)
-    .find('.stickyText').html(text);
+    .find('.stickyText').html(encodedText);
   addedPoint.find('.voteCount .count').html(votes);
   return new Sticky(addedPoint);
 };
@@ -23,7 +24,7 @@ Sticky.prototype.decodedText = function(){
 };
 
 Sticky.prototype.encodedText = function(){
-    return $.isHtmlEncoded(this.text) ? this.text : $.htmlEncode(this.text);
+  return $.isHtmlEncoded(this.text) ? this.text : $.htmlEncode(this.text);
 };
 
 Sticky.prototype.displayText = function(){
