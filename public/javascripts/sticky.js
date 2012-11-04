@@ -1,6 +1,7 @@
 var Sticky = function(dom){
   this.element = dom;
-  this.text = $.trim(dom.attr('data-content'));
+  this.rawString = $.trim(dom.attr('data-content'))
+  this.text = $.isHtmlEncoded(this.rawString) ? $.htmlDecode(this.rawString) : this.rawString;
   this.votes = parseInt($.trim(dom.find('.voteCount .count').html()));
   this.id = parseInt(dom.attr('data-id'));
 };
@@ -13,7 +14,7 @@ Sticky.createFrom = function(text, votes, id) {
     .attr('data-content', text)
     .attr('id', 'point' + id)
     .attr('data-id', id)
-    .find('.stickyText').html(text);
+    .find('.stickyText').text(text);
   addedPoint.find('.voteCount .count').html(votes);
   return new Sticky(addedPoint);
 };
@@ -76,7 +77,7 @@ Sticky.prototype.moveTo = function(section) {
 
 
 Sticky.prototype.updateDom = function(){
-  this.element.find(".stickyText").html(this.displayText());
+  this.element.find(".stickyText").text(this.displayText());
   this.element.attr("data-content", this.text);
   this.element.attr("title", this.titleText());
   this.element.find(".count").html(this.votes);
