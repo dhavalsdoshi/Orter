@@ -132,7 +132,7 @@ var Ideaboardz = function() {
     var retroId = $('meta[name="retroId"]').attr('content');
     var retroName = $('meta[name="retroName"]').attr('content');
     $.ajax({
-      url: "/retros/"+ retroName + "/" + retroId + "/points.json",
+      url: "/retros/"+ encodeURIComponent(retroName) + "/" + retroId + "/points.json",
       dataType: 'json',
       success: displaySectionPoints,
       error: function(){

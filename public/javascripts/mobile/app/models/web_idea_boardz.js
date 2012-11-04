@@ -57,7 +57,7 @@ IdeaBoardz.WebIdeaBoardz.prototype = {
         var success = callbacks.success || function() {};
         var error = callbacks.error || function() {};
 
-        var url = this.domain + '/retros/'+ boardName+ '/' + boardID + '/points.json';
+        var url = this.domain + '/retros/'+ encodeURIComponent(boardName)+ '/' + boardID + '/points.json';
         var type = 'GET';
         var dataType = 'json';
         ajaxGetRequest(type, context, url, dataType, success, error);
