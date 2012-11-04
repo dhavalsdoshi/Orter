@@ -50,14 +50,14 @@ IdeaBoardz.WebIdeaBoardz.prototype = {
         ajaxGetRequest(type, context, url, dataType, success, error);
     },
 
-    getIdeas : function(boardID, callbacks){
+    getIdeas : function(boardID, boardName, callbacks){
         callbacks = callbacks || {};
         var context = callbacks.context;
 
         var success = callbacks.success || function() {};
         var error = callbacks.error || function() {};
 
-        var url = this.domain + '/retros/' + boardID + '/points.json';
+        var url = this.domain + '/retros/'+ boardName+ '/' + boardID + '/points.json';
         var type = 'GET';
         var dataType = 'json';
         ajaxGetRequest(type, context, url, dataType, success, error);

@@ -11,6 +11,7 @@
       %meta{:name=>"robots", :content=>"noindex, nofollow"}/
     %title= "IdeaBoardz - #{@retrospective.name}"
     %meta{:content => @retrospective.id, :name => "retroId"}/
+    %meta{:content => @retrospective.name, :name => "retroName"}/
     = stylesheet_link_tag 'reset-min'
     = stylesheet_link_tag 'cupertino/jquery-ui-1.8.2.custom'
     = stylesheet_link_tag 'orter'

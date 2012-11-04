@@ -102,7 +102,7 @@ var Ideaboardz = function() {
 
     $U.filterStickies();
     $U.sortStickies();
-    setTimeout(that.refreshSections(),10000)
+    setTimeout(that.refreshSections,10000)
   };
 
   var allPointsOnBoard = function(){
@@ -130,12 +130,13 @@ var Ideaboardz = function() {
 
   this.refreshSections = function() {
     var retroId = $('meta[name="retroId"]').attr('content');
+    var retroName = $('meta[name="retroName"]').attr('content');
     $.ajax({
-      url: "/retros/" + retroId + "/points.json",
+      url: "/retros/"+ retroName + "/" + retroId + "/points.json",
       dataType: 'json',
       success: displaySectionPoints,
       error: function(){
-        setTimeout(that.refreshSections(),10000)
+        setTimeout(that.refreshSections,10000)
       },
       timeout: 9000
     });

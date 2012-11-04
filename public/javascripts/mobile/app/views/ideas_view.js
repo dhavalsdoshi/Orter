@@ -44,14 +44,14 @@ $(document).ready(function () {
         pollForIdeas:function () {
             this.startListeningToGetIdeasEvents();
             var currentView = this;
-            IdeaBoardz.WebIdeaBoardz.instance.getIdeas(this.board.id, {
+            IdeaBoardz.WebIdeaBoardz.instance.getIdeas(this.board.id, this.board.name,{
                 success: function(data){
                     IdeaBoardz.Board.instance.ideas = data;
                     IdeaBoardz.dispatcher.trigger("change:ideasData");
                     setTimeout(function(){currentView.pollForIdeas()}, 10000);
                 },
                 error: function(){
-                    setTimeout(function(){currentView.pollForIdeas()}, 10000);
+//                    setTimeout(function(){currentView.pollForIdeas()}, 10000);
                     IdeaBoardz.dispatcher.trigger("error:ideasData");
                 }
             });
@@ -124,8 +124,8 @@ $(document).ready(function () {
 
         renderIdeasErrorNotice: function() {
             this.stopListeningToGetIdeasEvents();
-            var errorMsg = "<h4>Problem retrieving ideas.</h4> Please check your URL or section id.";
-            $(this.currentView.el).find(this.currentView.container).html(
+            var errorMsg = "<h4>Problem retrieving ideas.</h4> Please check your URL or section id. Or just try refreshing the page.";
+            $(this.el).find(this.container).html(
                 '<div id="alert-area" class="alert alert-error alert-main">'+ errorMsg +'</div>'
             );
         }
