@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => 'f92c99c75424ae3a97cc0033145fe066'
 
+  before_filter :log_ip
+
+  def log_ip
+    logger = Logger.new("#{Rails.root}/log/ip.log")
+    logger.warn("#{request.env['REMOTE_ADDR']} - #{params.inspect}")
+
+  end
+
   def rescue_action(e)
     p e
     LOGGER.error e.message
