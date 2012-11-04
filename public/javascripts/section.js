@@ -102,6 +102,7 @@ var Ideaboardz = function() {
 
     $U.filterStickies();
     $U.sortStickies();
+    setTimeout(that.refreshSections(),10000)
   };
 
   var allPointsOnBoard = function(){
@@ -133,6 +134,9 @@ var Ideaboardz = function() {
       url: "/retros/" + retroId + "/points.json",
       dataType: 'json',
       success: displaySectionPoints,
+      error: function(){
+        setTimeout(that.refreshSections(),10000)
+      },
       timeout: 9000
     });
   };
@@ -147,7 +151,6 @@ $(document).ready(function() {
         width: 350,
         modal: true
     });
-    setInterval(ideaBoardz.refreshSections, 10000);
     $('#sortBy').change($U.sortStickies).change();
     $('#search').keyup($U.filterStickies);
     $('#retro_section_id').change($U.filterSection).change();
