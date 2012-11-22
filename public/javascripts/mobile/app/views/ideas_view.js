@@ -48,16 +48,12 @@ $(document).ready(function () {
                 success: function(data){
                     IdeaBoardz.Board.instance.ideas = data;
                     IdeaBoardz.dispatcher.trigger("change:ideasData");
-                    setTimeout(function(){currentView.pollForIdeas()}, 10000);
+                    IdeaBoardz.Board.instance.timer = setTimeout(function(){currentView.pollForIdeas()}, 10000);
                 },
                 error: function(){
-//                    setTimeout(function(){currentView.pollForIdeas()}, 10000);
                     IdeaBoardz.dispatcher.trigger("error:ideasData");
                 }
             });
-
-                 //In setTimeout, 'this' always refers to the global object, so we have to pass the current context as a variable.
-//            IdeaBoardz.Board.instance.timer = setTimeout(function(){currentView.pollForIdeas()}, 5000);
         },
 
         startListeningToGetIdeasEvents:function () {
