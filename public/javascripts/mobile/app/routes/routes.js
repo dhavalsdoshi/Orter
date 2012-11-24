@@ -1,6 +1,7 @@
 IdeaBoardz.AppRouter = Backbone.Router.extend({
     routes: {
         "": "sectionsList", //#for/mibTest/9
+        "editIdea/:sectionId/:pointId": "editIdea", // #for/mibTest/9/editIdea/ideaId
         "createIdea": "createIdea", // #for/mibTest/9/createIdea
         ":sid": "ideasList", //#for/mibTest/9/1
         "*actions":"error"
@@ -34,7 +35,14 @@ IdeaBoardz.AppRouter = Backbone.Router.extend({
       var bid = $('body').attr('data-id');
 
       boardName=decodeURIComponent(boardName);
-        var createIdeaView = new IdeaBoardz.CreateIdeaView("#container", boardName, bid);
+      var createIdeaView = new IdeaBoardz.CreateIdeaView("#container", boardName, bid);
+    },
+
+    editIdea: function(sectionId,pointId){
+        var boardName = $('body').attr('data-name');
+        var bid = $('body').attr('data-id');
+        boardName=decodeURIComponent(boardName);
+        var editIdeaView = new IdeaBoardz.EditIdeaView("#container", boardName, bid, sectionId, pointId);
     },
 
     error: function(actions){

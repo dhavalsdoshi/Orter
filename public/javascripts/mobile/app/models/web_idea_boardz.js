@@ -22,17 +22,38 @@ function ajaxPostRequest(type, context, url, success, error) {
         error:error
     });
 }
+
+function ajaxPutRequest(context, url, success, error, message) {
+    $.ajax({
+        type:'PUT',
+        context:context,
+        url:url,
+        success:success,
+        error:error,
+        data: {
+            'point' : {'message': message}
+        }
+    });
+}
+
 IdeaBoardz.WebIdeaBoardz.prototype = {
+
+    editIdea: function(pointId,message,callbacks){
+        callbacks = callbacks || {};
+        var success = callbacks.success || function() {};
+        var error = callbacks.error || function() {};
+        var context = callbacks.context;
+        var url = this.domain + '/points/' + pointId;
+        ajaxPutRequest( context, url, success, error, message);
+    },
 
     createIdea: function(sectionId, message, callbacks) {
         callbacks = callbacks || {};
         var success = callbacks.success || function() {};
         var error = callbacks.error || function() {};
         var context = callbacks.context;
-
         var url = this.domain + '/points.json?point[section_id]='+encodeURIComponent(sectionId)+'&point[message]=' + encodeURIComponent(message);
         var type = 'POST';
-
         ajaxPostRequest(type, context, url, success, error);
     },
 

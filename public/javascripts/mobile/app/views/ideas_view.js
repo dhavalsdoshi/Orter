@@ -12,7 +12,6 @@ $(document).ready(function () {
         initialize:function (container, boardName, boardId, sectionId) {
             this.container = container;
             this.sectionId = sectionId;
-
             var ideasViewHelper = new IdeaBoardz.ViewHelper(this, this.checkValidityOfSectionId);
             ideasViewHelper.getBoardForCurrentView(boardName, boardId);
         },
@@ -97,7 +96,10 @@ $(document).ready(function () {
             var stickyHtml = "";
             for (var index = 0; index < ideas.length; index++) {
                 var idea = ideas[index];
-                stickyHtml += this.ideaTemplate({ideaText:idea.message.replace(/\n-{3,}\n/g,'<hr/>'), vote_count:idea.votes_count});
+                stickyHtml += this.ideaTemplate({ideaText:idea.message.replace(/\n-{3,}\n/g,'<hr/>'), vote_count:idea.votes_count, stickyId:"#idea10"});
+                stickyHtml = stickyHtml.replace("stickyId",idea.id);
+                stickyHtml = stickyHtml.replace("editStickyIdeaID",idea.id);
+                stickyHtml = stickyHtml.replace("#EditingURL","#editIdea/"+ this.sectionId + "/" +idea.id);
             }
             $(this.container).find('#ideasList').html(stickyHtml);
         },

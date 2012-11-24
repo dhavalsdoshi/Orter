@@ -101,5 +101,14 @@ IdeaBoardz.ViewHelper.prototype = {
     stopListeningToGetBoardEvents: function(){
         IdeaBoardz.dispatcher.off('success:boardData', this.updateViewWithReturnedBoardData, this);
         IdeaBoardz.dispatcher.off('error:boardData', this.renderBoardErrorNotice, this);
+    },
+    renderSectionListInDropdown: function(currentView){
+        var sections = currentView.board.sections;
+        for (var i in sections) {
+
+            $(currentView.el).find("#sectionId").append('<option value='+ sections[i].id +' >' + sections[i].name+'</option>');
+        }
+
+        $(currentView.el).find("#ideaText").focus();
     }
 };

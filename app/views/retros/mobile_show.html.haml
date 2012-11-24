@@ -17,10 +17,12 @@
             %script#template-sectionsView{:type => "text/template"}
               %ul#sectionsList.nav.nav-tabs.nav-stacked
             %script#template-stickyView{:type => "text/template"}
-              %li.sticky.small-sticky
+              %li.sticky.small-sticky{:id => "stickyId"}
                 %span.ideaText <%=ideaText%>
                 %span.voteNumber
                   + <%=vote_count%>
+                %a.editIdeaBtn.btn.btn-small.btn-quicklinks{:href => "#EditingURL", :id => "editStickyIdeaID"}
+                  %i.icon-edit
             %script#template-ideasView{:type => "text/template"}
               %div.sectionWrapper
                 %h2#sectionName
@@ -70,6 +72,7 @@
         .script("/javascripts/mobile/app/models/board.js")
         .script("/javascripts/mobile/app/views/view_helper.js")
         .script("/javascripts/mobile/app/views/create_idea_view.js")
+        .script("/javascripts/mobile/app/views/edit_idea_view.js")
         .script("/javascripts/mobile/app/views/ideas_view.js")
         .script("/javascripts/mobile/app/views/sections_view.js")
         .script("/javascripts/mobile/app/views/error_view.js")

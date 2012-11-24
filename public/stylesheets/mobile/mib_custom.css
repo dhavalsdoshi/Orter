@@ -78,6 +78,7 @@ body {
 #ideasList li {
   min-height: 40px;
   padding: 10px;
+  padding-right: 30px;
   position: relative;
   margin: 5px 5px 15px 5px;
 }
@@ -324,4 +325,19 @@ body {
   /*styling in ie.css for IE8/7*/
 
   filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = #ffffff,EndColorStr=#ededed);
+}
+
+
+.editIdeaBtn{
+    padding: 8;
+    background-color: transparent;
+
+    background-image: none;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    border-bottom-right-radius: 10px;
+}
+.editIdeaBtn:hover{
+    background-color: #f5f5f5;
 }
