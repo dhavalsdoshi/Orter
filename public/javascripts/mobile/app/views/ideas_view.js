@@ -52,11 +52,6 @@ $(document).ready(function () {
                 okBtn = $(event.currentTarget).siblings('.okBtn')[0],
                 me = this;
             $(ideaTextEl).attr('contentEditable',true).focus();
-            $(ideaTextEl).blur(function(event){
-                $(okBtn).hide();
-                $(el).show();
-                IdeaBoardz.Board.instance.timer = setTimeout(function(){me.pollForIdeas()}, 10000);
-            });
             clearTimeout(IdeaBoardz.Board.instance.timer);
             $(el).hide();
             $(okBtn).show();
