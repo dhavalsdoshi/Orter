@@ -23,6 +23,8 @@
                   + <%=vote_count%>
                 %a.editIdeaBtn.btn.btn-small.btn-quicklinks{:href => "#EditingURL", :id => "editStickyIdeaID"}
                   %i.icon-edit
+                %a.okBtn.btn.btn-small.btn-quicklinks{:href => "#EditingURL", :id => "okBtnID"}
+                  %i.icon-ok
             %script#template-ideasView{:type => "text/template"}
               %div.sectionWrapper
                 %h2#sectionName
@@ -72,7 +74,6 @@
         .script("/javascripts/mobile/app/models/board.js")
         .script("/javascripts/mobile/app/views/view_helper.js")
         .script("/javascripts/mobile/app/views/create_idea_view.js")
-        .script("/javascripts/mobile/app/views/edit_idea_view.js")
         .script("/javascripts/mobile/app/views/ideas_view.js")
         .script("/javascripts/mobile/app/views/sections_view.js")
         .script("/javascripts/mobile/app/views/error_view.js")

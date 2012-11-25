@@ -16,6 +16,68 @@ $(document).ready(function () {
             ideasViewHelper.getBoardForCurrentView(boardName, boardId);
         },
 
+        events: {
+            "click .okBtn": "resumePoll",
+            "click .editIdeaBtn": "makeStickyEditable"
+        },
+
+        resumePoll: function(event){
+            var el = $(event.currentTarget)[0],
+                ideaTextEl = $(event.currentTarget).siblings()[0],
+                editIdeaBtn = $(event.currentTarget).siblings('.editIdeaBtn')[0],
+                message = $(ideaTextEl).text(),
+                me = this;
+            $(ideaTextEl).attr('contentEditable',false);
+            message = $.trim(message);
+            if (message == '') {
+                me.showEmptyError();
+            }
+            else {
+                IdeaBoardz.WebIdeaBoardz.instance.editIdea(event.currentTarget.id, message, {
+                    success: me.showSuccess,
+                    error: me.showError,
+                    context: "this"
+                });
+            }
+            $(el).hide();
+            $(editIdeaBtn).show();
+            IdeaBoardz.Board.instance.timer = setTimeout(function(){me.pollForIdeas()}, 10000);
+            return false;
+        },
+
+        makeStickyEditable: function(event){
+            event.stopPropagation();
+            var el = $(event.currentTarget)[0],
+                ideaTextEl = $(event.currentTarget).siblings()[0],
+                okBtn = $(event.currentTarget).siblings('.okBtn')[0],
+                me = this;
+            $(ideaTextEl).attr('contentEditable',true).focus();
+            $(ideaTextEl).blur(function(event){
+                $(okBtn).hide();
+                $(el).show();
+                IdeaBoardz.Board.instance.timer = setTimeout(function(){me.pollForIdeas()}, 10000);
+            });
+            clearTimeout(IdeaBoardz.Board.instance.timer);
+            $(el).hide();
+            $(okBtn).show();
+            $(okBtn).css({display: 'inline-block'});
+            $(okBtn).children().css({display: 'inline-block'});
+            return false
+        },
+
+        showError: function(event){
+            $(this.el).find("#alert-area").html($("<div id=‘error-msg’ align='center'  class='alert alert-error'>Failed to submit. Please try again in some time.</div>"));
+        },
+
+        showEmptyError: function(event){
+            $(this.el).find("#alert-area").html($("<div id=‘empty-msg’ align='center' class='alert alert-error'>Please enter some text.</div>"));
+        },
+
+        showSuccess: function(event){
+            $(this.el).find("#alert-area").html($("<div id=‘success-msg’ align='center'  class='alert alert-success'>Your idea has been Updated.</div>"));
+            $(this.el).find("#ideaText").val("");
+        },
+
         checkValidityOfSectionId: function(){
             var sectionName = this.getSectionName();
             if (sectionName == undefined){
@@ -99,7 +161,9 @@ $(document).ready(function () {
                 stickyHtml += this.ideaTemplate({ideaText:idea.message.replace(/\n-{3,}\n/g,'<hr/>'), vote_count:idea.votes_count, stickyId:"#idea10"});
                 stickyHtml = stickyHtml.replace("stickyId",idea.id);
                 stickyHtml = stickyHtml.replace("editStickyIdeaID",idea.id);
-                stickyHtml = stickyHtml.replace("#EditingURL","#editIdea/"+ this.sectionId + "/" +idea.id);
+                stickyHtml = stickyHtml.replace("okBtnID",idea.id);
+                stickyHtml = stickyHtml.replace("#EditingURL","#"+ this.sectionId);
+
             }
             $(this.container).find('#ideasList').html(stickyHtml);
         },

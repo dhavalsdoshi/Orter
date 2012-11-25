@@ -328,8 +328,10 @@ body {
 }
 
 
-.editIdeaBtn{
-    padding: 8;
+.editIdeaBtn, .okBtn{
+    height: 20px;
+    width: 20px;
+    padding: 5px 9px 0px 9px;
     background-color: transparent;
 
     background-image: none;
@@ -338,6 +340,11 @@ body {
     bottom: 0px;
     border-bottom-right-radius: 10px;
 }
-.editIdeaBtn:hover{
+
+.editIdeaBtn:hover,.okBtn:hover{
     background-color: #f5f5f5;
+}
+
+.okBtn, .okBtn i{
+    display: none;
 }
