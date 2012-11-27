@@ -1,5 +1,7 @@
 $(document).ready(function () {
-
+    _.templateSettings = {
+        interpolate : /\{\{(.+?)\}\}/g
+    };
     IdeaBoardz.IdeasView = Backbone.View.extend({
         el:$('#viewWrapper'),
         template:_.template($('#template-ideasView').html()),
@@ -41,6 +43,7 @@ $(document).ready(function () {
             }
             $(el).hide();
             $(editIdeaBtn).show();
+            clearTimeout(IdeaBoardz.Board.instance.timer);
             IdeaBoardz.Board.instance.timer = setTimeout(function(){me.pollForIdeas()}, 10000);
             return false;
         },
@@ -153,12 +156,12 @@ $(document).ready(function () {
             var stickyHtml = "";
             for (var index = 0; index < ideas.length; index++) {
                 var idea = ideas[index];
-                stickyHtml += this.ideaTemplate({ideaText:idea.message.replace(/\n-{3,}\n/g,'<hr/>'), vote_count:idea.votes_count, stickyId:"#idea10"});
-                stickyHtml = stickyHtml.replace("stickyId",idea.id);
-                stickyHtml = stickyHtml.replace("editStickyIdeaID",idea.id);
-                stickyHtml = stickyHtml.replace("okBtnID",idea.id);
-                stickyHtml = stickyHtml.replace("#EditingURL","#"+ this.sectionId);
-
+                stickyHtml += this.ideaTemplate({
+                    ideaText:idea.message.replace(/\n-{3,}\n/g,'<hr/>'),
+                    vote_count:idea.votes_count,
+                    section_id: this.sectionId,
+                    point_id: idea.id
+                });
             }
             $(this.container).find('#ideasList').html(stickyHtml);
         },
