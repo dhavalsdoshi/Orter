@@ -14,6 +14,7 @@ $(document).ready(function () {
         initialize:function (container, boardName, boardId, sectionId) {
             this.container = container;
             this.sectionId = sectionId;
+            this.resetBinding();
             var ideasViewHelper = new IdeaBoardz.ViewHelper(this, this.checkValidityOfSectionId);
             ideasViewHelper.getBoardForCurrentView(boardName, boardId);
         },
@@ -21,6 +22,11 @@ $(document).ready(function () {
         events: {
             "click .okBtn": "resumePoll",
             "click .editIdeaBtn": "makeStickyEditable"
+        },
+
+        resetBinding:function(){
+            $(this.el).undelegate('.editIdeaBtn', 'click');
+            $(this.el).undelegate('.okBtn', 'click');
         },
 
         resumePoll: function(event){
