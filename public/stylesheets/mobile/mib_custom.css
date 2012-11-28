@@ -176,6 +176,7 @@ body {
 
 }
 .addStickyForm textarea {
+  background: transparent;
   text-align: left;
   width: 95%;
   min-height: 60px;
@@ -347,4 +348,18 @@ body {
 
 .okBtn, .okBtn i{
     display: none;
+}
+
+.btn-success{
+    color: black;
+    background-color: #4CD352;
+    background-image: -moz-linear-gradient(top, #D0F3B1, #4CD352);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#D0F3B1), to(#4CD352));
+    background-image: -webkit-linear-gradient(top, #D0F3B1, #4CD352);
+    background-image: -o-linear-gradient(top, #D0F3B1, #4CD352);
+    background-image: linear-gradient(to bottom, #D0F3B1, #4CD352);
+}
+.btn-success:hover, .btn-success:active, .btn-success.active, .btn-success.disabled, .btn-success[disabled] {
+    color: #000000;
+    background-color: #4CD352;
 }
