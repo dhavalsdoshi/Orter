@@ -182,54 +182,6 @@ h1{
   display: block;
 }
 
-#anand{
-  content: url(../images/contributors/images/anand.png);
-}
-#anay{
-  content: url(../images/contributors/images/anay.png);
-}
-#atreyee{
-  content: url(../images/contributors/images/atreyee.png);
-}
-#dhaval{
-  content: url(../images/contributors/images/dhaval.png);
-}
-#chirag{
-  content: url(../images/contributors/images/chirag.png);
-}
-#divyanshu{
-  content: url(../images/contributors/images/divyanshu.png);
-}
-#vishnu{
-  content: url(../images/contributors/images/vishnu.png);
-}
-#mai{
-  content: url(../images/contributors/images/mai.png);
-}
-#ankit{
-  content: url(../images/contributors/images/ankit.png);
-}
-#anoop{
-  content: url(../images/contributors/images/anoop.png);
-}
-#emily{
-  content: url(../images/contributors/images/emily.png);
-}
-#magdalena{
-  content: url(../images/contributors/images/magdalena.png);
-}
-#shraddha{
-  content: url(../images/contributors/images/shraddha.png);
-}
-#aman{
-  content: url(../images/contributors/images/aman.png);
-}
-#xinyu{
-  content: url(../images/contributors/images/xinyu.png);
-}
-#aroj{
-  content: url(../images/contributors/images/aroj.png);
-}
 .developer-info>a{
   position: relative;
   z-index: 10;
