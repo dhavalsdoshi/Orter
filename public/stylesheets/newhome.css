@@ -198,6 +198,15 @@ body {
   transform: rotate(-10deg);
   z-index: 4;
 }
+.contributors{
+    top: 438px;
+    right: 425px;
+    -webkit-transform: rotate(7deg);
+    -moz-transform: rotate(7deg);
+    -o-transform: rotate(7deg);
+    transform: rotate(7deg);
+    z-index: 4;
+}
 .count {
   top: 438px;
   right: 150px;
