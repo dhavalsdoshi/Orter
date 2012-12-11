@@ -21,15 +21,32 @@ $(document).ready(function () {
 
         events: {
             "click .okBtn": "resumePoll",
-            "click .editIdeaBtn": "makeStickyEditable"
+            "click .editIdeaBtn": "makeStickyEditable",
+            "click .deleteBtn": "deletePoint"
         },
 
         resetBinding:function(){
             $(this.el).undelegate('.editIdeaBtn', 'click');
             $(this.el).undelegate('.okBtn', 'click');
+            $(this.el).undelegate('.deleteBtn','click');
         },
 
+        deletePoint: function(event){
+            event.preventDefault();
+            var me=this;
+            IdeaBoardz.WebIdeaBoardz.instance.deleteIdea(event.currentTarget.id,{
+                success: me.showSuccess,
+                error: me.showError,
+                context: "this"
+            });
+            $("#ideasList>li[id='"+ event.currentTarget.id +"']").anim({opacity:'0'},0.5,'ease-out', function(){
+                $(this).remove();
+            });
+
+            return false;
+        },
         resumePoll: function(event){
+            event.preventDefault();
             var el = $(event.currentTarget)[0],
                 ideaTextEl = $(event.currentTarget).siblings('.ideaText')[0],
                 editIdeaBtn = $(event.currentTarget).siblings('.editIdeaBtn')[0],
@@ -56,6 +73,7 @@ $(document).ready(function () {
         },
 
         makeStickyEditable: function(event){
+            event.preventDefault();
             event.stopPropagation();
             var el = $(event.currentTarget)[0],
                 ideaTextEl = $(event.currentTarget).siblings()[0],

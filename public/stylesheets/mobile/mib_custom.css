@@ -338,7 +338,7 @@ body {
 }
 
 
-.editIdeaBtn, .okBtn{
+.editIdeaBtn, .okBtn, .deleteBtn{
     height: 20px;
     width: 20px;
     padding: 5px 9px 0px 9px;
@@ -351,14 +351,21 @@ body {
     border-bottom-right-radius: 10px;
 }
 
-.editIdeaBtn:hover,.okBtn:hover{
+.editIdeaBtn:hover,.okBtn:hover,.deleteBtn:hover{
     background-color: #f5f5f5;
 }
-
+.deleteBtn:hover{
+    border-color: red;
+}
 .okBtn, .okBtn i{
     display: none;
 }
 
+.deleteBtn{
+    border-radius: 5px;
+    right: 0px;
+    bottom: 27px;
+}
 
 .btn-success{
     color: black;

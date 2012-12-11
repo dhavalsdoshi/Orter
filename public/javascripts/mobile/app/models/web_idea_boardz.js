@@ -38,22 +38,31 @@ function ajaxPutRequest(context, url, success, error, message) {
 
 IdeaBoardz.WebIdeaBoardz.prototype = {
 
+    deleteIdea: function(pointId,callbacks){
+        $.ajax({
+            url: "/points/delete/" + pointId + ".json",
+            type: "GET",
+            success:callbacks.success || function() {},
+            error:callbacks.error || function() {},
+            context: callbacks.context
+        });
+    },
     editIdea: function(pointId,message,callbacks){
         callbacks = callbacks || {};
-        var success = callbacks.success || function() {};
-        var error = callbacks.error || function() {};
-        var context = callbacks.context;
-        var url = this.domain + '/points/' + pointId;
+        var success = callbacks.success || function() {},
+            error = callbacks.error || function() {},
+            context = callbacks.context,
+            url = this.domain + '/points/' + pointId;
         ajaxPutRequest( context, url, success, error, message);
     },
 
     createIdea: function(sectionId, message, callbacks) {
         callbacks = callbacks || {};
-        var success = callbacks.success || function() {};
-        var error = callbacks.error || function() {};
-        var context = callbacks.context;
-        var url = this.domain + '/points.json?point[section_id]='+encodeURIComponent(sectionId)+'&point[message]=' + encodeURIComponent(message);
-        var type = 'POST';
+        var success = callbacks.success || function() {},
+            error = callbacks.error || function() {},
+            context = callbacks.context,
+            url = this.domain + '/points.json?point[section_id]='+encodeURIComponent(sectionId)+'&point[message]=' + encodeURIComponent(message),
+            type = 'POST';
         ajaxPostRequest(type, context, url, success, error);
     },
 
