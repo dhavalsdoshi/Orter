@@ -22,15 +22,29 @@ $(document).ready(function () {
         events: {
             "click .okBtn": "resumePoll",
             "click .editIdeaBtn": "makeStickyEditable",
-            "click .deleteBtn": "deletePoint"
+            "click .deleteBtn": "deletePoint",
+            "click .voteNumber": "votePoint"
         },
 
         resetBinding:function(){
             $(this.el).undelegate('.editIdeaBtn', 'click');
             $(this.el).undelegate('.okBtn', 'click');
             $(this.el).undelegate('.deleteBtn','click');
+            $(this.el).undelegate('.voteNumber','click');
         },
-
+        votePoint: function(event){
+            event.preventDefault();
+            var thisEl =$(event.currentTarget),
+                currentVotes = parseInt(thisEl.find('.voteCount').text()),
+                me=this;
+            thisEl.find('.voteCount').text(currentVotes+1+"");
+            IdeaBoardz.WebIdeaBoardz.instance.voteIdea(event.currentTarget.id,{
+                success: me.showSuccess,
+                error: me.showError,
+                context: "this"
+            });
+            return false;
+        },
         deletePoint: function(event){
             event.preventDefault();
             var me=this;
