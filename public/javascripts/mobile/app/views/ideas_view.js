@@ -31,10 +31,11 @@ $(document).ready(function () {
 
         resumePoll: function(event){
             var el = $(event.currentTarget)[0],
-                ideaTextEl = $(event.currentTarget).siblings()[0],
+                ideaTextEl = $(event.currentTarget).siblings('.ideaText')[0],
                 editIdeaBtn = $(event.currentTarget).siblings('.editIdeaBtn')[0],
-                message = $(ideaTextEl).text(),
+                message = $(ideaTextEl).html(),
                 me = this;
+
             $(ideaTextEl).attr('contentEditable',false).removeClass('editing');
             message = $.trim(message);
             if (message == '') {
