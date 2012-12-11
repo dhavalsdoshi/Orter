@@ -26,6 +26,7 @@ EditableSticky.prototype.show = function () {
         }
       });
   this.dialog.find("textarea").unbind('blur').blur(function () {
+      console.log($.trim($(this).val()));
     thisSticky.edit_message($.trim($(this).val()));
   });
   this.dialog.find('.voteStickyButton').unbind('click').click(function () {
@@ -40,7 +41,6 @@ EditableSticky.prototype.show = function () {
 EditableSticky.prototype.edit_message = function(value) {
   var thisSticky = this;
   this.sticky.update(value);
-    console.log(value);
   this.dialog.find('.stickyUpdated').text('Updating...').addClass('show');
   this.sticky.edit({'message': value}, function(result) {
     thisSticky.dialog.find('.stickyUpdated').text('Updated');

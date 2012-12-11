@@ -35,7 +35,7 @@ $(document).ready(function () {
                 editIdeaBtn = $(event.currentTarget).siblings('.editIdeaBtn')[0],
                 message = $(ideaTextEl).text(),
                 me = this;
-            $(ideaTextEl).attr('contentEditable',false);
+            $(ideaTextEl).attr('contentEditable',false).removeClass('editing');
             message = $.trim(message);
             if (message == '') {
                 me.showEmptyError();
@@ -60,6 +60,7 @@ $(document).ready(function () {
                 ideaTextEl = $(event.currentTarget).siblings()[0],
                 okBtn = $(event.currentTarget).siblings('.okBtn')[0],
                 me = this;
+            $(ideaTextEl).addClass('editing');
             $(ideaTextEl).attr('contentEditable',true).focus();
             clearTimeout(IdeaBoardz.Board.instance.timer);
             $(el).hide();

@@ -82,11 +82,20 @@ body {
   position: relative;
   margin: 5px 5px 15px 5px;
 }
+
 #ideasList li .ideaText {
-  margin-right: 5px;
+  margin-right: 5%;
   margin-bottom: 10px;
   display: block;
   color: black;
+}
+#ideasList li .editing{
+    /*display: block;*/
+    /*margin-bottom: 10px;*/
+    background: #EACFFC;
+    padding: 5px;
+    box-shadow: inset 0px 1px 4px #845F9C;
+    outline: none;
 }
 #ideasList li .voteNumber {
   position: absolute;
@@ -349,6 +358,7 @@ body {
 .okBtn, .okBtn i{
     display: none;
 }
+
 
 .btn-success{
     color: black;
