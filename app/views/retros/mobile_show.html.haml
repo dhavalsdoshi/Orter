@@ -20,17 +20,17 @@
             %script#template-stickyView{:type => "text/template"}
               %li.sticky.small-sticky{:id => "{{point_id}}"}
                 %span.ideaText {{ideaText}}
-                %span.voteNumber{:id=>"{{point_id}}"}
+                %a.sticky-options.voteBtn.voteNumber.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
                   %i.icon-thumbs-up
                   %span
                     +
                   %span.voteCount
                     {{vote_count}}
-                %a.editIdeaBtn.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
+                %a.sticky-options.editIdeaBtn.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
                   %i.icon-edit
-                %a.deleteBtn.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
+                %a.sticky-options.deleteBtn.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
                   %i.icon-trash
-                %a.okBtn.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
+                %a.sticky-options.okBtn.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
                   %i.icon-ok
             %script#template-ideasView{:type => "text/template"}
               %div.sectionWrapper

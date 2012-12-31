@@ -76,15 +76,15 @@ body {
   margin: 0;
 }
 #ideasList li {
-  min-height: 40px;
+  min-height: 100px;
   padding: 10px;
   padding-right: 30px;
   position: relative;
-  margin: 5px 5px 15px 5px;
+  margin: 5px 5px 20px 5px;
 }
 
 #ideasList li .ideaText {
-  margin-right: 5%;
+  margin-right: 7%;
   margin-bottom: 30px;
   display: block;
   color: black;
@@ -99,14 +99,11 @@ body {
 }
 #ideasList li .voteNumber {
   position: absolute;
-  bottom: 0px;
-  left: 10px;
   font-weight: bold;
-  color: black;
-  cursor: pointer;
+  color: green;
 }
 #ideasList li .voteNumber:hover{
-    border: 1px dashed green;
+    border: 1px solid green;
 }
 #ideasList a#emptyMessage,
 #ideasList a#emptyMessage:hover {
@@ -342,9 +339,9 @@ body {
 }
 
 
-.editIdeaBtn, .okBtn, .deleteBtn{
-    height: 20px;
-    width: 20px;
+.sticky-options{
+    height: 25px;
+    width: 40px;
     padding: 5px 9px 0px 9px;
     background-color: transparent;
 
@@ -353,9 +350,13 @@ body {
     right: 0px;
     bottom: 0px;
     border-bottom-right-radius: 10px;
+    cursor: pointer;
+    margin-top: 2px;
 }
-
-.editIdeaBtn:hover,.okBtn:hover,.deleteBtn:hover{
+.voteBtn:hover,
+.editIdeaBtn:hover,
+.okBtn:hover,
+.deleteBtn:hover{
     background-color: #f5f5f5;
 }
 .deleteBtn:hover{
@@ -365,10 +366,12 @@ body {
     display: none;
 }
 
-.deleteBtn{
+.deleteBtn,.voteBtn{
     border-radius: 5px;
-    right: 0px;
-    bottom: 27px;
+    bottom: 40px;
+}
+.voteBtn{
+  bottom: 80px;
 }
 
 .btn-success{
