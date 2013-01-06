@@ -99,9 +99,9 @@ body {
   box-shadow: 3px 7px 3px #888888;
   /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
 
-  border-radius: 15px 15px 15px 15px;
-  -moz-border-radius: 15px 15px 15px 15px;
-  -webkit-border-radius: 15px 15px 15px 15px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
   overflow: auto;
   margin: auto 0;
   width: 95%;
@@ -169,6 +169,9 @@ body {
   top: 111px;
   right: 69px;
   z-index: 0;
+  -ms-transform: rotate(3deg);
+  /* IE 9 */
+
   -webkit-transform: rotate(3deg);
   -moz-transform: rotate(3deg);
   -o-transform: rotate(3deg);
@@ -184,6 +187,9 @@ body {
   top: 270px;
   right: 260px;
   width: 25em;
+  -ms-transform: rotate(-1.5deg);
+  /* IE 9 */
+
   -webkit-transform: rotate(-1.5deg);
   -moz-transform: rotate(-1.5deg);
   -o-transform: rotate(-1.5deg);
@@ -191,7 +197,10 @@ body {
 }
 .faq {
   top: 438px;
-  right: 600px;
+  right: 625px;
+  -ms-transform: rotate(-10deg);
+  /* IE 9 */
+
   -webkit-transform: rotate(-10deg);
   -moz-transform: rotate(-10deg);
   -o-transform: rotate(-10deg);
@@ -200,7 +209,10 @@ body {
 }
 .contributors {
   top: 438px;
-  right: 425px;
+  right: 450px;
+  -ms-transform: rotate(7deg);
+  /* IE 9 */
+
   -webkit-transform: rotate(7deg);
   -moz-transform: rotate(7deg);
   -o-transform: rotate(7deg);
@@ -210,6 +222,9 @@ body {
 .count {
   top: 438px;
   right: 150px;
+  -ms-transform: rotate(-10deg);
+  /* IE 9 */
+
   -webkit-transform: rotate(-10deg);
   -moz-transform: rotate(-10deg);
   -o-transform: rotate(-10deg);
@@ -219,6 +234,9 @@ body {
 .help {
   top: 620px;
   right: 70px;
+  -ms-transform: rotate(-3deg);
+  /* IE 9 */
+
   -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
   -o-transform: rotate(-3deg);
@@ -228,6 +246,9 @@ body {
 .feedback {
   top: 266px;
   right: 150px;
+  -ms-transform: rotate(-10deg);
+  /* IE 9 */
+
   -webkit-transform: rotate(-10deg);
   -moz-transform: rotate(-10deg);
   -o-transform: rotate(-10deg);

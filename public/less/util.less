@@ -6,7 +6,7 @@
 	}
 }
 
-.round-corner(@radius){  
+.round-corner-all(@radius){
 	border-radius:@radius;
 	-moz-border-radius:@radius;
 	-webkit-border-radius:@radius;
@@ -63,7 +63,8 @@
 }
 
 .rotate(@degree){
-	-webkit-transform: rotate(@degree);
+  -ms-transform:rotate(@degree); /* IE 9 */
+  -webkit-transform: rotate(@degree);
   -moz-transform: rotate(@degree);
   -o-transform: rotate(@degree);
   transform: rotate(@degree);

@@ -110,9 +110,6 @@ body {
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  border-radius: 10px 2px 2px 2px;
-  -moz-border-radius: 10px 2px 2px 2px;
-  -webkit-border-radius: 10px 2px 2px 2px;
   background: white;
 }
 .sectionWrapper h2 {
@@ -242,9 +239,6 @@ body {
   border-radius: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
-  border-radius: 0 2px 2px 2px;
-  -moz-border-radius: 0 2px 2px 2px;
-  -webkit-border-radius: 0 2px 2px 2px;
   color: #000000;
   outline: none;
   border: none;
