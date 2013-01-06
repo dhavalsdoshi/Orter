@@ -39,6 +39,55 @@ body {
   margin: 10px;
   text-align: left;
 }
+.sticky .sticky-options {
+  height: 25px;
+  width: 40px;
+  padding: 5px 9px 0px 9px;
+  background-color: transparent;
+  background-image: none;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+  margin-top: 2px;
+}
+.sticky .voteBtn:hover,
+.sticky .editIdeaBtn:hover,
+.sticky .okBtn:hover,
+.sticky .deleteBtn:hover {
+  background-color: #f5f5f5;
+}
+.sticky .okBtn,
+.sticky .okBtn i {
+  display: none;
+}
+.sticky .deleteBtn,
+.sticky .voteBtn {
+  border-radius: 5px;
+  bottom: 40px;
+}
+.sticky .voteBtn {
+  bottom: 80px;
+}
+.btn-success {
+  color: black;
+  background-color: #4CD352;
+  text-shadow: none;
+  background-image: -moz-linear-gradient(top, #d0f3b1, #4cd352);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d0f3b1), to(#4cd352));
+  background-image: -webkit-linear-gradient(top, #d0f3b1, #4cd352);
+  background-image: -o-linear-gradient(top, #d0f3b1, #4cd352);
+  background-image: linear-gradient(to bottom, #d0f3b1, #4cd352);
+}
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  color: #000000;
+  background-color: #4CD352;
+}
 .small-sticky {
   -moz-box-shadow: 1px 1px 3px #888888;
   -webkit-box-shadow: 1px 1px 3px #888888;
@@ -82,28 +131,27 @@ body {
   position: relative;
   margin: 5px 5px 20px 5px;
 }
-
 #ideasList li .ideaText {
   margin-right: 35px;
   margin-bottom: 30px;
   display: block;
   color: black;
 }
-#ideasList li .editing{
-    /*display: block;*/
-    /*margin-bottom: 10px;*/
-    background: #EACFFC;
-    padding: 5px;
-    box-shadow: inset 0px 1px 4px #845F9C;
-    outline: none;
+#ideasList li .editing {
+  background: #EACFFC;
+  padding: 5px;
+  -moz-box-shadow: inset 0px 1px 4 p #845f9c;
+  -webkit-box-shadow: inset 0px 1px 4 p #845f9c;
+  box-shadow: inset 0px 1px 4 p #845f9c;
+  outline: none;
 }
 #ideasList li .voteNumber {
   position: absolute;
   font-weight: bold;
   color: green;
 }
-#ideasList li .voteNumber:hover{
-    border: 1px solid green;
+#ideasList li .voteNumber:hover {
+  border: 1px solid green;
 }
 #ideasList a#emptyMessage,
 #ideasList a#emptyMessage:hover {
@@ -186,8 +234,8 @@ body {
 
 }
 .addStickyForm textarea {
-  background: transparent;
   text-align: left;
+  background: transparent;
   width: 95%;
   min-height: 60px;
   font-family: 'Delius', helvetica, cursive;
@@ -336,54 +384,4 @@ body {
   /*styling in ie.css for IE8/7*/
 
   filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = #ffffff,EndColorStr=#ededed);
-}
-
-
-.sticky-options{
-    height: 25px;
-    width: 40px;
-    padding: 5px 9px 0px 9px;
-    background-color: transparent;
-
-    background-image: none;
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    border-bottom-right-radius: 10px;
-    cursor: pointer;
-    margin-top: 2px;
-}
-.voteBtn:hover,
-.editIdeaBtn:hover,
-.okBtn:hover,
-.deleteBtn:hover{
-    background-color: #f5f5f5;
-}
-.deleteBtn:hover{
-    border-color: red;
-}
-.okBtn, .okBtn i{
-    display: none;
-}
-
-.deleteBtn,.voteBtn{
-    border-radius: 5px;
-    bottom: 40px;
-}
-.voteBtn{
-  bottom: 80px;
-}
-
-.btn-success{
-    color: black;
-    background-color: #4CD352;
-    background-image: -moz-linear-gradient(top, #D0F3B1, #4CD352);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#D0F3B1), to(#4CD352));
-    background-image: -webkit-linear-gradient(top, #D0F3B1, #4CD352);
-    background-image: -o-linear-gradient(top, #D0F3B1, #4CD352);
-    background-image: linear-gradient(to bottom, #D0F3B1, #4CD352);
-}
-.btn-success:hover, .btn-success:active, .btn-success.active, .btn-success.disabled, .btn-success[disabled] {
-    color: #000000;
-    background-color: #4CD352;
 }

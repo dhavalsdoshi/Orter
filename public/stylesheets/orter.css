@@ -585,6 +585,6 @@ a:hover {
 }
 .icon-edit:before {
   content: "✎";
-  transform: rotatey(180deg);
+  transform: rotateY(180deg);
 }
 /* Plus your other icon types here*/

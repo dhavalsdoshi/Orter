@@ -40,6 +40,53 @@ body {
   padding-left: 15px;
   margin: 10px;
   text-align: left;
+
+  .sticky-options{
+    height: 25px;
+    width: 40px;
+    padding: 5px 9px 0px 9px;
+    background-color: transparent;
+
+    background-image: none;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    margin-top: 2px;
+  }
+  .voteBtn:hover,
+  .editIdeaBtn:hover,
+  .okBtn:hover,
+  .deleteBtn:hover{
+    background-color: #f5f5f5;
+  }
+  .okBtn, .okBtn i{
+    display: none;
+  }
+
+  .deleteBtn,.voteBtn{
+    border-radius: 5px;
+    bottom: 40px;
+  }
+  .voteBtn{
+    bottom: 80px;
+  }
+}
+
+.btn-success{
+  color: black;
+  background-color: #4CD352;
+  text-shadow: none;
+  background-image: -moz-linear-gradient(top, #D0F3B1, #4CD352);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#D0F3B1), to(#4CD352));
+  background-image: -webkit-linear-gradient(top, #D0F3B1, #4CD352);
+  background-image: -o-linear-gradient(top, #D0F3B1, #4CD352);
+  background-image: linear-gradient(to bottom, #D0F3B1, #4CD352);
+  &:hover, &:active, &.active, &.disabled, &[disabled] {
+    color: #000000;
+    background-color: #4CD352;
+  }
 }
 
 .small-sticky {
@@ -71,26 +118,36 @@ body {
 }
 
 
+
 #ideasList {
   list-style-type: none;
   margin: 0;
   li {
-    min-height:40px;
+    min-height:100px;
     padding:10px;
+    padding-right: 30px;
     position: relative;
-    margin:5px 5px 15px 5px;
+    margin:5px 5px 20px 5px;
     .ideaText {
-      margin-right:5px;
-      margin-bottom: 10px;
+      margin-right:35px;
+      margin-bottom: 30px;
       display: block;
       color: black;
     }
+    .editing{
+      background: #EACFFC;
+      padding: 5px;
+      .inset-shadow(inset,0px,1px,4p,#845F9C);
+      outline: none;
+    }
+
     .voteNumber {
       position: absolute;
-      bottom: 1px;
-      left: 10px;
       font-weight: bold;
-      color: black;
+      color: green;
+      &:hover{
+        border: 1px solid green;
+      }
     }
   }
   a#emptyMessage, a#emptyMessage:hover {
@@ -186,6 +243,7 @@ body {
 
 .addStickyForm textarea {
   text-align: left;
+  background: transparent;
   width: 95%;
   min-height: 60px;
   font-family: 'Delius', helvetica, cursive;

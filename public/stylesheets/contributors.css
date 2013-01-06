@@ -237,3 +237,15 @@ h1{
   clear: both;
   display: block;
 }
+
+@media all and (max-width: 800px) {
+  #whiteboard ul{
+      margin: 0 auto;
+  }
+  #whiteboard li{
+    float: none;
+    width: 250px;
+    margin: 10px auto;
+    display: block;
+  }
+}
