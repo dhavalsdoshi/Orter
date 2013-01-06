@@ -51,7 +51,7 @@ class RetrosController < ApplicationController
   end
 
   def export
-    @retro = Retro.find(params[:id])
+    @retro = Retro.find_by_id_and_name(params[:id], params[:name])
     headers["Content-Disposition"] = "attachment; filename=\"#{@retro.name}.#{params[:format]}\""
     respond_to do |format|
       format.pdf { render :layout => false } if params[:format] == 'pdf'
