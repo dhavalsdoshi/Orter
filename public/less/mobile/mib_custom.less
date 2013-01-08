@@ -12,21 +12,9 @@ body {
 }
 
 .mib_content {
-  margin-top:40px;
   padding: 1em;
   background: #E2E2E2;
   text-align: center;
-  h1#boardName{
-    font-family: 'Handlee', helvetica, cursive;
-    font-weight: bold;
-    font-size: 1.4em;
-    margin: 0 0 10px 0;
-    line-height: 1;
-    a, &:hover{
-      color:#000;
-      text-decoration: underline;
-    }
-  }
   h2.loading {
     background: url("/images/mobile/ajax-loader.gif") center left no-repeat;
     padding-left: 40px;
@@ -43,8 +31,8 @@ body {
 
   .sticky-options{
     height: 25px;
-    width: 40px;
-    padding: 5px 9px 0px 9px;
+    width: 50px;
+    padding: 5px 5px 0px 5px;
     background-color: transparent;
 
     background-image: none;
@@ -273,6 +261,22 @@ body {
   padding: 2px 20px;
   .shadow(0,2px,5px,#888888);
   margin-bottom: 5px;
+  position: relative;
+  h1#boardName{
+    font-family: 'Handlee', helvetica, cursive;
+    font-size: 1.4em;
+    margin: 10px 10px;
+    line-height: 1;
+    display: inline-block;
+    width: 45%;
+    text-align: center;
+    a, &:hover{
+      display: block;
+      color: black;
+      text-transform: capitalize;
+      text-shadow: 1px 0px 1px;
+    }
+  }
   #logo {
     display: inline-block;
     width: 100px;
@@ -282,7 +286,10 @@ body {
     margin: 10px 1px 10px 5px;
   }
   .quick-links{
-    margin-right: 10px;
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 0;
     .btn{
       margin: 3px;
       padding: 7px;

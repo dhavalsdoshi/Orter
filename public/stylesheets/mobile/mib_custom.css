@@ -8,22 +8,9 @@ body {
   background: #E2E2E2;
 }
 .mib_content {
-  margin-top: 40px;
   padding: 1em;
   background: #E2E2E2;
   text-align: center;
-}
-.mib_content h1#boardName {
-  font-family: 'Handlee', helvetica, cursive;
-  font-weight: bold;
-  font-size: 1.4em;
-  margin: 0 0 10px 0;
-  line-height: 1;
-}
-.mib_content h1#boardName a,
-.mib_content h1#boardName:hover {
-  color: #000;
-  text-decoration: underline;
 }
 .mib_content h2.loading {
   background: url("/images/mobile/ajax-loader.gif") center left no-repeat;
@@ -41,8 +28,8 @@ body {
 }
 .sticky .sticky-options {
   height: 25px;
-  width: 40px;
-  padding: 5px 9px 0px 9px;
+  width: 50px;
+  padding: 5px 5px 0px 5px;
   background-color: transparent;
   background-image: none;
   position: absolute;
@@ -271,6 +258,23 @@ body {
   /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
 
   margin-bottom: 5px;
+  position: relative;
+}
+.mib_header h1#boardName {
+  font-family: 'Handlee', helvetica, cursive;
+  font-size: 1.4em;
+  margin: 10px 10px;
+  line-height: 1;
+  display: inline-block;
+  width: 45%;
+  text-align: center;
+}
+.mib_header h1#boardName a,
+.mib_header h1#boardName:hover {
+  display: block;
+  color: black;
+  text-transform: capitalize;
+  text-shadow: 1px 0px 1px;
 }
 .mib_header #logo {
   display: inline-block;
@@ -281,7 +285,10 @@ body {
   margin: 10px 1px 10px 5px;
 }
 .mib_header .quick-links {
-  margin-right: 10px;
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  top: 0;
 }
 .mib_header .quick-links .btn {
   margin: 3px;
