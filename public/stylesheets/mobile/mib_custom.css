@@ -16,8 +16,13 @@ body {
   margin: 0;
   background: #E2E2E2;
 }
+.nav-stacked > li {
+  margin-bottom: 10px;
+  box-shadow: 1px 2px 2px grey;
+}
 .mib_content {
   padding: 1em;
+  padding-top: 8px;
   background: #E2E2E2;
   text-align: center;
 }
@@ -255,7 +260,7 @@ body {
 /* HEADER - FIXED TOP MENU
 ---------------------------------------------------- */
 .mib_header {
-  min-width: 350px;
+  min-width: 280px;
   border-bottom: 1px solid #000000 /*{a-bar-border}*/;
   background: #cccccc /*{a-bar-background-color}*/;
   color: #000000 /*{a-bar-color}*/;
@@ -346,10 +351,10 @@ body {
 .mib_header h1#boardName {
   font-family: 'Handlee', helvetica, cursive;
   font-size: 1.3em;
-  margin: 6px 5px;
+  margin: 6px 10px;
+  max-width: 130px;
   line-height: 1;
   display: inline-block;
-  width: 200px;
   text-align: center;
   text-overflow: ellipsis;
   vertical-align: middle;
@@ -357,7 +362,7 @@ body {
 .mib_header h1#boardName a,
 .mib_header h1#boardName:hover {
   display: block;
-  color: #585858;
+  color: #575757;
   text-transform: capitalize;
   text-shadow: 1px 0px 1px;
 }
