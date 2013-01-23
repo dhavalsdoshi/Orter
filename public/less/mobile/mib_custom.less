@@ -3,6 +3,13 @@
 /* COMMON STYLES
 ---------------------------------------------------- */
 
+body, html, #appWrapper, #viewWrapper{
+  height: 100%;
+}
+.mib_content{
+  min-height: 80%;
+}
+
 body {
   font-family:'Delius', helvetica, cursive;
   font-size:105%;
@@ -253,12 +260,14 @@ body {
 ---------------------------------------------------- */
 
 .mib_header {
+  min-width: 350px;
   border-bottom: 1px solid   #000000   /*{a-bar-border}*/;
   background:   #CCC   /*{a-bar-background-color}*/;
   color:    black    /*{a-bar-color}*/;
   font-weight: bold;
   text-shadow:    0    /*{a-bar-shadow-x}*/   0   /*{a-bar-shadow-y}*/   0   /*{a-bar-shadow-radius}*/   #000000   /*{a-bar-shadow-color}*/;
-  padding: 2px 20px;
+  padding: 2px 0;
+  margin: 0;
   .shadow(0,2px,5px,#888888);
   margin-bottom: 5px;
   position: relative;
@@ -266,12 +275,12 @@ body {
     list-style: none;
   }
   div#menu-options{
-    display:inline-block;
-    margin:5px 5px;
-    padding:0;
-    position:absolute;
-    z-index:900;
-    right: 20px;
+    display: inline-block;
+    margin: 2px 2px;
+    padding: 0;
+    z-index: 900;
+    position: absolute;
+    right: 5px;
     ul{
       list-style:none;
       margin:0;
@@ -339,11 +348,14 @@ body {
   h1#boardName{
     font-family: 'Handlee', helvetica, cursive;
     font-size: 1.3em;
-    margin: 6px 10px;
+
+    margin: 6px 5px;
     line-height: 1;
     display: inline-block;
-    max-width: 140px;
+    width: 200px;
     text-align: center;
+    text-overflow: ellipsis;
+    vertical-align: middle;
     a, &:hover{
       display: block;
       color: #585858;
@@ -357,7 +369,7 @@ body {
     height:18px;
     background: url("/images/mobile/ideaBoardzLogo.png") no-repeat top left;
     text-indent: -1000em;
-    margin: 10px 1px 10px 5px;
+    margin: 7px 5px;
   }
   .quick-links{
     display: inline-block;
