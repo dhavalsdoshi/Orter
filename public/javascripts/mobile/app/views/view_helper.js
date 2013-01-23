@@ -79,6 +79,18 @@ IdeaBoardz.ViewHelper.prototype = {
             })
         );
 
+        $(this.currentView.el).find("#navigation li").on('click',function(e){
+          $("#navigation").hide();
+        });
+
+        var menuOptionEl = $(this.currentView.el).find("#menu-options ul li a");
+        menuOptionEl.on('click', function(e){
+          $("#navigation").show();
+        });
+        $(".mib_content").on('click',function(){
+          $("#navigation").hide();
+        });
+
         // make the top menu bar fixed to top for all views except createIdea & Comments
 
         if (typeof this.currentView != IdeaBoardz.CreateIdeaView || typeof this.currentView != IdeaBoardz.CreateCommentsView) {

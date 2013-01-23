@@ -65,7 +65,14 @@
         #menu.mib_header.clearfix.navbar-fixed-top
           %a#logo.pull-left{:href => "/"} IdeaBoardz
           %h1#boardName
-          #navigation.quick-links.pull-right
+          #menu-options
+            %ul
+              %li
+                %ul#navigation.quick-links.pull-right
+                %a.dropdown
+                  %span
+                    %i.icon-align-justify.icon-white
+                  %b.caret
         .mib_content
           #container
             %h2.loading Page Loading...

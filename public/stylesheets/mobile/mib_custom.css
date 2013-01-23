@@ -260,19 +260,91 @@ body {
   margin-bottom: 5px;
   position: relative;
 }
+.mib_header li {
+  list-style: none;
+}
+.mib_header div#menu-options {
+  display: inline-block;
+  margin: 5px 5px;
+  padding: 0;
+  position: absolute;
+  z-index: 900;
+  right: 20px;
+}
+.mib_header div#menu-options ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.mib_header div#menu-options ul li {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  border: 1px solid #868686;
+  box-shadow: 1px 1px 0px #868686;
+}
+.mib_header div#menu-options ul li a {
+  background: transparent;
+  display: block;
+  font: 12px/1.5em "Verdana", sans-serif;
+  margin: 0;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+.mib_header div#menu-options ul li.active a {
+  color: #000;
+}
+.mib_header div#menu-options ul ul {
+  display: none;
+  position: absolute;
+  text-align: left;
+  top: 29px;
+  width: 160px;
+  right: -1px;
+  border-radius: 5px 5px 5px 5px;
+  border: 0px solid #868686;
+}
+.mib_header div#menu-options ul ul li {
+  border: 1px solid grey;
+  left: 0;
+  padding: 3px;
+  background: #D6D6D6;
+  font-size: 12px;
+}
+.mib_header div#menu-options ul ul li a {
+  border: 0 !important;
+  margin: 0 5px 0 0;
+  padding: 8px 8px;
+  display: block;
+  text-align: left;
+  color: black;
+}
+.mib_header div#menu-options ul ul li a span {
+  padding: 2px;
+}
+.mib_header div#menu-options ul ul li:hover {
+  background: #aaa;
+}
+.mib_header div#menu-options ul ul ul {
+  display: none;
+  position: absolute;
+  left: 140px;
+  top: 0;
+}
 .mib_header h1#boardName {
   font-family: 'Handlee', helvetica, cursive;
-  font-size: 1.4em;
-  margin: 10px 10px;
+  font-size: 1.3em;
+  margin: 6px 10px;
   line-height: 1;
   display: inline-block;
-  width: 45%;
+  max-width: 140px;
   text-align: center;
 }
 .mib_header h1#boardName a,
 .mib_header h1#boardName:hover {
   display: block;
-  color: black;
+  color: #585858;
   text-transform: capitalize;
   text-shadow: 1px 0px 1px;
 }
