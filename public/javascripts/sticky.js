@@ -1,11 +1,12 @@
 var Sticky = function(dom){
   this.element = dom;
   this.text = $.trim(dom.attr('data-content'));
-  this.votes = parseInt($.trim(dom.find('.voteCount .count').html()));
+  this.upVotes = parseInt($.trim(dom.find('.upVoteCount .count').html()) || 0);
+  this.downVotes = parseInt($.trim(dom.find('.downVoteCount .count').html()) || 0);
   this.id = parseInt(dom.attr('data-id'));
 };
 
-Sticky.createFrom = function(text, votes, id) {
+Sticky.createFrom = function(text, upVotesCount, downVotesCount, id) {
   var encodedText = $.isHtmlEncoded(text) ? text : $.htmlEncode(text)
   var stickyTemplateHtml = $('#stickyTemplate').html();
   var addedPoint = $(stickyTemplateHtml);
@@ -15,7 +16,8 @@ Sticky.createFrom = function(text, votes, id) {
     .attr('id', 'point' + id)
     .attr('data-id', id)
     .find('.stickyText').html(encodedText);
-  addedPoint.find('.voteCount .count').html(votes);
+  addedPoint.find('.upVoteCount .count').html(upVotesCount);
+  addedPoint.find('.downVoteCount .count').html(downVotesCount);
   return new Sticky(addedPoint);
 };
 
@@ -70,7 +72,8 @@ Sticky.prototype.merge = function(otherSticky) {
     otherSticky.remove();
   });
   if (otherSticky.votes > 0) {
-    this.edit_vote(this.votes + otherSticky.votes, function(){})
+    this.edit_vote("UpVote", this.upVotes + otherSticky.upVotes, function(){})
+    this.edit_vote("DownVote", this.downVotes + otherSticky.downVotes, function(){})
   }
 };
 
@@ -88,7 +91,8 @@ Sticky.prototype.updateDom = function(){
   this.element.find(".stickyText").html(this.displayText());
   this.element.attr("data-content", this.text);
   this.element.attr("title", this.titleText());
-  this.element.find(".count").html(this.votes);
+  this.element.find(".upVoteCount .count").html(this.upVotes);
+  this.element.find(".downVoteCount .count").html(this.downVotes);
 };
 
 Sticky.prototype.removeFromDom = function(){
@@ -107,11 +111,10 @@ Sticky.prototype.remove = function(){
   });
 };
 
-Sticky.prototype.update = function(text,votes){
+Sticky.prototype.update = function(text,upVotes,downVotes){
   this.text = $.trim(text);
-  if(votes){
-    this.votes = votes;
-  }
+  this.upVotes = upVotes || this.upVotes;
+  this.downVotes = downVotes || this.downVotes;
   this.updateDom();
 };
 
@@ -132,13 +135,14 @@ Sticky.prototype.edit = function(value_hash, success) {
     });
 };
 
-Sticky.prototype.edit_vote = function(count, success) {
+Sticky.prototype.edit_vote = function(type, count, success) {
   var thisSticky = this;
-  thisSticky.votes = count;
+  if (type === 'UpVote') thisSticky.upVotes = count;
+  if (type === 'DownVote') thisSticky.downVotes = count;
   $.ajax({
     url: "/points/" + thisSticky.id + "/votes.json",
     type: "POST",
-    data: {"vote": {"point_id": thisSticky.id }},
+    data: {"vote": {"point_id": thisSticky.id, "type": type}},
     success: function(result) {
       thisSticky.updateDom();
       success(result)

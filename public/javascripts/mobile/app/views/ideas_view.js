@@ -38,7 +38,7 @@ $(document).ready(function () {
                 currentVotes = parseInt(thisEl.find('.voteCount').text()),
                 me=this;
             thisEl.find('.voteCount').text(currentVotes+1+"");
-            IdeaBoardz.WebIdeaBoardz.instance.voteIdea(event.currentTarget.id,{
+            IdeaBoardz.WebIdeaBoardz.instance.voteIdea(event.currentTarget.id, event.currentTarget.type,{
                 success: me.showSuccess,
                 error: me.showError,
                 context: "this"
@@ -198,7 +198,8 @@ $(document).ready(function () {
                 var idea = ideas[index];
                 stickyHtml += this.ideaTemplate({
                     ideaText:idea.message.replace(/\n-{3,}\n/g,'<hr/>'),
-                    vote_count:idea.votes_count,
+                    up_votes_count:idea.up_votes_count,
+                    down_votes_count:idea.down_votes_count,
                     section_id: this.sectionId,
                     point_id: idea.id
                 });

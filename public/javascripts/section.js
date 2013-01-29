@@ -16,7 +16,7 @@ Section.prototype.addSticky = function(stickyText){
 };
 
 Section.prototype.attachSticky = function(point) {
-  var sticky = Sticky.createFrom(point.message, point.votes_count, point.id);
+  var sticky = Sticky.createFrom(point.message, point.up_votes_count, point.down_votes_count, point.id);
   sticky.attachTo(point.section_id);
   this.stickies.push(sticky);
 };
@@ -111,7 +111,7 @@ var Ideaboardz = function() {
 
   var updateSticky = function(point) {
     var stickyToUpdate = _.find(allPointsOnBoard(), function(sticky){return sticky.id == point.id && sticky.sectionId() == point.section_id});
-    stickyToUpdate.update(point.message, point.votes_count);
+    stickyToUpdate.update(point.message, point.up_votes_count, point.down_votes_count);
   };
 
   var removePointHtmlIfNotInData = function (allPointsFromServer) {

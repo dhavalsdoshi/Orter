@@ -20,12 +20,18 @@
             %script#template-stickyView{:type => "text/template"}
               %li.sticky.small-sticky{:id => "{{point_id}}"}
                 %span.ideaText {{ideaText}}
-                %a.sticky-options.voteBtn.voteNumber.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
+                %a.sticky-options.upVoteBtn.voteNumber.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}", :type=>"UpVote"}
                   %i.icon-thumbs-up
                   %span
                     +
                   %span.voteCount
-                    {{vote_count}}
+                    {{up_votes_count}}
+                %a.sticky-options.downVoteBtn.voteNumber.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}", :type=>"DownVote"}
+                  %i.icon-thumbs-down
+                  %span
+                    \-
+                  %span.voteCount
+                    {{down_votes_count}}
                 %a.sticky-options.editIdeaBtn.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
                   %i.icon-edit
                 %a.sticky-options.deleteBtn.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
