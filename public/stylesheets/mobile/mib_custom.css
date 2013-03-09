@@ -41,8 +41,8 @@ body {
   text-align: left;
 }
 .sticky .sticky-options {
-  height: 25px;
-  width: 50px;
+  height: 30px;
+  width: 60px;
   padding: 5px 5px 0px 5px;
   background-color: transparent;
   background-image: none;
@@ -70,6 +70,9 @@ body {
 }
 .sticky .voteBtn {
   bottom: 80px;
+}
+.sticky .btn-small [class^="icon-"] {
+  margin-top: 4px;
 }
 .btn-success {
   color: black;
@@ -145,7 +148,6 @@ body {
 }
 #ideasList li .voteNumber {
   position: absolute;
-  font-weight: bold;
   color: green;
 }
 #ideasList li .voteNumber:hover {
@@ -259,6 +261,16 @@ body {
 }
 /* HEADER - FIXED TOP MENU
 ---------------------------------------------------- */
+#menu_overlay_container {
+  display: none;
+  z-index: 199;
+  position: fixed;
+  content: "";
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
 .mib_header {
   min-width: 280px;
   border-bottom: 1px solid #000000 /*{a-bar-border}*/;
@@ -281,11 +293,11 @@ body {
 }
 .mib_header div#menu-options {
   display: inline-block;
-  margin: 2px 2px;
-  padding: 0;
-  z-index: 900;
+  padding: 0px;
+  z-index: 200;
   position: absolute;
   right: 5px;
+  top: 4px;
 }
 .mib_header div#menu-options ul {
   list-style: none;
@@ -316,7 +328,7 @@ body {
   position: absolute;
   text-align: left;
   top: 29px;
-  width: 160px;
+  width: 200px;
   right: -1px;
   border-radius: 5px 5px 5px 5px;
   border: 0px solid #868686;
@@ -324,20 +336,20 @@ body {
 .mib_header div#menu-options ul ul li {
   border: 1px solid grey;
   left: 0;
-  padding: 3px;
+  padding: 0;
   background: #D6D6D6;
   font-size: 12px;
 }
-.mib_header div#menu-options ul ul li a {
+.mib_header div#menu-options ul ul li a span {
   border: 0 !important;
-  margin: 0 5px 0 0;
-  padding: 8px 8px;
-  display: block;
+  margin: 0;
+  padding: 7px;
   text-align: left;
   color: black;
+  background: #C5C5C5;
 }
-.mib_header div#menu-options ul ul li a span {
-  padding: 2px;
+.mib_header div#menu-options ul ul li a span.menu-item {
+  background: transparent;
 }
 .mib_header div#menu-options ul ul li:hover {
   background: #aaa;

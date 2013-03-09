@@ -83,12 +83,15 @@ IdeaBoardz.ViewHelper.prototype = {
           $("#navigation").hide();
         });
 
-        var menuOptionEl = $(this.currentView.el).find("#menu-options ul li a");
-        menuOptionEl.on('click', function(e){
-          $("#navigation").show();
+        var menuOptionEl = $(this.currentView.el).find("#menu-options #main-menu a");
+        menuOptionEl.off('click').on('click', function(e){
+          $('#navigation').toggle();
+          $('#menu_overlay_container').toggle();
         });
-        $(".mib_content").on('click',function(){
-          $("#navigation").hide();
+
+        $('#menu_overlay_container').off('click').on('click',function(){
+          $("#navigation").toggle();
+          $(this).toggle();
         });
 
         // make the top menu bar fixed to top for all views except createIdea & Comments

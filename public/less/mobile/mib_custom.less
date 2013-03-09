@@ -41,8 +41,8 @@ body {
   text-align: left;
 
   .sticky-options{
-    height: 25px;
-    width: 50px;
+    height: 30px;
+    width: 60px;
     padding: 5px 5px 0px 5px;
     background-color: transparent;
 
@@ -70,6 +70,9 @@ body {
   }
   .voteBtn{
     bottom: 80px;
+  }
+  .btn-small [class^="icon-"]{
+    margin-top: 4px;
   }
 }
 
@@ -142,7 +145,6 @@ body {
 
     .voteNumber {
       position: absolute;
-      font-weight: bold;
       color: green;
       &:hover{
         border: 1px solid green;
@@ -262,7 +264,16 @@ body {
 
 /* HEADER - FIXED TOP MENU
 ---------------------------------------------------- */
-
+#menu_overlay_container{
+  display: none;
+  z-index: 199;
+  position: fixed;
+  content: "";
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
 .mib_header {
   min-width: 280px;
   border-bottom: 1px solid   #000000   /*{a-bar-border}*/;
@@ -280,11 +291,11 @@ body {
   }
   div#menu-options{
     display: inline-block;
-    margin: 2px 2px;
-    padding: 0;
-    z-index: 900;
+    padding: 0px;
+    z-index: 200;
     position: absolute;
     right: 5px;
+    top: 4px;
     ul{
       list-style:none;
       margin:0;
@@ -315,25 +326,27 @@ body {
         position: absolute;
         text-align: left;
         top: 29px;
-        width: 160px;
+        width: 200px;
         right: -1px;
         border-radius: 5px 5px 5px 5px;
         border: 0px solid #868686;
         li{
           border: 1px solid grey;
           left: 0;
-          padding: 3px;
+          padding: 0;
           background: #D6D6D6;
           font-size: 12px;
           a{
-            border:0 !important;
-            margin: 0 5px 0 0;
-            padding: 8px 8px;
-            display: block;
-            text-align: left;
-            color: black;
             span{
-              padding: 2px;
+              border: 0 !important;
+              margin: 0;
+              padding: 7px;
+              text-align: left;
+              color: black;
+              background: #C5C5C5;
+            }
+            span.menu-item{
+              background: transparent;
             }
           }
           &:hover{
