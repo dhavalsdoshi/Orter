@@ -294,19 +294,22 @@ body {
     padding: 0px;
     z-index: 200;
     position: absolute;
-    right: 5px;
-    top: 4px;
+    right: 0px;
+    top: 0px;
     ul{
       list-style:none;
       margin:0;
       padding:0;
       position:relative;
       li{
+        height: 33px;
+        min-width: 50px;
         margin: 0;
         padding: 0;
         position: relative;
         border: 1px solid #868686;
-        box-shadow: 1px 1px 0px #868686;
+        float: left;
+        text-align: center;
         a{
           background: transparent;
           display: block;
@@ -321,16 +324,28 @@ body {
           }
         }
       }
-      ul{
+      ul#navigation{
         display: none;
         position: absolute;
         text-align: left;
-        top: 29px;
+        top: 45px;
         width: 200px;
         right: -1px;
         border-radius: 5px 5px 5px 5px;
         border: 0px solid #868686;
+        &:before{
+          content: " ";
+          position: absolute;
+          border-style: solid;
+          border-width: 0 11px 11px 11px;
+          border-color: transparent transparent #FAFAFF transparent;
+          right: 14px;
+          top: -11px;
+        }
         li{
+          text-align: left;
+          float: none;
+          height: 42px;
           border: 1px solid grey;
           left: 0;
           padding: 0;

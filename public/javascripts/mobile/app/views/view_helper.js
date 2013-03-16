@@ -79,15 +79,18 @@ IdeaBoardz.ViewHelper.prototype = {
             })
         );
 
-        $(this.currentView.el).find("#navigation li").on('click',function(e){
+        var hideMenu = function(e){
           $("#navigation").hide();
-        });
+        };
 
-        var menuOptionEl = $(this.currentView.el).find("#menu-options #main-menu a");
-        menuOptionEl.off('click').on('click', function(e){
+        var handleMenu = function(e){
           $('#navigation').toggle();
           $('#menu_overlay_container').toggle();
-        });
+        };
+
+        $(this.currentView.el).find("#navigation li").on('click',hideMenu);
+        $(this.currentView.el).find("#menu-options #main-menu a").off('click').on('click', handleMenu);
+        $(this.currentView.el).find("#menu-options li.hide-menu").off('click').on('click', hideMenu);
 
         $('#menu_overlay_container').off('click').on('click',function(){
           $("#navigation").toggle();
