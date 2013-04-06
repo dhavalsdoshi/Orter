@@ -1,0 +1,108 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}
+    %meta{:content => "black", :name => "apple-mobile-web-app-status-bar-style"}
+    %meta{:content => "yes", :name => "apple-mobile-web-app-capable"}
+    %meta{:content => "text/html; charset=utf-8", :"http-equiv" => "content-type"}/
+    %meta{:content => "collaborate, distributed, share, discuss, ideas, brainstorm, sticky, wall, board, whiteboard, meeting, retro, online, continuous, thoughtworks, application", :lang => "en-us", :name => "keywords"}/
+    %meta{:content => "collaborate, distributed, share, discuss, ideas, brainstorm, sticky, wall, board, whiteboard, meeting, retro, online, continuous, thoughtworks, application", :lang => "en", :name => "keywords"}/
+    %meta{:content => "Conduct collaborative brainstorming sessions with distributed teams", :name => "description"}/
+    %meta{:property => "og:image", :content => "/ideaboardzSquare.png"}/
+    %title
+      IdeaBoardz - Brainstorm, Retrospect, Collaborate
+    = stylesheet_link_tag 'reset-min'
+    = stylesheet_link_tag 'newhome'
+    = stylesheet_link_tag 'menu'
+    = render :partial => "shared/analytics"
+  %body
+    .mainWrap
+      = render :partial => 'menu'
+
+      .whiteboard
+        .header
+          %h1
+            %img.logo{:alt => "IdeaBoardz - brainstorm, retrospect, collaborate", :src => "images/IdeaBoardz_logo_2.png"}/
+        .content
+          .leftBar.half.left
+            .what
+              %h2.sectionTitle How does it look
+              %div
+                %img{:alt => "screen-shot", :src => "images/screenshot.png", :style => "width:100%"}/
+          .rightBar.half.left
+            .try.blue.sideNote
+              %h2.sectionTitle Test Drive...
+              .sectionContent
+                %ul
+                  %li
+                    Lets take it for a
+                    %a{:href => "/for/test"} Spin!
+            .create.yellow.sideNote
+              %h2.sectionTitle How
+              .sectionContent
+                %ul
+                  %li
+                    %a.flip{:href => "#"} Create
+                    my own IdeaBoard
+                  %li Share the url
+                .formContainer{:style => "display:none"}
+                  - form_tag({:controller => :retros},{:method => "post",:novalidate => ""}) do
+                    = label_tag(:name, "Name *")
+                    = text_field_tag(:name, "",:required => "required","data-message"=>"please fill in a name")
+                    = label_tag(:description, "Description *")
+                    = text_field_tag(:description,"", :required => "required","data-message"=>"please fill in a description")
+                    = label_tag(:numberOfSections, "Format")
+                    = select_tag(:numberOfSections,options_for_select([1,2,3,4,5,6].map{ |v| [pluralize(v," Section"), v] },{}),:id=>"NumberOfSections")
+                    = label_tag(:sectioname0, "Section Title *")
+                    #sectionWrapper
+                      = text_field_tag(:sectionname0,"",:required => "required","data-message"=>"please fill in a section name")
+                      = text_field_tag(:sectionname1,"",:required => "required","data-message"=>"please fill in a section name")
+                      = text_field_tag(:sectionname2,"",:required => "required","data-message"=>"please fill in a section name")
+                      = text_field_tag(:sectionname3,"",:required => "required","data-message"=>"please fill in a section name")
+                      = text_field_tag(:sectionname4,"",:required => "required","data-message"=>"please fill in a section name")
+                      = text_field_tag(:sectionname5,"",:required => "required","data-message"=>"please fill in a section name")
+                    = submit_tag("Create")
+            .why.orange.sideNote
+              %h2.sectionTitle Why?
+              .sectionContent
+                %ul
+                  %li Add ideas at any time.
+                  %li Brainstorm across oceans.
+                  %li Export as PDF or Xls.
+            .help.purple.sideNote
+              .sectionContent
+                %p
+                  Best viewed on
+                  %br/
+                  = succeed "," do
+                    %a{:href => "http://www.google.com/chrome", :target => "_blank", :title => "download chrome"} chrome
+                  %a{:href => "http://www.mozilla.com/en-US/", :target => "_blank", :title => "download firefox"} firefox
+                  or
+                  %a{:href => "http://www.apple.com/safari/download/", :target => "_blank", :title => "download safari"} safari
+            .feedback.green.sideNote
+              %h2.sectionTitle Feedback
+              .sectionContent
+                %ul
+                  %li
+                    %a{:href => "http://twitter.com/home/?status=@ideaboardz", :title => "Feedback", :target => "_blank"} via Twitter
+                  %li
+                    %a{:href => "/for/feedback", :title => "Feedback"} via Board
+            .faq.green.sideNote
+              %h2.sectionTitle
+                %a{:href => "/page/faq", :title => "Frequently asked questions"} FAQ
+            .contributors.yellow.sideNote
+              %h2.sectionTitle
+                %a{:href=>"/developers.html",:title=>"IdeaBoardz Contributors"} Contributors
+            .count.blue.sideNote
+              %h2.sectionTitle
+                %b
+                  = Point.count
+                Ideaz on
+                %b
+                  = Retro.count
+                Boardz
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"
+    = javascript_include_tag "jquery.tools.min.js"
+    = javascript_include_tag "analytics"
+    = javascript_include_tag "create"

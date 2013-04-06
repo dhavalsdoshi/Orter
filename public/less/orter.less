@@ -1,4 +1,15 @@
+@import "stickycolors.less";
 @import "base.less";
+
+
+.ui-widget-content a{
+  color: #000;
+}
+
+.whiteboard{
+  font-family: 'Delius', helvetica, cursive;
+}
+
 .half{
     width: 49%;
 }
@@ -10,6 +21,7 @@
 .full{/* keep ot after all the half and one thirds*/
     width: 99%;
 }
+
 
 .mainWrap {
 	margin: 0 auto;
@@ -26,10 +38,9 @@
     -moz-border-left-colors: #555 #666 #777 #999 #999 #888 #777 #666;
     -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
 
-	-webkit-box-shadow: 3px 7px 3px #888;
-    -moz-box-shadow: 3px 7px 3px   #888;
-    -webkit-border-radius: 15px 15px 15px 15px;
-    -moz-border-radius: 15px 15px 15px 15px;
+
+    .shadow(3px,7px,3px,#888);
+	  .round-corner-all(15px);
     overflow: auto;
     width: 95%;
     min-height:643px;
@@ -115,36 +126,35 @@
 }
 
 .points{
-    overflow: auto;
-    padding:0.25em;
+  overflow: auto;
+  padding:0.25em;
+  width: 100%;
 }
 
 .addStickyForm{
-    overflow:visible;
-}
-
-.addStickyForm textarea{
-    -webkit-box-shadow: 5px 1px 3px #888;
-    -moz-box-shadow: 5px 1px 3px #888;
+  overflow:visible;
+  width: 100%;
+  textarea{
+    .shadow(5px,1px,3px,#888);
+  }
 }
 
 .sticky{
-    -webkit-box-shadow: 3px 1px 3px #888;
-    -moz-box-shadow: 3px 1px 3px #888;
+  .shadow(3px,1px,3px,#888);
+  hr {
+    border: 0;
+    width: 70%;
+    border-bottom: 1px dotted grey;
+  }
 }
 
 .ui-widget-content{
-    -webkit-box-shadow:2px 29px 17px #888888;
-    -moz-box-shadow:2px 29px 17px #888888;
-}
-
-.sticky,.addStickyForm textarea{
-    max-width:15em;
+  .shadow(2px,10px,29px,#888)
 }
 
 .sticky,.addStickyForm textarea,.ui-widget-content{
-    background-color: #ffff88;
-    border : 1px solid #ffff66;
+    background-color: @stickyColor1;
+    border : 1px solid @stickyColor1;
     font-size: 0.75em;
     text-overflow: ellipsis;
     .round-corner(4px, 4px, 15px, 4px);
@@ -153,6 +163,7 @@
 }
 
 .sticky,.addStickyForm textarea{
+    max-width:15em;
     word-wrap: break-word;
     cursor: pointer;
     float:left;
@@ -163,58 +174,157 @@
 }
 
 .aqua .sticky,.aqua .addStickyForm textarea, .aqua.ui-widget-content{
-	background-color: #ccffff;
-  border : 1px solid #ccffdd;
+	background-color: @stickyColor2;
+  border : 1px solid @stickyColor2;
 }
 
-.blue .sticky,.blue .addStickyForm textarea, .blue.ui-widget-content{
-	background-color: #17B6FF;
-  border : 1px solid #17B6FF;
+.blue .sticky,.blue .addStickyForm textarea,.blue .addStickyForm input, .blue.ui-widget-content{
+	background-color: @stickyColor3;
+  border : 1px solid @stickyColor3;
 }
 
 .orange .sticky,.orange .addStickyForm textarea, .orange.ui-widget-content{
-	background-color: #ffb058;
-  border : 1px solid #ffb069;
+	background-color: @stickyColor4;
+  border : 1px solid @stickyColor4;
 }
 
 .purple .sticky,.purple .addStickyForm textarea, .purple.ui-widget-content{
-	background-color: #d07ddf;
-  border : 1px solid #d07def;
+	background-color: @stickyColor5;
+  border : 1px solid @stickyColor5;
 }
 
 .green .sticky,.green .addStickyForm textarea, .green.ui-widget-content{
-	background-color: #bcee6b;
-  border : 1px solid #bcee7c;
+	background-color: @stickyColor6;
+  border : 1px solid @stickyColor6;
 }
 
-#largeStickyDialog textarea{
+#largeStickyDialog textarea, #largeStickyDialog input{
   background: transparent;
   border: none;
-  overflow: hidden;
+  overflow: auto;
 }
 
-.yellow #largeStickyDialog textarea:focus, .yellow #largeStickyDialog textarea:hover{
-  background-color: #ffffbb;
+.yellow #largeStickyDialog textarea:focus, .yellow #largeStickyDialog textarea:hover, .yellow #largeStickyDialog input:hover{
+  background-color: lighten(@stickyColor1, 10%);
 }
 
-.aqua #largeStickyDialog textarea:focus, .aqua #largeStickyDialog textarea:hover{
-	background-color: #b8f9f9;
+.aqua #largeStickyDialog textarea:focus, .aqua #largeStickyDialog textarea:hover, .aqua #largeStickyDialog input:hover{
+  background-color: darken(@stickyColor2, 5%);
 }
 
-.blue #largeStickyDialog textarea:focus, .blue #largeStickyDialog textarea:hover{
-	background-color: #28c3ff;
+.blue #largeStickyDialog textarea:focus, .blue #largeStickyDialog textarea:hover, .blue #largeStickyDialog input:hover{
+  background-color: darken(@stickyColor3, 5%);
 }
 
-.orange #largeStickyDialog textarea:focus, .orange #largeStickyDialog textarea:hover{
-	background-color: #ffbc73;
+.orange #largeStickyDialog textarea:focus, .orange #largeStickyDialog textarea:hover, .orange #largeStickyDialog input:hover{
+  background-color: darken(@stickyColor4, 5%);
 }
 
-.purple #largeStickyDialog textarea:focus, .purple #largeStickyDialog textarea:hover{
-	background-color: #d18bde;
+.purple #largeStickyDialog textarea:focus, .purple #largeStickyDialog textarea:hover, .purple #largeStickyDialog input:hover{
+  background-color: darken(@stickyColor5, 5%);
 }
 
-.green #largeStickyDialog textarea:focus, .green #largeStickyDialog textarea:hover{
-	background-color: #c6f47b;
+.green #largeStickyDialog textarea:focus, .green #largeStickyDialog textarea:hover, .green #largeStickyDialog input:hover{
+  background-color: darken(@stickyColor6, 5%);
+}
+
+#largeStickyDialog{
+  font-size: 1em;
+  cursor: default;
+  font-family: 'Delius', helvetica, cursive;
+  label,.formElement{
+    font-size: 16px;
+  }
+  label {
+    cursor: pointer;
+  }
+  .formElement{
+    font-size: 16px;
+    padding: 5px;
+    font-family: 'Delius', 'Comic Sans MS', helvetica, cursive;
+    outline: none;
+    .inset-shadow(inset,0,1px,5px,#777);
+    .transition(all,300ms,ease);
+    &:hover{
+      .transition(all,300ms,ease);
+      .inset-shadow(inset,0,1px,8px,#666);
+    }
+    &:focus{
+      .transition(all,300ms,ease);
+      .inset-shadow(inset,0,1px,8px,#555);
+    }
+  }
+  .voteCount {
+    position: relative;
+    top: 0;
+  }
+  .stickyTextContainer{
+    overflow:hidden;
+    padding-bottom: 15px;
+    label,textarea{
+      float:left;
+    }
+    textarea{
+      width: 89%;
+      min-height: 130px;
+      word-wrap: break-word;
+    }
+  }
+
+  .tagUpdated,.stickyUpdated,.voteUpdated{
+    display: inline-block;
+    position:absolute;
+    top: 8px;
+    right: -100px;
+    width: 45px;
+    background: green;
+    border: 1px solid green;
+    .round-corner(4px, 0, 0, 4px);
+    .shadow(0px, -1px, 5px, #999);
+    .transition(all,500ms,ease);
+    .opacity(0);
+    padding: 1px 2px;
+    color: #EEE;
+    font-size:0.8em;
+    &.show{
+      .transition(all,1000ms,ease);
+      .opacity(1);
+      right:3px;
+    }
+  }
+  
+  .voteUpdated{
+    top: 0;
+    left: 5px;
+    .round-corner-all(4px);
+    &.show ~ .voteStickyButton{
+      color: green;
+    } 
+  }
+
+  .tag{
+    overflow:hidden;
+    padding-bottom:10px;
+    #tagNameText,label{
+      float:left;
+    }
+    #tagNameText{
+      padding: 5px;
+      width:89%;
+    }  
+  }
+  .stickyTextContainer,.tag{
+    position:relative;
+    label{
+      .round-corner(5px, 0, 0, 5px);
+      .shadow(-3px, 0px, 5px, #777);
+      margin: 2px;
+      margin-right: 0px;
+      font-size: 21px;
+      color: #777;
+    }
+  }
+
 }
 
 .ui-dialog{
@@ -249,37 +359,43 @@
 }
 
 .stickyActions{
-    bottom: 20px;
-    margin-top: 20px;
+  overflow: hidden;
+  .stickyVote{
+    overflow: hidden;
+    position: relative;
+    float: left;
+    padding: 0.5em 1em 0 0;
+  }
 }
 
 .removeStickyButton{
-    background:transparent url(../images/Delete-20.png) no-repeat;
-    padding-left: 23px;
-    padding-bottom: 10px;
     cursor: pointer;
-    height:32px; /*TODO: is this required?*/
-    width:32px;
+    height:43px; /*TODO: is this required?*/
+    width:28px;
+    float: right;
+    margin: 0 20px;
     text-decoration: underline;
+    background: url('../images/trash.png') 0 0 no-repeat transparent;
+    &:hover{
+      background-position:0 -40px;
+    }
 }
 
 .voteCountContainer{
-    padding: 20px;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin: 10px 0 7px 5px;
 }
 
-/*.voteCountContainer.ajaxLoader{*/
-    /*background:transparent url(../images/spinner.gif) no-repeat left;*/
-/*}*/
-
 .voteStickyButton{
-    background:transparent url(../images/vote.png) no-repeat;
-    padding-left: 23px;
-    padding-bottom: 10px;
-    cursor: pointer;
-    height:32px;
-    width:32px;
-    margin-right: 30px;
-    text-decoration: underline;
+  padding: 20px 0;
+  font-size: 2.5em;
+  cursor: pointer;
+}
+.voteCountContainer,.voteStickyButton{
+  display: block;
+  float: left;
+
 }
 
 .sticky .voteCount{
@@ -299,19 +415,55 @@
   /*filter: alpha(opacity = 100);*/
 }
 
-#largeStickyDialog .stickyText{
-    font-size: 1.2em;
-    word-wrap: break-word;
-    font-family: 'Delius', 'Comic Sans MS',helvetica, cursive;
+/* icon font styles - move to mixin if needed */
+.icon:before { 
+  font-family: "HeydingsCommonIconsRegular";
+  margin-right: 5px;
+}
+.icon-replace {
+  text-indent: -9999px;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+  min-width: 1em;
 }
 
-#largeStickyDialog{
-    font-size: 1em;
-    cursor: default;
-    font-family: 'Delius', helvetica, cursive;
+.icon-replace:before {
+  position: absolute;
+  left: 0;  /* Firefox needs to be explicit here */
+  top: 0;
+  text-indent: 0;
 }
 
-#largeStickyDialog .voteCount{
-    position: relative;
-    top: 0;
+.icon-check{
+  display:inline-block;
+  font-size:1.4em;
 }
+
+.icon-like{
+  color:#000;
+  .transition(all,200ms,ease-in-out);
+  &:hover{
+    .transition(all,200ms,ease-in-out);
+    color: green;
+  }
+}
+
+.icon-check:before { 
+  content: "✔"; 
+  color: green;
+}
+
+.icon-like:before { 
+  content: "8";  
+}
+
+.icon-label:before{
+  content: "t";
+}
+
+.icon-edit:before{
+  content: "✎";
+  transform: rotateY(180deg);
+}
+/* Plus your other icon types here*/

@@ -1,4 +1,3 @@
-/* */
 .resetList() {
 	ul,ol{
 		li{
@@ -7,7 +6,7 @@
 	}
 }
 
-.round-corner(@radius){  
+.round-corner-all(@radius){
 	border-radius:@radius;
 	-moz-border-radius:@radius;
 	-webkit-border-radius:@radius;
@@ -46,7 +45,7 @@
 	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorStr= @{startColor},EndColorStr=@{stopColor}, gradientType='1')";
 }
 
-.gradientWithImage(@url:"/static/4viewers/images/lib/search-icon.png",@x:center,@y:center,@startColor:#fff,@stopColor:#000){
+.gradientWithImage(@url:"/abc.png",@x:center,@y:center,@startColor:#fff,@stopColor:#000){
 	background:url(@url)no-repeat @x @y @stopColor;
 	background:url(@url) no-repeat @x @y,
 	-webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@stopColor));
@@ -64,7 +63,8 @@
 }
 
 .rotate(@degree){
-	-webkit-transform: rotate(@degree);
+  -ms-transform:rotate(@degree); /* IE 9 */
+  -webkit-transform: rotate(@degree);
   -moz-transform: rotate(@degree);
   -o-transform: rotate(@degree);
   transform: rotate(@degree);

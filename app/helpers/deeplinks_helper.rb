@@ -5,7 +5,7 @@ module DeeplinksHelper
   end
 
   def get_sticky_color(section_number)
-    colors = ["yellow","orange", "green","blue","purple","aqua"]
+    colors = ["yellow","orange", "green","purple","aqua","blue"]
     colors[section_number%colors.length]
   end
 

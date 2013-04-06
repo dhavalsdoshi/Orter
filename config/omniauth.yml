@@ -1,0 +1,15 @@
+
+development:
+  host: http://localhost:3000
+  id: 45486672807.apps.googleusercontent.com
+  secret: ncK0Anc4VO_QnKcrijVDqlQX
+
+test:
+  host: http://localhost:3000
+  id: 45486672807.apps.googleusercontent.com
+  secret: ncK0Anc4VO_QnKcrijVDqlQX
+
+production:
+  host: http://www.ideaboardz.com
+  id: www.ideaboardz.com 
+  secret: DXwTlsydGBvrpQg2hUKmpYa4

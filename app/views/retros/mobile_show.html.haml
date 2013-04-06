@@ -1,0 +1,109 @@
+!!!
+%html
+  %head
+    %title IdeaBoardz - #{@retrospective.name}
+    %meta{:charset => "utf-8"}
+      %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}
+      %meta{:content => "black", :name => "apple-mobile-web-app-status-bar-style"}
+      %meta{:content => "yes", :name => "apple-mobile-web-app-capable"}
+        %link{:href => "/favicon.ico", :rel => "shortcut icon"}
+          %link{:href => "http://fonts.googleapis.com/css?family=Delius|Handlee", :rel => "stylesheet", :type => "text/css"}
+            = stylesheet_link_tag 'mobile/bootstrap'
+            = stylesheet_link_tag 'mobile/mib_custom'
+            %script#template-sectionItem{:type => "text/template"}
+              %li
+                %i.icon-chevron-right
+                %a{:href => "#"+"{{sectionId}}"}
+                  {{ sectionName }}
+            %script#template-sectionsView{:type => "text/template"}
+              %ul#sectionsList.nav.nav-tabs.nav-stacked
+            %script#template-stickyView{:type => "text/template"}
+              %li.sticky.small-sticky{:id => "{{point_id}}"}
+                %span.ideaText {{ideaText}}
+                %a.sticky-options.voteBtn.voteNumber.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
+                  %i.icon-thumbs-up
+                  %span
+                    +
+                  %span.voteCount
+                    {{vote_count}}
+                %a.sticky-options.editIdeaBtn.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
+                  %i.icon-edit
+                %a.sticky-options.deleteBtn.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
+                  %i.icon-trash
+                %a.sticky-options.okBtn.btn.btn-small.btn-quicklinks{:href=>"{{section_id}}", :id=>"{{point_id}}"}
+                  %i.icon-ok
+            %script#template-ideasView{:type => "text/template"}
+              %div.sectionWrapper
+                %h2#sectionName
+                  {{ sectionName }}
+                %ul#ideasList
+            %script#template-errorView{:type => "text/template"}
+              #alert-area.alert.alert-error.alert-main
+                %h4> No such page exists.
+                The provided URL is invalid.
+                %br/
+                Please check the URL again.
+            %script#template-newIdea{:type => "text/template"}
+              %form.addStickyForm{:method => "", :name => "ideaForm"}
+                %p
+                  %select#sectionId{:name => "sectionId"}
+                #alert-area
+                .sticky.largeSticky
+                  %textarea#ideaText{:name => "ideaText", :rows => "2"}
+                .form_action
+                  %button#submitBtn.btn.btn-large.btn-success.btn-block{:type => "button"} Submit Idea
+            %script#template-navigation{:type => "text/template"}
+              %li
+                %a{:href => "#"}
+                  %span#sectionsBtn.btn.btn-small.btn-quicklinks
+                    %i.icon-align-justify.icon-white
+                  %span.menu-item View Sections
+              %li
+                %a{:href => "#createIdea"}
+                  %span#createIdeaBtn.btn.btn-small.btn-quicklinks
+                    %i.icon-idea
+                  %span.menu-item Create New Idea
+              %li
+                %a{:href => export_path(:id => @retrospective.id, :name => @retrospective.name, :format => 'pdf'),:target => "_blank"}
+                  %span#exportToPdfBtn.btn.btn-small.btn-quicklinks
+                    %i.icon-download-alt.icon-white
+                  %span.menu-item Export to Pdf
+  %body{ :"data-id" => "#{@retrospective.id}" , :"data-name"=> "#{@retrospective.name}"}
+    #appWrapper
+      #viewWrapper
+        #menu.mib_header.clearfix.navbar-fixed-top
+          %a#logo.pull-left{:href => "/"} IdeaBoardz
+          %h1#boardName
+          #menu-options
+            %ul
+              %li.hide-menu
+                %a{:href => "#createIdea"}
+                  %span#createIdeaBtn
+                    %i.icon-idea
+              %li#main-menu
+                %ul#navigation.quick-links.pull-right
+                %a.dropdown
+                  %span
+                    %i.icon-align-justify.icon-white
+                  %b.caret
+        #menu_overlay_container
+        .mib_content
+          #container
+            %h2.loading Page Loading...
+    %script{:src => "/javascripts/mobile/lib/LAB.min.js", :type => "text/javascript"}
+    :javascript
+      $LAB
+        .script("/javascripts/mobile/lib/zepto.min.js").wait()
+        .script("/javascripts/mobile/lib/backbone/underscore-min.js")
+        .script("/javascripts/mobile/lib/backbone/json2.js")
+        .script("/javascripts/mobile/lib/backbone/backbone-min.js").wait()
+        .script("/javascripts/mobile/app/models/idea_boardz.js")
+        .script("/javascripts/mobile/app/models/web_idea_boardz.js")
+        .script("/javascripts/mobile/app/models/board.js")
+        .script("/javascripts/mobile/app/views/view_helper.js")
+        .script("/javascripts/mobile/app/views/create_idea_view.js")
+        .script("/javascripts/mobile/app/views/ideas_view.js")
+        .script("/javascripts/mobile/app/views/sections_view.js")
+        .script("/javascripts/mobile/app/views/error_view.js")
+        .script("/javascripts/mobile/app/routes/routes.js")
+        .script("/javascripts/mobile/app/mib.js");

@@ -1,0 +1,14 @@
+%html
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %title orteR | Retro
+    :css
+      body { margin: 0px; overflow:hidden }
+  %body{:scroll => "no"}
+    %h3 Deleted Sticky
+    %table
+      %tr
+        %th Message
+        %th Section
+        %th Click to restore
+      = render :partial=> 'point', :collection => @points

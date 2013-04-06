@@ -1,0 +1,5 @@
+%tr
+  %td= point.message
+  %td= Section.find(point.section_id).name
+  %td
+    %a{:href => "/admin/restore_deleted/#{point.id}"} Restore

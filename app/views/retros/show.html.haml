@@ -1,0 +1,68 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Delius|Handlee", :rel => "stylesheet", :type => "text/css"}/
+    %meta{:content => "text/html; charset=utf-8", :"http-equiv" => "content-type"}/
+    %meta{:content => "collaborate, distributed, share, discuss, ideas, brainstorm, sticky, wall, board, whiteboard, meeting, retro, online, continuous, thoughtworks, application", :lang => "en-us", :name => "keywords"}/
+    %meta{:content => "collaborate, distributed, share, discuss, ideas, brainstorm, sticky, wall, board, whiteboard, meeting, retro, online, continuous, thoughtworks, application", :lang => "en", :name => "keywords"}/
+    %meta{:content => "Conduct collaborative brainstorming sessions with distributed teams", :name => "description"}/
+    - if @retrospective.id > 2
+      %meta{:name=>"robots", :content=>"noindex, nofollow"}/
+    %title= "IdeaBoardz - #{@retrospective.name}"
+    %meta{:content => @retrospective.id, :name => "retroId"}/
+    %meta{:content => @retrospective.name, :name => "retroName"}/
+    = stylesheet_link_tag 'reset-min'
+    = stylesheet_link_tag 'cupertino/jquery-ui-1.8.2.custom'
+    = stylesheet_link_tag 'orter'
+    = stylesheet_link_tag 'menu'
+    = render :partial => "shared/analytics"
+  %body
+    .mainWrap
+      = render :partial => 'menu'
+
+      .topbar
+        .logoContainer
+          %a.logo{:href => "/", :title => "Ideaboardz"}
+            %img{:alt => "Ideaboardz", :src => "/images/ideaboardz.png"}/
+      .filter
+        %input#search{:placeholder => "start typing to filter stickies", :type => "text"}/
+        .sort
+          - if@retrospective.sections.length > 1
+            = label_tag("retro[section_id]","View Section")
+            = select("retro","section_id", @retrospective.sections.collect {|s| [ s.name, s.id ] }, {:include_blank => 'All Sections'})
+          = label_tag(:sortBy,"Sort By")
+          = select_tag(:sortBy,options_from_collection_for_select(['created time', 'votes'],:to_s,:to_s),:id=>"sortBy")
+      .whiteboard
+        %h2#ideaboardTitle.ideaBoardTitle{:title => @retrospective.description}= @retrospective.name
+        / googleoff: all
+        %noscript Please turn javascript on or move to a browser which supports it
+        / googleon: all
+        - row_one_sections, row_two_sections = get_rows_for_sections(@retrospective.sections)
+        #sectionsRow1.sections
+          = render :partial => "section", :collection => row_one_sections, :as => "section", :locals => {:section_width => get_section_width(row_one_sections.size)}
+        #sectionsRow2.sections
+          = render :partial => "section", :collection => row_two_sections, :as => "section", :locals => {:section_width => get_section_width(row_two_sections.size)}
+        .hide
+          #stickyTemplate.col_right
+            .sticky
+              .stickyText
+              .voteCount
+                +
+                %span.count 0
+    #largeStickyDialog
+      .stickyLarge
+        %div.stickyTextContainer
+          %label.icon.icon-replace.icon-edit{:for => "stickyText"} Edit:
+          %textarea#stickyText.stickyText.formElement{:cols => "35", :rows => "4", :title => "click to edit"}
+          %span.stickyUpdated
+        .stickyActions
+          .stickyVote
+            %a.voteStickyButton.icon.icon-replace.icon-like{:title => "Vote Up"}
+            %span.voteCountContainer
+              +
+              %span.count
+            %span.voteUpdated
+          %a.removeStickyButton.icon-replace{:title => "Delete sticky"} Delete
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"
+    = javascript_include_tag 'jquery-ui-1.8.22.custom.min.js', 'jquery.tinysort.js', 'underscore-min', "analytics", "util", "editable_sticky", "sticky", "section"

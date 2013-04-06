@@ -14,15 +14,18 @@ gem 'prawnto'
 group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
-
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'omniauth', '~> 1.0.0'
+gem 'omniauth-google'
+gem 'haml'
+gem 'jquery-rails'
+
 group :development do
   gem "mongrel"
+  gem 'pry'
 end
-
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
