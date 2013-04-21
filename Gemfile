@@ -23,7 +23,6 @@ gem 'haml'
 gem 'jquery-rails'
 
 group :development do
-  gem "mongrel"
   gem 'pry'
 end
 
