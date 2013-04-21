@@ -26,7 +26,6 @@ EditableSticky.prototype.show = function () {
         }
       });
   this.dialog.find("textarea").unbind('blur').blur(function () {
-      console.log($.trim($(this).val()));
     thisSticky.edit_message($.trim($(this).val()));
   });
   this.dialog.find('.voteStickyButton').unbind('click').click(function () {

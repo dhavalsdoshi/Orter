@@ -5,7 +5,7 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       if vote.save
-        format.json  { render :xml => vote.to_json, :status => :created, :location => vote.to_json }
+        format.json  { render :json => vote.to_json, :status => :created }
       else
         format.json  { render :json => vote.errors.to_json, :status => :unprocessable_entity }
       end

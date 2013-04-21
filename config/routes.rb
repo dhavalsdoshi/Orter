@@ -8,12 +8,14 @@ Gorter::Application.routes.draw do
 
   match 'points/delete/:id.:format' =>'points#destroy'
 
-  match 'retros/export/:id/:name.:format'=> 'retros#export'
+  match 'retros/export/:id/:name.:format'=> 'retros#export', :as => 'export'
 
   match 'admin/show_deleted/:retro_name/:retro_id/devilthegr8' =>'admin#deleted_points'
   match 'admin/restore_deleted/:point_id' => 'admin#restore_deleted'
 
-  resources :points, :has_many => :votes
+  resources :points do
+    resources :votes
+  end
   resources :retros
   match ':controller/:action/:id'
   match ':controller/:action/:id.:format'

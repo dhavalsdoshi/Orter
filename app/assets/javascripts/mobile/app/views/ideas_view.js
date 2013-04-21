@@ -68,6 +68,7 @@ $(document).ready(function () {
                 me = this;
 
             $(ideaTextEl).attr('contentEditable',false).removeClass('editing');
+            message = message.replace(/<hr>/g,'\n---------------\n');
             message = $.trim(message);
             if (message == '') {
                 me.showEmptyError();

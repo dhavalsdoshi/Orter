@@ -23,13 +23,13 @@
       .whiteboard
         .header
           %h1
-            %img.logo{:alt => "IdeaBoardz - brainstorm, retrospect, collaborate", :src => "images/IdeaBoardz_logo_2.png"}/
+            %img.logo{:alt => "IdeaBoardz - brainstorm, retrospect, collaborate", :src => asset_path("/assets/IdeaBoardz_logo_2.png")}/
         .content
           .leftBar.half.left
             .what
               %h2.sectionTitle How does it look
               %div
-                %img{:alt => "screen-shot", :src => "images/screenshot.png", :style => "width:100%"}/
+                %img{:alt => "screen-shot", :src => asset_path("/assets/screenshot.png"), :style => "width:100%"}/
           .rightBar.half.left
             .try.blue.sideNote
               %h2.sectionTitle Test Drive...
@@ -47,7 +47,7 @@
                     my own IdeaBoard
                   %li Share the url
                 .formContainer{:style => "display:none"}
-                  - form_tag({:controller => :retros},{:method => "post",:novalidate => ""}) do
+                  = form_tag({:controller => :retros},{:method => "post",:novalidate => ""}) do
                     = label_tag(:name, "Name *")
                     = text_field_tag(:name, "",:required => "required","data-message"=>"please fill in a name")
                     = label_tag(:description, "Description *")

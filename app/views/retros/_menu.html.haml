@@ -1,7 +1,7 @@
 %div{:style => "margin-left:0px;"}
   %ul#menu
     %li.start-item
-      %img{:alt => "", :src => "/images/menu/menu_left.png"}
+      %img{:alt => "", :src => asset_path("/assets/menu/menu_left.png")}
 
     - if @user
       %li.middle-item
@@ -11,9 +11,9 @@
         %a{:href => "javascript: void(0)"} My Boardz
         %ul#inner
           %li
-            %img.corner_inset_left{:alt => "", :src => "/images/menu/corner_inset_left.png"}
-            %img.middle{:alt => "", :src => "/images/menu/dot.gif"}
-            %img.corner_inset_right{:alt => "", :src => "/images/menu/corner_inset_right.png"}
+            %img.corner_inset_left{:alt => "", :src => asset_path("/assets/menu/corner_inset_left.png")}
+            %img.middle{:alt => "", :src => asset_path("/assets/menu/dot.gif")}
+            %img.corner_inset_right{:alt => "", :src => asset_path("/assets/menu/corner_inset_right.png")}
 
           - @user.retros.each do |retro|
             - if retro.name
@@ -24,24 +24,24 @@
           -#    = text_field_tag(:url, "",:required => "required","data-message"=>"please fill in the url", :size => 11)
           -#    = submit_tag("Add")
           %li.last-item
-            %img.corner_left{:alt => "", :src => "/images/menu/corner_left.png"}/
-            %img.middle{:alt => "", :src => "/images/menu/dot.gif"}/
-            %img.corner_right{:alt => "", :src => "/images/menu/corner_right.png"}/
+            %img.corner_left{:alt => "", :src => asset_path("/assets/menu/corner_left.png")}/
+            %img.middle{:alt => "", :src => asset_path("/assets/menu/dot.gif")}/
+            %img.corner_right{:alt => "", :src => asset_path("/assets/menu/corner_right.png")}/
 
     - if @retrospective
       %li.middle-item
         %a{:href => "javascript: void(0)"} Export
         %ul#inner
           %li
-            %img.corner_inset_left{:alt => "", :src => "/images/menu/corner_inset_left.png"}
+            %img.corner_inset_left{:alt => "", :src => asset_path("/assets/menu/corner_inset_left.png")}
             = link_to 'PDF', export_path(:id => @retrospective.id, :name => @retrospective.name, :format => 'pdf', :target => '_blank')
-            %img.corner_inset_right{:alt => "", :src => "/images/menu/corner_inset_right.png"}
+            %img.corner_inset_right{:alt => "", :src => asset_path("/assets/menu/corner_inset_right.png")}
           %li
             = link_to 'Excel', export_path(:id => @retrospective.id, :name => @retrospective.name, :format => 'xls', :target => '_blank')
           %li.last-item
-            %img.corner_left{:alt => "", :src => "/images/menu/corner_left.png"}/
-            %img.middle{:alt => "", :src => "/images/menu/dot.gif"}/
-            %img.corner_right{:alt => "", :src => "/images/menu/corner_right.png"}/
+            %img.corner_left{:alt => "", :src => asset_path("/assets/menu/corner_left.png")}/
+            %img.middle{:alt => "", :src => asset_path("/assets/menu/dot.gif")}/
+            %img.corner_right{:alt => "", :src => asset_path("/assets/menu/corner_right.png")}/
     - if @user
       %li
         %a{:href => signout_path} Logout
@@ -49,4 +49,4 @@
       %li
         %a{:href => signin_path} Login
     %li.last-item
-      %img{:alt => "", :src => "/images/menu/menu_right.png"}
+      %img{:alt => "", :src => asset_path("/assets/menu/menu_right.png")}

@@ -15,23 +15,26 @@ IdeaBoardz.AppRouter = Backbone.Router.extend({
     },
 
     sectionsList: function(){
-        var boardName = $('body').attr('data-name');
-        var bid = $('body').attr('data-id');
+      var $body = $('body');
+      var boardName = $body.attr('data-name');
+        var bid = $body.attr('data-id');
         boardName=decodeURIComponent(boardName);
         var sectionsView = new IdeaBoardz.SectionsView("#container", boardName, bid);
     },
 
     ideasList: function(sid){
-      var boardName = $('body').attr('data-name');
-      var bid = $('body').attr('data-id');
+      var $body = $('body');
+      var boardName = $body.attr('data-name');
+      var bid = $body.attr('data-id');
 
       boardName=decodeURIComponent(boardName);
         var ideasView = new IdeaBoardz.IdeasView("#container", boardName, bid, sid);
     },
 
     createIdea: function(){
-      var boardName = $('body').attr('data-name');
-      var bid = $('body').attr('data-id');
+      var $body = $('body');
+      var boardName = $body.attr('data-name');
+      var bid = $body.attr('data-id');
 
       boardName=decodeURIComponent(boardName);
       var createIdeaView = new IdeaBoardz.CreateIdeaView("#container", boardName, bid);
