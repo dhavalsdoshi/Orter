@@ -17,7 +17,8 @@ EditableSticky.prototype.show = function () {
       .addClass(colorOfSticky);
 
   this.dialog.find('.stickyText').val(this.sticky.decodedText());
-  this.dialog.find('.voteCountContainer .count').html(this.sticky.votes);
+  this.dialog.find('.stickyUpVote .voteCountContainer .count').html(this.sticky.upVotes);
+  this.dialog.find('.stickyDownVote .voteCountContainer .count').html(this.sticky.downVotes);
   this.dialog.find('.removeStickyButton').unbind('click').click(
       function () {
         if (confirm("Do you want to delete this sticky?")) {
@@ -26,11 +27,13 @@ EditableSticky.prototype.show = function () {
         }
       });
   this.dialog.find("textarea").unbind('blur').blur(function () {
-      console.log($.trim($(this).val()));
     thisSticky.edit_message($.trim($(this).val()));
   });
-  this.dialog.find('.voteStickyButton').unbind('click').click(function () {
+  this.dialog.find('.stickyUpVote .voteStickyButton').unbind('click').click(function () {
     thisSticky.upVote();
+  });
+  this.dialog.find('.stickyDownVote .voteStickyButton').unbind('click').click(function () {
+    thisSticky.downVote();
   });
   this.dialog.dialog('option','beforeClose',function(){
     thisSticky.dialog.find("textarea").blur();
@@ -52,8 +55,18 @@ EditableSticky.prototype.edit_message = function(value) {
 EditableSticky.prototype.upVote = function(){
   var thisSticky = this;
   this.dialog.find('.voteUpdated').text('Updating...').addClass('show');
-  this.sticky.edit_vote(this.sticky.votes + 1, function(result){
-    $('.count', thisSticky.dialog).text(thisSticky.sticky.votes);
+  this.sticky.edit_vote('UpVote', this.sticky.upVotes + 1, function(result){
+    $('.stickyUpVote .voteCountContainer .count', thisSticky.dialog).text(thisSticky.sticky.upVotes);
+    $('.voteUpdated', thisSticky.dialog).text('Updated');
+    setTimeout(function(){$('.voteUpdated', thisSticky.dialog).removeClass('show');}, 2000);
+  });
+};
+
+EditableSticky.prototype.downVote = function(){
+  var thisSticky = this;
+  this.dialog.find('.voteUpdated').text('Updating...').addClass('show');
+  this.sticky.edit_vote('DownVote', this.sticky.downVotes + 1, function(result){
+    $('.stickyDownVote .voteCountContainer .count', thisSticky.dialog).text(thisSticky.sticky.downVotes);
     $('.voteUpdated', thisSticky.dialog).text('Updated');
     setTimeout(function(){$('.voteUpdated', thisSticky.dialog).removeClass('show');}, 2000);
   });

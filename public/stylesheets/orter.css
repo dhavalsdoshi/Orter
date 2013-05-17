@@ -512,7 +512,12 @@ a:hover {
   display: block;
   float: left;
 }
-.sticky .voteCount {
+.stickyDownVote .voteStickyButton {
+  transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+}
+.sticky .stickyCountContainer {
   opacity: 0.5;
   /*filter: alpha(opacity = 50);*/
 
@@ -522,6 +527,9 @@ a:hover {
   position: absolute;
   bottom: 5%;
   left: 5%;
+}
+.sticky .stickyCountContainer .downVoteCount {
+  float:right;
 }
 .sticky:hover .voteCount {
   font-weight: bold;

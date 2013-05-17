@@ -53,7 +53,8 @@ body {
   cursor: pointer;
   margin-top: 2px;
 }
-.sticky .voteBtn:hover,
+.sticky .upVoteBtn:hover,
+.sticky .downVoteBtn:hover,
 .sticky .editIdeaBtn:hover,
 .sticky .okBtn:hover,
 .sticky .deleteBtn:hover {
@@ -64,11 +65,15 @@ body {
   display: none;
 }
 .sticky .deleteBtn,
-.sticky .voteBtn {
+.sticky .upVoteBtn,
+.sticky .downVoteBtn {
   border-radius: 5px;
   bottom: 40px;
 }
-.sticky .voteBtn {
+.sticky .upVoteBtn {
+  bottom: 120px;
+}
+.sticky .downVoteBtn {
   bottom: 80px;
 }
 .sticky .btn-small [class^="icon-"] {
@@ -126,14 +131,14 @@ body {
   margin: 0;
 }
 #ideasList li {
-  min-height: 100px;
+  min-height: 140px;
   padding: 10px;
   padding-right: 30px;
   position: relative;
   margin: 5px 5px 20px 5px;
 }
 #ideasList li .ideaText {
-  margin-right: 35px;
+  margin-right: 45px;
   margin-bottom: 30px;
   display: block;
   color: black;

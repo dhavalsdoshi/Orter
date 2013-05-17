@@ -23,7 +23,7 @@ xml.Workbook({
         xml.Font 'ss:FontName'=>"Verdana", 'ss:Bold'=>"1"
       end
     end
-    
+
   for section in @retro.sections
 
     xml.Worksheet 'ss:Name' => section.name[0..29] do
@@ -38,6 +38,8 @@ xml.Workbook({
         xml.Row do
           xml.Cell { xml.Data 'Point', 'ss:Type' => 'String' }
           xml.Cell { xml.Data 'Votes', 'ss:Type' => 'String' }
+          xml.Cell { xml.Data 'Up Votes', 'ss:Type' => 'String' }
+          xml.Cell { xml.Data 'Down Votes', 'ss:Type' => 'String' }
         end
 
         # Rows
@@ -45,6 +47,8 @@ xml.Workbook({
           xml.Row do
             xml.Cell { xml.Data CGI.unescapeHTML(point.message), 'ss:Type' => 'String' }
             xml.Cell { xml.Data point.votes.length, 'ss:Type' => 'Number' }
+            xml.Cell { xml.Data point.up_votes.length, 'ss:Type' => 'Number' }
+            xml.Cell { xml.Data point.down_votes.length, 'ss:Type' => 'Number' }
           end
         end
 

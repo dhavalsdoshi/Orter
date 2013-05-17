@@ -51,7 +51,7 @@ $U.filterSection= function(){
 $U.sortStickies= function(){
   if($('#sortBy').val() == "votes") {
     $('.section').each(function() {
-      $(this).find('.sticky').tsort('.voteCount .count', {order:"desc"});
+      $(this).find('.sticky').tsort('.upVoteCount .count, .downVoteCount .count', {order:"desc"});
     });
   }
   else {

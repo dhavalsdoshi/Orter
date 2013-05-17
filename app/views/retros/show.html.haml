@@ -47,9 +47,13 @@
           #stickyTemplate.col_right
             .sticky
               .stickyText
-              .voteCount
-                +
-                %span.count 0
+              .stickyCountContainer
+                .upVoteCount
+                  +
+                  %span.count 0
+                .downVoteCount
+                  \-
+                  %span.count 0
     #largeStickyDialog
       .stickyLarge
         %div.stickyTextContainer
@@ -57,10 +61,16 @@
           %textarea#stickyText.stickyText.formElement{:cols => "35", :rows => "4", :title => "click to edit"}
           %span.stickyUpdated
         .stickyActions
-          .stickyVote
+          .stickyUpVote
             %a.voteStickyButton.icon.icon-replace.icon-like{:title => "Vote Up"}
             %span.voteCountContainer
               +
+              %span.count
+            %span.voteUpdated
+          .stickyDownVote
+            %a.voteStickyButton.icon.icon-replace.icon-like{:title => "Vote Down"}
+            %span.voteCountContainer
+              \-
               %span.count
             %span.voteUpdated
           %a.removeStickyButton.icon-replace{:title => "Delete sticky"} Delete

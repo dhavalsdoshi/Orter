@@ -38,11 +38,11 @@ function ajaxPutRequest(context, url, success, error, message) {
 
 IdeaBoardz.WebIdeaBoardz.prototype = {
 
-    voteIdea: function(pointId,callbacks){
+    voteIdea: function(pointId,type,callbacks){
         $.ajax({
             url: "/points/" + pointId + "/votes.json",
             type: "POST",
-            data: {"vote": {"point_id": pointId }},
+            data: {"vote": {"point_id": pointId, "type": type}},
             success:callbacks.success || function() {},
             error:callbacks.error || function() {},
             context: callbacks.context
