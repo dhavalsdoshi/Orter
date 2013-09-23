@@ -1,7 +1,7 @@
 @import "base.less";
 
 body{
-  min-height: 1000px;
+  min-height: 100%;
 }
 
 .half{
@@ -120,6 +120,55 @@ body{
     right: 625px;
     .rotate(-10deg);
     z-index:4;
+}
+
+.ios-app {
+  top: 500px;
+  right: 80px;
+  .rotate(-7deg);
+  .sectionTitle {
+    height: 45px;
+    margin: 0;
+  }
+  .apple-store-link {
+    display: inline-block;
+    span.text {
+      line-height: 45px;
+      float: left;
+    }
+    .icon-apple-store {
+      float: left;
+      background: url('/images/i_store_logo.png');
+      height: 45px;
+      width: 45px;
+      display: inline-block;
+    }
+  }
+}
+
+.android-app {
+  top: 510px;
+  right: 350px;
+  .rotate(3deg);
+  z-index: 5;
+  .sectionTitle {
+    height: 45px;
+    margin: 0;
+  }
+  .play-store-link{
+    display: inline-block;
+    span.text {
+      line-height: 45px;
+      float: left;
+    }
+    .icon-play-store {
+      float: left;
+      background: url('/images/google_play_logo.png');
+      height: 45px;
+      width: 45px;
+      display: inline-block;
+    }
+  }
 }
 
 .contributors {
