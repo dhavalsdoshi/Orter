@@ -48,7 +48,7 @@ $(document).ready(function () {
         deletePoint: function(event){
             event.preventDefault();
             var me=this;
-            var message = $("#"+event.currentTarget.id).find(".ideaText").text();
+            var message = $("#"+event.currentTarget.id).find(".ideaText").html().replace(/<hr>/, "\n---------------\n");
             IdeaBoardz.WebIdeaBoardz.instance.deleteIdea(event.currentTarget.id, message, {
                 success: me.showSuccess,
                 error: me.showError,
@@ -66,15 +66,16 @@ $(document).ready(function () {
                 ideaTextEl = $(event.currentTarget).siblings('.ideaText')[0],
                 editIdeaBtn = $(event.currentTarget).siblings('.editIdeaBtn')[0],
                 message = $(ideaTextEl).html(),
+                oldMessage = $(ideaTextEl).attr('oldContent'),
                 me = this;
 
             $(ideaTextEl).attr('contentEditable',false).removeClass('editing');
-            message = $.trim(message);
+            message = $.trim(message).replace(/<hr>/, "\n---------------\n").replace(/&nbsp;/, ' ');
             if (message == '') {
                 me.showEmptyError();
             }
             else {
-                IdeaBoardz.WebIdeaBoardz.instance.editIdea(event.currentTarget.id, message, {
+                IdeaBoardz.WebIdeaBoardz.instance.editIdea(event.currentTarget.id, oldMessage, message, {
                     success: me.showSuccess,
                     error: me.showError,
                     context: "this"
@@ -95,7 +96,8 @@ $(document).ready(function () {
                 okBtn = $(event.currentTarget).siblings('.okBtn')[0],
                 me = this;
             $(ideaTextEl).addClass('editing');
-            $(ideaTextEl).attr('contentEditable',true).focus();
+          var message = $(ideaTextEl).html().replace(/<hr>/, "\n---------------\n");
+          $(ideaTextEl).attr('contentEditable',true).attr('oldContent', message).focus();
             clearTimeout(IdeaBoardz.Board.instance.timer);
             $(el).hide();
             $(okBtn).show();

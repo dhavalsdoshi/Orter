@@ -23,7 +23,7 @@ function ajaxPostRequest(type, context, url, success, error) {
     });
 }
 
-function ajaxPutRequest(context, url, success, error, message) {
+function ajaxPutRequest(context, url, success, error, point) {
     $.ajax({
         type:'PUT',
         context:context,
@@ -31,7 +31,7 @@ function ajaxPutRequest(context, url, success, error, message) {
         success:success,
         error:error,
         data: {
-            'point' : {'message': message}
+            'point' : point
         }
     });
 }
@@ -66,7 +66,7 @@ IdeaBoardz.WebIdeaBoardz.prototype = {
             error = callbacks.error || function() {},
             context = callbacks.context,
             url = this.domain + '/points/' + pointId;
-        ajaxPutRequest( context, url, success, error, message);
+        ajaxPutRequest( context, url, success, error, {'message': message, 'oldmessage': oldmessage});
     },
 
     createIdea: function(sectionId, message, callbacks) {
