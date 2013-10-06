@@ -77,8 +77,8 @@ Sticky.prototype.merge = function(otherSticky) {
 
 Sticky.prototype.moveTo = function(section) {
   var sticky = this;
-  this.edit({'section_id': section.id}, function() {
-    sticky.edit_section(section.id);
+  this.edit({'section_id': section.id, 'oldmessage': sticky.text}, function() {
+    sticky.edit_section(section.id, sticky.text);
     sticky.removeFromDom();
     Sticky.createFrom(sticky.text, sticky.votes, sticky.id).attachTo(section.id);
   });
@@ -119,8 +119,8 @@ Sticky.prototype.update = function(text,votes){
   this.updateDom();
 };
 
-Sticky.prototype.edit_section = function(section_id) {
-  this.edit({'section_id': section_id}, function() {});
+Sticky.prototype.edit_section = function(section_id, text) {
+  this.edit({'section_id': section_id, 'oldmessage': text}, function() {});
 };
 
 Sticky.prototype.edit = function(value_hash, success) {
