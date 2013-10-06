@@ -6,7 +6,7 @@ var Sticky = function(dom){
 };
 
 Sticky.createFrom = function(text, votes, id) {
-  var encodedText = $.isHtmlEncoded(text) ? text : $.htmlEncode(text)
+  var encodedText = $.isHtmlEncoded(text) ? text : $.htmlEncode(text);
   var stickyTemplateHtml = $('#stickyTemplate').html();
   var addedPoint = $(stickyTemplateHtml);
   addedPoint.hide()
@@ -64,9 +64,10 @@ Sticky.prototype.merge = function(otherSticky) {
   }
 
   var sticky = this;
+  var originalText = this.text
   this.text += "\n---------------\n" + otherSticky.text;
   sticky.updateDom();
-  this.edit({'message': this.text}, function() {
+  this.edit({'message': this.text, 'oldmessage': originalText}, function() {
     otherSticky.remove();
   });
   if (otherSticky.votes > 0) {
@@ -99,12 +100,15 @@ Sticky.prototype.removeFromDom = function(){
 };
 
 Sticky.prototype.remove = function(){
-  this.removeFromDom();
-  $a.trackEvent('point', 'delete', this.id);
-  $.ajax({
-    url: "/points/delete/" + this.id + ".json",
-    type: "GET"
-  });
+    this.removeFromDom();
+    $a.trackEvent('point', 'delete', this.id);
+    $.ajax({
+      url: "/points/delete/" + this.id + ".json",
+      type: "GET",
+      data: {
+        message: this.text
+      }
+    });
 };
 
 Sticky.prototype.update = function(text,votes){

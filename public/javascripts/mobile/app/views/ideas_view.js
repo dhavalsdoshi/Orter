@@ -48,7 +48,8 @@ $(document).ready(function () {
         deletePoint: function(event){
             event.preventDefault();
             var me=this;
-            IdeaBoardz.WebIdeaBoardz.instance.deleteIdea(event.currentTarget.id,{
+            var message = $("#"+event.currentTarget.id).find(".ideaText").text();
+            IdeaBoardz.WebIdeaBoardz.instance.deleteIdea(event.currentTarget.id, message, {
                 success: me.showSuccess,
                 error: me.showError,
                 context: "this"

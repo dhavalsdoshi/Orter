@@ -48,16 +48,19 @@ IdeaBoardz.WebIdeaBoardz.prototype = {
             context: callbacks.context
         });
     },
-    deleteIdea: function(pointId,callbacks){
+    deleteIdea: function(pointId, message, callbacks){
         $.ajax({
             url: "/points/delete/" + pointId + ".json",
             type: "GET",
+            data: {
+              message: message
+            },
             success:callbacks.success || function() {},
             error:callbacks.error || function() {},
             context: callbacks.context
         });
     },
-    editIdea: function(pointId,message,callbacks){
+    editIdea: function(pointId, oldmessage, message,callbacks){
         callbacks = callbacks || {};
         var success = callbacks.success || function() {},
             error = callbacks.error || function() {},
