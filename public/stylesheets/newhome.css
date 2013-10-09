@@ -207,63 +207,21 @@ body {
   transform: rotate(-10deg);
   z-index: 4;
 }
-.ios-app {
-  top: 500px;
-  right: 80px;
-  -ms-transform: rotate(-7deg);
-  /* IE 9 */
-
-  -webkit-transform: rotate(-7deg);
-  -moz-transform: rotate(-7deg);
-  -o-transform: rotate(-7deg);
-  transform: rotate(-7deg);
+.app-stores {
+  position: absolute;
+  top: 625px;
+  right: 330px;
+  box-shadow: none;
 }
-.ios-app .sectionTitle {
-  height: 45px;
-  margin: 0;
+@media all and (max-width: 650px) and (min-width: 200px) {
+  .app-stores {
+    margin-top: 50px;
+    text-align: center;
+  }
 }
-.ios-app .apple-store-link {
-  display: inline-block;
-}
-.ios-app .apple-store-link span.text {
-  line-height: 45px;
-  float: left;
-}
-.ios-app .apple-store-link .icon-apple-store {
-  float: left;
-  background: url('/images/i_store_logo.png');
-  height: 45px;
-  width: 45px;
-  display: inline-block;
-}
-.android-app {
-  top: 510px;
-  right: 350px;
-  -ms-transform: rotate(3deg);
-  /* IE 9 */
-
-  -webkit-transform: rotate(3deg);
-  -moz-transform: rotate(3deg);
-  -o-transform: rotate(3deg);
-  transform: rotate(3deg);
-  z-index: 5;
-}
-.android-app .sectionTitle {
-  height: 45px;
-  margin: 0;
-}
-.android-app .play-store-link {
-  display: inline-block;
-}
-.android-app .play-store-link span.text {
-  line-height: 45px;
-  float: left;
-}
-.android-app .play-store-link .icon-play-store {
-  float: left;
-  background: url('/images/google_play_logo.png');
-  height: 45px;
-  width: 45px;
+.app-stores .android-app,
+.app-stores .ios-app {
+  vertical-align: baseline;
   display: inline-block;
 }
 .contributors {
