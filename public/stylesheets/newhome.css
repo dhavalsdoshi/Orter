@@ -213,6 +213,9 @@ body {
   right: 330px;
   box-shadow: none;
 }
+.app-stores:hover {
+  box-shadow: none;
+}
 @media all and (max-width: 650px) and (min-width: 200px) {
   .app-stores {
     margin-top: 50px;
@@ -223,6 +226,14 @@ body {
 .app-stores .ios-app {
   vertical-align: baseline;
   display: inline-block;
+}
+.app-stores .android-app img,
+.app-stores .ios-app img {
+  width: 130px;
+}
+.app-stores .android-app img:hover,
+.app-stores .ios-app img:hover {
+  opacity: 0.8;
 }
 .contributors {
   top: 438px;
