@@ -33,6 +33,8 @@
             = select("retro","section_id", @retrospective.sections.collect {|s| [ s.name, s.id ] }, {:include_blank => 'All Sections'})
           = label_tag(:sortBy,"Sort By")
           = select_tag(:sortBy,options_from_collection_for_select(['created time', 'votes'],:to_s,:to_s),:id=>"sortBy")
+      %button{:onclick => "TogetherJS(this); return false;" } See what others are doing and chat :)
+
       .whiteboard
         %h2#ideaboardTitle.ideaBoardTitle{:title => @retrospective.description}= @retrospective.name
         / googleoff: all
@@ -65,4 +67,5 @@
             %span.voteUpdated
           %a.removeStickyButton.icon-replace{:title => "Delete sticky"} Delete
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"
+    = javascript_include_tag "https://togetherjs.com/togetherjs-min.js"
     = javascript_include_tag 'jquery-ui-1.8.22.custom.min.js', 'jquery.tinysort.js', 'underscore-min', "analytics", "util", "editable_sticky", "sticky", "section"
