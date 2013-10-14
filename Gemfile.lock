@@ -23,6 +23,10 @@ GEM
       activesupport (= 3.2.13)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-mysql-adapter (0.0.1)
+      activerecord (>= 3.2.9)
+      activesupport (>= 3.2.9)
+      mysql (>= 2.9.0)
     activeresource (3.2.13)
       activemodel (= 3.2.13)
       activesupport (= 3.2.13)
@@ -61,6 +65,7 @@ GEM
     method_source (0.8.1)
     mime-types (1.23)
     multi_json (1.7.2)
+    mysql (2.9.1)
     mysql2 (0.3.11)
     oauth (0.4.7)
     omniauth (1.0.3)
@@ -141,6 +146,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-mysql-adapter
   haml
   jquery-rails
   less-rails
