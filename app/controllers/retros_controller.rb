@@ -18,7 +18,7 @@ class RetrosController < ApplicationController
 
     if @retro.save
       flash[:notice] = 'Retro was successfully created.'
-      redirect_to :controller => :retros, :action => :show, :id => @retro.id.to_s, :name => @retro.name
+      redirect_to retro_for_url(:id => @retro.id.to_s, :name => @retro.name)
     else
       render new
     end

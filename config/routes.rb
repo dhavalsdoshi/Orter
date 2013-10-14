@@ -3,7 +3,7 @@ Gorter::Application.routes.draw do
   match 'retros/:retro_name/:retro_id/points.:format'=>'points#index_for_retro'
 
   match 'for/:name'=>'retros#show_old'
-  match 'for/:name/:id.:format'=>'retros#show', :as => 'retro_for'
+  get 'for/:name/:id(.:format)'=>'retros#show', :as => 'retro_for'
   match 'page/:name' => 'pages#show'
 
   match 'points/delete/:id.:format' =>'points#destroy'
