@@ -46,10 +46,10 @@
 }
 
 .gradientWithImage(@url:"/abc.png",@x:center,@y:center,@startColor:#fff,@stopColor:#000){
-	background:url(@url)no-repeat @x @y @stopColor;
-	background:url(@url) no-repeat @x @y,
+	background: asset-url(@url)no-repeat @x @y @stopColor;
+	background:asset-url(@url) no-repeat @x @y,
 	-webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@stopColor));
-	background:url(@url) no-repeat @x @y,
+	background:asset-url(@url) no-repeat @x @y,
 	-moz-linear-gradient(top, @startColor, @stopColor);
 }
 

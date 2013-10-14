@@ -12,9 +12,7 @@
     %meta{:property => "og:image", :content => "/ideaboardzSquare.png"}/
     %title
       IdeaBoardz - Brainstorm, Retrospect, Collaborate
-    = stylesheet_link_tag 'reset-min'
     = stylesheet_link_tag 'newhome'
-    = stylesheet_link_tag 'menu'
     = render :partial => "shared/analytics"
   %body
     .mainWrap
@@ -103,6 +101,4 @@
                   = Retro.count
                 Boardz
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"
-    = javascript_include_tag "jquery.tools.min.js"
-    = javascript_include_tag "analytics"
     = javascript_include_tag "create"

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -13,7 +13,8 @@ gem 'prawnto'
 # in production environments by default.
 group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
+  gem 'less-rails'
+  gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
 end
 

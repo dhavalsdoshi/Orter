@@ -52,9 +52,15 @@ module Gorter
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.precompile += %w[orter.css, newhome.css, contributors.css, faq.css, mib_custom.css, create.js, show.js, mobile_all.js]
+    # config.assets.logger = nil
+    # config.assets.log_level = :info
+    config.assets.debug = false
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.app_generators.stylesheet_engine :less
+
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       :address => "localhost",

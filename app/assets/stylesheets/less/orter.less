@@ -1,6 +1,5 @@
-@import "stickycolors";
-@import "base";
-
+@import "less/stickycolors";
+@import "less/base";
 
 .ui-widget-content a{
   color: #000;
@@ -102,11 +101,11 @@
 }
 
 .pdfExport {
-    background:transparent url(/assets/pdf_export.png) no-repeat;
+    background:transparent asset-url('/assets/pdf_export.png') no-repeat;
 }
 
 .excelExport{
-    background:transparent url(/assets/excel_export.png) no-repeat;
+    background:transparent asset-url('/assets/excel_export.png') no-repeat;
 }
 
 .ideaBoardTitle{
@@ -349,7 +348,7 @@
 }
 
 .addStickyButton {
-    background:transparent url(/assets/Add-20.png) no-repeat scroll 0 0;
+    background:transparent asset-url('/assets/Add-20.png') no-repeat scroll 0 0;
     border: none;
     cursor: pointer;
     height: 30px;
@@ -374,7 +373,7 @@
     float: right;
     margin: 0 20px;
     text-decoration: underline;
-    background: url('/assets/trash.png') 0 0 no-repeat transparent;
+    background: asset-url('/assets/trash.png') 0 0 no-repeat transparent;
     &:hover{
       background-position:0 -40px;
     }

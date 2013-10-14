@@ -12,10 +12,7 @@
     %title= "IdeaBoardz - #{@retrospective.name}"
     %meta{:content => @retrospective.id, :name => "retroId"}/
     %meta{:content => @retrospective.name, :name => "retroName"}/
-    = stylesheet_link_tag 'reset-min'
-    = stylesheet_link_tag 'cupertino/jquery-ui-1.8.2.custom'
     = stylesheet_link_tag 'orter'
-    = stylesheet_link_tag 'menu'
     = render :partial => "shared/analytics"
   %body
     .mainWrap
@@ -65,4 +62,4 @@
             %span.voteUpdated
           %a.removeStickyButton.icon-replace{:title => "Delete sticky"} Delete
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"
-    = javascript_include_tag 'jquery-ui-1.8.22.custom.min.js', 'jquery.tinysort.js', 'underscore-min', "analytics", "util", "editable_sticky", "sticky", "section"
+    = javascript_include_tag "show"
