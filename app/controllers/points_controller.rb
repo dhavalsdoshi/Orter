@@ -24,7 +24,10 @@ class PointsController < ApplicationController
   end
 
   def update
-    point = Point.find(params[:id])
+    #point = Point.find(params[:id])
+    point = Point.find_by_id_and_message(params[:id], params[:point][:oldmessage])
+    points_params = params[:point]
+    points_params.delete(:oldmessage)
     #point_params = params[:point]
     #point_params[:message] = CGI.escapeHTML(point_params[:message])
     if point.update_attributes(params[:point])
@@ -35,9 +38,18 @@ class PointsController < ApplicationController
   end
 
   def destroy
-     point = Point.destroy(params[:id])
-     respond_to do |format|
-       format.json  { head :ok }
-     end
-   end
+    point = Point.find_by_id_and_message(params[:id], params[:message])
+    return head :error if point.nil?
+    point.destroy
+    respond_to do |format|
+      format.json { head :ok }
+    end
+  end
+
+  #def destroy
+  #   point = Point.destroy(params[:id])
+  #   respond_to do |format|
+  #     format.json  { head :ok }
+  #   end
+  # end
 end

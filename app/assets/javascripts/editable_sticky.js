@@ -39,9 +39,10 @@ EditableSticky.prototype.show = function () {
 
 EditableSticky.prototype.edit_message = function(value) {
   var thisSticky = this;
+  var oldmessage = this.sticky.text
   this.sticky.update(value);
   this.dialog.find('.stickyUpdated').text('Updating...').addClass('show');
-  this.sticky.edit({'message': value}, function(result) {
+  this.sticky.edit({'message': value, 'oldmessage': oldmessage}, function(result) {
     thisSticky.dialog.find('.stickyUpdated').text('Updated');
     setTimeout(function(){thisSticky.dialog.find('.stickyUpdated').removeClass('show');}, 2000);
   });

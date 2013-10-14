@@ -1,7 +1,7 @@
 @import "less/base";
 
 body{
-  min-height: 1000px;
+  min-height: 100%;
 }
 
 .half{
@@ -120,6 +120,30 @@ body{
     right: 625px;
     .rotate(-10deg);
     z-index:4;
+}
+.app-stores{
+  position: absolute;
+  top: 625px;
+  right: 330px;
+  box-shadow: none;
+  &:hover{
+    box-shadow: none;
+  }
+  @media all and (max-width: 650px) and (min-width:200px){
+    margin-top: 50px;
+    text-align: center;
+  }
+  .android-app,
+  .ios-app {
+    vertical-align: baseline;
+    display: inline-block;
+    img{
+      width: 130px;
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+  }
 }
 
 .contributors {

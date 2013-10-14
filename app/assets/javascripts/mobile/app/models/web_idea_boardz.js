@@ -23,7 +23,7 @@ function ajaxPostRequest(type, context, url, success, error) {
     });
 }
 
-function ajaxPutRequest(context, url, success, error, message) {
+function ajaxPutRequest(context, url, success, error, point) {
     $.ajax({
         type:'PUT',
         context:context,
@@ -31,7 +31,7 @@ function ajaxPutRequest(context, url, success, error, message) {
         success:success,
         error:error,
         data: {
-            'point' : {'message': message}
+            'point' : point
         }
     });
 }
@@ -48,22 +48,25 @@ IdeaBoardz.WebIdeaBoardz.prototype = {
             context: callbacks.context
         });
     },
-    deleteIdea: function(pointId,callbacks){
+    deleteIdea: function(pointId, message, callbacks){
         $.ajax({
             url: "/points/delete/" + pointId + ".json",
             type: "GET",
+            data: {
+              message: message
+            },
             success:callbacks.success || function() {},
             error:callbacks.error || function() {},
             context: callbacks.context
         });
     },
-    editIdea: function(pointId,message,callbacks){
+    editIdea: function(pointId, oldmessage, message,callbacks){
         callbacks = callbacks || {};
         var success = callbacks.success || function() {},
             error = callbacks.error || function() {},
             context = callbacks.context,
             url = this.domain + '/points/' + pointId;
-        ajaxPutRequest( context, url, success, error, message);
+        ajaxPutRequest( context, url, success, error, {'message': message, 'oldmessage': oldmessage});
     },
 
     createIdea: function(sectionId, message, callbacks) {
