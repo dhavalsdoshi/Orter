@@ -11,7 +11,7 @@ Section.prototype.addSticky = function(stickyText){
     data:
     {
       "point[section_id]": thisSection.id,
-      "point[message]": encodeURIComponent(stickyText)
+      "point[message]": stickyText
     },
     type: "POST",
     success: function(result) {
