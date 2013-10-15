@@ -1,46 +1,48 @@
-IdeaBoardz.AppRouter = Backbone.Router.extend({
-    routes: {
-        "": "sectionsList", //#for/mibTest/9
-        "createIdea": "createIdea", // #for/mibTest/9/createIdea
-        ":sid": "ideasList", //#for/mibTest/9/1
-        "*actions":"error"
-    },
+$(document).ready(function () {
+  IdeaBoardz.AppRouter = Backbone.Router.extend({
+      routes: {
+          "": "sectionsList", //#for/mibTest/9
+          "createIdea": "createIdea", // #for/mibTest/9/createIdea
+          ":sid": "ideasList", //#for/mibTest/9/1
+          "*actions":"error"
+      },
 
-    initialize: function(){
-        var findSlash = new RegExp("(\/)+$", "g");
-        this.route(/(.*)\/+$/, "trailFix", function (id) {
-            var idWithNoEndingSlash = id.replace(findSlash, '');
-            this.navigate(idWithNoEndingSlash, true);
-        });
-    },
+      initialize: function(){
+          var findSlash = new RegExp("(\/)+$", "g");
+          this.route(/(.*)\/+$/, "trailFix", function (id) {
+              var idWithNoEndingSlash = id.replace(findSlash, '');
+              this.navigate(idWithNoEndingSlash, true);
+          });
+      },
 
-    sectionsList: function(){
-      var $body = $('body');
-      var boardName = $body.attr('data-name');
+      sectionsList: function(){
+        var $body = $('body');
+        var boardName = $body.attr('data-name');
+          var bid = $body.attr('data-id');
+          boardName=decodeURIComponent(boardName);
+          var sectionsView = new IdeaBoardz.SectionsView("#container", boardName, bid);
+      },
+
+      ideasList: function(sid){
+        var $body = $('body');
+        var boardName = $body.attr('data-name');
         var bid = $body.attr('data-id');
+
         boardName=decodeURIComponent(boardName);
-        var sectionsView = new IdeaBoardz.SectionsView("#container", boardName, bid);
-    },
+          var ideasView = new IdeaBoardz.IdeasView("#container", boardName, bid, sid);
+      },
 
-    ideasList: function(sid){
-      var $body = $('body');
-      var boardName = $body.attr('data-name');
-      var bid = $body.attr('data-id');
+      createIdea: function(){
+        var $body = $('body');
+        var boardName = $body.attr('data-name');
+        var bid = $body.attr('data-id');
 
-      boardName=decodeURIComponent(boardName);
-        var ideasView = new IdeaBoardz.IdeasView("#container", boardName, bid, sid);
-    },
+        boardName=decodeURIComponent(boardName);
+        var createIdeaView = new IdeaBoardz.CreateIdeaView("#container", boardName, bid);
+      },
 
-    createIdea: function(){
-      var $body = $('body');
-      var boardName = $body.attr('data-name');
-      var bid = $body.attr('data-id');
-
-      boardName=decodeURIComponent(boardName);
-      var createIdeaView = new IdeaBoardz.CreateIdeaView("#container", boardName, bid);
-    },
-
-    error: function(actions){
-        var errorView = new IdeaBoardz.ErrorView();
-    }
+      error: function(actions){
+          var errorView = new IdeaBoardz.ErrorView();
+      }
+  });
 });

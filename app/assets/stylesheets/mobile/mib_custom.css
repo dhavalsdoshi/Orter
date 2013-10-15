@@ -1,7 +1,503 @@
-/*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
+body,
+html,
+#appWrapper,
+#viewWrapper {
+  height: 100%;
+}
+.mib_content {
+  min-height: 80%;
+}
+body {
+  font-family: 'Delius', helvetica, cursive;
+  font-size: 105%;
+  padding: 0;
+  margin: 0;
+  background: #E2E2E2;
+}
+.nav-stacked > li {
+  margin-bottom: 10px;
+  box-shadow: 1px 2px 2px grey;
+}
+.mib_content {
+  padding: 1em;
+  padding-top: 8px;
+  background: #E2E2E2;
+  text-align: center;
+}
+.mib_content h2.loading {
+  background: url("/assets/mobile/ajax-loader.gif") center left no-repeat;
+  padding-left: 40px;
+  font-size: 1.3em;
+  display: inline-block;
+}
+.sticky {
+  border-radius: 5px 5px 10px 5px;
+  -moz-border-radius: 5px 5px 10px 5px;
+  -webkit-border-radius: 5px 5px 10px 5px;
+  padding-left: 15px;
+  margin: 10px;
+  text-align: left;
+}
+.sticky .sticky-options {
+  height: 30px;
+  width: 60px;
+  padding: 5px 5px 0px 5px;
+  background-color: transparent;
+  background-image: none;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+  margin-top: 2px;
+}
+.sticky .voteBtn:hover,
+.sticky .editIdeaBtn:hover,
+.sticky .okBtn:hover,
+.sticky .deleteBtn:hover {
+  background-color: #f5f5f5;
+}
+.sticky .okBtn,
+.sticky .okBtn i {
+  display: none;
+}
+.sticky .deleteBtn,
+.sticky .voteBtn {
+  border-radius: 5px;
+  bottom: 40px;
+}
+.sticky .voteBtn {
+  bottom: 80px;
+}
+.sticky .btn-small [class^="icon-"] {
+  margin-top: 4px;
+}
+.btn-success {
+  color: black;
+  background-color: #4CD352;
+  text-shadow: none;
+  background-image: -moz-linear-gradient(top, #d0f3b1, #4cd352);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d0f3b1), to(#4cd352));
+  background-image: -webkit-linear-gradient(top, #d0f3b1, #4cd352);
+  background-image: -o-linear-gradient(top, #d0f3b1, #4cd352);
+  background-image: linear-gradient(to bottom, #d0f3b1, #4cd352);
+}
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  color: #000000;
+  background-color: #4CD352;
+}
+.small-sticky {
+  -moz-box-shadow: 1px 1px 3px #888888;
+  -webkit-box-shadow: 1px 1px 3px #888888;
+  box-shadow: 1px 1px 3px #888888;
+  /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
 
- *= require bootstrap
- *= require less/mobile/mib_custom
+  font-family: 'Delius', helvetica, cursive;
+}
+.alert-main {
+  margin-top: 10px;
+}
+.alert-error {
+  background-color: pink;
+  color: red;
+}
+/* IDEAS VIEW STYLE
+---------------------------------------------------- */
+.sectionWrapper {
+  border: 5px solid #696969;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: white;
+}
+.sectionWrapper h2 {
+  font-size: 1.3em;
+  margin: 0;
+  display: inline-block;
+}
+#ideasList {
+  list-style-type: none;
+  margin: 0;
+}
+#ideasList li {
+  min-height: 100px;
+  padding: 10px;
+  padding-right: 30px;
+  position: relative;
+  margin: 5px 5px 20px 5px;
+}
+#ideasList li .ideaText {
+  margin-right: 35px;
+  margin-bottom: 30px;
+  display: block;
+  color: black;
+}
+#ideasList li .editing {
+  background: #EACFFC;
+  padding: 5px;
+  -moz-box-shadow: inset 0px 1px 4 p #845f9c;
+  -webkit-box-shadow: inset 0px 1px 4 p #845f9c;
+  box-shadow: inset 0px 1px 4 p #845f9c;
+  outline: none;
+}
+#ideasList li .voteNumber {
+  position: absolute;
+  color: green;
+}
+#ideasList li .voteNumber:hover {
+  border: 1px solid green;
+}
+#ideasList a#emptyMessage,
+#ideasList a#emptyMessage:hover {
+  font-weight: bold;
+  font-size: 1.5em;
+  display: block;
+  text-align: center;
+  margin: 0;
+  line-height: 2em;
+  color: #bd5400;
+  text-decoration: none;
+}
+/* CREATE IDEA STYLE
+---------------------------------------------------- */
+.mib_content select {
+  width: 100%;
+  color: black;
+  text-align: left;
+}
+.addStickyForm p {
+  margin: 0 0 .7em;
+}
+.sticky {
+  background-color: #FF8;
+  border: 1px solid #FF8;
+}
+.yellow .sticky {
+  background-color: #ffffbb;
+  border: 1px solid #ffff88;
+}
+.aqua .sticky {
+  background-color: #b3ffff;
+  border: 1px solid #ccffff;
+}
+.blue .sticky {
+  background-color: #b7eb79;
+  border: 1px solid #c3ee8f;
+}
+.orange .sticky {
+  background-color: #e4b9ff;
+  border: 1px solid #eed3ff;
+}
+.purple .sticky {
+  background-color: #ffb976;
+  border: 1px solid #ffc690;
+}
+.green .sticky {
+  background-color: #c3ffc9;
+  border: 1px solid #dcffe0;
+}
+.sticky {
+  background-color: #FF8;
+  border: 1px solid #FF8;
+}
+.sticky hr {
+  border: 0;
+  width: 90%;
+  border-bottom: 1px dotted grey;
+}
+.sticky,
+.addStickyForm textarea {
+  word-wrap: break-word;
+  cursor: default;
+}
+.template_index .sticky {
+  cursor: default;
+}
+.template_index li {
+  line-height: 23px;
+  font-weight: normal;
+}
+.largeSticky {
+  min-height: 80px;
+  padding: 10px;
+  margin-bottom: 10px;
+  -moz-box-shadow: 3px 1px 3px #888888;
+  -webkit-box-shadow: 3px 1px 3px #888888;
+  box-shadow: 3px 1px 3px #888888;
+  /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
+
+}
+.addStickyForm textarea {
+  text-align: left;
+  background: transparent;
+  width: 95%;
+  min-height: 60px;
+  font-family: 'Delius', helvetica, cursive;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  color: #000000;
+  outline: none;
+  border: none;
+  -moz-box-shadow: none 0px 0px #ffffff;
+  -webkit-box-shadow: none 0px 0px #ffffff;
+  box-shadow: none 0px 0px #ffffff;
+  /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
+
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-size: 1.1em;
+}
+.content-pull-up {
+  margin-top: 0;
+  padding-top: 5px;
+}
+/* HEADER - FIXED TOP MENU
+---------------------------------------------------- */
+#menu_overlay_container {
+  display: none;
+  z-index: 199;
+  position: fixed;
+  content: "";
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
+.mib_header {
+  min-width: 280px;
+  border-bottom: 1px solid #000000 /*{a-bar-border}*/;
+  background: #cccccc /*{a-bar-background-color}*/;
+  color: #000000 /*{a-bar-color}*/;
+  font-weight: bold;
+  text-shadow: 0 /*{a-bar-shadow-x}*/ 0 /*{a-bar-shadow-y}*/ 0 /*{a-bar-shadow-radius}*/ #000000 /*{a-bar-shadow-color}*/;
+  padding: 2px 0;
+  margin: 0;
+  -moz-box-shadow: 0 2px 5px #888888;
+  -webkit-box-shadow: 0 2px 5px #888888;
+  box-shadow: 0 2px 5px #888888;
+  /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
+
+  margin-bottom: 5px;
+  position: relative;
+}
+.mib_header li {
+  list-style: none;
+}
+.mib_header div#menu-options {
+  display: inline-block;
+  padding: 0px;
+  z-index: 200;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+.mib_header div#menu-options ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.mib_header div#menu-options ul li {
+  height: 33px;
+  min-width: 50px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  border: 1px solid #868686;
+  float: left;
+  text-align: center;
+}
+.mib_header div#menu-options ul li a {
+  background: transparent;
+  display: block;
+  font: 12px/1.5em "Verdana", sans-serif;
+  margin: 0;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+.mib_header div#menu-options ul li.active a {
+  color: #000;
+}
+.mib_header div#menu-options ul ul#navigation {
+  display: none;
+  position: absolute;
+  text-align: left;
+  top: 45px;
+  width: 200px;
+  right: -1px;
+  border-radius: 5px 5px 5px 5px;
+  border: 0px solid #868686;
+}
+.mib_header div#menu-options ul ul#navigation:before {
+  content: " ";
+  position: absolute;
+  border-style: solid;
+  border-width: 0 11px 11px 11px;
+  border-color: transparent transparent #FAFAFF transparent;
+  right: 14px;
+  top: -11px;
+}
+.mib_header div#menu-options ul ul#navigation li {
+  text-align: left;
+  float: none;
+  height: 42px;
+  border: 1px solid grey;
+  left: 0;
+  padding: 0;
+  background: #D6D6D6;
+  font-size: 12px;
+}
+.mib_header div#menu-options ul ul#navigation li a span {
+  border: 0 !important;
+  margin: 0;
+  padding: 7px;
+  text-align: left;
+  color: black;
+  background: #C5C5C5;
+}
+.mib_header div#menu-options ul ul#navigation li a span.menu-item {
+  background: transparent;
+}
+.mib_header div#menu-options ul ul#navigation li:hover {
+  background: #aaa;
+}
+.mib_header div#menu-options ul ul#navigation ul {
+  display: none;
+  position: absolute;
+  left: 140px;
+  top: 0;
+}
+.mib_header h1#boardName {
+  font-family: 'Handlee', helvetica, cursive;
+  font-size: 1.3em;
+  margin: 6px 10px;
+  max-width: 130px;
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.mib_header h1#boardName a,
+.mib_header h1#boardName:hover {
+  display: block;
+  color: #575757;
+  text-transform: capitalize;
+  text-shadow: 1px 0px 1px;
+}
+.mib_header #logo {
+  display: inline-block;
+  width: 100px;
+  height: 18px;
+  background: url("/assets/mobile/ideaBoardzLogo.png") no-repeat top left;
+  text-indent: -1000em;
+  margin: 7px 5px;
+}
+.mib_header .quick-links {
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  top: 0;
+}
+.mib_header .quick-links .btn {
+  margin: 3px;
+  padding: 7px;
+  width: 16px;
+  height: 18px;
+}
+.badge-small {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0;
+  position: relative;
+  left: -4px;
+  top: -4px;
+}
+.icon-background {
+  position: relative;
+  bottom: 0px;
+}
+.icon-idea {
+  background: url("/assets/mobile/ideaIcon.png") no-repeat center;
+  text-indent: -900em;
+}
+.btn-quicklinks {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #000000;
+  /* fallback color */
+
+  background-image: -ms-linear-gradient(top, #000000, #444444);
+  background-image: -moz-linear-gradient(top, #000000, #444444);
+  background-image: -webkit-gradient(linear, 0% top, 0% bottom, from(#000000), to(#444444));
+  background-image: linear-gradient(top, #000000, #444444);
+  /*styling in ie.css for IE8/7*/
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = #000000,EndColorStr=#444444);
+  background-repeat: repeat-x;
+  border-color: #522913 #291307 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.btn-quicklinks:hover,
+.btn-quicklinks:active,
+.btn-quicklinks.active,
+.btn-quicklinks.disabled,
+.btn-quicklinks[disabled] {
+  color: #ffffff;
+  background-color: #444;
+}
+.btn-quicklinks:active,
+.btn-quicklinks.active {
+  background-color: #7A513F;
+}
+.mib_header .quick-links .btn-selected {
+  background-color: #000000;
+  /* fallback color */
+
+  background-image: -ms-linear-gradient(top, #000000, #333333);
+  background-image: -moz-linear-gradient(top, #000000, #333333);
+  background-image: -webkit-gradient(linear, 0% top, 0% bottom, from(#000000), to(#333333));
+  background-image: linear-gradient(top, #000000, #333333);
+  /*styling in ie.css for IE8/7*/
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = #000000,EndColorStr=#333333);
+}
+/* SECTIONS VIEW
+---------------------------------------------------- */
+.mib_content .nav-tabs.nav-stacked {
+  -moz-box-shadow: 0 0 3px #cccccc;
+  -webkit-box-shadow: 0 0 3px #cccccc;
+  box-shadow: 0 0 3px #cccccc;
+  /*	filter:e(%("progid:DXImageTransform.Microsoft.Shadow(color= %s, Direction=%s, Strength=%s)", @color, @offset, @blur))*/
+
+}
+.mib_content .nav-tabs.nav-stacked > li .icon-chevron-right {
+  float: right;
+  margin-top: 12px;
+  margin-right: 10px;
+  opacity: .50;
+  font-family: 'Handlee', helvetica, cursive;
+}
+.mib_content .nav-tabs.nav-stacked > li > a,
+.mib_content .nav-tabs.nav-stacked > li > a:hover {
+  font-weight: bold;
+  padding: 10px;
+  color: #2d1f08;
+  text-align: left;
+  background-color: #ffffff;
+  /* fallback color */
+
+  background-image: -ms-linear-gradient(top, #ffffff, #ededed);
+  background-image: -moz-linear-gradient(top, #ffffff, #ededed);
+  background-image: -webkit-gradient(linear, 0% top, 0% bottom, from(#ffffff), to(#ededed));
+  background-image: linear-gradient(top, #ffffff, #ededed);
+  /*styling in ie.css for IE8/7*/
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = #ffffff,EndColorStr=#ededed);
+}

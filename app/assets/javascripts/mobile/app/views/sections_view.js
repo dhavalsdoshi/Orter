@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     IdeaBoardz.SectionsView = Backbone.View.extend({
         el:$('#viewWrapper'),
         template:_.template($('#template-sectionsView').html()),

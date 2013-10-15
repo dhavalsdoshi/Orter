@@ -1,3 +1,5 @@
+var IdeaBoardz = $.extend({}, IdeaBoardz || {});
+
 IdeaBoardz.Board = function(name, id, sections) {
     this.name = name;
     this.id = id;

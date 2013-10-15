@@ -1,3 +1,4 @@
+var IdeaBoardz = $.extend({}, IdeaBoardz || {});
 // Initialize Global Dispatcher
 IdeaBoardz.dispatcher = _.clone(Backbone.Events);
 

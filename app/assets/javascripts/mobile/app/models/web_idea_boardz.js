@@ -1,3 +1,5 @@
+var IdeaBoardz = $.extend({}, IdeaBoardz || {});
+
 IdeaBoardz.WebIdeaBoardz = function(domain) {
     this.domain = domain;
 };

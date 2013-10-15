@@ -1,3 +1,5 @@
+var IdeaBoardz = $.extend({}, IdeaBoardz || {});
+
 $(document).ready(function () {
     _.templateSettings = {
         interpolate : /\{\{(.+?)\}\}/g

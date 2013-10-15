@@ -5,6 +5,12 @@
 // the compiled file.
 
 
-//= require_directory mobile/lib/zepto.js
-//= require_directory mobile/lib/backbone
-//= require_directory mobile/app
+//= require mobile/lib/zepto.min.js
+//= require mobile/lib/backbone/underscore-min.js
+//= require mobile/lib/backbone/json2.js
+//= require mobile/lib/backbone/backbone-min.js
+//= require mobile/app/idea_boardz.js
+//= require_tree ../javascripts/mobile/app/models
+//= require_tree ../javascripts/mobile/app/views
+//= require_tree ../javascripts/mobile/app/routes
+//= require mobile/app/mib.js

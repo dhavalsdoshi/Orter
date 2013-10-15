@@ -1,3 +1,4 @@
+var IdeaBoardz = $.extend({}, IdeaBoardz || {});
 $(document).ready(function() {
     IdeaBoardz.CreateIdeaView = Backbone.View.extend({
         el: $("#viewWrapper"),

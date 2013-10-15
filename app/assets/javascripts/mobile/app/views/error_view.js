@@ -1,3 +1,6 @@
+
+var IdeaBoardz = $.extend({}, IdeaBoardz || {});
+
 $(document).ready(function () {
     IdeaBoardz.ErrorView = Backbone.View.extend({
         el:$("#viewWrapper"),
