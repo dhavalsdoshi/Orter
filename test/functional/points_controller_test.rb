@@ -8,11 +8,4 @@ class PointsControllerTest < ActionController::TestCase
     end
   end
 
-  def test_should_destroy_point
-    assert_difference('Point.count', -1) do
-      points(:one).section = sections(:one)
-      points(:one).save
-      delete :destroy, :id => points(:one).id, :section_id => points(:one).section
-    end
-  end
 end

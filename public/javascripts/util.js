@@ -39,11 +39,12 @@ $U.filterSection= function(){
   if($('#retro_section_id').length >0){
     var filterSectionId = $('#retro_section_id').val();
     if(filterSectionId){
-      $('.section').removeClass('full').hide();
-      $("#section"+filterSectionId).addClass("full").show();
+      $('.section').hide();
+      $("#section"+filterSectionId).addClass("filtered full").show();
     }
     else{
-      $('.section').removeClass('full').show();
+      $('.section.filtered').removeClass("full");
+      $('.section').show();
     }
   }
 };

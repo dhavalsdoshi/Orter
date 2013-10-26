@@ -47,21 +47,18 @@
                     my own IdeaBoard
                   %li Share the url
                 .formContainer{:style => "display:none"}
+                  - number_of_sections = 10
                   - form_tag({:controller => :retros},{:method => "post",:novalidate => ""}) do
                     = label_tag(:name, "Name *")
                     = text_field_tag(:name, "",:required => "required","data-message"=>"please fill in a name")
                     = label_tag(:description, "Description *")
                     = text_field_tag(:description,"", :required => "required","data-message"=>"please fill in a description")
                     = label_tag(:numberOfSections, "Format")
-                    = select_tag(:numberOfSections,options_for_select([1,2,3,4,5,6].map{ |v| [pluralize(v," Section"), v] },{}),:id=>"NumberOfSections")
+                    = select_tag(:numberOfSections, options_for_select((1..number_of_sections).map{ |v| [pluralize(v," Section"), v] },{}),:id=>"NumberOfSections")
                     = label_tag(:sectioname0, "Section Title *")
                     #sectionWrapper
-                      = text_field_tag(:sectionname0,"",:required => "required","data-message"=>"please fill in a section name")
-                      = text_field_tag(:sectionname1,"",:required => "required","data-message"=>"please fill in a section name")
-                      = text_field_tag(:sectionname2,"",:required => "required","data-message"=>"please fill in a section name")
-                      = text_field_tag(:sectionname3,"",:required => "required","data-message"=>"please fill in a section name")
-                      = text_field_tag(:sectionname4,"",:required => "required","data-message"=>"please fill in a section name")
-                      = text_field_tag(:sectionname5,"",:required => "required","data-message"=>"please fill in a section name")
+                      - (0..number_of_sections-1).map do |number|
+                        = text_field_tag("sectionname#{number}","",:required => "required","data-message"=>"please fill in a section name")
                     = submit_tag("Create")
             .why.orange.sideNote
               %h2.sectionTitle Why?
