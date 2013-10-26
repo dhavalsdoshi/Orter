@@ -8,6 +8,7 @@ gem 'omniauth-google'
 gem 'haml'
 
 group :development do
+  gem "sqlite3"
   gem "mongrel"
   gem 'pry'
 end
