@@ -10,8 +10,12 @@ module DeeplinksHelper
   end
 
   def get_rows_for_sections(sections)
-    rows = sections.each_slice(3).to_a
-    return rows
+    number_of_sections = sections.size
+    if number_of_sections % 3 == 1
+      sections[0..-5].each_slice(3).to_a.concat(sections[-4..-1].each_slice(2).to_a)
+    else
+      sections.each_slice(3).to_a
+    end
   end
 
 end
