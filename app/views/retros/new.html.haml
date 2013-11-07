@@ -46,7 +46,7 @@
                   %li Share the url
                 .formContainer{:style => "display:none"}
                   - number_of_sections = 10
-                  - form_tag({:controller => :retros},{:method => "post",:novalidate => ""}) do
+                  = form_tag({:controller => :retros},{:method => "post",:novalidate => ""}) do
                     = label_tag(:name, "Name *")
                     = text_field_tag(:name, "",:required => "required","data-message"=>"please fill in a name")
                     = label_tag(:description, "Description *")
@@ -103,7 +103,9 @@
                   = image_tag 'play-store.png'
               .ios-app
                 %a.apple-store-link{:href=>'https://itunes.apple.com/us/app/ideaboardz/id616690490?mt=8', :title=>'Ideaboardz IOS App'}
-                  = image_tag 'app-store.png'
+                  %img{:src=>'/images/app-store.png'}
 
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"
+    = javascript_include_tag "jquery.tools.min.js"
+    = javascript_include_tag "analytics"
     = javascript_include_tag "create"
