@@ -128,6 +128,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.8)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -157,5 +158,6 @@ DEPENDENCIES
   prawnto
   pry
   rails (= 3.2.13)
+  sqlite3
   therubyracer
   uglifier (>= 1.0.3)

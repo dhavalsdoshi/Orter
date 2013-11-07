@@ -25,6 +25,7 @@ gem 'haml'
 gem 'jquery-rails'
 
 group :development do
+  gem "sqlite3"
   gem 'pry'
 end
 

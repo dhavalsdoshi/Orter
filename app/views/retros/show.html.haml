@@ -35,11 +35,9 @@
         / googleoff: all
         %noscript Please turn javascript on or move to a browser which supports it
         / googleon: all
-        - row_one_sections, row_two_sections = get_rows_for_sections(@retrospective.sections)
-        #sectionsRow1.sections
-          = render :partial => "section", :collection => row_one_sections, :as => "section", :locals => {:section_width => get_section_width(row_one_sections.size)}
-        #sectionsRow2.sections
-          = render :partial => "section", :collection => row_two_sections, :as => "section", :locals => {:section_width => get_section_width(row_two_sections.size)}
+        - get_rows_for_sections(@retrospective.sections).each_with_index do |row_sections, i|
+          .sections{:id => "sectionsRow#{i}"}
+            = render :partial => "section", :collection => row_sections, :as => "section", :locals => {:section_width => get_section_width(row_sections.size)}
         .hide
           #stickyTemplate.col_right
             .sticky
