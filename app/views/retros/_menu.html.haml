@@ -34,10 +34,10 @@
         %ul#inner
           %li
             %img.corner_inset_left{:alt => "", :src => asset_path("/assets/menu/corner_inset_left.png")}
-            = link_to 'PDF', export_path(:id => @retrospective.id, :name => @retrospective.name, :format => 'pdf', :target => '_blank')
+            = link_to 'PDF', export_path(:id => @retrospective.id, :name => @retrospective.name, :format => 'pdf'), :target => '_blank'
             %img.corner_inset_right{:alt => "", :src => asset_path("/assets/menu/corner_inset_right.png")}
           %li
-            = link_to 'Excel', export_path(:id => @retrospective.id, :name => @retrospective.name, :format => 'xls', :target => '_blank')
+            = link_to 'Excel', export_path(:id => @retrospective.id, :name => @retrospective.name, :format => 'xls'), :target => '_blank'
           %li.last-item
             %img.corner_left{:alt => "", :src => asset_path("/assets/menu/corner_left.png")}/
             %img.middle{:alt => "", :src => asset_path("/assets/menu/dot.gif")}/
