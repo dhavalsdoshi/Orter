@@ -9,6 +9,7 @@ class DeeplinksHelperTest < ActiveSupport::TestCase
 
   def test_get_rows_for_sections_when_one_row
     assert_equal [[1, 2, 3]], get_rows_for_sections((1..3).to_a)
+    assert_equal [[1]], get_rows_for_sections((1..1).to_a)
   end
 
   def test_get_rows_for_sections_when_two_rows

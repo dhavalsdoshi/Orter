@@ -11,7 +11,9 @@ module DeeplinksHelper
 
   def get_rows_for_sections(sections)
     number_of_sections = sections.size
-    if number_of_sections % 3 == 1
+    if number_of_sections == 1
+      [sections[0..0]].to_a
+    elsif number_of_sections % 3 == 1
       sections[0..-5].each_slice(3).to_a.concat(sections[-4..-1].each_slice(2).to_a)
     else
       sections.each_slice(3).to_a
