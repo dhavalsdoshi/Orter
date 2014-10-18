@@ -10,11 +10,11 @@ $(document).ready(function() {
   $('.formContainer form').validator(
       {inputEvent: "blur", errorInputEvent:"blur"}
   );
-
-  $(".formContainer").hide();
+  var $formContainer = $(".formContainer");
+  $formContainer.hide();
   $(".flip").click(function(e) {
-    $(".formContainer").show("slow");
-    $(".formContainer").parents(".sideNote").expose({
+    $formContainer.show("slow");
+    $formContainer.parents(".sideNote").expose({
       onClose: function() {
         $(".formContainer").hide("slow");
         $(".error").hide("slow");
@@ -34,10 +34,12 @@ $(document).ready(function() {
 
   var changeNumberOfSections = function(e) {
     var numberOfSections = $(e.currentTarget).val();
-    $("#sectionWrapper input").removeAttr("disabled");
-    $("#sectionWrapper input").show();
-    $("#sectionWrapper input:gt(" + (numberOfSections - 1) + ")").attr("disabled", "disabled");
-    $("#sectionWrapper input:gt(" + (numberOfSections - 1) + ")").hide();
+    var $sectionWrapper = $("#sectionWrapper input");
+    $sectionWrapper.removeAttr("disabled");
+    $sectionWrapper.show();
+    var section_wrapper_input = $("#sectionWrapper input:gt(" + (numberOfSections - 1) + ")");
+    section_wrapper_input.attr("disabled", "disabled");
+    section_wrapper_input.hide();
 
     var selectedSection = $(e.currentTarget).children("option:selected").text();
     if(boardTemplates[selectedSection]){

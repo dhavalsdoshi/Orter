@@ -4,6 +4,7 @@ Gorter::Application.routes.draw do
 
   match 'for/:name'=>'retros#show_old'
   get 'for/:name/:id(.:format)'=>'retros#show', :as => 'retro_for'
+  put 'for/:name/:id/edit' => 'retros#add_section', as: 'retro_edit'
   match 'page/:name' => 'pages#show'
 
   match 'points/delete/:id.:format' =>'points#destroy'

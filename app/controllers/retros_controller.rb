@@ -24,6 +24,15 @@ class RetrosController < ApplicationController
     end
   end
 
+  def add_section
+    @retrospective = Retro.find_by_id_and_name(params[:id], params[:name], :include => :sections)
+    add_current_user(@retrospective)
+    filtered_section_name = ActionView::Base.full_sanitizer.sanitize(params[:section_name])
+    @retrospective.sections << Section.new({:name => filtered_section_name})
+    @retrospective.save
+    redirect_to action: :show
+  end
+
   def show
     @retrospective = Retro.find_by_id_and_name(params[:id], params[:name], :include => :sections)
     add_current_user(@retrospective)

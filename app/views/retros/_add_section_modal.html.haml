@@ -1,0 +1,6 @@
+.formContainer.add_section_form{style: "display:none"}
+  = form_tag(retro_edit_path(:name => @retrospective.name, :id => @retrospective.id), method: 'put') do
+    = label_tag(:name, 'Section Name:')
+    = text_field_tag(:section_name, '',:required => 'required','data-message'=>'please fill in a section name')
+
+    = submit_tag('Create')
