@@ -141,7 +141,7 @@ var Ideaboardz = function() {
       dataType: 'json',
       success: displaySectionPoints,
       error: function(){
-        setTimeout(that.refreshSections,10000)
+        setTimeout(that.refreshSections,15000)
       },
       timeout: 9000
     });
