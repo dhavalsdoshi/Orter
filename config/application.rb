@@ -52,7 +52,7 @@ module Gorter
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.assets.precompile += %w[orter.css, newhome.css, contributors.css, faq.css, mib_custom.css, create.js, show.js, mobile_all.js]
+    config.assets.precompile += %w[orter.css newhome.css contributors.css faq.css mib_custom.css create.js show.js mobile_all.js]
     # config.assets.logger = nil
     # config.assets.log_level = :info
     config.assets.debug = false
