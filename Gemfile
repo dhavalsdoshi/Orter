@@ -19,8 +19,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'omniauth', '~> 1.0.0'
-gem 'omniauth-google'
+gem 'omniauth-google-oauth2', '~> 0.2.6'
 gem 'haml'
 gem 'jquery-rails'
 
