@@ -1,6 +1,6 @@
 %div{:class => "section #{section_width} #{get_sticky_color(section.id)}", "data-color" => get_sticky_color(section.id), :id => "section#{section.id}"}
   .sectionTitleArea
-    %h4.sectionTitle= section.name
+    %h4.sectionTitle!= section.name
     %button.addStickyButton{:title => "Add Sticky"}
   .points
   .addStickyForm.hide
