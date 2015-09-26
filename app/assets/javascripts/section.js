@@ -1,6 +1,6 @@
 var Section = function(section){
   this.id = section.attr('id').replace('section', '');
-  this.stickies = new Array();
+  this.stickies = [];
 };
 
 Section.prototype.addSticky = function(stickyText){

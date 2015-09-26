@@ -36,8 +36,9 @@ $U.filterStickies = function(){
 };
 
 $U.filterSection= function(){
-  if($('#retro_section_id').length >0){
-    var filterSectionId = $('#retro_section_id').val();
+    var $retroSectionId = $('#retro_section_id');
+    if($retroSectionId.length >0){
+    var filterSectionId = $retroSectionId.val();
     if(filterSectionId){
       $('.section').hide();
       $("#section"+filterSectionId).addClass("filtered full").show();
