@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.18'
+gem 'rails', '3.2.21'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -9,6 +9,9 @@ gem "activerecord-mysql-adapter"
 gem "mysql2"
 gem 'prawn'
 gem 'prawnto'
+
+gem "recaptcha", :require => "recaptcha/rails"
+gem 'figaro'
 
 # Gems used only for assets and not required
 # in production environments by default.

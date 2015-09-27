@@ -16,11 +16,13 @@ class RetrosController < ApplicationController
     end
     @retro.users = [current_user] if current_user
 
-    if @retro.save
+    if verify_recaptcha(timeout: 60) && @retro.save
       flash[:notice] = 'Retro was successfully created.'
       redirect_to retro_for_url(:id => @retro.id.to_s, :name => @retro.name)
     else
-      render new
+      @user = current_user
+      flash[:error] = 'Error creating board. Please try again.'
+      render :new
     end
   end
 

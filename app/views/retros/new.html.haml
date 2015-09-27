@@ -38,6 +38,8 @@
                     %a{:href => "/for/test"} Spin!
             .create.yellow.sideNote
               %h2.sectionTitle How
+              - if flash[:error].present?
+                %h4.error= flash[:error]
               .sectionContent
                 %ul
                   %li
@@ -57,6 +59,7 @@
                     #sectionWrapper
                       - (0..number_of_sections-1).map do |number|
                         = text_field_tag("sectionname#{number}","",:required => "required","data-message"=>"please fill in a section name")
+                    = recaptcha_tags(display: {theme: 'white'})
                     = submit_tag("Create")
             .why.orange.sideNote
               %h2.sectionTitle Why?
