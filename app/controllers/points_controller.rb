@@ -1,6 +1,5 @@
 class PointsController < ApplicationController
 
-
   def index_for_retro
     respond_to do |format|
       format.json { render :json => points_json(params) }
@@ -15,7 +14,7 @@ class PointsController < ApplicationController
     respond_to do |format|
       if point.save
         flash[:notice] = 'Point was successfully created.'
-        Rails.cache.delete("retro_#{point.section.retro_id}")
+        delete_cache_for(point)
         format.json { render :json => point.to_json(:methods => :votes_count), :status => :created, :location => point}
       else
         format.json { render :json => point.errors, :status => :unprocessable_entity }
@@ -31,7 +30,7 @@ class PointsController < ApplicationController
     #point_params = params[:point]
     #point_params[:message] = CGI.escapeHTML(point_params[:message])
     if point.update_attributes(params[:point])
-      Rails.cache.delete("retro_#{point.section.retro_id}")
+      delete_cache_for(point)
       head :ok
     else
       render :json => point.errors.to_json, :status => :unprocessable_entity
@@ -42,17 +41,23 @@ class PointsController < ApplicationController
     point = Point.find_by_id_and_message(params[:id], params[:message])
     return head :error if point.nil?
     point.destroy
-    Rails.cache.delete("retro_#{point.section.retro_id}")
+    delete_cache_for(point)
     respond_to do |format|
       format.json { head :ok }
     end
   end
 
+
   private
+  def delete_cache_for(point)
+    Rails.cache.delete("retro_#{point.section.retro.name}_#{point.section.retro.id}")
+  end
+
   def points_json(params)
     retro_id = params[:retro_id]
-    Rails.cache.fetch("retro_#{retro_id}", expires_in: 10.minutes) do
-      points = Retro.find_by_id_and_name(retro_id, params[:retro_name]).points
+    retro_name = params[:retro_name]
+    Rails.cache.fetch("retro_#{retro_name}_#{retro_id}", expires_in: 10.minutes) do
+      points = Retro.find_by_id_and_name(retro_id, retro_name).points
       #points = Retro.find(params[:retro_id]).points
       points.to_json(:methods => :votes_count)
     end
