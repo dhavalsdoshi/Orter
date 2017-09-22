@@ -7,7 +7,6 @@ class PointsController < ApplicationController
   end
 
   def create
-    point_params = params[:point]
     point_params[:message] = CGI.escapeHTML(point_params[:message])
     point = Point.new(point_params)
 
@@ -25,11 +24,10 @@ class PointsController < ApplicationController
   def update
     #point = Point.find(params[:id])
     point = Point.find_by_id_and_message(params[:id], params[:point][:oldmessage])
-    points_params = params[:point]
-    points_params.delete(:oldmessage)
+    params[:point].delete(:oldmessage)
     #point_params = params[:point]
     #point_params[:message] = CGI.escapeHTML(point_params[:message])
-    if point.update_attributes(params[:point])
+    if point.update_attributes(point_params)
       delete_cache_for(point)
       head :ok
     else
@@ -49,6 +47,7 @@ class PointsController < ApplicationController
 
 
   private
+
   def delete_cache_for(point)
     Rails.cache.delete("retro_#{point.section.retro.name}_#{point.section.retro.id}")
   end
@@ -61,6 +60,10 @@ class PointsController < ApplicationController
       #points = Retro.find(params[:retro_id]).points
       points.to_json(:methods => :votes_count)
     end
+  end
+
+  def point_params
+    params.require(:point).permit(:section_id, :message)
   end
 
 

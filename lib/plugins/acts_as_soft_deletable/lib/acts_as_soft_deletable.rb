@@ -34,7 +34,7 @@ module ActiveRecord #:nodoc:
             cattr_accessor :live_class 
 
             self.live_class = live_class
-            self.set_table_name "deleted_#{live_class.table_name}"
+            self.table_name = "deleted_#{live_class.table_name}"
 
             extend Deleted::ClassMethods
             include Deleted::InstanceMethods

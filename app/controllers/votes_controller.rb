@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
 
   def create
-    vote = Vote.new(params[:vote])
+    vote = Vote.new(vote_params)
 
     respond_to do |format|
       if vote.save
@@ -12,6 +12,12 @@ class VotesController < ApplicationController
         format.json  { render :json => vote.errors.to_json, :status => :unprocessable_entity }
       end
     end
+  end
+
+  private
+
+  def vote_params
+    params.require(:vote).permit(:point_id)
   end
 
 end

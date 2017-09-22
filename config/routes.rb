@@ -1,28 +1,28 @@
 Gorter::Application.routes.draw do
-  match '/' => 'retros#new'
-  match 'retros/:retro_name/:retro_id/points.:format'=>'points#index_for_retro'
+  get '/' => 'retros#new'
+  get 'retros/:retro_name/:retro_id/points.:format'=>'points#index_for_retro'
 
-  match 'for/:name'=>'retros#show_old'
+  get 'for/:name'=>'retros#show_old'
   get 'for/:name/:id(.:format)'=>'retros#show', :as => 'retro_for'
-  match 'page/:name' => 'pages#show'
+  get 'page/:name' => 'pages#show'
 
-  match 'points/delete/:id.:format' =>'points#destroy'
+  get 'points/delete/:id.:format' =>'points#destroy'
 
-  match 'retros/export/:id/:name.:format'=> 'retros#export', :as => 'export'
+  get 'retros/export/:id/:name.:format'=> 'retros#export', :as => 'export'
 
-  match 'admin/show_deleted/:retro_name/:retro_id/devilthegr8' =>'admin#deleted_points'
-  match 'admin/restore_deleted/:point_id' => 'admin#restore_deleted'
+  get 'admin/show_deleted/:retro_name/:retro_id/devilthegr8' =>'admin#deleted_points'
+  get 'admin/restore_deleted/:point_id' => 'admin#restore_deleted'
 
   resources :points do
     resources :votes
   end
   resources :retros
-  match ':controller/:action/:id'
-  match ':controller/:action/:id.:format'
-  match "/auth/:provider/callback" => 'session#create'
-  match "/signin" => 'session#new', :as => 'signin'
-  match "/signout" => 'session#destroy', :as => 'signout'
-  match 'user/retros' => 'users#retros'
+  get ':controller/:action/:id'
+  get ':controller/:action/:id.:format'
+  get "/auth/:provider/callback" => 'session#create'
+  get "/signin" => 'session#new', :as => 'signin'
+  get "/signout" => 'session#destroy', :as => 'signout'
+  get 'user/retros' => 'users#retros'
 
 
   # The priority is based upon order of creation:
