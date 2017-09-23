@@ -1,4 +1,4 @@
-class CreateSections < ActiveRecord::Migration
+class CreateSections < ActiveRecord::Migration[5.1]
   def self.up
     create_table :sections do |t|
       t.references :retro

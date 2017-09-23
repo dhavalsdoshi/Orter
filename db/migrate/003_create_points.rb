@@ -1,4 +1,4 @@
-class CreatePoints < ActiveRecord::Migration
+class CreatePoints < ActiveRecord::Migration[5.1]
   def self.up
     create_table :points do |t|
       t.references :section

@@ -1,4 +1,4 @@
-class CreateVote < ActiveRecord::Migration
+class CreateVote < ActiveRecord::Migration[5.1]
   def self.up
     create_table :votes do |t|
       t.references :point

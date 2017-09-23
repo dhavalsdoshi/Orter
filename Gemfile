@@ -1,47 +1,44 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0'
+gem 'rails', '~> 5.1.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem "activerecord-mysql-adapter"
-gem "mysql2"
+gem 'puma', '~> 3.7'
+gem 'mysql2'
 gem 'prawn'
+gem 'prawn-table'
 gem 'prawnto'
 
-gem "recaptcha", :require => "recaptcha/rails"
+gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'figaro'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'less-rails'
-  gem 'therubyracer'
-  gem 'uglifier', '>= 1.0.3'
-end
-
 gem 'omniauth-google-oauth2', '~> 0.2.6'
+
+gem 'uglifier', '>= 1.3.0'
+gem 'less-rails'
+gem 'therubyracer'
+
 gem 'haml'
 gem 'jquery-rails'
 
-group :development do
-  gem "sqlite3"
-  gem 'pry'
+
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '~> 2.13.0'
+  gem 'selenium-webdriver'
 end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+group :development do
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+end
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

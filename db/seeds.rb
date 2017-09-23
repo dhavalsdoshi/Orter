@@ -1,4 +1,4 @@
-if Retro.find_by_name("test").nil?
+if Retro.find_by(name: "test").nil?
   p "Creating a test retro"
   retro = Retro.create!(:name => "test", :description => "test")
   Section.create!(:name => "Went Well", :retro => retro)

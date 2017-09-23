@@ -2,10 +2,10 @@ class AdminController < ApplicationController
 
   def deleted_points
     if params[:retro_id].present?
-      retro = Retro.find_by_id_and_name(params[:retro_id],params[:retro_name], :include => :sections)
+      retro = Retro.where(id: params[:retro_id], name: params[:retro_name]).includes(:sections).take
       @points = []
       retro.sections.each do |s|
-        @points.concat(Point::Deleted.find(:all, :conditions => ["section_id=?",s.id]))
+        @points.concat(Point::Deleted.where(section_id: s.id).all)
       end
     end
   end

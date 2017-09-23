@@ -25,7 +25,7 @@ module ActiveRecord #:nodoc:
           # don't allow multiple calls
           return if self.included_modules.include?(Live::InstanceMethods)
 
-          include Live::InstanceMethods
+          prepend Live::InstanceMethods
           extend Live::ClassMethods
           
           live_class = self
@@ -185,18 +185,12 @@ module ActiveRecord #:nodoc:
         # These methods will be available as instance methods for the Model
         # class that invoked acts_as_soft_deletable
         module InstanceMethods
-          def self.included(base)
-            base.class_eval do
-              # don't use before_destroy callback because that can't be transactional.
-              alias_method_chain :destroy, :soft_delete
-            end
-          end
 
           # Wraps ActiveRecord::Base#destroy to provide the soft deleting
           # behavior.  The insert into the deleted table is protected with a
           # transaction and will be rolled back if destroy raises any
           # exception.
-          def destroy_with_soft_delete
+          def destroy
             self.class.transaction do
               self.class.deleted_class.delete self.id
 
@@ -209,7 +203,7 @@ module ActiveRecord #:nodoc:
               deleted.deleted_at = Time.now
 
               deleted.save!
-              destroy_without_soft_delete
+              super
             end
           end
         end

@@ -1,4 +1,4 @@
-class CreateParticipant < ActiveRecord::Migration
+class CreateParticipant < ActiveRecord::Migration[5.1]
   def self.up
     create_table :participants do |t|
       t.references :retro

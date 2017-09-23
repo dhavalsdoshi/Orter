@@ -1,4 +1,4 @@
-class CreateRetros < ActiveRecord::Migration
+class CreateRetros < ActiveRecord::Migration[5.1]
   def self.up
     create_table :retros do |t|
       t.string :name
