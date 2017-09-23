@@ -44,7 +44,7 @@ class RetrosController < ApplicationController
   end
 
   def show_old
-    @retrospective = Retro.find_by_name(params[:name], :include => :sections)
+    @retrospective = Retro.where(name: params[:name]).includes(:sections).take
     add_current_user(@retrospective)
     if mobile?
       render :mobile_show and return
