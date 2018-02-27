@@ -14,7 +14,7 @@ gem 'prawnto'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'figaro'
 
-gem 'omniauth-google-oauth2', '~> 0.2.6'
+gem 'omniauth-google-oauth2'
 
 gem 'uglifier', '>= 1.3.0'
 gem 'less-rails'

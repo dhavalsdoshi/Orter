@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   get "/signin" => 'session#new', :as => 'signin'
   get "/signout" => 'session#destroy', :as => 'signout'
   get 'user/retros' => 'users#retros'
+  root 'retros#new'
 end
