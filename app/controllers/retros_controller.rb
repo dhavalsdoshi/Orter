@@ -16,7 +16,8 @@ class RetrosController < ApplicationController
     end
     @retro.users = [current_user] if current_user
 
-    if verify_recaptcha(timeout: 60) && @retro.save
+    recaptcha_disabled = Rails.application.config.disableRecaptcha
+    if (recaptcha_disabled || verify_recaptcha(timeout: 60)) && @retro.save
       flash[:notice] = 'Retro was successfully created.'
       redirect_to retro_for_url(:id => @retro.id.to_s, :name => @retro.name)
     else

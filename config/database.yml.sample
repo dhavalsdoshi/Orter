@@ -40,3 +40,11 @@ production:
       username: retro
       password: retro
       socket: /tmp/mysql.sock
+
+docker:
+      adapter: mysql2
+      encoding: utf8
+      database: retro
+      username: retro
+      password: retro
+      host: dbserver

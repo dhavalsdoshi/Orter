@@ -13,3 +13,8 @@ production:
   host: http://www.ideaboardz.com
   id: 45486672807-1bgst1gvbgn1t74bd7j9tomno8vs8m88.apps.googleusercontent.com
   secret: 50Xt5mdaUlsTSFUX2DHtqFLI
+
+docker:
+  host: http://localhost:3000
+  id: 45486672807.apps.googleusercontent.com
+  secret: ncK0Anc4VO_QnKcrijVDqlQX
