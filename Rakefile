@@ -22,10 +22,6 @@ task :ensure_db_up do
     abort "DB took too long to become available" unless db_is_up
 end
 
-task :mygrate_db => [:ensure_db_up] do
-    Rake::Task["db:migrate"].invoke
-end
-
-task :migrate_and_start => [:mygrate_db] do
+task :migrate_and_start => [:ensure_db_up, "db:migrate"] do
     Process.exec("rails s")
 end
