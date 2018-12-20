@@ -8,6 +8,4 @@ WORKDIR /usr/src/app
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-COPY . .
-
-CMD ["bundle", "exec", "rails", "server"]
+CMD ["bundle", "exec", "rails", "migrate_and_start"]
