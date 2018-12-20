@@ -23,5 +23,5 @@ task :ensure_db_up do
 end
 
 task :migrate_and_start => [:ensure_db_up, "db:migrate"] do
-    Process.exec("rails s")
+    Process.exec("bundle exec rails s")
 end
