@@ -6,7 +6,7 @@
 }
 
 .whiteboard{
-  font-family: 'Delius', helvetica, cursive;
+  font-family: 'Open Sans', 'Delius', helvetica, cursive;
 }
 
 .half{
@@ -29,18 +29,15 @@
 
 .whiteboard{
     background-color: white;
-    border: #696969 solid 20px;
+    border: #696969 solid ;
 
     -moz-border-bottom-colors: #555 #666 #777 #888 #aaa #bbb #ccc #ddd;
     -moz-border-top-colors: #555 #666 #777 #888 #888 #777 #666 #555;
     -moz-border-left-colors: #555 #666 #777 #999 #999 #888 #777 #666;
     -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
 
-
-    .shadow(3px,7px,3px,#888);
-	  .round-corner-all(15px);
     overflow: auto;
-    width: 95%;
+    width: 100%;
     min-height:643px;
     text-align: center;
 }
@@ -133,12 +130,12 @@
   overflow:visible;
   width: 100%;
   textarea{
-    .shadow(5px,1px,3px,#888);
+    .shadow(1px,1px,1px,#888);
   }
 }
 
 .sticky{
-  .shadow(3px,1px,3px,#888);
+  .shadow(1px,1px,1px,#888);
   hr {
     border: 0;
     width: 70%;
@@ -147,7 +144,7 @@
 }
 
 .ui-widget-content{
-  .shadow(2px,10px,29px,#888)
+  .shadow(1px, 1px, 10px,#888)
 }
 
 .sticky,.addStickyForm textarea,.ui-widget-content{
@@ -155,7 +152,6 @@
     border : 1px solid @stickyColor1;
     font-size: 0.75em;
     text-overflow: ellipsis;
-    .round-corner(4px, 4px, 15px, 4px);
     margin-left: 5px;
     margin-top: 5px;
 }
@@ -197,39 +193,13 @@
 }
 
 #largeStickyDialog textarea, #largeStickyDialog input{
-  background: transparent;
-  border: none;
   overflow: auto;
-}
-
-.yellow #largeStickyDialog textarea:focus, .yellow #largeStickyDialog textarea:hover, .yellow #largeStickyDialog input:hover{
-  background-color: lighten(@stickyColor1, 10%);
-}
-
-.aqua #largeStickyDialog textarea:focus, .aqua #largeStickyDialog textarea:hover, .aqua #largeStickyDialog input:hover{
-  background-color: darken(@stickyColor2, 5%);
-}
-
-.blue #largeStickyDialog textarea:focus, .blue #largeStickyDialog textarea:hover, .blue #largeStickyDialog input:hover{
-  background-color: darken(@stickyColor3, 5%);
-}
-
-.orange #largeStickyDialog textarea:focus, .orange #largeStickyDialog textarea:hover, .orange #largeStickyDialog input:hover{
-  background-color: darken(@stickyColor4, 5%);
-}
-
-.purple #largeStickyDialog textarea:focus, .purple #largeStickyDialog textarea:hover, .purple #largeStickyDialog input:hover{
-  background-color: darken(@stickyColor5, 5%);
-}
-
-.green #largeStickyDialog textarea:focus, .green #largeStickyDialog textarea:hover, .green #largeStickyDialog input:hover{
-  background-color: darken(@stickyColor6, 5%);
 }
 
 #largeStickyDialog{
   font-size: 1em;
   cursor: default;
-  font-family: 'Delius', helvetica, cursive;
+  font-family: 'Open Sans', 'Delius', helvetica, cursive;
   label,.formElement{
     font-size: 16px;
   }
@@ -239,18 +209,8 @@
   .formElement{
     font-size: 16px;
     padding: 5px;
-    font-family: 'Delius', 'Comic Sans MS', helvetica, cursive;
+    font-family: 'Open Sans', 'Delius', 'Comic Sans MS', helvetica, cursive;
     outline: none;
-    .inset-shadow(inset,0,1px,5px,#777);
-    .transition(all,300ms,ease);
-    &:hover{
-      .transition(all,300ms,ease);
-      .inset-shadow(inset,0,1px,8px,#666);
-    }
-    &:focus{
-      .transition(all,300ms,ease);
-      .inset-shadow(inset,0,1px,8px,#555);
-    }
   }
   .voteCount {
     position: relative;
@@ -348,11 +308,10 @@
 }
 
 .addStickyButton {
-    background:transparent asset-url('/assets/Add-20.png') no-repeat scroll 0 0;
+    background-color: white;
+    color: #00DF25;
     border: none;
     cursor: pointer;
-    height: 30px;
-    width: 20px;
     overflow: hidden;
 }
 
@@ -367,15 +326,12 @@
 }
 
 .removeStickyButton{
+    font-size: 2.5em;
     cursor: pointer;
-    height:43px; /*TODO: is this required?*/
-    width:28px;
     float: right;
-    margin: 0 20px;
-    text-decoration: underline;
-    background: asset-url('/assets/trash.png') 0 0 no-repeat transparent;
+    margin: 10px 10px;
     &:hover{
-      background-position:0 -40px;
+      color: red;
     }
 }
 
@@ -386,9 +342,11 @@
 }
 
 .voteStickyButton{
-  padding: 20px 0;
   font-size: 2.5em;
   cursor: pointer;
+  &:hover{
+    color: green;
+  }
 }
 .voteCountContainer,.voteStickyButton{
   display: block;
@@ -452,9 +410,7 @@
   color: green;
 }
 
-.icon-like:before { 
-  content: "8";  
-}
+
 
 .icon-label:before{
   content: "t";

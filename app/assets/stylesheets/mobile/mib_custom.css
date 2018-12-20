@@ -374,7 +374,7 @@ body {
   top: 0;
 }
 .mib_header h1#boardName {
-  font-family: 'Handlee', helvetica, cursive;
+  font-family: 'Roboto', 'Handlee', helvetica, cursive;
   font-size: 1.3em;
   margin: 6px 10px;
   max-width: 130px;
@@ -482,7 +482,7 @@ body {
   margin-top: 12px;
   margin-right: 10px;
   opacity: .50;
-  font-family: 'Handlee', helvetica, cursive;
+  font-family: 'Roboto', 'Handlee', helvetica, cursive;
 }
 .mib_content .nav-tabs.nav-stacked > li > a,
 .mib_content .nav-tabs.nav-stacked > li > a:hover {
