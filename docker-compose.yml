@@ -29,4 +29,3 @@ services:
       - db:dbserver
     depends_on:
       - db
-
