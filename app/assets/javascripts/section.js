@@ -155,7 +155,16 @@ $(document).ready(function() {
         autoOpen: false,
         height: 255,
         width: 350,
-        modal: true
+        modal: true,
+        closeOnEscape: true,
+        open: function(event, ui) {
+            $(this).closest(".ui-dialog")
+                    .find(".ui-dialog-titlebar-close")
+                    .addClass("stickyClose fas fa-times");
+            $('.ui-widget-overlay').bind('click', function() {
+                $("#largeStickyDialog").dialog('close');
+            });
+        }
     });
     $('#sortBy').change($U.sortStickies).change();
     $('#search').keyup($U.filterStickies);
