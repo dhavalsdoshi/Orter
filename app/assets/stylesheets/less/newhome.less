@@ -21,16 +21,9 @@ body{
 
 .whiteboard{      /* copied to orter.css */
     background-color: white;
-    border: #696969 solid 20px;
-
-    -moz-border-bottom-colors: #555 #666 #777 #888 #aaa #bbb #ccc #ddd;
-    -moz-border-top-colors: #555 #666 #777 #888 #888 #777 #666 #555;
-    -moz-border-left-colors: #555 #666 #777 #999 #999 #888 #777 #666;
-    -moz-border-right-colors: #666 #777 #888 #bbb #ccc #eee #eee #eee;
-
-    .shadow(3px, 7px, 3px, #888);
-    .round-corner-all(15px);
-
+    border: #696969 solid 10px;
+    .shadow(2px,3px,2px,#888);
+    .round-corner-all(5px);
     overflow: auto;
     margin: auto 0;
     width: 95%;
@@ -77,13 +70,13 @@ body{
 }
 
 .sectionTitle{
-    font-family:Edosz;
+    font-family: 'Roboto', helvetica, cursive;
     text-align:center;
 }
 
 .sectionContent{
-    font-family:Handwritten;
-    font-size:150%;
+    font-family: 'Roboto', helvetica, cursive;
+    font-size: 140%;
 }
 
 .what{
@@ -127,30 +120,6 @@ body{
     .rotate(-10deg);
     z-index:4;
 }
-.app-stores{
-  position: absolute;
-  top: 625px;
-  right: 330px;
-  box-shadow: none;
-  &:hover{
-    box-shadow: none;
-  }
-  @media all and (max-width: 650px) and (min-width:200px){
-    margin-top: 50px;
-    text-align: center;
-  }
-  .android-app,
-  .ios-app {
-    vertical-align: baseline;
-    display: inline-block;
-    img{
-      width: 130px;
-      &:hover{
-        opacity: 0.8;
-      }
-    }
-  }
-}
 
 .contributors {
   top: 438px;
@@ -166,8 +135,8 @@ body{
   z-index: 4;
 }
 .help{
-    top:620px;
-    right:70px;
+    top:585px;
+    right:85px;
     .rotate(-3deg);
     z-index:5;
 }
