@@ -50,6 +50,7 @@ class PointsController < ApplicationController
 
   def delete_cache_for(point)
     Rails.cache.delete("retro_#{point.section.retro.name}_#{point.section.retro.id}")
+    ActionCable.server.broadcast "updates_#{point.section.retro.id}_#{point.section.retro.name}", message: 'go_fetch'
   end
 
   def points_json(params)
@@ -57,7 +58,6 @@ class PointsController < ApplicationController
     retro_name = params[:retro_name]
     Rails.cache.fetch("retro_#{retro_name}_#{retro_id}", expires_in: 10.minutes) do
       points = Retro.find_by_id_and_name(retro_id, retro_name).points
-      #points = Retro.find(params[:retro_id]).points
       points.to_json(:methods => :votes_count)
     end
   end

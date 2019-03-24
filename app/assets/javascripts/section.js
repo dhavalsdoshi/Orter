@@ -74,6 +74,7 @@ var Ideaboardz = function() {
   this.init = function() {
     fillSectionsAndAttachEvents();
     that.refreshSections();
+
   };
 
   var fillSectionsAndAttachEvents = function() {
@@ -83,6 +84,9 @@ var Ideaboardz = function() {
       sectionObject.setupEvents();
       sections.push(sectionObject);
     });
+    $(document).on("go_fetch", function(){
+      that.refreshSections();
+    })
   };
   var findSectionBy = function(id){
     return _.find(sections,function(section){return section.id == id});
@@ -107,7 +111,7 @@ var Ideaboardz = function() {
 
     $U.filterStickies();
     $U.sortStickies();
-    setTimeout(that.refreshSections,10000)
+    setTimeout(that.refreshSections,60000)
   };
 
   var allPointsOnBoard = function(){
@@ -188,4 +192,5 @@ $(document).ready(function() {
       if ($(this).val().length>maxlength)
       $(this).value($(this).value().substring(0, maxlength -1));
     });
+
 });
