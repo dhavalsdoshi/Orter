@@ -31,8 +31,13 @@ $.extend($.expr[':'], {
 var $U = {};
 $U.filterStickies = function(){
   var text = $('#search').val();
-  $('div.sticky:containsi("'+ text +'")').show();
-  $('div.sticky:not(:containsi("'+ text +'"))').hide();
+  if(text.length > 0){
+    $('div.sticky:not(:containsi("'+ text +'"))').hide();
+    $('div.sticky:containsi("'+ text +'")').show();
+  }
+  else { //TODO: remove hack - had to put this condition for safari - empty text was creating and issue with selector
+    $('div.sticky').show();
+  }
 };
 
 $U.filterSection= function(){
