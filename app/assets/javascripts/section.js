@@ -167,8 +167,18 @@ $(document).ready(function() {
         }
     });
     $('#sortBy').change($U.sortStickies).change();
+    $('#sortBy').change(function(){
+        $a.trackEvent('board', 'sortBy', $('#sortBy').val());
+    });
     $('#search').keyup($U.filterStickies);
+    $('#search').blur(function(){
+        var searchTerm = $('#search').val()
+        if(searchTerm.length > 0) $a.trackEvent('board', 'search', searchTerm);
+    });
     $('#retro_section_id').change($U.filterSection).change();
+    $('#retro_section_id').change(function(){
+       $a.trackEvent('board', 'filterSection', $( "#retro_section_id option:selected" ).text());
+    });
     $("#pdfExport,#excelExport").click(
       function(){$a.trackEvent('board', $(this).attr('id'),window.location.pathname.replace('/for/','') );
     });
