@@ -5,7 +5,7 @@ gem 'rails', '~> 5.1.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12'
 gem 'mysql2'
 gem 'prawn'
 gem 'prawn-table'
