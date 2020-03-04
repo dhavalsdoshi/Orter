@@ -12,7 +12,7 @@ li.start-item img, li.last-item img {float: left; height: 30px;}
 /* sub-menus*/
 #menu ul { padding:0px; margin:0px; display:block; display:inline; text-align: left; }
 #menu li ul { position:absolute; left:-10px; top:0px; margin-top:30px; width:170px; line-height:16px; background-color:#172322; color:#0395CC; /* for IE */ display:none; }
-#menu li:hover ul { display:block;}
+#menu li:hover ul { display:inline-block; max-height: 100vh; overflow: auto }
 #menu li ul li{ display:block; margin:5px 20px; padding: 5px 0px;  border-top: dotted 1px #606060; list-style-type:none; }
 #menu li ul li:first-child { border-top: none; }
 #menu li ul li a { display:block; color:#0395CC; }
