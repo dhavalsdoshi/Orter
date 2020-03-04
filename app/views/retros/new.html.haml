@@ -50,15 +50,15 @@
                   - number_of_sections = 10
                   = form_tag({:controller => :retros},{:method => "post",:novalidate => ""}) do
                     = label_tag(:name, "Name *")
-                    = text_field_tag(:name, "",:required => "required","data-message"=>"please fill in a name")
+                    = text_field_tag(:name, "",:required => "required",pattern: "^[^.]*$" , "data-message" => "Please provide name without . character")
                     = label_tag(:description, "Description *")
-                    = text_field_tag(:description,"", :required => "required","data-message"=>"please fill in a description")
+                    = text_field_tag(:description,"", :required => "required","data-message"=>"Please fill in a description")
                     = label_tag(:numberOfSections, "Format")
                     = select_tag(:numberOfSections, options_for_select((1..number_of_sections).map{ |v| [pluralize(v," Section"), v] },{}),:id=>"NumberOfSections")
                     = label_tag(:sectioname0, "Section Title *")
                     #sectionWrapper
                       - (0..number_of_sections-1).map do |number|
-                        = text_field_tag("sectionname#{number}","",:required => "required","data-message"=>"please fill in a section name")
+                        = text_field_tag("sectionname#{number}","",:required => "required","data-message"=>"Please fill in a section name")
                     = recaptcha_tags(display: {theme: 'white'})
                     = submit_tag("Create")
             .why.orange.sideNote
