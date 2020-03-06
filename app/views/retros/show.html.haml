@@ -38,7 +38,7 @@
         / googleon: all
         - get_rows_for_sections(@retrospective.sections).each_with_index do |row_sections, i|
           .sections{:id => "sectionsRow#{i}"}
-            = render :partial => "section", :collection => row_sections, :as => "section", :locals => {:section_width => get_section_width(row_sections.size)}
+            = render :partial => "section", :collection => row_sections, :as => "section", :locals => {:section_width => get_section_width(row_sections.size), :board_id => @retrospective.id }
         .hide
           #stickyTemplate.col_right
             .sticky

@@ -7,16 +7,22 @@ class PointsController < ApplicationController
   end
 
   def create
-    point_params[:message] = CGI.escapeHTML(point_params[:message])
-    point = Point.new(point_params)
-
-    respond_to do |format|
-      if point.save
-        flash[:notice] = 'Point was successfully created.'
-        delete_cache_for(point)
-        format.json { render :json => point.to_json(:methods => :votes_count), :status => :created, :location => point}
-      else
-        format.json { render :json => point.errors, :status => :unprocessable_entity }
+    if validate_retro_id
+      if point_params[:message] = CGI.escapeHTML(point_params[:message])
+        point = Point.new(point_params)
+        respond_to do |format|
+          if point.save
+            flash[:notice] = 'Point was successfully created.'
+            delete_cache_for(point)
+            format.json { render :json => point.to_json(:methods => :votes_count), :status => :created, :location => point }
+          else
+            format.json { render :json => point.errors, :status => :unprocessable_entity }
+          end
+        end
+      end
+    else
+      respond_to do |format|
+        format.json { render :json => "Section Id and " , :status => :unprocessable_entity }
       end
     end
   end
@@ -66,6 +72,12 @@ class PointsController < ApplicationController
     params.require(:point).permit(:section_id, :message)
   end
 
+  def validate_retro_id
+    if Section.find(point_params[:section_id].to_i).retro_id == params[:board_id].to_i
+      return true
+    end
+    false
+  end
 
   #def destroy
   #   point = Point.destroy(params[:id])

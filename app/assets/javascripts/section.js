@@ -3,15 +3,16 @@ var Section = function(section){
   this.stickies = [];
 };
 
-Section.prototype.addSticky = function(stickyText){
+Section.prototype.addSticky = function (stickyText, boardId) {
   var thisSection = this;
   $a.trackEvent('point', 'create', "section-"+thisSection.id);
   $.ajax({
     url: '/points.json',
     data:
     {
-      "point[section_id]": thisSection.id,
-      "point[message]": stickyText
+          "point[section_id]": thisSection.id,
+          "point[message]": stickyText,
+          "board_id": boardId
     },
     type: "POST",
     success: function(result) {
@@ -47,7 +48,8 @@ Section.prototype.setupEvents = function(){
     if (e.keyCode == 13) {
       addStickyForm.hide('slow');
       var text = $(this).val().trim();
-      addStickyTo(thisSection.id, text);
+      var boardId = this.attributes["data-board-id"].value;
+      addStickyTo(thisSection.id, text, boardId);
       return;
     }
     if (e.keyCode == 27) {
@@ -57,13 +59,14 @@ Section.prototype.setupEvents = function(){
   textInputArea.blur(function() {
     addStickyForm.hide('slow');
     var text = $(this).val().trim();
-    addStickyTo(thisSection.id, text);
+    var boardId = this.attributes["data-board-id"].value;
+    addStickyTo(thisSection.id, text, boardId);
   });
 
-  var addStickyTo = function(sectionId, stickyText) {
+  var addStickyTo = function (sectionId, stickyText, boardId) {
     if (stickyText.length > 0) {
       $('.stickyText').val("");
-      thisSection.addSticky(stickyText);
+      thisSection.addSticky(stickyText, boardId);
     }
   };
 };

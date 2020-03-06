@@ -50,13 +50,13 @@ $(document).ready(function() {
         submitIdea: function(event){
             var message = $(this.el).find("#ideaText").val();
             message = $.trim(message);
-
-            var sectionId=$(this.el).find("#sectionId").val();
+            var sectionId = $(this.el).find("#sectionId").val();
+            var retroId = this.board.id;
             if (message == '') {
                 this.showEmptyError();
             }
             else {
-                IdeaBoardz.WebIdeaBoardz.instance.createIdea(sectionId, message, {
+                IdeaBoardz.WebIdeaBoardz.instance.createIdea(sectionId, message, retroId, {
                     success: this.showSuccess,
                     error: this.showError,
                     context: this

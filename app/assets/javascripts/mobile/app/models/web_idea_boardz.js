@@ -71,12 +71,12 @@ IdeaBoardz.WebIdeaBoardz.prototype = {
         ajaxPutRequest( context, url, success, error, {'message': message, 'oldmessage': oldmessage});
     },
 
-    createIdea: function(sectionId, message, callbacks) {
+    createIdea: function(sectionId, message, retroId, callbacks) {
         callbacks = callbacks || {};
         var success = callbacks.success || function() {},
             error = callbacks.error || function() {},
             context = callbacks.context,
-            url = this.domain + '/points.json?point[section_id]='+encodeURIComponent(sectionId)+'&point[message]=' + encodeURIComponent(message),
+            url = this.domain + '/points.json?point[section_id]='+encodeURIComponent(sectionId)+'&point[message]=' + encodeURIComponent(message)+'&board_id='+ encodeURIComponent(retroId),
             type = 'POST';
         ajaxPostRequest(type, context, url, success, error);
     },
