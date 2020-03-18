@@ -2,7 +2,7 @@ $(".removeBoardFromFav").on("click", function () {
   var boardName  = this.getAttribute("data-board-name"),
       boardId = this.getAttribute("data-board-id"),
       element =  this;
-  if (confirm(`Are you sure you want to delete \"${boardName}\" from favorite boards?`)) {
+  if (confirm("Are you sure you want to delete " + boardName + " from favorite boards?")) {
     $.ajax({
       url: "/retros/" + boardId + "/remove_from_my_board.json",
       type: "POST",
