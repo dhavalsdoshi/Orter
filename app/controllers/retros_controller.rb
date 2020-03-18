@@ -1,4 +1,5 @@
 class RetrosController < ApplicationController
+  protect_from_forgery except: :remove_from_my_board
 
   def new
     @user = current_user
@@ -50,6 +51,15 @@ class RetrosController < ApplicationController
       render :mobile_show and return
     end
     render :action => :show
+  end
+
+  def remove_from_my_board
+    @retrospective = Retro.where(id: params[:id]).includes(:users).take
+    remaining_users = @retrospective.users - [User.find(current_user.id)]
+    @retrospective.users = remaining_users
+    respond_to do |format|
+      format.json{render json: @retrospective.users.to_json , status: :ok}
+    end
   end
 
   def export

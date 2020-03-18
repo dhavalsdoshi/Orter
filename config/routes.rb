@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   resources :points do
     resources :votes
   end
-  resources :retros
+  resources :retros do
+    post 'remove_from_my_board', on: :member
+  end
   get ':controller/:action/:id'
   get ':controller/:action/:id.:format'
   get "/auth/:provider/callback" => 'session#create'

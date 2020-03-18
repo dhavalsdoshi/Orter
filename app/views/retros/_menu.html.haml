@@ -18,7 +18,11 @@
           - @user.retros.each do |retro|
             - if retro.name
               %li
-                = link_to retro.name, retro_for_path(:name => retro.name, :id => retro.id)
+                %div
+                  %div.redirectToBoard
+                    =link_to retro.name, retro_for_path(:name => retro.name, :id => retro.id)
+                  %div.removeBoardFromFav{data: {"board-name" => retro.name, "board-id" => retro.id}}
+                    x
           -#%li
           -#  - form_tag({:controller => :users, :action => :add_retro},{:method => "post",:novalidate => ""}) do
           -#    = text_field_tag(:url, "",:required => "required","data-message"=>"please fill in the url", :size => 11)
