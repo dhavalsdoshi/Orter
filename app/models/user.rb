@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   validates_presence_of :provider, :uid, :name
-
+  has_many :owned_boards , class_name: "Retro"
   has_and_belongs_to_many :retros
 
   def self.create_with_omniauth(auth)

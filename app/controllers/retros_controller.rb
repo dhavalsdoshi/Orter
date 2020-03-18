@@ -16,6 +16,7 @@ class RetrosController < ApplicationController
       @retro.sections << Section.new({:name => CGI.escapeHTML(params[section_name])})
     end
     @retro.users = [current_user] if current_user
+    @retro.created_by = current_user if current_user
 
     if verify_recaptcha(timeout: 60) && @retro.save
       flash[:notice] = 'Retro was successfully created.'
