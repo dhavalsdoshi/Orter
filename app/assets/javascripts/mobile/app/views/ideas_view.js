@@ -34,50 +34,60 @@ $(document).ready(function () {
             $(this.el).undelegate('.deleteBtn','click');
             $(this.el).undelegate('.voteNumber','click');
         },
-        votePoint: function(event){
+        votePoint: function (event) {
             event.preventDefault();
-            var thisEl =$(event.currentTarget),
+            var thisEl = $(event.currentTarget),
                 currentVotes = parseInt(thisEl.find('.voteCount').text()),
-                me=this;
-            thisEl.find('.voteCount').text(currentVotes+1+"");
-            IdeaBoardz.WebIdeaBoardz.instance.voteIdea(event.currentTarget.id,{
+                retroId = this.board.id,
+                retroName = this.board.name,
+                sectionId = this.board.ideas.filter(e => e.id==event.currentTarget.id)[0].section_id;
+            me = this;
+            thisEl.find('.voteCount').text(currentVotes + 1 + "");
+            IdeaBoardz.WebIdeaBoardz.instance.voteIdea(retroId, retroName, sectionId, event.currentTarget.id, {
                 success: me.showSuccess,
                 error: me.showError,
                 context: "this"
             });
             return false;
         },
-        deletePoint: function(event){
+        deletePoint: function (event) {
             event.preventDefault();
-            var me=this;
-            var message = $("#"+event.currentTarget.id).find(".ideaText").html().replace(/<hr>/, "\n---------------\n");
-            IdeaBoardz.WebIdeaBoardz.instance.deleteIdea(event.currentTarget.id, message, {
+
+            var retroId = this.board.id,
+                retroName = this.board.name,
+                sectionId = this.board.ideas.filter(e => e.id == event.currentTarget.id)[0].section_id,
+                me = this;
+
+            var message = $("#" + event.currentTarget.id).find(".ideaText").html().replace(/<hr>/, "\n---------------\n");
+            IdeaBoardz.WebIdeaBoardz.instance.deleteIdea(retroId, retroName, sectionId, event.currentTarget.id, message, {
                 success: me.showSuccess,
                 error: me.showError,
                 context: "this"
             });
-            $("#ideasList>li[id='"+ event.currentTarget.id +"']").anim({opacity:'0'},0.5,'ease-out', function(){
+            $("#ideasList>li[id='" + event.currentTarget.id + "']").anim({opacity: '0'}, 0.5, 'ease-out', function () {
                 $(this).remove();
             });
 
             return false;
         },
-        resumePoll: function(event){
+        resumePoll: function (event) {
             event.preventDefault();
             var el = $(event.currentTarget)[0],
                 ideaTextEl = $(event.currentTarget).siblings('.ideaText')[0],
                 editIdeaBtn = $(event.currentTarget).siblings('.editIdeaBtn')[0],
                 message = $(ideaTextEl).html(),
                 oldMessage = $(ideaTextEl).attr('oldContent'),
+                sectionId = this.board.ideas.filter(e => e.id==event.currentTarget.id)[0].section_id,
+                retroId = this.board.id,
+                retroName = this.board.name,
                 me = this;
 
-            $(ideaTextEl).attr('contentEditable',false).removeClass('editing');
+            $(ideaTextEl).attr('contentEditable', false).removeClass('editing');
             message = $.trim(message).replace(/<hr>/, "\n---------------\n").replace(/&nbsp;/, ' ');
             if (message == '') {
                 me.showEmptyError();
-            }
-            else {
-                IdeaBoardz.WebIdeaBoardz.instance.editIdea(event.currentTarget.id, oldMessage, message, {
+            } else {
+                IdeaBoardz.WebIdeaBoardz.instance.editIdea(sectionId, event.currentTarget.id, oldMessage, message, retroId, retroName, {
                     success: me.showSuccess,
                     error: me.showError,
                     context: "this"
@@ -86,7 +96,9 @@ $(document).ready(function () {
             $(el).hide();
             $(editIdeaBtn).show();
             clearTimeout(IdeaBoardz.Board.instance.timer);
-            IdeaBoardz.Board.instance.timer = setTimeout(function(){me.pollForIdeas()}, 10000);
+            IdeaBoardz.Board.instance.timer = setTimeout(function () {
+                me.pollForIdeas()
+            }, 10000);
             return false;
         },
 

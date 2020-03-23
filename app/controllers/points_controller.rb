@@ -10,6 +10,7 @@ class PointsController < ApplicationController
     if validate_retro_id
       if point_params[:message] = CGI.escapeHTML(point_params[:message])
         point = Point.new(point_params)
+        point.section_id = params[:section_id]
         respond_to do |format|
           if point.save
             flash[:notice] = 'Point was successfully created.'
@@ -22,7 +23,7 @@ class PointsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render :json => "Section Id and " , :status => :unprocessable_entity }
+        format.json { render :json => {:error => "section_id and retro_id are not releated"}.to_json , :status => :unprocessable_entity }
       end
     end
   end
@@ -30,6 +31,7 @@ class PointsController < ApplicationController
   def update
     #point = Point.find(params[:id])
     point = Point.find_by_id_and_message(params[:id], params[:point][:oldmessage])
+    return head :unprocessable_entity if point.nil?
     params[:point].delete(:oldmessage)
     #point_params = params[:point]
     #point_params[:message] = CGI.escapeHTML(point_params[:message])
@@ -43,7 +45,7 @@ class PointsController < ApplicationController
 
   def destroy
     point = Point.find_by_id_and_message(params[:id], params[:message])
-    return head :error if point.nil?
+    return head :unprocessable_entity if point.nil?
     point.destroy
     delete_cache_for(point)
     respond_to do |format|
@@ -73,7 +75,7 @@ class PointsController < ApplicationController
   end
 
   def validate_retro_id
-    if Section.find(point_params[:section_id].to_i).retro_id == params[:board_id].to_i
+    if Section.find(params[:section_id]).retro_id == params[:retro_id].to_i
       return true
     end
     false

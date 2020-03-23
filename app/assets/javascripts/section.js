@@ -1,108 +1,111 @@
-var Section = function(section){
+var Section = function (section) {
   this.id = section.attr('id').replace('section', '');
   this.stickies = [];
 };
 
-Section.prototype.addSticky = function (stickyText, boardId) {
+Section.prototype.addSticky = function (stickyText, boardId, boardName) {
   var thisSection = this;
-  $a.trackEvent('point', 'create', "section-"+thisSection.id);
+  $a.trackEvent('point', 'create', "section-" + thisSection.id);
   $.ajax({
-    url: '/points.json',
+    url: "/api/retros/" + encodeURIComponent(boardId) + "/" + encodeURIComponent(boardName) + "/sections/" + encodeURIComponent(thisSection.id) + "/points",
     data:
-    {
-          "point[section_id]": thisSection.id,
-          "point[message]": stickyText,
-          "board_id": boardId
-    },
+        {
+          point: {
+            message: stickyText
+          }
+        },
     type: "POST",
-    success: function(result) {
+    success: function (result) {
       thisSection.attachSticky(result);
     }
   });
 };
 
-Section.prototype.attachSticky = function(point) {
+Section.prototype.attachSticky = function (point) {
   var sticky = Sticky.createFrom(point.message, point.votes_count, point.id);
   sticky.attachTo(point.section_id);
   this.stickies.push(sticky);
 };
 
-Section.prototype.getDom = function(){
-  return $('#section'+this.id);
+Section.prototype.getDom = function () {
+  return $('#section' + this.id);
 };
 
-Section.prototype.setupEvents = function(){
+Section.prototype.setupEvents = function () {
   var thisSection = this;
-  var showAddSticky = function() {
+  var showAddSticky = function () {
     var addStickyForm = thisSection.getDom().find(".addStickyForm");
     var textInputArea = addStickyForm.find('textarea');
     addStickyForm.show('slow');
     textInputArea.focus();
   };
-  this.getDom().find('.addStickyButton').click(function() {
+  this.getDom().find('.addStickyButton').click(function () {
     showAddSticky();
   });
   var addStickyForm = this.getDom().find(".addStickyForm");
   var textInputArea = addStickyForm.find('textarea');
-  textInputArea.keypress(function(e) {
+  textInputArea.keypress(function (e) {
     if (e.keyCode == 13) {
       addStickyForm.hide('slow');
       var text = $(this).val().trim();
+      var boardName = this.attributes["data-board-name"].value;
       var boardId = this.attributes["data-board-id"].value;
-      addStickyTo(thisSection.id, text, boardId);
+      addStickyTo(thisSection.id, text, boardId, boardName);
       return;
     }
     if (e.keyCode == 27) {
       addStickyForm.hide('slow');
     }
   });
-  textInputArea.blur(function() {
+  textInputArea.blur(function () {
     addStickyForm.hide('slow');
     var text = $(this).val().trim();
+    var boardName = this.attributes["data-board-name"].value;
     var boardId = this.attributes["data-board-id"].value;
-    addStickyTo(thisSection.id, text, boardId);
+    addStickyTo(thisSection.id, text, boardId, boardName);
   });
 
-  var addStickyTo = function (sectionId, stickyText, boardId) {
+  var addStickyTo = function (sectionId, stickyText, boardId, boardName) {
     if (stickyText.length > 0) {
       $('.stickyText').val("");
-      thisSection.addSticky(stickyText, boardId);
+      thisSection.addSticky(stickyText, boardId , boardName);
     }
   };
 };
 
-var Ideaboardz = function() {
+var Ideaboardz = function () {
   var that = this;
   var sections = new Array();
-  this.init = function() {
+  this.init = function () {
     fillSectionsAndAttachEvents();
     that.refreshSections();
   };
 
-  var fillSectionsAndAttachEvents = function() {
-    $('.section').each(function() {
+  var fillSectionsAndAttachEvents = function () {
+    $('.section').each(function () {
       var section = $(this);
       var sectionObject = new Section(section);
       sectionObject.setupEvents();
       sections.push(sectionObject);
     });
   };
-  var findSectionBy = function(id){
-    return _.find(sections,function(section){return section.id == id});
+  var findSectionBy = function (id) {
+    return _.find(sections, function (section) {
+      return section.id == id
+    });
   };
 
-  var displaySectionPoints = function(data) {
+  var displaySectionPoints = function (data) {
     var allPoints = [];
-    if(data) {
+    if (data) {
       removePointHtmlIfNotInData(data);
     }
     for (var pointIndex in data) {
       var point = data[pointIndex];
-      if(!isAlreadyExisting(point)) {
+      if (!isAlreadyExisting(point)) {
         var section = findSectionBy(point.section_id);
         section.attachSticky(point);
-      }
-      else {
+      } else {
         updateSticky(point);
       }
       allPoints.push(point);
@@ -110,15 +113,19 @@ var Ideaboardz = function() {
 
     $U.filterStickies();
     $U.sortStickies();
-    setTimeout(that.refreshSections,10000)
+    setTimeout(that.refreshSections, 10000)
   };
 
-  var allPointsOnBoard = function(){
-    return _.map($('.points .sticky'), function(dom) {return new Sticky($(dom))});
+  var allPointsOnBoard = function () {
+    return _.map($('.points .sticky'), function (dom) {
+      return new Sticky($(dom))
+    });
   };
 
-  var updateSticky = function(point) {
-    var stickyToUpdate = _.find(allPointsOnBoard(), function(sticky){return sticky.id == point.id && sticky.sectionId() == point.section_id});
+  var updateSticky = function (point) {
+    var stickyToUpdate = _.find(allPointsOnBoard(), function (sticky) {
+      return sticky.id == point.id && sticky.sectionId() == point.section_id
+    });
     stickyToUpdate.update(point.message, point.votes_count);
   };
 
@@ -132,15 +139,15 @@ var Ideaboardz = function() {
     _.invoke(stickiesToBeDeleted, "removeFromDom");
   };
 
-  var isAlreadyExisting = function(point) {
+  var isAlreadyExisting = function (point) {
     return $('#section' + point.section_id + ' #point' + point.id).length > 0;
   };
 
-  this.refreshSections = function() {
+  this.refreshSections = function () {
     var retroId = $('meta[name="retroId"]').attr('content');
     var retroName = $('meta[name="retroName"]').attr('content');
     $.ajax({
-      url: "/retros/"+ encodeURIComponent(retroName) + "/" + retroId + "/points.json",
+      url: "/retros/" + encodeURIComponent(retroName) + "/" + retroId + "/points.json",
       dataType: 'json',
       success: displaySectionPoints,
       error: function(){
@@ -175,7 +182,7 @@ $(document).ready(function() {
     });
     $('#search').keyup($U.filterStickies);
     $('#search').blur(function(){
-        var searchTerm = $('#search').val()
+        var searchTerm = $('#search').val();
         if(searchTerm.length > 0) $a.trackEvent('board', 'search', searchTerm);
     });
     $('#retro_section_id').change($U.filterSection).change();

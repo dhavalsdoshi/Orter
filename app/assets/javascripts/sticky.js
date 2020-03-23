@@ -3,6 +3,8 @@ var Sticky = function(dom){
   this.text = $.trim(dom.attr('data-content'));
   this.votes = parseInt($.trim(dom.find('.voteCount .count').html()));
   this.id = parseInt(dom.attr('data-id'));
+  this.retroId = $('meta[name="retroId"]').attr('content');
+  this.retroName = $('meta[name="retroName"]').attr('content');
 };
 
 Sticky.createFrom = function(text, votes, id) {
@@ -100,15 +102,15 @@ Sticky.prototype.removeFromDom = function(){
 };
 
 Sticky.prototype.remove = function(){
-    this.removeFromDom();
-    $a.trackEvent('point', 'delete', this.id);
-    $.ajax({
-      url: "/points/delete/" + this.id + ".json",
-      type: "GET",
-      data: {
-        message: this.text
-      }
-    });
+  this.removeFromDom();
+  $a.trackEvent('point', 'delete', this.id);
+  $.ajax({
+    url: "/api/retros/" + encodeURIComponent(this.retroId) + "/" + encodeURIComponent(this.retroName) + "/sections/" + "62637514" + "/points/" + encodeURIComponent(this.id),
+    type: "DELETE",
+    data: {
+      message: this.text
+    }
+  });
 };
 
 Sticky.prototype.update = function(text,votes){
@@ -124,25 +126,24 @@ Sticky.prototype.edit_section = function(section_id, text) {
 };
 
 Sticky.prototype.edit = function(value_hash, success) {
-    $.ajax({
-      url: '/points/' + this.id,
-      type: 'PUT',
-      data: {
-          'point' : value_hash
-      },
-      success: function(result) {
-        success(result);
-      }
-    });
+  $.ajax({
+    url: "/api/retros/" + encodeURIComponent(this.retroId) + "/" + encodeURIComponent(this.retroName) + "/sections/" + "62637514" + "/points/" + encodeURIComponent(this.id),
+    type: 'PUT',
+    data: {
+      'point': value_hash
+    },
+    success: function(result) {
+      success(result);
+    }
+  });
 };
 
 Sticky.prototype.edit_vote = function(count, success) {
   var thisSticky = this;
   thisSticky.votes = count;
   $.ajax({
-    url: "/points/" + thisSticky.id + "/votes.json",
+    url: "/api/retros/" + encodeURIComponent(this.retroId) + "/" + encodeURIComponent(this.retroName) + "/sections/" + "62637514" + "/points/" + encodeURIComponent(this.id) + "/votes",
     type: "POST",
-    data: {"vote": {"point_id": thisSticky.id }},
     success: function(result) {
       thisSticky.updateDom();
       success(result)

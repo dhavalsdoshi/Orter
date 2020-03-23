@@ -1,8 +1,9 @@
 class VotesController < ApplicationController
 
   def create
-    vote = Vote.new(vote_params)
-
+    vote = Vote.new(
+        point_id: params[:point_id]
+    )
     respond_to do |format|
       if vote.save
         point = vote.point
@@ -14,10 +15,6 @@ class VotesController < ApplicationController
     end
   end
 
-  private
 
-  def vote_params
-    params.require(:vote).permit(:point_id)
-  end
 
 end

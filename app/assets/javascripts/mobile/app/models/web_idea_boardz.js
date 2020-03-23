@@ -15,13 +15,14 @@ function ajaxGetRequest(type, context, url, dataType, success, error) {
         error:error
     });
 }
-function ajaxPostRequest(type, context, url, success, error) {
+function ajaxPostRequest(type, context, url, data, success, error) {
     $.ajax({
-        type:type,
-        context:context,
-        url:url,
-        success:success,
-        error:error
+        type: type,
+        context: context,
+        url: url,
+        data: data,
+        success: success,
+        error: error
     });
 }
 
@@ -40,45 +41,57 @@ function ajaxPutRequest(context, url, success, error, point) {
 
 IdeaBoardz.WebIdeaBoardz.prototype = {
 
-    voteIdea: function(pointId,callbacks){
+    voteIdea: function (retroId, retroName, sectionId, pointId, callbacks) {
         $.ajax({
-            url: "/points/" + pointId + "/votes.json",
+            url: "/api/retros/" + encodeURIComponent(retroId) + "/" + encodeURIComponent(retroName) + "/sections/" + encodeURIComponent(sectionId) + "/points/" + encodeURIComponent(pointId) + "/votes",
             type: "POST",
-            data: {"vote": {"point_id": pointId }},
-            success:callbacks.success || function() {},
-            error:callbacks.error || function() {},
-            context: callbacks.context
-        });
-    },
-    deleteIdea: function(pointId, message, callbacks){
-        $.ajax({
-            url: "/points/delete/" + pointId + ".json",
-            type: "GET",
-            data: {
-              message: message
+            success: callbacks.success || function () {
             },
-            success:callbacks.success || function() {},
-            error:callbacks.error || function() {},
+            error: callbacks.error || function () {
+            },
             context: callbacks.context
         });
     },
-    editIdea: function(pointId, oldmessage, message,callbacks){
+    deleteIdea: function (retroId, retroName, sectionId, pointId, message, callbacks) {
+        $.ajax({
+            url: "/api/retros/" + encodeURIComponent(retroId) + "/" + encodeURIComponent(retroName) + "/sections/" + encodeURIComponent(sectionId) + "/points/" + encodeURIComponent(pointId),
+            type: "DELETE",
+            data: {
+                message: message
+            },
+            success: callbacks.success || function () {
+            },
+            error: callbacks.error || function () {
+            },
+            context: callbacks.context
+        });
+    },
+    editIdea: function (sectionId, pointId, oldmessage, message, retroId, retroName, callbacks) {
         callbacks = callbacks || {};
-        var success = callbacks.success || function() {},
-            error = callbacks.error || function() {},
+        var success = callbacks.success || function () {
+            },
+            error = callbacks.error || function () {
+            },
             context = callbacks.context,
-            url = this.domain + '/points/' + pointId;
-        ajaxPutRequest( context, url, success, error, {'message': message, 'oldmessage': oldmessage});
+            url = this.domain + "/api/retros/" + encodeURIComponent(retroId) + "/" + encodeURIComponent(retroName) + "/sections/" +encodeURIComponent(sectionId) + "/points/" + encodeURIComponent(pointId);
+        ajaxPutRequest(context, url, success, error, {'message': message, 'oldmessage': oldmessage});
     },
 
-    createIdea: function(sectionId, message, retroId, callbacks) {
+    createIdea: function (sectionId, message, retroId, retroName, callbacks) {
         callbacks = callbacks || {};
-        var success = callbacks.success || function() {},
-            error = callbacks.error || function() {},
+        var success = callbacks.success || function () {
+            },
+            error = callbacks.error || function () {
+            },
             context = callbacks.context,
-            url = this.domain + '/points.json?point[section_id]='+encodeURIComponent(sectionId)+'&point[message]=' + encodeURIComponent(message)+'&board_id='+ encodeURIComponent(retroId),
+            url = this.domain + "/api/retros/" + encodeURIComponent(retroId) + "/" + encodeURIComponent(retroName) + "/sections/" + encodeURIComponent(sectionId) + "/points.json",
+            data = {
+                point: {
+                    message: message
+                }
+            },
             type = 'POST';
-        ajaxPostRequest(type, context, url, success, error);
+        ajaxPostRequest(type, context, url, data, success, error);
     },
 
     getBoard: function(boardName, boardId, callbacks) {

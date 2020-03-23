@@ -16,6 +16,15 @@ Rails.application.routes.draw do
   resources :points do
     resources :votes
   end
+
+  # API Routes
+  post 'api/retros(.:format)' => 'retros#create'
+  get 'api/retros/:id/:name(.:format)' => 'retros#show'
+  post 'api/retros/:retro_id/:retro_name/sections/:section_id/points(.:format)' => 'points#create'
+  delete 'api/retros/:retro_id/:retro_name/sections/:section_id/points/:id(.:format)' => 'points#destroy'
+  put 'api/retros/:retro_id/:retro_name/sections/:section_id/points/:id(.:format)' => 'points#update'
+  post 'api/retros/:retro_id/:retro_name/sections/:section_id/points/:point_id/votes(.:format)' => 'votes#create'
+
   resources :retros do
     post 'remove_from_my_board', on: :member
   end

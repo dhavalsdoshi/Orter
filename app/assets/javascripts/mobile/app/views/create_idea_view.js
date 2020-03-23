@@ -47,16 +47,16 @@ $(document).ready(function() {
             $(this.el).undelegate('#submitBtn', 'click');
         },
 
-        submitIdea: function(event){
+        submitIdea: function (event) {
             var message = $(this.el).find("#ideaText").val();
             message = $.trim(message);
             var sectionId = $(this.el).find("#sectionId").val();
             var retroId = this.board.id;
+            var retroName = this.board.name;
             if (message == '') {
                 this.showEmptyError();
-            }
-            else {
-                IdeaBoardz.WebIdeaBoardz.instance.createIdea(sectionId, message, retroId, {
+            } else {
+                IdeaBoardz.WebIdeaBoardz.instance.createIdea(sectionId, message, retroId, retroName, {
                     success: this.showSuccess,
                     error: this.showError,
                     context: this
