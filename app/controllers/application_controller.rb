@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => 'f92c99c75424ae3a97cc0033145fe066'
 
-  before_action :log_ip, except: :index_for_retro
+  #before_action :log_ip, except: :index_for_retro
 
   def log_ip
     logger = Logger.new("#{Rails.root}/log/ip.log")
