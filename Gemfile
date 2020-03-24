@@ -4,8 +4,11 @@ gem 'rails', '~> 5.2.4.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'puma'
+if ENV['RAILS_ENV'] == 'production'
+  gem 'puma'
+else
+  gem 'thin'
+end
 gem 'mysql2'
 gem 'prawn'
 gem 'prawn-table'
