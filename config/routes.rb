@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+# Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
+
   get '/' => 'retros#new'
   get 'retros/:retro_name/:retro_id/points.:format'=>'points#index_for_retro'
 

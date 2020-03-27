@@ -282,14 +282,14 @@
       right:3px;
     }
   }
-  
+
   .voteUpdated{
     top: 0;
     left: 5px;
     .round-corner-all(4px);
     &.show ~ .voteStickyButton{
       color: green;
-    } 
+    }
   }
 
   .tag{
@@ -301,7 +301,7 @@
     #tagNameText{
       padding: 5px;
       width:89%;
-    }  
+    }
   }
   .stickyTextContainer {
     position:relative;
@@ -318,7 +318,7 @@
 }
 
 .ui-widget-content{
-    min-width:10em;    
+    min-width:10em;
 }
 
 .sectionTitle{
@@ -408,7 +408,7 @@
 }
 
 /* icon font styles - move to mixin if needed */
-.icon:before { 
+.icon:before {
   font-family: "HeydingsCommonIconsRegular";
   margin-right: 5px;
 }
@@ -456,4 +456,68 @@ span.fas.fa-pencil-alt {
     text-indent: unset;
     font-size: 19px;
     padding: 3px;
+}
+
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  bottom: 0px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }

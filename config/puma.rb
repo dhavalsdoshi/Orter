@@ -1,31 +1,39 @@
 # config/server/puma.rb
 
+rails_env = ENV['RAILS_ENV'] || "production"
+environment rails_env
+if rails_env == "production"
+
 # Change to match your CPU core count
-workers 4
+  workers 4
 
 # Min and Max threads per worker
-threads 4, 16
+  threads 4, 16
 
 app_dir = "/root/apps/orter"
 shared_dir = "/root/apps/orter/tmp" # shared is outside of vagrant since there is some permission problem if is inside /vagrant
 
-# Default to production
-rails_env = ENV['RAILS_ENV'] || "production"
-environment rails_env
 
 # Set up socket location
-bind "unix://#{shared_dir}/sockets/puma.sock?backlog=2048"
+  bind "unix://#{shared_dir}/sockets/puma.sock?backlog=2048"
 
 # Logging
-stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
+  stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
 
 # Set master PID and state locations
-pidfile "#{shared_dir}/pids/puma.pid"
-state_path "#{shared_dir}/pids/puma.state"
-activate_control_app
+  pidfile "#{shared_dir}/pids/puma.pid"
+  state_path "#{shared_dir}/pids/puma.state"
+  activate_control_app
 
-on_worker_boot do
-  require "active_record"
-  ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
-  ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
+  on_worker_boot do
+    require "active_record"
+    ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
+    ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
+  end
+else
+  threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+  threads threads_count, threads_count
+
+  port ENV.fetch("PORT") { 3000 }
+  plugin :tmp_restart
 end

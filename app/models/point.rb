@@ -4,6 +4,12 @@ class Point < ActiveRecord::Base
   belongs_to :section
   has_many :votes
 
+  after_commit :schedule_broadcast
+
+  def schedule_broadcast
+    UpdateBroadcastJob.perform_later(self.section.retro)
+  end
+
   def votes_count
     votes.count
   end
