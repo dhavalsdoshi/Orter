@@ -122,7 +122,6 @@ var Ideaboardz = function () {
       shouldPoll = false;
      } else {
       shouldPoll = true;
-      that.refreshSections();
      };
   });
 
