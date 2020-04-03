@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :retros do
     post 'remove_from_my_board', on: :member
   end
+  get '/terms' => "site#tnc"
   get ':controller/:action/:id'
   get ':controller/:action/:id.:format'
   get "/auth/:provider/callback" => 'session#create'

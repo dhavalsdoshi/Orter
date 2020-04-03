@@ -56,6 +56,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     childprocess (3.0.0)
+    coderay (1.1.2)
     commonjs (0.2.7)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
@@ -63,7 +64,7 @@ GEM
     erubi (1.9.0)
     eventmachine (1.2.7)
     execjs (2.7.0)
-    faraday (1.0.0)
+    faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.12.2)
     figaro (1.1.1)
@@ -140,6 +141,9 @@ GEM
     prawnto (0.1.1)
       prawn
       rails (>= 2.1)
+    pry (0.13.0)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     public_suffix (4.0.3)
     rack (2.2.2)
     rack-test (1.1.0)
@@ -172,7 +176,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    recaptcha (5.4.1)
+    recaptcha (5.5.0)
       json
     ref (2.0.0)
     ruby_dep (1.5.0)
@@ -203,7 +207,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     ttfunk (1.6.2.1)
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -234,6 +238,7 @@ DEPENDENCIES
   prawn
   prawn-table
   prawnto
+  pry
   rails (~> 5.2.4.1)
   recaptcha
   selenium-webdriver

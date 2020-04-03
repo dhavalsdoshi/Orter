@@ -59,7 +59,11 @@
                     #sectionWrapper
                       - (0..number_of_sections-1).map do |number|
                         = text_field_tag("sectionname#{number}","",:required => "required","data-message"=>"Please fill in a section name")
-                    = recaptcha_tags(display: {theme: 'white'})
+                    = label_tag :are_terms_accepted do  
+                      = check_box_tag :are_terms_accepted, 'accepted', false , "data-message"=> "Please Accept T&Cs." 
+                      Accept Term & Condition.
+                      = link_to "/terms" , { target: "_blank"} do 
+                        T&Cs
                     = submit_tag("Create")
             .why.orange.sideNote
               %h2.sectionTitle Why?
@@ -92,6 +96,9 @@
             .contributors.yellow.sideNote
               %h2.sectionTitle
                 %a{:href=>"/developers.html",:title=>"IdeaBoardz Contributors"} Contributors
+            .tnc.yellow.sideNote
+              %h2
+                %a{:href=>"/terms",:title=>"TnC"} Terms and Condition
             .count.blue.sideNote
               %h2.sectionTitle
                 %b

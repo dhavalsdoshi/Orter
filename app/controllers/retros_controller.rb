@@ -9,7 +9,12 @@ class RetrosController < ApplicationController
   end
 
   def create
-    @retro = Retro.new({:name => CGI.escapeHTML(params[:name]), :description => CGI.escapeHTML(params[:description])})
+    if  params[:are_terms_accepted].blank? || params[:are_terms_accepted] != "accepted"
+      flash[:error] = 'Please Accept the T&Cs.'
+      render :new
+      return
+    end
+    @retro = Retro.new({:name => CGI.escapeHTML(params[:name]), :description => CGI.escapeHTML(params[:description]), :terms_version_accepted => "v1" })
 
     params[:numberOfSections].to_i.times do |section_number|
       section_name = ("sectionname"+section_number.to_s)

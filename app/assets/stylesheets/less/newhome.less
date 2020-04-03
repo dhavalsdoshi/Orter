@@ -128,6 +128,11 @@ body{
   z-index: 4;
 }
 
+.tnc {
+  top: 500px;
+  right: 450px;
+}
+
 .count {
   top: 475px;
   right: 150px;
@@ -189,13 +194,18 @@ body{
 }
 
 .formContainer input[type=text],
+.formContainer input[type=checkox]
 .formContainer select,
 .formContainer label{
     display:block;
 }
 
-.formContainer input[type=text],select{
+.formContainer input[type=text],select {
     margin:0 0 10px 0;
+}
+
+.formContainer input[type=checkbox] {
+  margin: 0 5px 10px 0;
 }
 
 .formContainer select{
@@ -211,8 +221,18 @@ body{
     .transition(all, 0.25s, ease-in);
 }
 
+.formContainer input[type=checkbox] {
+  background:transparent;
+  border:none;
+  border-bottom:1px dashed #555;
+  border-radius:5px;
+  .transition(all, 0.25s, ease-in);
+}
+
 .formContainer input[type=text]:hover,
-.formContainer input[type=text]:focus{
+.formContainer input[type=text]:focus,
+.formContainer input[type=checkbox]:hover,
+.formContainer input[type=checkbox]:focus{
     background-color: #ffffcc;
     .transition(all, 0.25s, ease-in);
     outline:none;
@@ -223,7 +243,8 @@ body{
     font-size:0.7em;
 }
 
-.formContainer input[type=text].invalid{
+.formContainer input[type=text].invalid,
+.formContainer input[type=checkbox].invalid{
     border-bottom: 1px dashed #FFaa22;
 }
 
