@@ -4,7 +4,7 @@
 workers 4
 
 # Min and Max threads per worker
-threads 4, 16
+threads 4, 24
 
 app_dir = "/root/apps/orter"
 shared_dir = "/root/apps/orter/tmp" # shared is outside of vagrant since there is some permission problem if is inside /vagrant
@@ -13,8 +13,10 @@ shared_dir = "/root/apps/orter/tmp" # shared is outside of vagrant since there i
 rails_env = ENV['RAILS_ENV'] || "production"
 environment rails_env
 
+preload_app!
+
 # Set up socket location
-bind "unix://#{shared_dir}/sockets/puma.sock?backlog=2048"
+bind "unix://#{shared_dir}/sockets/puma.sock?backlog=4096"
 
 # Logging
 stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true

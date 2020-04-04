@@ -61,7 +61,7 @@
                         = text_field_tag("sectionname#{number}","",:required => "required","data-message"=>"Please fill in a section name")
                     = label_tag :are_terms_accepted do  
                       = check_box_tag :are_terms_accepted, 'accepted', false , "data-message"=> "Please Accept T&Cs." 
-                      Accept Term & Condition.
+                      Accept Terms & Conditions
                       = link_to "/terms" , { target: "_blank"} do 
                         T&Cs
                     = submit_tag("Create")
@@ -97,8 +97,8 @@
               %h2.sectionTitle
                 %a{:href=>"/developers.html",:title=>"IdeaBoardz Contributors"} Contributors
             .tnc.yellow.sideNote
-              %h2
-                %a{:href=>"/terms",:title=>"TnC"} Terms and Condition
+              %h2.sectionTitle
+                %a{:href=>"/terms",:title=>"TnC"} Terms and Conditions
             .count.blue.sideNote
               %h2.sectionTitle
                 %b
