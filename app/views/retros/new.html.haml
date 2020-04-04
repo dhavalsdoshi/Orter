@@ -59,6 +59,7 @@
                     #sectionWrapper
                       - (0..number_of_sections-1).map do |number|
                         = text_field_tag("sectionname#{number}","",:required => "required","data-message"=>"Please fill in a section name")
+                    = recaptcha_tags(display: {theme: 'white'})
                     = label_tag :are_terms_accepted do  
                       = check_box_tag :are_terms_accepted, 'accepted', false , "data-message"=> "Please Accept T&Cs." 
                       Accept Terms & Conditions
