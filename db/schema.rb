@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 9) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "terms_version_accepted"
   end
 
   create_table "retros_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

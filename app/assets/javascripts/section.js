@@ -119,6 +119,15 @@ var Ideaboardz = function () {
     setTimeout(that.refreshSections, 100000000000)
   };
 
+  var shouldPoll = true;
+  document.addEventListener('visibilitychange', function () {
+     if(document.hidden){
+      shouldPoll = false;
+     } else {
+      shouldPoll = true;
+     };
+  });
+
   var allPointsOnBoard = function () {
     return _.map($('.points .sticky'), function (dom) {
       return new Sticky($(dom))
@@ -147,17 +156,22 @@ var Ideaboardz = function () {
   };
 
   this.refreshSections = function () {
-    var retroId = $('meta[name="retroId"]').attr('content');
-    var retroName = $('meta[name="retroName"]').attr('content');
-    $.ajax({
-      url: "/retros/" + encodeURIComponent(retroName) + "/" + retroId + "/points.json",
-      dataType: 'json',
-      success: displaySectionPoints,
-      error: function(){
-        setTimeout(that.refreshSections,15000)
-      },
-      timeout: 9000
-    });
+    if(shouldPoll){
+      var retroId = $('meta[name="retroId"]').attr('content');
+      var retroName = $('meta[name="retroName"]').attr('content');
+      $.ajax({
+        url: "/retros/" + encodeURIComponent(retroName) + "/" + retroId + "/points.json",
+        dataType: 'json',
+        success: displaySectionPoints,
+        error: function(){
+          setTimeout(that.refreshSections,15000)
+        },
+        timeout: 9000
+      });
+    } else {
+      setTimeout(that.refreshSections, 10000)
+    }
+
   };
 };
 

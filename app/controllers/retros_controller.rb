@@ -9,7 +9,7 @@ class RetrosController < ApplicationController
   end
 
   def create
-    @retro = Retro.new({:name => CGI.escapeHTML(params[:name]), :description => CGI.escapeHTML(params[:description])})
+    @retro = Retro.new({:name => CGI.escapeHTML(params[:name]), :description => CGI.escapeHTML(params[:description]), :terms_version_accepted => "v1" })
 
     params[:numberOfSections].to_i.times do |section_number|
       section_name = ("sectionname"+section_number.to_s)
@@ -17,7 +17,12 @@ class RetrosController < ApplicationController
     end
     @retro.users = [current_user] if current_user
     @retro.created_by = current_user if current_user
-
+    if request.content_type == "application/json" && @retro.save
+      respond_to do |format|
+        format.json{render :json => @retro.to_json(:include => {:sections => {:only => [:name, :id]}}, :except => [:created_at, :updated_at]) }
+      end
+      return
+    end
     if verify_recaptcha(timeout: 60) && @retro.save
       flash[:notice] = 'Retro was successfully created.'
       redirect_to retro_for_url(:id => @retro.id.to_s, :name => @retro.name)

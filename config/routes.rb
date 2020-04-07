@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   # API Routes
   post 'api/retros(.:format)' => 'retros#create'
+  post 'api/retros/:retro_id/:retro_name/sections' => 'sections#new'
+  put 'api/retros/:retro_id/:retro_name/:section/:id' => 'sections#update'
   get 'api/retros/:id/:name(.:format)' => 'retros#show'
   post 'api/retros/:retro_id/:retro_name/sections/:section_id/points(.:format)' => 'points#create'
   delete 'api/retros/:retro_id/:retro_name/sections/:section_id/points/:id(.:format)' => 'points#destroy'
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
   resources :retros do
     post 'remove_from_my_board', on: :member
   end
+  get '/terms' => "site#tnc"
   get ':controller/:action/:id'
   get ':controller/:action/:id.:format'
   get "/auth/:provider/callback" => 'session#create'

@@ -35,7 +35,7 @@
                 %ul
                   %li
                     Lets take it for a
-                    %a{:href => "/for/test"} Spin!
+                    %a{:href => "/for/test/2"} Spin!
             .create.yellow.sideNote
               %h2.sectionTitle How
               - if flash[:error].present?
@@ -60,6 +60,10 @@
                       - (0..number_of_sections-1).map do |number|
                         = text_field_tag("sectionname#{number}","",:required => "required","data-message"=>"Please fill in a section name")
                     = recaptcha_tags(display: {theme: 'white'})
+                    = label_tag :are_terms_accepted do  
+                      By creating this board, I agree to the <br>
+                      = link_to "/terms" , { target: "_blank"} do 
+                        Terms and Conditions.
                     = submit_tag("Create")
             .why.orange.sideNote
               %h2.sectionTitle Why?
@@ -85,13 +89,16 @@
                   %li
                     %a{:href => "http://twitter.com/home/?status=@ideaboardz", :title => "Feedback", :target => "_blank"} via Twitter
                   %li
-                    %a{:href => "/for/feedback", :title => "Feedback"} via Board
+                    %a{:href => "/for/feedback/1", :title => "Feedback"} via Board
             .faq.green.sideNote
               %h2.sectionTitle
                 %a{:href => "/page/faq", :title => "Frequently asked questions"} FAQ
             .contributors.yellow.sideNote
               %h2.sectionTitle
                 %a{:href=>"/developers.html",:title=>"IdeaBoardz Contributors"} Contributors
+            .tnc.yellow.sideNote
+              %h2.sectionTitle
+                %a{:href=>"/terms",:title=>"TnC"} Terms and Conditions
             .count.blue.sideNote
               %h2.sectionTitle
                 %b
