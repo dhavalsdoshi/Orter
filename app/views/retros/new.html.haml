@@ -61,10 +61,9 @@
                         = text_field_tag("sectionname#{number}","",:required => "required","data-message"=>"Please fill in a section name")
                     = recaptcha_tags(display: {theme: 'white'})
                     = label_tag :are_terms_accepted do  
-                      = check_box_tag :are_terms_accepted, 'accepted', false , "data-message"=> "Please Accept T&Cs." 
-                      Accept Terms & Conditions
+                      By creating this board, I agree to the <br>
                       = link_to "/terms" , { target: "_blank"} do 
-                        T&Cs
+                        Terms and Conditions.
                     = submit_tag("Create")
             .why.orange.sideNote
               %h2.sectionTitle Why?
