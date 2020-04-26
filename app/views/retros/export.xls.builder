@@ -26,7 +26,7 @@ xml.Workbook({
     
   for section in @retro.sections
 
-    xml.Worksheet 'ss:Name' => section.name[0..29] do
+    xml.Worksheet 'ss:Name' => section.name.gsub(/(\?|\||\[|\]|\*)/, '')[0..29] do
       xml.Table 'ss:DefaultColumnWidth'=>'100','ss:DefaultRowHeight' => '15' do
 
         xml.Row do
