@@ -12,7 +12,7 @@ end
 gem 'mysql2'
 gem 'prawn'
 gem 'prawn-table'
-gem 'prawnto'
+gem "prawnto_2", :require => "prawnto"
 
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'figaro'
@@ -26,6 +26,11 @@ gem 'therubyracer'
 gem 'haml'
 gem 'jquery-rails'
 
+gem "rack-timeout"
+
+group :production do
+  gem 'newrelic_rpm'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get '/' => 'retros#new'
   get 'retros/:retro_name/:retro_id/points.:format'=>'points#index_for_retro'
 
-  get 'for/:name'=>'retros#show_old'
   get 'for/:name/:id(.:format)'=>'retros#show', :as => 'retro_for'
   get 'page/:name' => 'pages#show'
 
