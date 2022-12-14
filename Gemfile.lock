@@ -56,7 +56,6 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     childprocess (3.0.0)
-    coderay (1.1.2)
     commonjs (0.2.7)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
@@ -94,7 +93,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    loofah (2.4.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -107,7 +106,7 @@ GEM
     mime-types-data (3.2019.1009)
     mimemagic (0.3.4)
     mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.8.0)
     minitest (5.14.0)
     multi_json (1.14.1)
     multi_xml (0.6.0)
@@ -115,8 +114,9 @@ GEM
     mysql2 (0.5.3)
     newrelic_rpm (6.12.0.367)
     nio4r (2.5.2)
-    nokogiri (1.10.9)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.13.10)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     oauth2 (1.4.4)
       faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
@@ -143,8 +143,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.3)
-    puma (4.3.3)
-      nio4r (~> 2.0)
+    racc (1.6.1)
     rack (2.2.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -240,7 +239,6 @@ DEPENDENCIES
   prawn
   prawn-table
   prawnto_2
-  puma
   rack-timeout
   rails (~> 5.2.4.1)
   recaptcha
