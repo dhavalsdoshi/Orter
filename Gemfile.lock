@@ -56,7 +56,6 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     childprocess (3.0.0)
-    coderay (1.1.2)
     commonjs (0.2.7)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
@@ -143,9 +142,7 @@ GEM
       prawn (>= 1.0.0)
       rails (>= 3.2)
     public_suffix (4.0.3)
-    puma (4.3.3)
-      nio4r (~> 2.0)
-    rack (2.2.2)
+    rack (2.2.6.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rack-timeout (0.6.0)
@@ -240,7 +237,6 @@ DEPENDENCIES
   prawn
   prawn-table
   prawnto_2
-  puma
   rack-timeout
   rails (~> 5.2.4.1)
   recaptcha
